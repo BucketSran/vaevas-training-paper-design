@@ -16,6 +16,8 @@ Design notes, learning materials, decision logs. **The first thing a new contrib
 | `CONTAMINATION_CHECKER_SPEC.md` | Current contamination-checker specification: protected/candidate indexes, match tiers, split leakage, report schema, and Phase 1 implementation plan. |
 | `PHASE1_PARAMETER_DECISIONS.md` | Accepted Phase 1-v0.1 data scale, OOD split, Spectre audit budget, contamination policy, and admission gates. |
 | `PHASE1_MANIFEST_SCHEMAS.md` | Phase 1 manifest interfaces linking clean-room generation, EVAS/Spectre evidence, contamination gates, splits, SFT packing, and GRPO prompts. |
+| `REMOTE_PLATFORM_STATUS.md` | Local memory snapshot of the remote 7B/LLaMA-Factory smoke-tested platform and what still needs live revalidation. |
+| `PHASE1_LOCAL_EXECUTION_PLAN.md` | Server-free Phase 1 bridge plan: manifest fixtures, protected index dry-run, seed catalog, batch plan, and packer contracts. |
 | `04_trajectory_format.md` | The step-by-step CoT structure for vaBench tasks (analog of Circuit-Think's port→device→connection). |
 | `05_data_pipeline.md` | How data flows from raw sources → synthesized → EVAS-verified → SFT/RL ready. |
 | `SYNTHETIC_DATA_FACTORY.md` | Current contract-first LLM data factory protocol: batch planning, multi-view artifact generation, verification gates, diversity filtering, and admission rules. |

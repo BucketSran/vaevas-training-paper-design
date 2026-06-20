@@ -10,7 +10,9 @@ experiment design, contract-first data schema, diagnostic reward spec, synthetic
 factory protocol, Spectre audit protocol, and contamination-checker spec are now
 drafted. Phase 1 parameter baseline is accepted in
 `docs/PHASE1_PARAMETER_DECISIONS.md`. Phase 1 manifest interfaces are drafted in
-`docs/PHASE1_MANIFEST_SCHEMAS.md`.
+`docs/PHASE1_MANIFEST_SCHEMAS.md`. Remote SFT platform memory and the
+server-free local Phase 1 bridge plan are captured in
+`docs/REMOTE_PLATFORM_STATUS.md` and `docs/PHASE1_LOCAL_EXECUTION_PLAN.md`.
 
 ### Concrete tasks (this session)
 
@@ -22,13 +24,13 @@ drafted. Phase 1 parameter baseline is accepted in
 | 4 | Learning notes | `docs/00-06*.md` + `REFERENCES.md` | Each note >100 lines, references cited |
 | 5 | gitignore | `train/.gitignore`, `data/.gitignore`, `models/.gitignore`, `logs/.gitignore` | Confirms checkpoints / raw data excluded |
 | 6 | User review | User reads `BRIEF.md` + `SCOPE_BOUNDARY.md` and approves | Explicit "Phase 0 approved, proceed to Phase 1" |
-| 7 | Training-paper design | `docs/TRAINING_PAPER_EXPERIMENT_DESIGN.md`, `data/contracts/schema.yaml`, example contracts, `docs/DIAGNOSTIC_REWARD_SPEC.md`, `docs/SYNTHETIC_DATA_FACTORY.md`, `docs/SPECTRE_SHADOW_AUDIT_PROTOCOL.md`, `docs/CONTAMINATION_CHECKER_SPEC.md`, `docs/PHASE1_PARAMETER_DECISIONS.md`, `docs/PHASE1_MANIFEST_SCHEMAS.md` | YAML parses; L0/L1/L2 and `dut/tb/bugfix/e2e` covered; reward spec has profiles and calibration gates; factory protocol has admission gates; audit/checker specs define manifests and stop conditions; Phase 1 data/OOD/audit targets accepted; manifest interfaces bind evidence, admission, SFT packing, and GRPO prompts |
+| 7 | Training-paper design | `docs/TRAINING_PAPER_EXPERIMENT_DESIGN.md`, `data/contracts/schema.yaml`, example contracts, `docs/DIAGNOSTIC_REWARD_SPEC.md`, `docs/SYNTHETIC_DATA_FACTORY.md`, `docs/SPECTRE_SHADOW_AUDIT_PROTOCOL.md`, `docs/CONTAMINATION_CHECKER_SPEC.md`, `docs/PHASE1_PARAMETER_DECISIONS.md`, `docs/PHASE1_MANIFEST_SCHEMAS.md`, `docs/REMOTE_PLATFORM_STATUS.md`, `docs/PHASE1_LOCAL_EXECUTION_PLAN.md` | YAML parses; L0/L1/L2 and `dut/tb/bugfix/e2e` covered; reward spec has profiles and calibration gates; factory protocol has admission gates; audit/checker specs define manifests and stop conditions; Phase 1 data/OOD/audit targets accepted; manifest interfaces bind evidence, admission, SFT packing, and GRPO prompts; remote platform memory is separated from current data claims |
 
 ### Decisions to surface to the user before Phase 1
 
 1. **Data source clarification** — current decision: rebuild a clean-room training set. Historical experiment outputs and benchmark-adjacent artifacts are excluded by default and may only inform taxonomy/error types unless re-audited item by item.
 2. **OOD held-out strategy** — accepted baseline: primary circuit-category held-out; secondary L2-hard held-out if enough L2 contracts exist.
-3. **Remote infra access** — confirm remote server SSH details and CUDA/PyTorch versions before Phase 2 infra scripts are written.
+3. **Remote infra access** — remote SFT smoke evidence exists, but live server status must be revalidated before Phase 2 infra scripts or GRPO package changes are made.
 4. **Synthesis LLM choice** — Claude / GPT-4 / both for data synthesis? Cost budget?
 5. **Contract schema approval** — review `data/contracts/schema.yaml` and the example contracts before writing synthesis or verifier pipelines.
 6. **Synthetic factory and manifest approval** — review `docs/SYNTHETIC_DATA_FACTORY.md` and `docs/PHASE1_MANIFEST_SCHEMAS.md` before running bulk LLM generation.
