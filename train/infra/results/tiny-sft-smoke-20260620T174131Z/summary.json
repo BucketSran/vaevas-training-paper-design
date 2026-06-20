@@ -1,0 +1,47 @@
+{
+  "adapter_dir": "/tmp/vaevas-training-paper-design-tiny-sft/tiny-sft-smoke-20260620T174131Z/adapter",
+  "adapter_dir_committed": false,
+  "artifacts": {
+    "adapter_manifest": "adapter_manifest.json",
+    "loss_csv": "loss.csv",
+    "sample_generation": "sample_generation.txt"
+  },
+  "dry_run": false,
+  "eval_records": 1,
+  "generation": {
+    "max_new_tokens": 32,
+    "sample_generation_ref": "sample_generation.txt"
+  },
+  "lora": {
+    "alpha": 8,
+    "dropout": 0.05,
+    "r": 4,
+    "reload_check_ok": true,
+    "total_params": 7615394304,
+    "trainable_fraction": 0.00033132046736893426,
+    "trainable_params": 2523136
+  },
+  "loss": {
+    "final_eval_loss": 2.4646642208099365,
+    "final_train_loss": 2.4634,
+    "first_eval_loss": 2.4648396968841553,
+    "first_train_loss": 2.4612,
+    "loss_csv": "loss.csv"
+  },
+  "max_length": 1024,
+  "max_steps": 2,
+  "model_path": "/tmp/vaevas-qwen-tokenizer-compat/Qwen2.5-Coder-7B-Instruct-vaevas",
+  "paper_metric": false,
+  "run_id": "tiny-sft-smoke-20260620T174131Z",
+  "schema_version": "phase1.tiny_sft_smoke_result.v0.1",
+  "sft_train_jsonl": "/tmp/vaevas-training-paper-design-tiny-sft/tiny-sft-smoke-20260620T174131Z/artifacts/sft/train.jsonl",
+  "status": "PASS",
+  "toy_data_only": true,
+  "train_records": 4,
+  "train_result": {
+    "global_step": 2,
+    "training_loss": 2.4623217582702637
+  },
+  "wall_time_s": 2.835,
+  "work_dir": "/tmp/vaevas-training-paper-design-tiny-sft/tiny-sft-smoke-20260620T174131Z"
+}

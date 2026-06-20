@@ -1,0 +1,7 @@
+{
+  "adapter_dir": "/tmp/vaevas-training-paper-design-tiny-sft/tiny-sft-smoke-20260620T174131Z/adapter",
+  "adapter_dir_committed": false,
+  "commit_policy": "do not commit adapter/checkpoint/model files to GitHub",
+  "contains_model_weights": true,
+  "reload_check_ok": true
+}

@@ -1,0 +1,8 @@
+```verilog-a
+module hysteresis_comparator(
+    inout electrical inp,
+    inout electrical inn,
+    inout electrical out
+);
+
+parameter real v

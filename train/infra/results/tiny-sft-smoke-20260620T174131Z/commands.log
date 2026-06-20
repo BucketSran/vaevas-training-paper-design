@@ -1,0 +1,28 @@
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.write_admitted_manifest --candidate-index train/data/manifests/examples/candidate_index.synth-batch-toy-0001.yaml --static-check-report train/data/manifests/examples/static_check_report.synth-batch-toy-0001.yaml --evas-report train/data/manifests/examples/evas_verification_report.synth-batch-toy-0001.yaml --contamination-report train/data/manifests/examples/contamination_report.synth-batch-toy-0001.yaml --diversity-report train/data/manifests/examples/diversity_report.synth-batch-toy-0001.yaml --split-manifest train/data/manifests/examples/split_manifest.synth-batch-toy-0001.yaml --spectre-report train/data/manifests/examples/spectre_shadow_report.audit-toy-0001.yaml --require-spectre-shadow --out /tmp/vaevas-training-paper-design-tiny-sft/tiny-sft-smoke-20260620T174131Z/artifacts/admitted_manifest.yaml
+admitted_manifest_ok=1
+out=/tmp/vaevas-training-paper-design-tiny-sft/tiny-sft-smoke-20260620T174131Z/artifacts/admitted_manifest.yaml
+admitted_count=1
+rejected_count=0
+admitted_manifest_hash=sha256:5e9a7a383f170539636d279f2451b1b179a2590c1366377c94d8d947b25b4699
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.pack_sft --admitted-manifest /tmp/vaevas-training-paper-design-tiny-sft/tiny-sft-smoke-20260620T174131Z/artifacts/admitted_manifest.yaml --candidate-index train/data/manifests/examples/candidate_index.synth-batch-toy-0001.yaml --out-dir /tmp/vaevas-training-paper-design-tiny-sft/tiny-sft-smoke-20260620T174131Z/artifacts/sft --manifest-out /tmp/vaevas-training-paper-design-tiny-sft/tiny-sft-smoke-20260620T174131Z/artifacts/sft_pack_manifest.yaml --run-id tiny-sft-smoke-20260620T174131Z-sft-pack --base-model-ref /tmp/vaevas-qwen-tokenizer-compat/Qwen2.5-Coder-7B-Instruct-vaevas --tokenizer-ref /tmp/vaevas-qwen-tokenizer-compat/Qwen2.5-Coder-7B-Instruct-vaevas
+sft_pack_ok=1
+train_count=1
+val_count=0
+train_hash=sha256:88fad09d0a47f3e89bfdf5e425a2a5f10c315153bd653051a351f51f2db429db
+val_hash=sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+export CUDA_VISIBLE_DEVICES=0
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m train.train_sft.tiny_sft_smoke --sft-train-jsonl /tmp/vaevas-training-paper-design-tiny-sft/tiny-sft-smoke-20260620T174131Z/artifacts/sft/train.jsonl --result-dir train/infra/results/tiny-sft-smoke-20260620T174131Z --work-dir /tmp/vaevas-training-paper-design-tiny-sft/tiny-sft-smoke-20260620T174131Z --run-id tiny-sft-smoke-20260620T174131Z --model-path /tmp/vaevas-qwen-tokenizer-compat/Qwen2.5-Coder-7B-Instruct-vaevas --max-steps 2 --max-length 1024 --train-records 4 --eval-records 1
+No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
+/data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages/transformers/generation/configuration_utils.py:631: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.7` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages/transformers/generation/configuration_utils.py:636: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.8` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+/data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages/transformers/generation/configuration_utils.py:653: UserWarning: `do_sample` is set to `False`. However, `top_k` is set to `20` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_k`.
+  warnings.warn(
+{'loss': 2.4612, 'grad_norm': 0.2098083794116974, 'learning_rate': 0.0001, 'epoch': 0.25}
+{'eval_loss': 2.4648396968841553, 'eval_runtime': 0.1541, 'eval_samples_per_second': 6.491, 'eval_steps_per_second': 6.491, 'epoch': 0.25}
+{'loss': 2.4634, 'grad_norm': 0.21382807195186615, 'learning_rate': 5e-05, 'epoch': 0.5}
+{'eval_loss': 2.4646642208099365, 'eval_runtime': 0.1884, 'eval_samples_per_second': 5.309, 'eval_steps_per_second': 5.309, 'epoch': 0.5}
+{'train_runtime': 2.4921, 'train_samples_per_second': 0.803, 'train_steps_per_second': 0.803, 'train_loss': 2.4623217582702637, 'epoch': 0.5}
+tiny_sft_smoke_status=PASS
+result_dir=train/infra/results/tiny-sft-smoke-20260620T174131Z

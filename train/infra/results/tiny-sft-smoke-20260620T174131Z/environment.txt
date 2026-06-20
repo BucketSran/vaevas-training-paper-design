@@ -1,0 +1,13 @@
+run_id=tiny-sft-smoke-20260620T174131Z
+job_path=train/infra/jobs/phase1_tiny_sft_smoke.yaml
+repo_root=/data/jinzhihong/vaevas-training-paper-design
+work_dir=/tmp/vaevas-training-paper-design-tiny-sft/tiny-sft-smoke-20260620T174131Z
+python_bin=/data/jinzhihong/envs/vaevas-rl/bin/python
+model_path=/tmp/vaevas-qwen-tokenizer-compat/Qwen2.5-Coder-7B-Instruct-vaevas
+cuda_visible_devices=0
+max_steps=2
+dry_run=0
+utc_time=2026-06-20T17:41:31Z
+git_branch=training-paper-design-20260620
+git_commit=5f5df0864f24e4001860f3683431c4291f1c18d9
+python=Python 3.11.15

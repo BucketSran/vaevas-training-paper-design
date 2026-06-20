@@ -1,0 +1,67 @@
+schema_version: phase1.v0.1
+batch_id: synth-batch-toy-0001
+source_hashes:
+  candidate_index: sha256:2222222222222222222222222222222222222222222222222222222222222222
+  static_check_report: sha256:3333333333333333333333333333333333333333333333333333333333333333
+  evas_verification_report: sha256:4444444444444444444444444444444444444444444444444444444444444444
+  contamination_report: sha256:5555555555555555555555555555555555555555555555555555555555555555
+  diversity_report: sha256:8888888888888888888888888888888888888888888888888888888888888888
+  split_manifest: sha256:9999999999999999999999999999999999999999999999999999999999999999
+  spectre_shadow_report: sha256:7777777777777777777777777777777777777777777777777777777777777777
+producer:
+  name: train.pipelines.write_admitted_manifest
+  version: phase1-local-v0
+  git_commit: null
+admission_policy:
+  policy_version: admission-policy-phase1-local-v0
+  require_static_pass: true
+  require_evas_compile_pass: true
+  require_evas_sim_pass: true
+  require_evas_property_pass: true
+  require_contamination_clean: true
+  require_split_leakage_clear: true
+  require_spectre_shadow_if_selected: true
+  require_diversity_accept: true
+summary:
+  total: 1
+  rejected: 0
+  by_split:
+    sft_train: 1
+  by_level:
+    L1: 1
+  by_task_form:
+    dut: 1
+  by_category:
+    Comparator and Decision Circuits: 1
+  by_reward_profile:
+    L1_dut: 1
+items:
+- item_id: adm_toy_l1_hysteresis_comparator_dut_0001
+  candidate_id: cand_toy_l1_hysteresis_comparator_dut_0001
+  contract_id: cg_l1_hysteresis_comparator_dut_0001
+  split: sft_train
+  split_key: comparator/hysteresis_toy_fixture
+  level: L1
+  task_form: dut
+  category: Comparator and Decision Circuits
+  artifact_hashes:
+    dut_va: sha256:ced917b9d1989936b64b44934f01867e0b7960c2c5fa128e6507213e11b91835
+    tb_scs: sha256:528043651f61fba5abbab0a9370cb6368b0233cdf5cfcf5d5d5f8af3badb4fcf
+    checker_yaml: sha256:56300b5826f8379f562eb8e5136071f63133058c4ed56f0b7d753fac464bf557
+  evidence_refs:
+    static: data/manifests/examples/static_check_report.synth-batch-toy-0001.yaml
+    evas: data/manifests/examples/evas_verification_report.synth-batch-toy-0001.yaml
+    contamination: data/manifests/examples/contamination_report.synth-batch-toy-0001.yaml
+    spectre: data/manifests/examples/spectre_shadow_report.audit-toy-0001.yaml
+    diversity: data/manifests/examples/diversity_report.synth-batch-toy-0001.yaml
+  reward_profile: L1_dut
+  use_flags:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  pack_targets:
+  - sft_train
+  - grpo_train
+admitted_manifest_hash: sha256:5e9a7a383f170539636d279f2451b1b179a2590c1366377c94d8d947b25b4699
