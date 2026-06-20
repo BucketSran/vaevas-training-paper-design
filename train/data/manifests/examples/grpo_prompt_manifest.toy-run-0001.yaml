@@ -1,0 +1,48 @@
+schema_version: phase1.v0.1
+run_id: toy-run-0001
+admitted_manifest_hash: sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+producer:
+  name: train.pipelines.pack_grpo
+  version: fixture
+  git_commit: null
+output_files:
+  prompts: data/rl/prompts.jsonl
+output_hashes:
+  prompts: sha256:c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1
+format: trl_grpo
+base_checkpoint_ref: /data/jinzhihong/vaEVAS/models/qwen2.5-coder-7b-vaevas-smoke
+reward_runtime_ref:
+  config_ref: train/docs/DIAGNOSTIC_REWARD_SPEC.md
+  implementation_commit: null
+  evas_profile: balanced
+  timeout_s: 10
+  anti_hack_policy: diagnostic-reward-spec-v0
+reward_profiles:
+  - L1_dut
+group_size_hint: 8
+item_ids:
+  prompts:
+    - adm_toy_l1_hysteresis_comparator_dut_0001
+prompt_format_contract:
+  required_jsonl_keys:
+    - item_id
+    - prompt
+    - contract_ref
+    - reward_profile
+    - reward_runtime_ref
+  forbidden_jsonl_keys:
+    - output
+    - completion
+    - gold_completion
+    - answer
+  model_visible_fields:
+    - public_prompt
+    - public_contract_summary
+  model_hidden_fields:
+    - artifact_hashes
+    - contamination_report
+    - spectre_shadow_report
+fixture_notes:
+  - GRPO prompts must not include target completions.
+  - Reward runtime can use hidden metadata, but model-visible prompt text cannot.
+  - This one-item fixture reuses the admitted item for format testing only; production GRPO split keys should be disjoint from SFT train unless an on-policy continuation setup is explicitly declared.

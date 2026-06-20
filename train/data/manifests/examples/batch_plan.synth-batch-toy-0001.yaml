@@ -1,0 +1,17 @@
+schema_version: phase1.v0.1
+batch_id: synth-batch-toy-0001
+purpose: Minimal local manifest fixture batch. Not a generation request.
+target_counts:
+  L1_dut: 1
+categories:
+  Comparator and Decision Circuits: 1
+ood_holdout:
+  split_key_prefixes: []
+admission_policy:
+  require_evas: true
+  require_contamination_clean: true
+  require_spectre_shadow_for:
+    - fixture_claim_gate
+notes:
+  - Toy batch only; not training data.
+  - Uses placeholder hashes and artifact paths.

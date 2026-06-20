@@ -1,0 +1,26 @@
+schema_version: phase1.v0.1
+candidate_index_hash: sha256:2222222222222222222222222222222222222222222222222222222222222222
+producer:
+  name: train.pipelines.check_static_artifacts
+  version: fixture
+  git_commit: null
+summary:
+  total: 1
+  pass: 1
+  soft_fail: 0
+  hard_fail: 0
+  quarantine: 0
+items:
+  - candidate_id: cand_toy_l1_hysteresis_comparator_dut_0001
+    decision: pass
+    checks:
+      contract_schema_valid: pass
+      artifact_set_matches_task_form: pass
+      module_ports_match_contract: pass
+      forbidden_constructs_absent: pass
+      protected_identifiers_absent: pass
+      public_observables_only: pass
+      size_limits_ok: pass
+    messages:
+      - Fixture candidate satisfies all static checks.
+static_check_report_hash: sha256:3333333333333333333333333333333333333333333333333333333333333333

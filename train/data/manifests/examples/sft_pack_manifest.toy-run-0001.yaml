@@ -1,0 +1,43 @@
+schema_version: phase1.v0.1
+run_id: toy-run-0001
+admitted_manifest_hash: sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+producer:
+  name: train.pipelines.pack_sft
+  version: fixture
+  git_commit: null
+output_files:
+  train: data/sft/train.jsonl
+  val: data/sft/val.jsonl
+output_hashes:
+  train: sha256:b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1
+  val: sha256:b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2
+format: llamafactory_alpaca
+base_model_ref: /data/jinzhihong/vaEVAS/models/base/Qwen2.5-Coder-7B-Instruct-vaevas
+tokenizer_ref: /data/jinzhihong/vaEVAS/models/base/Qwen2.5-Coder-7B-Instruct-vaevas
+special_tokens:
+  - "<think>"
+  - "</think>"
+  - "<answer>"
+  - "</answer>"
+dataset_info_ref: data/llamafactory/dataset_info.json
+item_ids:
+  train:
+    - adm_toy_l1_hysteresis_comparator_dut_0001
+  val: []
+pack_format_contract:
+  required_jsonl_keys:
+    - instruction
+    - input
+    - output
+    - system
+  model_visible_fields:
+    - public_prompt
+    - public_contract_summary
+    - gold_completion
+  model_hidden_fields:
+    - artifact_hashes
+    - contamination_report
+    - spectre_shadow_report
+fixture_notes:
+  - Output files are not materialized by this fixture.
+  - SFT may include a gold completion because the admitted item has sft_gold=true.

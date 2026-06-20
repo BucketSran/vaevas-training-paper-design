@@ -1,0 +1,47 @@
+schema_version: phase1.v0.1
+audit_id: audit-toy-0001
+spectre_profile:
+  simulator: spectre
+  version: fixture
+  host_profile: fixture-no-server
+  model_library_ref: null
+  runner_profile: fixture
+producer:
+  name: train.pipelines.run_spectre_shadow
+  version: fixture
+  git_commit: null
+summary:
+  total: 1
+  agree_pass: 1
+  agree_fail: 0
+  evas_false_positive: 0
+  evas_false_negative: 0
+  inconclusive: 0
+  timeout: 0
+claim_gate:
+  eligible: true
+  reason: Toy fixture only; do not use for real claims.
+  evas_pass_spectre_fail_count: 0
+items:
+  - candidate_id: cand_toy_l1_hysteresis_comparator_dut_0001
+    evas_status:
+      compile: pass
+      simulate: pass
+      property: pass
+    spectre_status:
+      compile: pass
+      simulate: pass
+      property: pass
+    property_delta:
+      rail_bounds_v: 0.0
+      rising_threshold_s: 0.0
+      falling_threshold_s: 0.0
+      extra_edges: 0
+    evas_wall_time_s: 0.12
+    spectre_wall_time_s: 1.20
+    decision: agree_pass
+    triage_ref: null
+mismatches: []
+spectre_shadow_report_hash: sha256:7777777777777777777777777777777777777777777777777777777777777777
+fixture_notes:
+  - This is agreement-shaped fixture data, not measured Spectre evidence.

@@ -1,0 +1,25 @@
+schema_version: phase1.v0.1
+audit_id: audit-toy-0001
+purpose: fixture_claim_gate
+selection_policy:
+  name: deterministic_fixture_selection
+  rationale: Select the only candidate to exercise Spectre manifest fields.
+  sample_size: 1
+candidate_index_hash: sha256:2222222222222222222222222222222222222222222222222222222222222222
+evas_report_hash: sha256:4444444444444444444444444444444444444444444444444444444444444444
+spectre_profile:
+  simulator: spectre
+  version: fixture
+  host_profile: fixture-no-server
+  model_library_ref: null
+  runner_profile: fixture
+items:
+  - candidate_id: cand_toy_l1_hysteresis_comparator_dut_0001
+    contract_id: cg_l1_hysteresis_comparator_dut_0001
+    artifact_hashes:
+      dut_va: sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+      tb_scs: sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+      checker_yaml: sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+spectre_shadow_manifest_hash: sha256:6666666666666666666666666666666666666666666666666666666666666666
+fixture_notes:
+  - No Spectre command was run for this fixture.

@@ -1,0 +1,28 @@
+schema_version: phase1.v0.1
+protected_root_ref: ../behavioral-veriloga-eval/benchmark-vabench-release-v1
+benchmark_release_id: vabench-release-v1-fixture-placeholder
+source_manifest_refs:
+  - ../behavioral-veriloga-eval/benchmark-vabench-release-v1/manifest.json
+indexed_at: "2026-06-20T00:00:00+08:00"
+producer:
+  name: train.pipelines.build_protected_index
+  version: fixture
+  git_commit: null
+protected_index_hash: sha256:1111111111111111111111111111111111111111111111111111111111111111
+items:
+  - protected_id: prot_toy_release_prompt_0001
+    source_kind: release_prompt
+    source_path: benchmark-vabench-release-v1/tasks/toy_release_prompt.md
+    task_id: toy_release_task_0001
+    counted_in_score: true
+    asset_role: prompt
+    raw_sha256: sha256:0101010101010101010101010101010101010101010101010101010101010101
+    normalized_sha256: sha256:0202020202020202020202020202020202020202020202020202020202020202
+    ngram_minhash:
+      algorithm: minhash64
+      value: mh64:toy_protected_prompt_signature
+    module_signature_hash: null
+    property_signature_hash: null
+fixture_notes:
+  - This is a protected-index shape fixture, not a real release fingerprint.
+  - Candidate fixture hashes intentionally do not match protected hashes.

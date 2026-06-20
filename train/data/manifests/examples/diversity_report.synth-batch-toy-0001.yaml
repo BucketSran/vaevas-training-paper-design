@@ -1,0 +1,32 @@
+schema_version: phase1.v0.1
+candidate_index_hash: sha256:2222222222222222222222222222222222222222222222222222222222222222
+admission_pool_hash: sha256:5656565656565656565656565656565656565656565656565656565656565656
+producer:
+  name: train.pipelines.check_diversity
+  version: fixture
+  git_commit: null
+distribution:
+  total: 1
+  level_counts:
+    L1: 1
+  task_form_counts:
+    dut: 1
+  category_counts:
+    Comparator and Decision Circuits: 1
+  property_type_counts:
+    voltage_bounds: 1
+    threshold_crossing: 2
+    event_count: 1
+  split_key_counts:
+    comparator/hysteresis_toy_fixture: 1
+duplicate_clusters:
+  prompt_spec_code:
+    - cluster_id: cluster_fixture_0001
+      item_ids:
+        - cand_toy_l1_hysteresis_comparator_dut_0001
+      duplicate_rate: 0.0
+decisions:
+  - candidate_id: cand_toy_l1_hysteresis_comparator_dut_0001
+    decision: accept
+    reason: Single fixture item; no duplicate cluster pressure.
+diversity_report_hash: sha256:8888888888888888888888888888888888888888888888888888888888888888

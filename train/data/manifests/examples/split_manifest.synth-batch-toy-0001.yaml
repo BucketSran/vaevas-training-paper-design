@@ -1,0 +1,27 @@
+schema_version: phase1.v0.1
+batch_id: synth-batch-toy-0001
+policy_version: split-policy-fixture-v0
+source_pool_hash: sha256:5656565656565656565656565656565656565656565656565656565656565656
+producer:
+  name: train.pipelines.assign_splits
+  version: fixture
+  git_commit: null
+splits:
+  sft_train:
+    - adm_toy_l1_hysteresis_comparator_dut_0001
+  validation: []
+  clean_room_eval: []
+  ood_eval: []
+  grpo_train:
+    - adm_toy_l1_hysteresis_comparator_dut_0001
+ood_axes:
+  primary: null
+  secondary: null
+  notes:
+    - OOD axes are intentionally absent in this one-item fixture.
+leakage_checks:
+  split_key_collisions: 0
+  near_duplicate_pairs: []
+  train_eval_overlap: false
+  blocked: false
+split_manifest_hash: sha256:9999999999999999999999999999999999999999999999999999999999999999

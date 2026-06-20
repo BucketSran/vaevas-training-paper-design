@@ -151,3 +151,7 @@ with minimal example YAML files for the manifests above.
 This is the smallest useful bridge from design to implementation because it
 forces field-level consistency without requiring LLM generation, EVAS, Spectre,
 or server access.
+
+Status: prepared as tracked YAML fixtures in
+`../data/manifests/examples/README.md`. The next implementation step is a
+fixture validator or Pydantic model layer that checks these files mechanically.
