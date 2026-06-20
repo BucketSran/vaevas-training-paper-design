@@ -12,8 +12,9 @@ Run:
 python3 -m train.pipelines.render_pilot_prompts
 ```
 
-The default output goes to `/private/tmp/vaevas_phase1_prompt_gate/` so rendered
-prompt records are not committed accidentally.
+The default output goes to the system temp directory under
+`vaevas_phase1_prompt_gate/` so rendered prompt records are not committed
+accidentally.
 
 Rules:
 
@@ -21,4 +22,3 @@ Rules:
 - GRPO-visible prompt fields must not contain target completions or gold code.
 - Contract proposal prompts produce draft YAML only; artifact proposal prompts
   produce candidate artifacts only after review permits generation.
-
