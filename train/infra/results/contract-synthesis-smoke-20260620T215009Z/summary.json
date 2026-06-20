@@ -1,0 +1,33 @@
+{
+  "categories": {
+    "Comparator and Decision Circuits": 2,
+    "Data Converter Models": 1,
+    "Measurement Instrumentation Flows": 1,
+    "Sampling and Analog Memory": 1
+  },
+  "contract_count": 5,
+  "evas_run": false,
+  "grpo_run": false,
+  "levels": {
+    "L0": 1,
+    "L1": 3,
+    "L2": 1
+  },
+  "review_decisions": {
+    "needs_manual_review": 5
+  },
+  "run_id": "contract-synthesis-smoke-20260620T215009Z",
+  "sft_run": false,
+  "spectre_run": false,
+  "status": "PASS",
+  "synthesis_run_hash": "sha256:db353834ee9d676957167131a8ec1644e77dc5514570778b27468561278869d1",
+  "task_forms": {
+    "bugfix": 1,
+    "conformance": 1,
+    "dut": 1,
+    "e2e": 1,
+    "tb": 1
+  },
+  "training_data_admitted": false,
+  "verilog_a_generated": false
+}

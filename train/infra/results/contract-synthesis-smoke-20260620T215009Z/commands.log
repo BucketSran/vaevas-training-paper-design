@@ -1,0 +1,23 @@
+Remote contract synthesis smoke.
+RUN_ID=contract-synthesis-smoke-20260620T215009Z
+REQUEST_DIR=/tmp/vaevas_contract-synthesis-smoke-20260620T215009Z_requests
+RESULT_DIR=train/infra/results/contract-synthesis-smoke-20260620T215009Z
+Commands:
+- /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.validate_synthesis_run
+- /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.prepare_contract_synthesis_requests --out-dir /tmp/vaevas_contract-synthesis-smoke-20260620T215009Z_requests
+- wrote five draft contract YAML files under train/infra/results/contract-synthesis-smoke-20260620T215009Z/contracts
+- /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.write_generated_contract_index --contracts-dir train/infra/results/contract-synthesis-smoke-20260620T215009Z/contracts --request-jsonl /tmp/vaevas_contract-synthesis-smoke-20260620T215009Z_requests/contract_synthesis_requests.jsonl --out train/infra/results/contract-synthesis-smoke-20260620T215009Z/generated_contract_index.yaml --model-ref remote_codex_default --expect-count 5
+- /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.validate_generated_contracts --index train/infra/results/contract-synthesis-smoke-20260620T215009Z/generated_contract_index.yaml --expect-count 5
+- /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.validate_manifest_fixtures
+
+Validation output:
+PASS validate_synthesis_run run_id=contract-synthesis-smoke-0001 hash=sha256:db353834ee9d676957167131a8ec1644e77dc5514570778b27468561278869d1
+PASS prepare_contract_synthesis_requests request_count=5 request_jsonl=/tmp/vaevas_contract-synthesis-smoke-20260620T215009Z_requests/contract_synthesis_requests.jsonl summary=/tmp/vaevas_contract-synthesis-smoke-20260620T215009Z_requests/contract_synthesis_request_summary.json
+PASS write_generated_contract_index contracts=5 out=train/infra/results/contract-synthesis-smoke-20260620T215009Z/generated_contract_index.yaml
+PASS validate_generated_contracts index=train/infra/results/contract-synthesis-smoke-20260620T215009Z/generated_contract_index.yaml contracts=5
+manifest_fixture_validation_ok=1
+examples_dir=train/data/manifests/examples
+candidate_count=1
+admitted_count=1
+candidate_ids=cand_toy_l1_hysteresis_comparator_dut_0001
+admitted_item_ids=adm_toy_l1_hysteresis_comparator_dut_0001

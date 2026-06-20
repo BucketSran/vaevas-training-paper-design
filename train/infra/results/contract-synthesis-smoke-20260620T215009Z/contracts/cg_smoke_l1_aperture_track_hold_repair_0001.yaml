@@ -1,0 +1,160 @@
+id: cg_smoke_l1_aperture_track_hold_repair_0001
+schema_version: '0.1'
+category: Sampling and Analog Memory
+level: L1
+task_form: bugfix
+base_function: aperture_track_hold_repair
+domain: voltage
+difficulty: medium
+intent: A repair task corrects a track-and-hold behavior so that the held output reflects
+  the input sampled after the declared aperture delay and remains stable between sampling
+  events.
+ports:
+- name: vin
+  direction: input
+  discipline: electrical
+  role: sampled_input
+- name: vclk
+  direction: input
+  discipline: electrical
+  role: sample_clock
+- name: vhold
+  direction: output
+  discipline: electrical
+  role: held_output
+parameters:
+- name: clk_threshold
+  unit: V
+  default: 0.6
+  range:
+  - 0.4
+  - 0.8
+- name: aperture_delay
+  unit: s
+  default: 2.0e-09
+  range:
+  - 0.0
+  - 5.0e-09
+- name: transition_time
+  unit: s
+  default: 7.5e-10
+  range:
+  - 1.0e-10
+  - 2.0e-09
+stimulus_space:
+  waveforms:
+  - ramped_input_with_clock_edges
+  - stepped_input_near_aperture
+  - hold_interval_disturbance
+  sweeps:
+    aperture_delay:
+    - 0.0
+    - 2.0e-09
+    - 4.0e-09
+    input_slope_v_per_s:
+    - 500000.0
+    - 2000000.0
+    clock_period_s:
+    - 2.0e-08
+    - 5.0e-08
+observables:
+- vin_at_aperture
+- vhold
+- sample_edge_time
+- hold_error_v
+- repair_error_delta_v
+properties:
+- id: samples_after_aperture_delay
+  type: timing_delay
+  description: The held value corresponds to vin evaluated at the clock crossing plus
+    the aperture delay.
+  observables:
+  - vin_at_aperture
+  - sample_edge_time
+  - vhold
+  expected:
+    sample_time_expression: clock_crossing + aperture_delay
+  tolerance_ref: timing_abs_s
+- id: holds_between_clock_edges
+  type: settling_time
+  description: Between sampling events, the output remains stable aside from the declared
+    transition interval.
+  observables:
+  - vhold
+  - hold_error_v
+  expected:
+    max_hold_drift_v: 0.01
+  tolerance_ref: voltage_abs_v
+- id: repair_reduces_sampling_error
+  type: repair_delta
+  description: The repaired artifact reduces aperture sampling error relative to the
+    supplied broken behavior.
+  observables:
+  - repair_error_delta_v
+  - hold_error_v
+  expected:
+    error_delta_sign: negative
+    min_abs_improvement_v: 0.02
+  tolerance_ref: repair_delta_v
+forbidden_constructs:
+- current_contribution
+- branch_current_dependency
+- idt
+- ddt
+- laplace
+- noise_operators
+- hidden_checker_logic
+- hardcoded_testbench_time
+- task_id_special_case
+tolerances:
+  voltage_abs_v: 0.015
+  timing_abs_s: 5.0e-10
+  repair_delta_v: 0.01
+generation_plan:
+  llm_may_propose:
+  - repair_patch
+  independently_checked:
+  - aperture_sampling_checker
+  - hold_stability_checker
+  - repair_delta_checker
+  notes: Broken and repaired artifacts must be compared only by public sampled-value
+    errors.
+split_key: smoke/sampling_aperture_track_hold_repair/template_v1
+provenance:
+  source_tier: B_llm_synthetic
+  source_kind: llm_synthetic
+  seed_refs:
+  - seed_manual_l1_track_hold_bugfix_0001
+  generator:
+    model: remote_codex_default
+    prompt_hash: sha256:f10d1d79c744b0b284c89d6103f8c4f0483383fd7b8f918151af0c6b2edb4abd
+    generated_at: '2026-06-20T21:54:20Z'
+  contamination:
+    checked: false
+    release_overlap: null
+    check_run: null
+verifier_evidence:
+  evas:
+    status: not_run
+    commit: null
+    profile: null
+    result_ref: null
+  spectre_shadow:
+    status: pending
+    mode: classic
+    result_ref: null
+admission:
+  status: draft_contract
+  blockers:
+  - missing_manual_review
+  - missing_contamination_check
+  - missing_evas_evidence
+  - missing_spectre_shadow_review
+fault_model:
+  allowed_fault_classes:
+  - sample_before_aperture_delay
+  - transparent_hold_between_edges
+  repair_target: restore delayed sampling and stable hold behavior
+  forbidden_shortcuts:
+  - hardcode_stimulus_trace
+  - inspect_checker_state

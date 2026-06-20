@@ -1,0 +1,145 @@
+id: cg_smoke_l0_differential_event_latch_0001
+schema_version: '0.1'
+category: Comparator and Decision Circuits
+level: L0
+task_form: conformance
+base_function: differential_event_latch_conformance
+domain: voltage
+difficulty: simple
+intent: A voltage-domain conformance case observes a differential input crossing a
+  declared threshold and latches a rail output only for the requested crossing direction.
+ports:
+- name: vp
+  direction: input
+  discipline: electrical
+  role: positive_crossing_input
+- name: vn
+  direction: input
+  discipline: electrical
+  role: negative_reference_input
+- name: vflag
+  direction: output
+  discipline: electrical
+  role: latched_event_flag
+parameters:
+- name: vth
+  unit: V
+  default: 0.0
+  range:
+  - -0.04
+  - 0.04
+- name: vhigh
+  unit: V
+  default: 1.2
+  range:
+  - 0.9
+  - 1.5
+- name: vlow
+  unit: V
+  default: 0.0
+  range:
+  - 0.0
+  - 0.1
+stimulus_space:
+  waveforms:
+  - single_rising_differential_ramp
+  - single_falling_differential_ramp
+  - non_crossing_near_miss
+  sweeps:
+    slope_v_per_s:
+    - 1000000.0
+    - 5000000.0
+    threshold_offset_v:
+    - -0.02
+    - 0.0
+    - 0.02
+observables:
+- vp_minus_vn
+- vflag
+- first_cross_time
+- latched_state
+properties:
+- id: direction_selectivity
+  type: threshold_crossing
+  description: The event flag changes state only for the declared crossing direction.
+  observables:
+  - vp_minus_vn
+  - first_cross_time
+  expected:
+    accepted_directions:
+    - rising
+    rejected_directions:
+    - falling
+  tolerance_ref: event_time_abs_s
+- id: latched_output_bounds
+  type: voltage_bounds
+  description: After the accepted event, the output remains within the declared rail
+    bounds.
+  observables:
+  - vflag
+  - latched_state
+  expected:
+    low_v: 0.0
+    high_v: 1.2
+  tolerance_ref: voltage_abs_v
+- id: near_miss_rejection
+  type: event_count
+  description: Stimuli that do not cross the threshold do not create a latched event.
+  observables:
+  - vp_minus_vn
+  - vflag
+  expected:
+    max_events_without_crossing: 0
+  tolerance_ref: event_count_exact
+forbidden_constructs:
+- current_contribution
+- branch_current_dependency
+- idt
+- ddt
+- laplace
+- noise_operators
+- hidden_checker_logic
+- hardcoded_testbench_time
+- task_id_special_case
+tolerances:
+  voltage_abs_v: 0.03
+  event_time_abs_s: 5.0e-10
+  event_count_exact: 0
+generation_plan:
+  llm_may_propose:
+  - conformance_dut
+  independently_checked:
+  - direction_event_checker
+  - rail_latch_checker
+  notes: This L0 draft checks public crossing semantics only.
+split_key: smoke/comparator_event_latch/direction_v1
+provenance:
+  source_tier: B_llm_synthetic
+  source_kind: llm_synthetic
+  seed_refs:
+  - seed_manual_l0_cross_event_0001
+  generator:
+    model: remote_codex_default
+    prompt_hash: sha256:d8f5c07b5f9b0e16d66a73d336fcae360a76abb71e4373ae4eccb224f743170e
+    generated_at: '2026-06-20T21:54:20Z'
+  contamination:
+    checked: false
+    release_overlap: null
+    check_run: null
+verifier_evidence:
+  evas:
+    status: not_run
+    commit: null
+    profile: null
+    result_ref: null
+  spectre_shadow:
+    status: pending
+    mode: classic
+    result_ref: null
+admission:
+  status: draft_contract
+  blockers:
+  - missing_manual_review
+  - missing_contamination_check
+  - missing_evas_evidence
+  - missing_spectre_shadow_review

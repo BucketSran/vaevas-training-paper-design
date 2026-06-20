@@ -1,0 +1,179 @@
+schema_version: phase1.v0.1
+run_id: contract-synthesis-smoke-0001
+synthesis_run_hash: sha256:db353834ee9d676957167131a8ec1644e77dc5514570778b27468561278869d1
+producer:
+  name: write_generated_contract_index
+  version: phase1.v0.1
+  git_commit: null
+source_refs:
+  synthesis_run: data/manifests/synthesis/synthesis_run.contract-smoke-0001.yaml
+  request_jsonl: /tmp/vaevas_contract-synthesis-smoke-20260620T215009Z_requests/contract_synthesis_requests.jsonl
+  contracts_dir: train/infra/results/contract-synthesis-smoke-20260620T215009Z/contracts
+summary:
+  contract_count: 5
+  review_decisions:
+    needs_manual_review: 5
+  levels:
+    L0: 1
+    L1: 3
+    L2: 1
+  task_forms:
+    bugfix: 1
+    conformance: 1
+    dut: 1
+    e2e: 1
+    tb: 1
+  categories:
+    Comparator and Decision Circuits: 2
+    Data Converter Models: 1
+    Measurement Instrumentation Flows: 1
+    Sampling and Analog Memory: 1
+  training_data_admitted: false
+  verilog_a_generated: false
+  evas_run: false
+  spectre_run: false
+items:
+- generated_contract_id: cg_smoke_l0_differential_event_latch_0001
+  contract_ref: infra/results/contract-synthesis-smoke-20260620T215009Z/contracts/cg_smoke_l0_differential_event_latch_0001.yaml
+  contract_sha256: sha256:2380537ac78cfbd8929cb21b1319174dad164e13db10faffc41bc46697be32be
+  source_prompt_id: seed_manual_l0_cross_event_0001.contract_proposal
+  prompt_sha256: sha256:d8f5c07b5f9b0e16d66a73d336fcae360a76abb71e4373ae4eccb224f743170e
+  seed_ids:
+  - seed_manual_l0_cross_event_0001
+  category: Comparator and Decision Circuits
+  level: L0
+  task_form: conformance
+  split_key: smoke/comparator_event_latch/direction_v1
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l0_cross_event_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_smoke_l1_aperture_track_hold_repair_0001
+  contract_ref: infra/results/contract-synthesis-smoke-20260620T215009Z/contracts/cg_smoke_l1_aperture_track_hold_repair_0001.yaml
+  contract_sha256: sha256:965882ab7bab42fd43b56f0af4c1b8a6c12d804e6a4a274e9672db4415183e27
+  source_prompt_id: seed_manual_l1_track_hold_bugfix_0001.contract_proposal
+  prompt_sha256: sha256:f10d1d79c744b0b284c89d6103f8c4f0483383fd7b8f918151af0c6b2edb4abd
+  seed_ids:
+  - seed_manual_l1_track_hold_bugfix_0001
+  category: Sampling and Analog Memory
+  level: L1
+  task_form: bugfix
+  split_key: smoke/sampling_aperture_track_hold_repair/template_v1
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_track_hold_bugfix_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_smoke_l1_settled_gain_probe_tb_0001
+  contract_ref: infra/results/contract-synthesis-smoke-20260620T215009Z/contracts/cg_smoke_l1_settled_gain_probe_tb_0001.yaml
+  contract_sha256: sha256:35cd948ffbb9ef4496935c153ef85566791e471786393b484b8ef9965fb53c9f
+  source_prompt_id: seed_manual_l1_gain_measurement_tb_0001.contract_proposal
+  prompt_sha256: sha256:390419c70f5812bf3c5860b17b65ce5c7f6a3e5350fc7787e7d876b2f74964b5
+  seed_ids:
+  - seed_manual_l1_gain_measurement_tb_0001
+  category: Measurement Instrumentation Flows
+  level: L1
+  task_form: tb
+  split_key: smoke/measurement_settled_gain_probe/template_v1
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_gain_measurement_tb_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_smoke_l1_windowed_hysteresis_comparator_0001
+  contract_ref: infra/results/contract-synthesis-smoke-20260620T215009Z/contracts/cg_smoke_l1_windowed_hysteresis_comparator_0001.yaml
+  contract_sha256: sha256:3b1dbfef8a83cee6a55316d0753db6854da7e191189160c5f365ed6b7fd45d2a
+  source_prompt_id: seed_manual_l1_hysteresis_comparator_0001.contract_proposal
+  prompt_sha256: sha256:69d5aad84b8e0a776f8e923074a7618d6dabcf9a5290145241e8dd3c7297ef1c
+  seed_ids:
+  - seed_manual_l1_hysteresis_comparator_0001
+  category: Comparator and Decision Circuits
+  level: L1
+  task_form: dut
+  split_key: smoke/comparator_windowed_hysteresis/template_v1
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_hysteresis_comparator_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_smoke_l2_four_bit_sar_loop_0001
+  contract_ref: infra/results/contract-synthesis-smoke-20260620T215009Z/contracts/cg_smoke_l2_four_bit_sar_loop_0001.yaml
+  contract_sha256: sha256:47575ddd1f41e7f8104df6f82d60fef28b6467b7200909b1dd8b36d9ba092f57
+  source_prompt_id: seed_manual_l2_sar_adc_e2e_0001.contract_proposal
+  prompt_sha256: sha256:e6bd344bf6c5cbac2c3f165fb916e4fc840f7726402081c99d16422a583472b2
+  seed_ids:
+  - seed_manual_l2_sar_adc_e2e_0001
+  category: Data Converter Models
+  level: L2
+  task_form: e2e
+  split_key: smoke/data_converter_four_bit_sar_loop/template_v1
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l2_sar_adc_e2e_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+fixture_notes:
+- Generated contract index records draft contracts only.
+- Manual review and contamination checks are still required before artifact generation.
+generated_contract_index_hash: sha256:5bbc2547601381e3cbe21fb879146bd85a1a4d62e5b9e764ae3408e79f06c9e7
