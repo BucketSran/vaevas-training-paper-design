@@ -1,0 +1,104 @@
+id: cg_l1_hysteresis_comparator_dut_0001
+schema_version: "0.1"
+category: Comparator and Decision Circuits
+level: L1
+task_form: dut
+base_function: hysteresis_comparator
+domain: voltage
+difficulty: medium
+intent: >
+  A differential voltage input drives a rail-like decision output with separate
+  rising and falling thresholds to suppress chatter near zero differential input.
+
+ports:
+  - {name: inp, direction: input, discipline: electrical, role: positive_input}
+  - {name: inn, direction: input, discipline: electrical, role: negative_input}
+  - {name: out, direction: output, discipline: electrical, role: decision_output}
+
+parameters:
+  - {name: vhi, unit: V, default: 1.2, range: [0.8, 1.8]}
+  - {name: vlo, unit: V, default: 0.0, range: [0.0, 0.1]}
+  - {name: vhyst, unit: V, default: 0.02, range: [0.005, 0.08]}
+  - {name: td, unit: s, default: 1.0e-10, range: [0.0, 2.0e-9]}
+
+stimulus_space:
+  waveforms: [slow_triangular_differential, noisy_ramp, stepped_differential]
+  sweeps:
+    vhyst: [0.01, 0.02, 0.05]
+    slope_v_per_s: [1.0e6, 5.0e6, 1.0e7]
+    common_mode_v: [0.4, 0.6, 0.8]
+
+observables:
+  - out
+  - inp_minus_inn
+  - rising_decision_time
+  - falling_decision_time
+
+properties:
+  - id: rail_bounds
+    type: voltage_bounds
+    description: Output stays near declared rails after decisions.
+    observables: [out]
+    expected: {low_v: 0.0, high_v: 1.2}
+    tolerance_ref: voltage_abs_v
+  - id: rising_threshold
+    type: threshold_crossing
+    description: Output rises only after the differential input exceeds the positive hysteresis threshold.
+    observables: [inp_minus_inn, rising_decision_time]
+    expected: {threshold_expression: +vhyst/2}
+    tolerance_ref: timing_abs_s
+  - id: falling_threshold
+    type: threshold_crossing
+    description: Output falls only after the differential input drops below the negative hysteresis threshold.
+    observables: [inp_minus_inn, falling_decision_time]
+    expected: {threshold_expression: -vhyst/2}
+    tolerance_ref: timing_abs_s
+  - id: no_chatter
+    type: event_count
+    description: Near-threshold noise does not create extra output transitions.
+    observables: [out]
+    expected: {max_extra_edges_per_cycle: 0}
+    tolerance_ref: event_count_exact
+
+forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+
+tolerances:
+  voltage_abs_v: 0.03
+  timing_abs_s: 5.0e-10
+  event_count_exact: 0
+
+generation_plan:
+  llm_may_propose: [dut]
+  independently_checked: [reference_testbench, property_checker]
+  notes: The testbench/checker should be generated or reviewed independently from the DUT proposal.
+
+split_key: comparator/hysteresis/template-v1
+provenance:
+  source_tier: B_llm_synthetic
+  source_kind: llm_synthetic
+  seed_refs: ["manual:hysteresis-comparator-contract"]
+  generator:
+    model: null
+    prompt_hash: null
+    generated_at: null
+  contamination:
+    checked: false
+    release_overlap: null
+    check_run: null
+
+verifier_evidence:
+  evas: {status: not_run, commit: null, profile: balanced, result_ref: null}
+  spectre_shadow: {status: pending, mode: classic, result_ref: null}
+
+admission:
+  status: draft_contract
+  blockers: [missing_generation, missing_contamination_check, missing_evas_evidence]

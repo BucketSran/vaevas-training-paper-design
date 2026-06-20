@@ -1,0 +1,123 @@
+id: cg_l2_sar_adc_e2e_0001
+schema_version: "0.1"
+category: Data Converter Models
+level: L2
+task_form: e2e
+base_function: sar_adc_mini_loop
+domain: voltage
+difficulty: hard
+intent: >
+  Compose a sample-and-hold, comparator decision, binary DAC feedback, and SAR
+  control sequence into a mini-loop that converts an analog input into a stable
+  digital code within a bounded number of clock cycles.
+
+ports:
+  - {name: vin, direction: input, discipline: electrical, role: analog_input}
+  - {name: clk, direction: input, discipline: electrical, role: conversion_clock}
+  - {name: start, direction: input, discipline: electrical, role: conversion_start}
+  - {name: done, direction: output, discipline: electrical, role: conversion_done}
+  - {name: code0, direction: output, discipline: electrical, role: output_code_bit0}
+  - {name: code1, direction: output, discipline: electrical, role: output_code_bit1}
+  - {name: code2, direction: output, discipline: electrical, role: output_code_bit2}
+  - {name: code3, direction: output, discipline: electrical, role: output_code_bit3}
+
+parameters:
+  - {name: vref, unit: V, default: 1.0, range: [0.8, 1.2]}
+  - {name: nbits, unit: count, default: 4, range: [4, 4]}
+  - {name: clk_period, unit: s, default: 20.0e-9, range: [10.0e-9, 100.0e-9]}
+  - {name: vth_logic, unit: V, default: 0.5, range: [0.4, 0.8]}
+
+stimulus_space:
+  waveforms: [dc_levels_with_start_pulse, stepped_inputs_across_codes]
+  sweeps:
+    vin_fraction_of_vref: [0.05, 0.18, 0.31, 0.49, 0.67, 0.82, 0.95]
+    start_time: [5.0e-9, 15.0e-9]
+
+observables:
+  - done
+  - code0
+  - code1
+  - code2
+  - code3
+  - trial_sequence
+  - conversion_latency_cycles
+  - final_code_error_lsb
+
+properties:
+  - id: interface_complete
+    type: state_sequence
+    description: All declared code and handshake outputs are driven as voltage-domain logic signals.
+    observables: [done, code0, code1, code2, code3]
+    expected: {logic_rails_present: true}
+    tolerance_ref: voltage_abs_v
+  - id: sar_trial_sequence
+    type: event_sequence
+    description: Bit trials proceed from MSB to LSB without skipping or repeating active trial states.
+    observables: [trial_sequence]
+    expected: {sequence: [3, 2, 1, 0]}
+    tolerance_ref: event_sequence_exact
+  - id: conversion_completes
+    type: event_count
+    description: Done asserts once after the expected number of conversion cycles.
+    observables: [done, conversion_latency_cycles]
+    expected: {done_edges: 1, max_cycles: 6}
+    tolerance_ref: event_count_exact
+  - id: final_code_accuracy
+    type: code_mapping
+    description: Final output code is within one LSB of the expected quantized code.
+    observables: [code0, code1, code2, code3, final_code_error_lsb]
+    expected: {max_abs_error_lsb: 1}
+    tolerance_ref: code_error_lsb
+
+forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+
+tolerances:
+  voltage_abs_v: 0.05
+  timing_abs_s: 1.0e-9
+  event_sequence_exact: 0
+  event_count_exact: 0
+  code_error_lsb: 1
+
+generation_plan:
+  llm_may_propose: [dut_modules, top_level_system]
+  independently_checked:
+    - module_interface_checker
+    - sar_sequence_checker
+    - final_code_checker
+  decomposed_reward_subclaims:
+    - interface_complete
+    - sar_trial_sequence
+    - conversion_completes
+    - final_code_accuracy
+  notes: L2 examples require both decomposed subclaims and final system metric.
+
+split_key: data_converter/sar_adc_mini_loop/template-v1
+provenance:
+  source_tier: B_llm_synthetic
+  source_kind: llm_synthetic
+  seed_refs: ["manual:sar-adc-mini-loop-contract"]
+  generator:
+    model: null
+    prompt_hash: null
+    generated_at: null
+  contamination:
+    checked: false
+    release_overlap: null
+    check_run: null
+
+verifier_evidence:
+  evas: {status: not_run, commit: null, profile: precision, result_ref: null}
+  spectre_shadow: {status: pending, mode: classic, result_ref: null}
+
+admission:
+  status: draft_contract
+  blockers: [missing_generation, missing_contamination_check, missing_evas_evidence, missing_spectre_shadow_sample]

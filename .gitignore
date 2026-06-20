@@ -1,0 +1,29 @@
+.DS_Store
+*.pyc
+__pycache__/
+
+# Training and experiment artifacts
+train/data/raw/
+train/data/synthesized/
+train/data/verified/
+train/data/sft/
+train/data/rl/
+train/data/eval/
+train/logs/*
+!train/logs/README.md
+train/models/*
+!train/models/README.md
+
+# Simulator/model outputs
+*.csv
+*.raw
+*.log
+*.out
+*.err
+*.ckpt
+*.safetensors
+
+# Secrets and local configuration
+.env
+*.env
+status/local-private/

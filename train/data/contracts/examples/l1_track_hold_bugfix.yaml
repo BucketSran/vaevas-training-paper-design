@@ -1,0 +1,107 @@
+id: cg_l1_track_hold_bugfix_0001
+schema_version: "0.1"
+category: Sampling and Analog Memory
+level: L1
+task_form: bugfix
+base_function: aperture_delay_track_and_hold
+domain: voltage
+difficulty: medium
+intent: >
+  Repair a track-and-hold model so that it samples the input after a declared
+  aperture delay and holds the sampled value between clock edges.
+
+ports:
+  - {name: vin, direction: input, discipline: electrical, role: sampled_input}
+  - {name: clk, direction: input, discipline: electrical, role: sample_clock}
+  - {name: vout, direction: output, discipline: electrical, role: held_output}
+
+parameters:
+  - {name: vth_clk, unit: V, default: 0.6, range: [0.4, 0.8]}
+  - {name: aperture_delay, unit: s, default: 2.0e-9, range: [0.0, 5.0e-9]}
+  - {name: tr, unit: s, default: 5.0e-10, range: [1.0e-10, 2.0e-9]}
+
+stimulus_space:
+  waveforms: [ramp_input_clocked_sample, sine_input_clocked_sample]
+  sweeps:
+    aperture_delay: [0.0, 1.0e-9, 3.0e-9]
+    clock_period: [50.0e-9, 100.0e-9]
+
+observables:
+  - vin
+  - clk
+  - vout
+  - sampled_value_error
+
+properties:
+  - id: sample_after_aperture
+    type: timing_delay
+    description: The held value corresponds to vin at clock crossing plus aperture delay.
+    observables: [vin, clk, vout]
+    expected: {sample_time_expression: clk_crossing_time + aperture_delay}
+    tolerance_ref: timing_abs_s
+  - id: hold_between_edges
+    type: settling_time
+    description: Output remains stable between sample events except for declared transition time.
+    observables: [vout]
+    expected: {max_hold_error_v: 0.02}
+    tolerance_ref: voltage_abs_v
+  - id: repair_improves_error
+    type: repair_delta
+    description: Patched artifact reduces sampled value error relative to the broken artifact.
+    observables: [sampled_value_error]
+    expected: {min_relative_improvement: 0.8}
+    tolerance_ref: relative_rms
+
+forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hardcoded_testbench_time
+  - task_id_special_case
+
+tolerances:
+  voltage_abs_v: 0.02
+  timing_abs_s: 5.0e-10
+  relative_rms: 0.05
+
+fault_model:
+  source: controlled_mutation
+  allowed_error_classes:
+    - wrong_aperture_delay_sign
+    - missing_clock_cross_event
+    - output_updates_continuously_instead_of_holding
+    - wrong_clock_threshold
+  feedback_inputs:
+    - evas_log
+    - failing_property_ids
+    - before_scores
+
+generation_plan:
+  llm_may_propose: [patched_dut]
+  independently_checked: [reference_testbench, repair_delta_checker]
+  notes: The broken artifact must be generated from a clean verified artifact, not historical sweep output.
+
+split_key: sampling/track_hold_aperture/template-v1
+provenance:
+  source_tier: C_controlled_mutation
+  source_kind: controlled_mutation
+  seed_refs: ["manual:track-hold-clean-contract"]
+  generator:
+    model: null
+    prompt_hash: null
+    generated_at: null
+  contamination:
+    checked: false
+    release_overlap: null
+    check_run: null
+
+verifier_evidence:
+  evas: {status: not_run, commit: null, profile: balanced, result_ref: null}
+  spectre_shadow: {status: pending, mode: classic, result_ref: null}
+
+admission:
+  status: draft_contract
+  blockers: [missing_clean_seed_verification, missing_mutation_generation, missing_contamination_check, missing_evas_evidence]

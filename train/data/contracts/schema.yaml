@@ -1,0 +1,269 @@
+schema_id: vaevas_training_contract_schema
+schema_version: "0.1"
+status: draft
+purpose: >
+  Define the clean-room contract format used before generating Verilog-A DUTs,
+  testbenches, checkers, variants, or repair cases for the SFT/GRPO training
+  paper. This is a human-readable YAML schema, not a full JSON Schema.
+
+principles:
+  - Reuse vaBench taxonomy terms instead of inventing a parallel training taxonomy.
+  - Define observable behavior before generating artifacts.
+  - Treat LLMs as proposers, not correctness oracles.
+  - Require provenance, split, contamination, and verifier evidence for every admitted example.
+  - Keep EVAS as the fast verifier and Spectre as the reference audit oracle.
+
+canonical_axes:
+  category:
+    description: vaBench circuit-role taxonomy.
+    canonical_values:
+      - Data Converter Models
+      - Comparator and Decision Circuits
+      - PLL Clock and Timing Systems
+      - Calibration, DEM, and Control
+      - Measurement Instrumentation Flows
+      - Stimulus and Source Generators
+      - Baseband Signal Conditioning
+      - Sampling and Analog Memory
+      - Bias Reference and Power Management
+      - RF and AFE Behavioral Macromodels
+    legacy_aliases:
+      adc: Data Converter Models
+      adc-sar: Data Converter Models
+      dac: Data Converter Models
+      data-converter: Data Converter Models
+      comparator: Comparator and Decision Circuits
+      pll-clock: PLL Clock and Timing Systems
+      pll-closed-loop: PLL Clock and Timing Systems
+      phase-detector: PLL Clock and Timing Systems
+      calibration: Calibration, DEM, and Control
+      measurement: Measurement Instrumentation Flows
+      stimulus: Stimulus and Source Generators
+      stimulus-and-sources: Stimulus and Source Generators
+      signal-source: Stimulus and Source Generators
+      amplifier-filter: Baseband Signal Conditioning
+      signal-conditioning: Baseband Signal Conditioning
+  level:
+    description: Functional granularity and curriculum axis, not a simple difficulty score.
+    values:
+      L0: Primitive Verilog-A/EVAS/Spectre semantic or conformance case.
+      L1: Reusable circuit component with stable interface.
+      L2: Complete mini-system composed from multiple L1-style behaviors.
+  task_form:
+    description: Requested artifact form.
+    values:
+      dut: Spec-to-Verilog-A DUT generation.
+      tb: Testbench generation for a reference DUT interface.
+      bugfix: Repair a broken artifact from verifier feedback.
+      e2e: End-to-end mini-system artifact generation.
+      conformance: L0 EVAS/Spectre semantic contract; not a scored model-capability task.
+
+required_fields:
+  - id
+  - schema_version
+  - category
+  - level
+  - task_form
+  - base_function
+  - domain
+  - difficulty
+  - intent
+  - ports
+  - parameters
+  - stimulus_space
+  - observables
+  - properties
+  - forbidden_constructs
+  - tolerances
+  - split_key
+  - provenance
+  - verifier_evidence
+  - admission
+
+field_definitions:
+  id:
+    type: string
+    rule: Stable, unique, lowercase snake/kebab identifier. Do not reuse vaBench release IDs.
+  schema_version:
+    type: string
+    rule: Must match this file's schema_version until a migration is defined.
+  category:
+    type: enum
+    rule: Use canonical category values above; legacy aliases must be normalized before admission.
+  level:
+    type: enum
+    rule: L0, L1, or L2.
+  task_form:
+    type: enum
+    rule: dut, tb, bugfix, e2e, or conformance.
+  base_function:
+    type: string
+    rule: Specific behavior being trained or evaluated, e.g. hysteresis_comparator or sar_adc_loop.
+  domain:
+    type: enum
+    values: [voltage]
+    rule: Current training paper scope is voltage-domain behavioral Verilog-A.
+  difficulty:
+    type: enum
+    values: [simple, medium, hard]
+    rule: Difficulty is a data-balancing label; level remains the functional granularity label.
+  intent:
+    type: string
+    rule: One or two implementation-free sentences defining observable behavior.
+  ports:
+    type: list
+    item_required_fields: [name, direction, discipline, role]
+    direction_values: [input, output, inout]
+    discipline_values: [electrical]
+    rule: Port roles must be semantic, not implementation-specific.
+  parameters:
+    type: list
+    item_required_fields: [name, unit, default, range]
+    rule: Use physical units where applicable; include boundary cases in stimulus_space.
+  stimulus_space:
+    type: object
+    required_fields: [waveforms, sweeps]
+    rule: Describe waveform families and sweep ranges; avoid a single hardcoded testbench trace.
+  observables:
+    type: list
+    rule: Signals or metrics saved for checker/reward computation.
+  properties:
+    type: list
+    item_required_fields: [id, type, description, observables, expected, tolerance_ref]
+    suggested_types:
+      - voltage_bounds
+      - threshold_crossing
+      - event_count
+      - event_sequence
+      - timing_delay
+      - settling_time
+      - gain_estimate
+      - code_mapping
+      - state_sequence
+      - monotonicity
+      - repair_delta
+    rule: Each property should map to a concrete checker subclaim and reward component.
+  forbidden_constructs:
+    type: list
+    allowed_values:
+      - current_contribution
+      - branch_current_dependency
+      - idt
+      - ddt
+      - laplace
+      - noise_operators
+      - transistor_device_models
+      - hidden_checker_logic
+      - hardcoded_testbench_time
+      - task_id_special_case
+      - unsupported_spectre_netlist_hierarchy
+    rule: Include EVAS-unsupported constructs and reward-hacking patterns.
+  tolerances:
+    type: object
+    suggested_fields: [voltage_abs_v, timing_abs_s, relative_rms, event_time_abs_s]
+    rule: Tolerances must be justified by checker semantics or Spectre/EVAS audit.
+  split_key:
+    type: string
+    rule: All variants sharing this key stay in the same train/val/test split.
+  generation_plan:
+    type: object
+    optional: true
+    rule: Defines which artifacts an LLM may propose and which must be independently checked.
+  fault_model:
+    type: object
+    optional: true
+    rule: Required for bugfix/repair contracts; describes allowed injected or on-policy error classes.
+  provenance:
+    type: object
+    required_fields: [source_tier, source_kind, seed_refs, generator, contamination]
+    source_tier_values:
+      - A_safe_seed
+      - B_llm_synthetic
+      - C_controlled_mutation
+      - D_historical_reaudited
+    source_kind_values:
+      - evas_example
+      - veriloga_skill
+      - manual
+      - public_source
+      - llm_synthetic
+      - controlled_mutation
+      - on_policy_failure
+      - historical_reaudited
+    rule: D_historical_reaudited is excluded until item-level audit is complete.
+  verifier_evidence:
+    type: object
+    required_fields: [evas, spectre_shadow]
+    status_values: [not_run, pending, pass, fail, not_required]
+    rule: Training admission requires concrete EVAS evidence; Spectre shadow evidence follows the audit protocol.
+  admission:
+    type: object
+    required_fields: [status, blockers]
+    status_values:
+      - draft_contract
+      - ready_for_generation
+      - generated
+      - evas_verified
+      - spectre_shadow_verified
+      - admitted_sft
+      - admitted_grpo
+      - admitted_eval
+      - rejected
+
+cross_field_rules:
+  - If level is L0, task_form should be conformance unless explicitly justified.
+  - If level is L2, properties must include at least one decomposed subclaim and one system-level metric.
+  - If task_form is bugfix, fault_model is required and properties must include repair_delta.
+  - If task_form is tb, generation_plan must name the reference DUT interface and expected coverage.
+  - If source_tier is D_historical_reaudited, contamination.checked must be true before admission.
+  - EVAS PASS / Spectre FAIL is a zero-tolerance audit blocker.
+  - Spectre PASS / EVAS FAIL should enter the EVAS false-negative backlog, not be silently relabeled.
+
+example_contract_stub:
+  id: cg_l1_example_0001
+  schema_version: "0.1"
+  category: Comparator and Decision Circuits
+  level: L1
+  task_form: dut
+  base_function: example_comparator
+  domain: voltage
+  difficulty: simple
+  intent: One implementation-free behavior sentence.
+  ports: []
+  parameters: []
+  stimulus_space:
+    waveforms: []
+    sweeps: {}
+  observables: []
+  properties: []
+  forbidden_constructs: []
+  tolerances: {}
+  split_key: category/base_function/template-v1
+  provenance:
+    source_tier: B_llm_synthetic
+    source_kind: llm_synthetic
+    seed_refs: []
+    generator:
+      model: null
+      prompt_hash: null
+      generated_at: null
+    contamination:
+      checked: false
+      release_overlap: null
+      check_run: null
+  verifier_evidence:
+    evas:
+      status: not_run
+      commit: null
+      profile: null
+      result_ref: null
+    spectre_shadow:
+      status: pending
+      mode: null
+      result_ref: null
+  admission:
+    status: draft_contract
+    blockers:
+      - missing_generation
+      - missing_contamination_check
+      - missing_evas_evidence

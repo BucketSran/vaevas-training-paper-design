@@ -1,0 +1,94 @@
+id: cg_l1_gain_measurement_tb_0001
+schema_version: "0.1"
+category: Measurement Instrumentation Flows
+level: L1
+task_form: tb
+base_function: gain_measurement_testbench
+domain: voltage
+difficulty: medium
+intent: >
+  Generate a transient testbench that drives a reference voltage-gain DUT,
+  measures input/output amplitudes after settling, and reports the estimated
+  gain through public observables.
+
+ports:
+  - {name: in, direction: input, discipline: electrical, role: reference_dut_input}
+  - {name: out, direction: output, discipline: electrical, role: reference_dut_output}
+
+parameters:
+  - {name: input_amp, unit: V, default: 0.05, range: [0.01, 0.2]}
+  - {name: input_freq, unit: Hz, default: 1.0e6, range: [1.0e5, 5.0e6]}
+  - {name: settle_time, unit: s, default: 2.0e-6, range: [5.0e-7, 5.0e-6]}
+
+stimulus_space:
+  waveforms: [sine, stepped_sine_amplitude]
+  sweeps:
+    input_amp: [0.02, 0.05, 0.1]
+    input_freq: [2.0e5, 1.0e6]
+
+observables:
+  - vin_peak_to_peak
+  - vout_peak_to_peak
+  - gain_estimate
+  - done
+
+properties:
+  - id: stimulus_reaches_dut
+    type: voltage_bounds
+    description: The generated stimulus produces a nonzero input amplitude at the DUT input.
+    observables: [vin_peak_to_peak]
+    expected: {min_vpp: 0.015}
+    tolerance_ref: voltage_abs_v
+  - id: reports_gain
+    type: gain_estimate
+    description: The testbench reports gain after the settle window using public observables.
+    observables: [gain_estimate, done]
+    expected: {done_must_assert: true}
+    tolerance_ref: relative_rms
+  - id: no_hidden_checker_logic
+    type: state_sequence
+    description: Testbench must not hardcode the expected gain or inspect internal DUT state.
+    observables: [gain_estimate]
+    expected: {public_observables_only: true}
+    tolerance_ref: structural_exact
+
+forbidden_constructs:
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  - unsupported_spectre_netlist_hierarchy
+
+tolerances:
+  voltage_abs_v: 0.01
+  relative_rms: 0.05
+  structural_exact: 0
+
+generation_plan:
+  reference_dut_interface:
+    module: reference_gain_block
+    ports: [in, out]
+  llm_may_propose: [testbench]
+  independently_checked: [coverage_of_input_output, reported_gain_metric]
+  notes: This is a tb-generation contract; the reference DUT is external to the model output.
+
+split_key: measurement/gain_testbench/template-v1
+provenance:
+  source_tier: B_llm_synthetic
+  source_kind: llm_synthetic
+  seed_refs: ["manual:gain-measurement-contract"]
+  generator:
+    model: null
+    prompt_hash: null
+    generated_at: null
+  contamination:
+    checked: false
+    release_overlap: null
+    check_run: null
+
+verifier_evidence:
+  evas: {status: not_run, commit: null, profile: balanced, result_ref: null}
+  spectre_shadow: {status: pending, mode: ax, result_ref: null}
+
+admission:
+  status: draft_contract
+  blockers: [missing_generation, missing_contamination_check, missing_evas_evidence]

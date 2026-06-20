@@ -1,0 +1,88 @@
+id: cg_l0_cross_event_conformance_0001
+schema_version: "0.1"
+category: Comparator and Decision Circuits
+level: L0
+task_form: conformance
+base_function: cross_event_direction_semantics
+domain: voltage
+difficulty: simple
+intent: >
+  Isolate a differential threshold crossing event and require the recorded event
+  time and direction to match the declared crossing semantics.
+
+ports:
+  - {name: inp, direction: input, discipline: electrical, role: positive_ramp_input}
+  - {name: inn, direction: input, discipline: electrical, role: negative_reference_input}
+  - {name: out, direction: output, discipline: electrical, role: event_latched_output}
+
+parameters:
+  - {name: vth, unit: V, default: 0.0, range: [-0.05, 0.05]}
+  - {name: vhi, unit: V, default: 1.2, range: [0.8, 1.8]}
+  - {name: vlo, unit: V, default: 0.0, range: [0.0, 0.1]}
+
+stimulus_space:
+  waveforms: [linear_ramp, stepped_ramp]
+  sweeps:
+    ramp_slope_v_per_s: [1.0e6, 5.0e6]
+    crossing_direction: [+1, -1]
+
+observables:
+  - out
+  - event_time
+  - inp_minus_inn
+
+properties:
+  - id: event_direction
+    type: threshold_crossing
+    description: Event fires only for the requested crossing direction.
+    observables: [event_time, inp_minus_inn]
+    expected: {directions: [+1, -1], exactly_one_event_per_sweep: true}
+    tolerance_ref: timing_abs_s
+  - id: event_output_latch
+    type: voltage_bounds
+    description: Output latches to the requested rail after the accepted event.
+    observables: [out]
+    expected: {low_v: 0.0, high_v: 1.2}
+    tolerance_ref: voltage_abs_v
+
+forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hardcoded_testbench_time
+  - task_id_special_case
+
+tolerances:
+  voltage_abs_v: 0.02
+  timing_abs_s: 1.0e-10
+  event_time_abs_s: 1.0e-10
+
+generation_plan:
+  llm_may_propose: [dut, testbench]
+  independently_checked: [event_time, event_direction, output_latch]
+  notes: L0 contracts calibrate EVAS/Spectre semantics and are not headline model-capability tasks.
+
+split_key: l0/cross_event_direction/template-v1
+provenance:
+  source_tier: B_llm_synthetic
+  source_kind: llm_synthetic
+  seed_refs: [EVAS_COMPATIBILITY_POLICY.md#cross]
+  generator:
+    model: null
+    prompt_hash: null
+    generated_at: null
+  contamination:
+    checked: false
+    release_overlap: null
+    check_run: null
+
+verifier_evidence:
+  evas: {status: not_run, commit: null, profile: precision, result_ref: null}
+  spectre_shadow: {status: pending, mode: classic, result_ref: null}
+
+admission:
+  status: draft_contract
+  blockers: [missing_generation, missing_contamination_check, missing_evas_evidence]
