@@ -114,8 +114,8 @@ Keep three datasets separate:
 
 | Stage | Target scale | Purpose |
 | --- | ---: | --- |
-| Pilot | 300-500 verified examples | Validate data factory, reward service, and split logic. |
-| Paper minimum | 2k-3k verified examples plus 300-500 held-out tasks | Run defensible SFT/GRPO comparisons. |
+| Pilot | 1k-2k admitted clean-room items plus 100-300 held-out tasks | Validate data factory, reward service, and split logic without relying on vaBench. |
+| Paper minimum | 2k-3k admitted clean-room items plus 300-500 held-out tasks | Run defensible SFT/GRPO comparisons. |
 | Strong target | 8k-15k verified examples | Reduce template memorization and support category/OOD analysis. |
 
 These are not claim numbers. They are planning targets; final claims require
@@ -125,7 +125,8 @@ actual dataset manifests and run logs.
 
 - Split by `split_key`, not by individual prompt string.
 - Keep variants of the same contract/template in the same split.
-- Reserve at least one category or base-function cluster as OOD evaluation.
+- Reserve at least one category or base-function cluster as OOD evaluation; use
+  L2-hard held-out as a secondary OOD axis when enough L2 contracts exist.
 - Keep final held-out prompts invisible to synthesis prompts and repair prompts.
 - Record dataset hash, contract hash, generator prompt hash, verifier commit, and
   reward commit in every training log.

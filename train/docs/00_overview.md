@@ -51,7 +51,7 @@ How SFT, GRPO, rewards, data, and evaluation fit together.
 
 | Piece | Role | Justified by |
 |---|---|---|
-| Contracts → synthesized | Expand clean, typed task definitions into diverse candidates | Phase 1 KPI (need ≥300 verified) |
+| Contracts → synthesized | Expand clean, typed task definitions into diverse candidates | Phase 1 KPI (1k-2k pilot admitted, 2k-3k scale-up minimum) |
 | Verifier (EVAS) | Filter broken candidates, label diagnostics, provide fast reward signal | Without it, reward signal is unverifiable |
 | Spectre shadow audit | Check that reportable EVAS judgments remain aligned with the reference simulator | Prevents training on EVAS false positives |
 | Trajectory builder | Decompose artifacts into verifiable tagged steps | Required for structured reward and SFT cold start |
@@ -70,7 +70,7 @@ How SFT, GRPO, rewards, data, and evaluation fit together.
 | Verifier: SPICE syntax + graph similarity | Verifier: EVAS compile/sim/property diagnostics + Spectre shadow audit |
 | Trajectory: port → device → connection | Trajectory: contract → interface → behavior → testbench/checker |
 | Reward components: format/answer/logic/think | Reward components: format/contract/static/compile/sim/property/L2/repair |
-| Dataset: 3,100 image-netlist pairs | Dataset: contract-first clean-room set; target 300+ verified |
+| Dataset: 3,100 image-netlist pairs | Dataset: contract-first clean-room set; target 1k-2k pilot admitted, 2k-3k scale-up minimum |
 | Compute: paper-reported multi-GPU RL run | Compute: target GPU setup and step budget recorded per run |
 
 ## Where to read next

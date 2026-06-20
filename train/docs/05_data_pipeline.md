@@ -144,17 +144,21 @@ Where the parser can't extract structured info, fall back to **LLM-assisted** tr
 
 ## Quantitative targets (Phase 1)
 
-| Bucket | Target | Floor (acceptable) |
-|---|---|---|
-| Seed verified | 50 | 30 |
-| Total verified | 300 | 200 |
-| `sft/train.jsonl` | 250 | 180 |
-| `sft/val.jsonl` | 25 | 20 |
-| `rl/prompts.jsonl` | 250 | 180 |
-| `eval/` | 50 | 30 |
-| OOD subset of eval | 10-15 | 8 |
+The accepted baseline is `PHASE1_PARAMETER_DECISIONS.md`.
 
-If we can't hit floor, escalate to user before relaxing contamination rules.
+| Bucket | Pilot target | Scale-up target |
+|---|---:|---:|
+| Seed contracts | 150-250 | 250-500 |
+| Generated candidates | 3000-6000 | 8000-15000 |
+| EVAS-passing candidates | 1500-3000 | 4000-8000 |
+| Admitted clean-room data | 1000-2000 | 2000-3000 minimum |
+| `sft/train.jsonl` | 800-1600 | 1600-2400 |
+| `sft/val.jsonl` | 100-200 | 200-300 |
+| `eval/` | 100-300 | 300-500 |
+| OOD subset of eval | 50-100 | 100-200 |
+
+If we cannot hit the pilot target, escalate to the user before relaxing
+contamination, diversity, or Spectre audit rules.
 
 ## Storage
 

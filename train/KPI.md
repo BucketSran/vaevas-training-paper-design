@@ -18,17 +18,22 @@ Phase-gated acceptance criteria. Each phase has a single binary `gate_passed` ch
 
 ## Phase 1 — Data Pipeline + Contamination Firewall
 
-**Gate**: At least **300 EVAS-verified data points** in `train/data/verified/` with provenance metadata, contract records, and zero vaBench-release overlap (`check_contamination.py` returns clean).
+**Gate**: At least **1k admitted clean-room data points** in `train/data/verified/`, with provenance metadata, contract records, EVAS evidence, required Spectre shadow-audit coverage, diversity report, and zero vaBench-release overlap (`check_contamination.py` returns clean). Serious SFT/GRPO claims require the **2k-3k scale-up minimum** defined in `docs/PHASE1_PARAMETER_DECISIONS.md`.
 
 **Diagnostics**:
-- `train/data/verified/` count ≥ 300.
+- Seed contracts count ≥ 150.
+- Generated candidates count ≥ 3000.
+- EVAS-passing candidates count ≥ 1500.
+- `train/data/verified/` admitted count ≥ 1000.
+- `train/data/eval/` has 100-300 held-out items, disjoint at the spec and `split_key` level.
+- OOD eval subset has 50-100 held-out items.
 - Each entry has a `.meta.yaml` with `vabench_audit.release_overlap == false`.
 - Distribution across `level`, `task_form`, and benchmark-aligned `category` — log the counts; uneven is acceptable, but every admitted bucket must be intentional.
 - `train/pipelines/check_contamination.py` runs in CI / pre-commit hook.
-- `train/data/eval/` has at least 50 held-out items, disjoint at the spec level.
+- Spectre audit meets `max(100, 20%)` for the admitted pilot, and L2 audit coverage meets the accepted policy.
 
 **Stop conditions**:
-- Cannot reach 300 within available sources → escalate to user, do not relax the contamination rule to compensate.
+- Cannot reach the 1k pilot target without relaxing contamination, diversity, or Spectre audit policy → escalate to user, do not relax the gates silently.
 
 ---
 

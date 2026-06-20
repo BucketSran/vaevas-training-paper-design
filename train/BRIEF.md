@@ -40,7 +40,7 @@ Acceptable failure mode: any of (1)-(3) below threshold but (4) and (5) hold —
 
 See `KPI.md`. Briefly:
 - **Phase 0 (now)**: scaffold complete, scope docs read by the user, framework approved.
-- **Phase 1**: 300+ EVAS-verified contract-backed data points available, contamination-audited.
+- **Phase 1**: 1k-2k pilot admitted clean-room data points, with a 2k-3k scale-up minimum before serious SFT/GRPO claims.
 - **Phase 2**: SFT runs end-to-end on the target GPU setup, produces a checkpoint whose generated artifacts pass EVAS compile/elaboration on ≥ 60% of held-out tasks.
 - **Phase 3**: GRPO runs end-to-end with the diagnostic reward profile active; reward curves trend upward; final EVAS compile/elaboration ≥ 80%.
 - **Phase 4**: held-out eval reports for compile / sim / correct with confidence intervals.
@@ -58,7 +58,7 @@ By the end of this subproject:
 
 ## Residual Risks (as of scaffold time)
 
-- **Data scarcity**: we may not be able to synthesize 1000+ high-quality EVAS-verified triples without significant effort. Mitigation: start with `EVAS/evas/examples/` (~30) + `veriloga-skills/` references, iterate.
+- **Data scarcity**: we may not be able to synthesize 1k-2k high-quality admitted clean-room items without significant effort. Mitigation: use contract-first generation, aggressive diversity filtering, and Spectre-audited admission instead of reusing vaBench.
 - **Reward hacking**: GRPO will exploit reward weaknesses. Mitigation: keep compile/sim/property gates, anti-hack penalties, Spectre shadow audits, and reward ablations active.
 - **Base model fit**: `Qwen2.5-Coder-7B` may already saturate on simple Verilog-A; the headroom for RL may be small on easy tasks. Mitigation: stratify eval by difficulty.
 - **EVAS coverage gaps**: any task that EVAS cannot simulate cannot be used as RL training (no reward signal). Mitigation: enumerate the supported subset in `train/docs/05_data_pipeline.md`.

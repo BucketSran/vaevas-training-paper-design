@@ -330,7 +330,7 @@ Batch admission should include a diversity report:
 
 ```yaml
 diversity_report:
-  examples_total: 300
+  examples_total: 1200
   unique_split_keys: 140
   max_examples_per_split_key: 5
   category_entropy: 2.1

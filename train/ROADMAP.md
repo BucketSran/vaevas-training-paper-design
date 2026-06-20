@@ -5,8 +5,8 @@ Five phases, each gated by `KPI.md`. Phases run sequentially; advance only when 
 ```
 Phase 0  ─────►  Phase 1  ─────►  Phase 2  ─────►  Phase 3  ─────►  Phase 4
 Scaffold         Data Pipeline    SFT End-to-End   GRPO End-to-End  Full Eval Report
-(now)            (≥300 verified)  (EVAS compile    (EVAS compile    (reproducible)
-                                  ≥60%)            ≥80%)
+(now)            (1k-2k pilot,    (EVAS compile    (EVAS compile    (reproducible)
+                 2k-3k scale)    ≥60%)            ≥80%)
 ```
 
 ## Phase 0 — Scaffold (CURRENT)
@@ -32,7 +32,7 @@ Scaffold         Data Pipeline    SFT End-to-End   GRPO End-to-End  Full Eval Re
    - Build a safe seed catalog from clean-room contracts, public references, and explicitly audited internal examples.
    - Use `behavioral-veriloga-eval/tasks/` only for taxonomy/error-type inspiration unless an item receives explicit contamination clearance.
    - Record provenance and vaBench-overlap audit for every admitted seed.
-   - Build a starting catalog of ~50-100 safe seed contracts and artifacts.
+   - Build a starting catalog of 150-250 safe seed contracts and artifacts for the pilot.
 2. **Synthesis pipeline** (1 week):
    - Implement `pipelines/synthesize.py` — use a strong LLM to generate contract-conditioned artifact proposals.
    - Implement `pipelines/verify_evas.py` — run EVAS compile/elaboration + simulation diagnostics.
@@ -48,10 +48,10 @@ Scaffold         Data Pipeline    SFT End-to-End   GRPO End-to-End  Full Eval Re
    - Implement pilot manifests from `docs/SPECTRE_SHADOW_AUDIT_PROTOCOL.md`.
    - Run Spectre on required high-risk slices before paper-facing claims.
 6. **Held-out construction**:
-   - Set aside ≥ 50 verified items as `train/data/eval/`, disjoint at spec level.
-   - At least one `task_form` slice or one circuit category withheld for OOD probe.
+   - Set aside 100-300 clean-room eval items, disjoint at spec and `split_key` level.
+   - Set aside 50-100 OOD eval items, primarily by held-out circuit category plus optional L2-hard holdout.
 
-**Exit**: 300+ verified data points, audit clean, eval split created.
+**Exit**: 1k-2k pilot admitted data points, audit clean, diversity report passed, eval/OOD splits created. Serious SFT/GRPO claims wait for 2k-3k admitted scale-up.
 
 ## Phase 2 — SFT End-to-End
 
