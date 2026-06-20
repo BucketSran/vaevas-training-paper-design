@@ -38,6 +38,10 @@ safe seed
 The LLM is a proposer. The contract, independent checks, EVAS, Spectre audit,
 and diversity filters decide whether an example is admitted.
 
+The concrete manifest interfaces for these gates are defined in
+`PHASE1_MANIFEST_SCHEMAS.md`. SFT and GRPO packers should consume admitted
+manifests, not raw generated candidates.
+
 ## Inputs
 
 ### Safe seed catalog
@@ -521,6 +525,7 @@ If pilot fails, fix schema/prompts/checkers before scaling.
 ## Relationship to Other Specs
 
 - Contract schema: `../data/contracts/schema.yaml`
+- Manifest interfaces: `PHASE1_MANIFEST_SCHEMAS.md`
 - Reward spec: `DIAGNOSTIC_REWARD_SPEC.md`
 - Experiment design: `TRAINING_PAPER_EXPERIMENT_DESIGN.md`
 - Scope firewall: `../SCOPE_BOUNDARY.md`

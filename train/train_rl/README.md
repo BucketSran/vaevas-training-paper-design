@@ -29,7 +29,10 @@ GRPO reinforcement learning on top of the SFT checkpoint, with multi-level rewar
 
 ## Reward configuration
 
-See `../rewards/README.md`. Default weights:
+Current reward design is `../docs/DIAGNOSTIC_REWARD_SPEC.md`. The legacy simple
+weights below are retained only as historical scaffolding until Phase 3 reward
+modules are implemented:
+
 ```yaml
 reward_weights:
   format: 0.1

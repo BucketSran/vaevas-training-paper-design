@@ -22,7 +22,7 @@ The eval set in `../data/eval/` is constructed under these rules:
 
 | Metric | Definition | Target (Phase 4) |
 |---|---|---|
-| `compile_rate` | % of generated `.va` files OpenVAF compiles | ≥ 85% |
+| `compile_rate` | % of generated `.va` files passing EVAS Rust parser/elaboration | ≥ 85% |
 | `sim_rate` | % that EVAS simulates without error, conditional on compile | ≥ 70% |
 | `correct_rate` | % whose simulation matches reference within tolerance, conditional on sim | ≥ 50% |
 | `compile_rate_OOD` | Same as compile_rate, restricted to held-out slice | ≥ 60% |

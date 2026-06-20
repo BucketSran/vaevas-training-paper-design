@@ -2,7 +2,10 @@
 
 Experimental subproject: train a local Verilog-A reasoning model on the vaEVAS stack via **SFT + GRPO**, inspired by Circuit-Think (AAAI'26).
 
-> **Status: SCAFFOLD ONLY.** No training has been run. No data has been collected. This is the framework for future work.
+> **Status: PHASE 0 DESIGN.** No Phase 1 clean-room training data has been
+> admitted. Historical SFT platform smoke evidence exists in
+> `docs/sft/09_smoke_lessons.md`; it validates plumbing, not model quality or
+> paper claims.
 
 ## Scope
 
@@ -28,7 +31,7 @@ Read in this order:
 train/
 ├── README.md, AGENTS.md, BRIEF.md, KPI.md, ROADMAP.md, PLAN.md, SCOPE_BOUNDARY.md
 ├── docs/         — design notes, SFT/GRPO principles, references, decisions
-├── data/         — raw → synthesized → verified → sft/rl/eval (gitignored)
+├── data/         — contracts → synthesized → manifests → admitted → sft/rl/eval (gitignored)
 ├── pipelines/    — data synthesis + EVAS verification + trajectory building
 ├── rewards/      — diagnostic reward implementations (format / contract / compile / sim / property / repair)
 ├── models/       — base model config + checkpoints (gitignored)

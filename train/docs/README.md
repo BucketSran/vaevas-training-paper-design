@@ -15,6 +15,7 @@ Design notes, learning materials, decision logs. **The first thing a new contrib
 | `SPECTRE_SHADOW_AUDIT_PROTOCOL.md` | Current Spectre audit protocol: sampling schedule, mismatch triage, claim gates, manifests, and speed/correctness reporting boundaries. |
 | `CONTAMINATION_CHECKER_SPEC.md` | Current contamination-checker specification: protected/candidate indexes, match tiers, split leakage, report schema, and Phase 1 implementation plan. |
 | `PHASE1_PARAMETER_DECISIONS.md` | Accepted Phase 1-v0.1 data scale, OOD split, Spectre audit budget, contamination policy, and admission gates. |
+| `PHASE1_MANIFEST_SCHEMAS.md` | Phase 1 manifest interfaces linking clean-room generation, EVAS/Spectre evidence, contamination gates, splits, SFT packing, and GRPO prompts. |
 | `04_trajectory_format.md` | The step-by-step CoT structure for vaBench tasks (analog of Circuit-Think's port→device→connection). |
 | `05_data_pipeline.md` | How data flows from raw sources → synthesized → EVAS-verified → SFT/RL ready. |
 | `SYNTHETIC_DATA_FACTORY.md` | Current contract-first LLM data factory protocol: batch planning, multi-view artifact generation, verification gates, diversity filtering, and admission rules. |

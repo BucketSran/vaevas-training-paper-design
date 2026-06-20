@@ -6,13 +6,11 @@ All training, validation, and held-out evaluation data lives here. **Contents ar
 
 ## Flow
 
-```
-contracts/      →    raw/             →    synthesized/    →    verified/        →    sft/  rl/  eval/
-(task contracts      (source files,        (LLM-generated      (EVAS/Spectre      (final, packed
- + schemas)           EVAS examples,        candidate VA        verified, with      for training)
-                      textbook code,        + tb)               provenance meta)
-                      skill templates,
-                      all audited)
+```text
+contracts/      →    synthesized/     →    manifests/      →    admitted/        →    sft/  rl/  eval/
+(task contracts      (LLM-generated       (EVAS/Spectre,       (clean-room         (final, packed
+ + schemas)           candidates,          contamination,       admitted item       for SFT,
+                      including failures)  split evidence)      references)         GRPO, eval)
 ```
 
 ## Subdirectories
@@ -22,9 +20,10 @@ contracts/      →    raw/             →    synthesized/    →    verified/ 
 | `contracts/` | Contract schema and example task contracts for clean-room synthetic data generation. These are metadata/design artifacts, not training samples. | Phase 0/1 design gate |
 | `raw/` | Source materials before any transformation: EVAS example copies, skill templates, textbook excerpts. One subdir per source. | Phase 1 task 1 (source inventory) |
 | `synthesized/` | LLM-generated `<spec, va, tb>` candidates, not yet verified. Includes failed candidates for diagnostic logging. | Phase 1 task 2 (synthesis) |
-| `verified/` | EVAS-compile + simulate passing candidates, with provenance, EVAS diagnostics, contamination report refs, and Spectre shadow-audit refs when required. Schema: see `verified/SCHEMA.md` (to be added in Phase 1). | Phase 1 task 2/3 |
-| `sft/` | Final SFT-ready data: `train.jsonl`, `val.jsonl`. Each line is one prompt-completion pair with trajectory. | Phase 1 task 5 (packing) |
-| `rl/` | RL prompts + reference answers for reflective learning: `prompts.jsonl`, `ref_answers.jsonl`. | Phase 1 task 5 (packing) |
+| `manifests/` | Protected/candidate/EVAS/contamination/Spectre/diversity/split/admitted/pack manifests. See `../docs/PHASE1_MANIFEST_SCHEMAS.md`. | Phase 1 gates |
+| `verified/` | Legacy/staging name for EVAS-verified candidates. New scripts should prefer manifest-bound admitted items over free-form verified dirs. | Phase 1 task 2/3 |
+| `sft/` | Final SFT-ready data: `train.jsonl`, `val.jsonl`, plus SFT pack manifest. Each line is one prompt-completion pair with trajectory. | Phase 1 task 5 (packing) |
+| `rl/` | GRPO prompt files plus reward runtime metadata. Training prompts must not include gold completions. | Phase 1 task 5 (packing) |
 | `eval/` | Held-out evaluation set. See `eval/README.md` for split rules. | Phase 1 task 5 (held-out) |
 
 ## Contract schema
@@ -42,9 +41,14 @@ Do not use `family` for circuit category. Existing vaBench metadata often uses
 `family` for task forms such as `spec-to-va`, `tb-generation`, `end-to-end`, and
 `bugfix`.
 
-## Verified-data metadata schema
+## Legacy verified-data metadata sketch
 
-Each entry in `verified/` carries a `.meta.yaml`:
+The current source of truth is `../docs/PHASE1_MANIFEST_SCHEMAS.md`. The older
+`.meta.yaml` sketch below is retained only to show the original intent of
+per-item provenance; new Phase 1 implementations should emit manifests instead
+of relying on this free-form metadata.
+
+Each legacy entry in `verified/` carried a `.meta.yaml`:
 
 ```yaml
 id: <stable-id>

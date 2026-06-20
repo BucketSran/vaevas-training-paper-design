@@ -158,8 +158,9 @@ false-negative backlog entries with explicit state labels.
 
 Phase 1 scripts should be implemented in this order:
 
-1. manifest schemas for protected index, candidate index, contamination report,
-   and Spectre shadow report;
+1. manifest schemas in `PHASE1_MANIFEST_SCHEMAS.md` for protected index,
+   candidate index, EVAS report, contamination report, Spectre shadow report,
+   split/admission reports, and SFT/GRPO pack manifests;
 2. `check_contamination.py`;
 3. safe seed catalog builder;
 4. contract-conditioned LLM synthesis;
