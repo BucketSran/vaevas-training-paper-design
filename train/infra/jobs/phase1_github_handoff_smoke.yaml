@@ -1,0 +1,42 @@
+schema_version: phase1.job.v0.1
+job_id: phase1_github_handoff_smoke
+purpose: >
+  Revalidate GitHub-mediated server handoff and run the toy Phase 1
+  manifest/admission/SFT/GRPO pack loop.
+branch: training-paper-design-20260620
+entrypoint:
+  command: bash train/infra/run_github_handoff_smoke.sh --job train/infra/jobs/phase1_github_handoff_smoke.yaml
+permissions:
+  uses_gpu: false
+  writes_checkpoints: false
+  writes_generated_training_data: false
+  may_push_results_to_github: true
+inputs:
+  manifest_examples: train/data/manifests/examples
+  candidate_index: train/data/manifests/examples/candidate_index.synth-batch-toy-0001.yaml
+  fixture_protected_index: train/data/manifests/examples/protected_index.yaml
+  static_check_report: train/data/manifests/examples/static_check_report.synth-batch-toy-0001.yaml
+  evas_report: train/data/manifests/examples/evas_verification_report.synth-batch-toy-0001.yaml
+  contamination_report: train/data/manifests/examples/contamination_report.synth-batch-toy-0001.yaml
+  diversity_report: train/data/manifests/examples/diversity_report.synth-batch-toy-0001.yaml
+  split_manifest: train/data/manifests/examples/split_manifest.synth-batch-toy-0001.yaml
+  spectre_report: train/data/manifests/examples/spectre_shadow_report.audit-toy-0001.yaml
+outputs:
+  result_root: train/infra/results/<run_id>
+  required_files:
+    - status.txt
+    - summary.json
+    - environment.txt
+    - commands.log
+expected_assertions:
+  validate_manifest_fixtures: pass
+  contamination_clean_count: 1
+  contamination_rejected_control_count: 1
+  admitted_count: 1
+  rejected_control_count: 1
+  sft_train_lines: 1
+  grpo_prompt_lines: 1
+  grpo_no_answer_leak: true
+notes:
+  - This job is a handoff smoke only. It is not model training.
+  - Upload result directories only; never upload checkpoints or secrets.

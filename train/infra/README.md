@@ -1,8 +1,18 @@
 # infra/
 
-Remote server / cluster scripts. Two A100 GPUs configured for SFT and GRPO.
+Remote server / cluster handoff scripts. Current mode is GitHub-mediated:
+the server pulls this branch, runs a small smoke job, then pushes small result
+artifacts back to GitHub for local inspection.
 
-## Files (to be implemented in Phase 2)
+## Current Files
+
+| File | Role |
+|---|---|
+| `run_github_handoff_smoke.sh` | Server-side smoke: environment snapshot + Phase 1 manifest/admission/SFT/GRPO pack loop |
+| `jobs/` | YAML job manifests that describe what the server should run |
+| `results/` | Small result upload area; no checkpoints or raw training data |
+
+## Later SSH/Phase 2 Files
 
 | File | Role |
 |---|---|
@@ -18,7 +28,8 @@ Remote server / cluster scripts. Two A100 GPUs configured for SFT and GRPO.
 
 - Remote: single node, 2× NVIDIA A100 (80GB)
 - Local: M-series Mac for code + monitoring
-- Data flow: synthesize locally OR on remote (Phase 1 decision); train on remote; pull logs back
+- Current data flow: GitHub branch -> server smoke -> GitHub result commit.
+- Later data flow: synthesize locally OR on remote; train on remote; pull logs back.
 
 ## Environment
 
@@ -50,4 +61,5 @@ Pinned versions go into `requirements.txt` once Phase 2 starts.
 
 ## Phase 0 placeholders
 
-No scripts exist yet. This README defines the contract; implementation lands in Phase 2.
+Full SFT/GRPO launch scripts remain deferred until Phase 2. The current scripts
+only validate handoff, environment visibility, and toy Phase 1 data plumbing.

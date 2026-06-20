@@ -27,6 +27,7 @@ documentation that explains how contracts become SFT/GRPO training examples.
 | 7 | Draft admission gate | `pipelines/write_admitted_manifest.py` | Evidence reports produce one admitted item for the toy fixture |
 | 8 | Draft local packers | `pipelines/pack_sft.py`, `pipelines/pack_grpo.py` | Emits JSONL from generated admitted manifests; GRPO prompt leak check passes |
 | 9 | Draft contamination gate | `pipelines/build_protected_index.py`, `pipelines/check_contamination.py` | Clean fixture passes; exact-hash negative control rejects |
+| 10 | Draft GitHub server handoff | `docs/SERVER_HANDOFF_RUNBOOK.md`, `infra/run_github_handoff_smoke.sh` | Server can pull branch, run toy smoke, and push small result artifacts |
 
 ### Decisions already accepted
 
@@ -44,6 +45,7 @@ documentation that explains how contracts become SFT/GRPO training examples.
 2. **First batch size** — keep small enough for manual audit but large enough to test L0/L1/L2/task-form diversity.
 3. **Spectre shadow schedule** — choose exact pilot cadence once real candidates exist.
 4. **First real synthesis protocol** — decide how many clean-room candidates to generate before EVAS verification and manual review.
+5. **Server execution mode** — use GitHub handoff while SSH is unavailable; switch to SSH only after non-destructive live checks pass.
 
 ### Non-tasks
 

@@ -162,3 +162,8 @@ Validator status: implemented as
 ```bash
 python3 -m train.pipelines.validate_manifest_fixtures
 ```
+
+GitHub handoff status: prepared as `SERVER_HANDOFF_RUNBOOK.md` plus
+`../infra/run_github_handoff_smoke.sh`. This lets the screen-share-controlled
+server pull the branch, run a toy Phase 1 smoke, and push small result artifacts
+back to GitHub without direct SSH.
