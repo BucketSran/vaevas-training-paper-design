@@ -12,7 +12,9 @@ future automation to know what command was intended.
 | --- | --- |
 | `phase1_github_handoff_smoke.yaml` | Validate server can run the local Phase 1 manifest/admission/SFT/GRPO pack loop and upload small results. |
 | `phase1_server_platform_probe.yaml` | Validate CUDA/PyTorch/SFT/GRPO package readiness without training. |
+| `phase1_gpu_blocker_diagnosis.yaml` | Diagnose `BLOCKED_GPU` without package installs, driver changes, or training. |
 | `REMOTE_CODEX_TASK_PLATFORM_PROBE.md` | Copy-paste instructions for a remote Codex session controlling the server. |
+| `REMOTE_CODEX_TASK_GPU_BLOCKER.md` | Copy-paste instructions for remote Codex to diagnose GPU visibility and rerun platform probe only after safe session-level fixes. |
 
 ## Job Rules
 
@@ -22,3 +24,4 @@ future automation to know what command was intended.
 - A job must list expected upload files.
 - Default smoke jobs must not launch full SFT/GRPO training.
 - Blocked platform probes must still upload their result directory for diagnosis.
+- GPU blocker diagnosis must not run `sudo`, install packages, or change drivers.

@@ -10,6 +10,7 @@ artifacts back to GitHub for local inspection.
 |---|---|
 | `run_github_handoff_smoke.sh` | Server-side smoke: environment snapshot + Phase 1 manifest/admission/SFT/GRPO pack loop |
 | `run_server_platform_probe.sh` | Server-side platform probe: CUDA/PyTorch/package/model-path readiness without training |
+| `run_gpu_blocker_diagnosis.sh` | Server-side GPU blocker triage after `BLOCKED_GPU` without admin changes |
 | `jobs/` | YAML job manifests that describe what the server should run |
 | `results/` | Small result upload area; no checkpoints or raw training data |
 

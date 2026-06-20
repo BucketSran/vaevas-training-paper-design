@@ -30,6 +30,7 @@ documentation that explains how contracts become SFT/GRPO training examples.
 | 9 | Draft contamination gate | `pipelines/build_protected_index.py`, `pipelines/check_contamination.py` | Clean fixture passes; exact-hash negative control rejects |
 | 10 | Draft GitHub server handoff | `docs/SERVER_HANDOFF_RUNBOOK.md`, `infra/run_github_handoff_smoke.sh` | Server can pull branch, run toy smoke, and push small result artifacts |
 | 11 | Draft server platform probe | `docs/SERVER_PLATFORM_PROBE.md`, `infra/run_server_platform_probe.sh` | Server can report CUDA/PyTorch/SFT/GRPO readiness without training |
+| 12 | Draft GPU blocker triage | `docs/SERVER_GPU_BLOCKER_TRIAGE.md`, `infra/run_gpu_blocker_diagnosis.sh` | Remote Codex can diagnose `BLOCKED_GPU` without admin changes |
 
 ### Decisions already accepted
 

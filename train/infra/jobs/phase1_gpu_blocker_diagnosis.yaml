@@ -1,0 +1,38 @@
+schema_version: phase1.job.v0.1
+job_id: phase1_gpu_blocker_diagnosis
+purpose: >
+  Diagnose why the server platform probe returned BLOCKED_GPU. The job collects
+  scheduler/container/driver/device/PyTorch CUDA signals and recommends safe
+  next actions without installing packages, changing drivers, or starting
+  training.
+branch: training-paper-design-20260620
+entrypoint:
+  command: bash train/infra/run_gpu_blocker_diagnosis.sh --job train/infra/jobs/phase1_gpu_blocker_diagnosis.yaml --python /data/jinzhihong/envs/vaevas-rl/bin/python
+permissions:
+  uses_gpu: true
+  writes_checkpoints: false
+  writes_generated_training_data: false
+  may_push_results_to_github: true
+  may_install_packages: false
+  may_change_drivers: false
+outputs:
+  result_root: train/infra/results/<run_id>
+  required_files:
+    - status.txt
+    - summary.json
+    - diagnosis.txt
+    - environment.txt
+    - commands.log
+    - gpu_blocker_commands.json
+expected_statuses:
+  ready: GPU_READY
+  no_nvidia_smi: BLOCKED_NO_NVIDIA_SMI
+  no_device_files: BLOCKED_NO_DEVICE_FILES
+  driver_blocked: BLOCKED_NVIDIA_DRIVER
+  torch_cuda_blocked: BLOCKED_TORCH_CUDA
+  unknown_gpu_blocker: BLOCKED_UNKNOWN_GPU
+notes:
+  - This job is a diagnosis only. It must not train a model.
+  - Do not run sudo, apt, yum, pip install, conda install, or driver repair commands.
+  - If the diagnosis says scheduler/container/node issue, switch to the correct GPU session if that is an ordinary non-admin action.
+  - If the diagnosis says driver issue on the host, upload the result and ask the platform administrator.
