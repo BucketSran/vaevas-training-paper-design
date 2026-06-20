@@ -167,3 +167,9 @@ GitHub handoff status: prepared as `SERVER_HANDOFF_RUNBOOK.md` plus
 `../infra/run_github_handoff_smoke.sh`. This lets the screen-share-controlled
 server pull the branch, run a toy Phase 1 smoke, and push small result artifacts
 back to GitHub without direct SSH.
+
+Remote platform probe status: prepared as `SERVER_PLATFORM_PROBE.md`,
+`../infra/run_server_platform_probe.sh`, and
+`../infra/jobs/REMOTE_CODEX_TASK_PLATFORM_PROBE.md`. This is the next
+non-destructive server task after handoff; it checks CUDA/PyTorch/SFT/GRPO
+readiness and uploads only small diagnostic JSON/text files.

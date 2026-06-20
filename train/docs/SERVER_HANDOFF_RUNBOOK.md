@@ -127,6 +127,16 @@ The `summary.json` file is the main machine-readable handoff artifact.
 If this passes, the next server-side smoke can check historical SFT platform
 paths and package versions. If it fails, upload the result directory anyway.
 
+The current next job is:
+
+```bash
+bash train/infra/run_server_platform_probe.sh \
+  --job train/infra/jobs/phase1_server_platform_probe.yaml
+```
+
+For a remote Codex session, use
+`train/infra/jobs/REMOTE_CODEX_TASK_PLATFORM_PROBE.md` as the exact task prompt.
+
 ## When SSH Returns
 
 When direct SSH works again, keep this protocol as the reproducible baseline:

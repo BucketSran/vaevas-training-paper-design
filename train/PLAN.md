@@ -8,7 +8,8 @@
 In progress. Phase 0 design docs are complete enough to proceed. Phase 1
 parameter choices, manifest interfaces, minimal toy fixtures, local closed-loop
 pipeline tools, remote platform memory, and the server-free local execution plan
-are now materialized under `docs/`, `data/manifests/examples/`, and `pipelines/`.
+are now materialized under `docs/`, `data/manifests/examples/`, `pipelines/`,
+and `infra/`.
 
 No clean-room training data has been admitted yet. Current work is limited to
 schema discipline, toy manifest fixtures, local validators, and learning
@@ -28,6 +29,7 @@ documentation that explains how contracts become SFT/GRPO training examples.
 | 8 | Draft local packers | `pipelines/pack_sft.py`, `pipelines/pack_grpo.py` | Emits JSONL from generated admitted manifests; GRPO prompt leak check passes |
 | 9 | Draft contamination gate | `pipelines/build_protected_index.py`, `pipelines/check_contamination.py` | Clean fixture passes; exact-hash negative control rejects |
 | 10 | Draft GitHub server handoff | `docs/SERVER_HANDOFF_RUNBOOK.md`, `infra/run_github_handoff_smoke.sh` | Server can pull branch, run toy smoke, and push small result artifacts |
+| 11 | Draft server platform probe | `docs/SERVER_PLATFORM_PROBE.md`, `infra/run_server_platform_probe.sh` | Server can report CUDA/PyTorch/SFT/GRPO readiness without training |
 
 ### Decisions already accepted
 
@@ -46,6 +48,7 @@ documentation that explains how contracts become SFT/GRPO training examples.
 3. **Spectre shadow schedule** — choose exact pilot cadence once real candidates exist.
 4. **First real synthesis protocol** — decide how many clean-room candidates to generate before EVAS verification and manual review.
 5. **Server execution mode** — use GitHub handoff while SSH is unavailable; switch to SSH only after non-destructive live checks pass.
+6. **Platform probe boundary** — remote probe may report blockers but must not install packages, change drivers, start training, or write checkpoints.
 
 ### Non-tasks
 

@@ -1,0 +1,56 @@
+schema_version: phase1.job.v0.1
+job_id: phase1_server_platform_probe
+purpose: >
+  Revalidate the remote SFT/GRPO platform after the GitHub handoff smoke.
+  This checks CUDA/GPU visibility, core Python training packages, GRPO rollout
+  package availability, and known historical model paths without launching
+  training or writing checkpoints.
+branch: training-paper-design-20260620
+entrypoint:
+  command: bash train/infra/run_server_platform_probe.sh --job train/infra/jobs/phase1_server_platform_probe.yaml
+permissions:
+  uses_gpu: true
+  writes_checkpoints: false
+  writes_generated_training_data: false
+  may_push_results_to_github: true
+inputs:
+  default_python: python3
+  known_model_paths:
+    - /data/jinzhihong/vaEVAS/models/base/Qwen2.5-Coder-7B-Instruct-vaevas
+    - /data/jinzhihong/vaEVAS/models/base/Qwen2.5-Coder-7B-Instruct
+outputs:
+  result_root: train/infra/results/<run_id>
+  required_files:
+    - status.txt
+    - summary.json
+    - environment.txt
+    - commands.log
+    - gpu_probe.json
+    - python_packages.json
+    - model_paths.json
+expected_statuses:
+  ready: READY
+  sft_only: READY_SFT_ONLY
+  blocked_gpu: BLOCKED_GPU
+  blocked_imports: BLOCKED_IMPORTS
+expected_assertions:
+  core_imports:
+    - yaml
+    - pydantic
+    - torch
+    - transformers
+    - trl
+    - datasets
+    - accelerate
+  grpo_imports:
+    - vllm
+    - verl
+    - ray
+  gpu_training:
+    requires_torch_cuda_available: true
+    requires_cuda_tensor_smoke: true
+notes:
+  - This job is a platform probe only. It must not train a model.
+  - Do not install packages, change drivers, or modify conda environments during this job.
+  - Upload the result directory even when status is BLOCKED_GPU or BLOCKED_IMPORTS.
+  - Missing flash_attn is recorded as an optional warning, not a blocker.

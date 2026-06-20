@@ -11,6 +11,8 @@ future automation to know what command was intended.
 | File | Purpose |
 | --- | --- |
 | `phase1_github_handoff_smoke.yaml` | Validate server can run the local Phase 1 manifest/admission/SFT/GRPO pack loop and upload small results. |
+| `phase1_server_platform_probe.yaml` | Validate CUDA/PyTorch/SFT/GRPO package readiness without training. |
+| `REMOTE_CODEX_TASK_PLATFORM_PROBE.md` | Copy-paste instructions for a remote Codex session controlling the server. |
 
 ## Job Rules
 
@@ -19,3 +21,4 @@ future automation to know what command was intended.
 - A job must state whether it may write checkpoints.
 - A job must list expected upload files.
 - Default smoke jobs must not launch full SFT/GRPO training.
+- Blocked platform probes must still upload their result directory for diagnosis.
