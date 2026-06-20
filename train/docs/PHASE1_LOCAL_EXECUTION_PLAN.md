@@ -155,3 +155,10 @@ or server access.
 Status: prepared as tracked YAML fixtures in
 `../data/manifests/examples/README.md`. The next implementation step is a
 fixture validator or Pydantic model layer that checks these files mechanically.
+
+Validator status: implemented as
+`../pipelines/validate_manifest_fixtures.py`. Run it with:
+
+```bash
+python3 -m train.pipelines.validate_manifest_fixtures
+```

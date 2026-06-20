@@ -2,8 +2,9 @@
 
 Experimental subproject: train a local Verilog-A reasoning model on the vaEVAS stack via **SFT + GRPO**, inspired by Circuit-Think (AAAI'26).
 
-> **Status: PHASE 0 DESIGN.** No Phase 1 clean-room training data has been
-> admitted. Historical SFT platform smoke evidence exists in
+> **Status: PHASE 1 MANIFEST BOOTSTRAP.** No clean-room training data has been
+> admitted yet; current work is limited to schemas, toy fixtures, and local
+> validators. Historical SFT platform smoke evidence exists in
 > `docs/sft/09_smoke_lessons.md`; it validates plumbing, not model quality or
 > paper claims.
 

@@ -29,3 +29,11 @@ protected_index
 
 These files are not training data. They use fake hashes and placeholder artifact
 paths to test field names, references, and state transitions.
+
+Validate the current examples with:
+
+```bash
+python3 -m train.pipelines.validate_manifest_fixtures
+```
+
+The learning guide is `../../docs/MANIFEST_FIXTURE_GUIDE.md`.

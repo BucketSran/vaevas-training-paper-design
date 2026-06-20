@@ -16,6 +16,7 @@ manifests, not raw generated candidates.
 | `check_contamination.py` | Compare candidate index against protected index using hash, normalized, signature, and split-leakage checks | protected index + candidate index | contamination report |
 | `pack_sft.py` | Concatenate admitted SFT-eligible items into `train.jsonl`/`val.jsonl` in SFT format | admitted manifest | `data/sft/{train,val}.jsonl` + SFT pack manifest |
 | `pack_grpo.py` | Extract GRPO prompts and reward runtime metadata without gold completions | admitted manifest | `data/rl/prompts.*` + GRPO prompt manifest |
+| `validate_manifest_fixtures.py` | Validate toy Phase 1 manifest fixtures and cross-manifest references | `data/manifests/examples/` | exit 0 if schemas and references are coherent |
 
 ## Design rules
 
@@ -36,6 +37,7 @@ python -m train.pipelines.build_trajectory --batch <id>
 python -m train.pipelines.check_contamination --protected-index <path> --candidate-index <path>
 python -m train.pipelines.pack_sft   --admitted-manifest <path> --out data/sft
 python -m train.pipelines.pack_grpo  --admitted-manifest <path> --out data/rl
+python -m train.pipelines.validate_manifest_fixtures
 ```
 
 ## Dependencies (Phase 1)
