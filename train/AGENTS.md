@@ -24,6 +24,7 @@ Read `PLAN.md` first. It defines what is in scope this session. Tasks outside th
 - **Log experiments under `logs/`.** Even failed runs. Failed runs have learning value.
 - **Prefer the smallest validation.** Run training on 10-20 samples first to verify the loop before scaling.
 - **Use existing libraries.** HuggingFace `transformers` + `trl` for SFT/GRPO; `accelerate` or `deepspeed` for distributed; `wandb` for logging. Do not roll custom infra unless an existing tool truly does not work.
+- **Remote handoffs return results directly.** When preparing instructions for a remote Codex/server handoff, provide a single copy-paste task that runs all required commands and asks the remote agent to return the final stdout plus required summary files in one response. Avoid multi-round "confirm before next command" workflows unless the step is destructive, credential-gated, external-production, or changes compute footprint. If the job should not commit artifacts, say so explicitly and request pasted summary output instead.
 
 ## What to escalate to the user
 

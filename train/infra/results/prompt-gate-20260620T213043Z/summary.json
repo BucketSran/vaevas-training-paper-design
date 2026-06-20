@@ -1,0 +1,16 @@
+{
+  "batch_id": "synth-batch-pilot-0001",
+  "catalog_id": "seed-catalog-phase1-pilot-0001",
+  "llm_api_called": false,
+  "pilot_plan_hash": "sha256:eabc9f9f81a4cc2566ecdf3695119729b3dc74efd7adb605415be5b372ef1b38",
+  "prompt_count": 15,
+  "prompt_jsonl_hash": "sha256:e4f4aea5d7a975d293081c60becbca02279a073ecee1df4d9336dbeac572e9b1",
+  "prompt_kinds": {
+    "artifact_proposal": 5,
+    "contract_proposal": 5,
+    "contract_review": 5
+  },
+  "seed_catalog_hash": "sha256:50026df993449be89a244425765c20f51dece035dd0a04c28d8bd3e70a68b056",
+  "status": "PASS",
+  "training_data_generated": false
+}

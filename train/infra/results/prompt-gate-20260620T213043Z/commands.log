@@ -1,0 +1,18 @@
+Remote Codex prompt gate validation reported by user transcript.
+
+Expected command sequence:
+cd /data/jinzhihong/vaevas-training-paper-design
+git fetch origin
+git checkout training-paper-design-20260620
+git pull --ff-only
+python3 -m train.pipelines.validate_pilot_plan
+python3 -m train.pipelines.render_pilot_prompts --out-dir /tmp/vaevas_phase1_prompt_gate_remote
+python3 -m train.pipelines.validate_manifest_fixtures
+cat /tmp/vaevas_phase1_prompt_gate_remote/prompt_plan_summary.json
+
+Committed evidence:
+- status.txt
+- summary.json
+
+Not committed:
+- /tmp/vaevas_phase1_prompt_gate_remote/pilot_generation_prompts.jsonl
