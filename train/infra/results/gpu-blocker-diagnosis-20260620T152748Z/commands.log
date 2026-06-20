@@ -1,0 +1,9 @@
+run_id=gpu-blocker-diagnosis-20260620T152748Z
+job_path=train/infra/jobs/phase1_gpu_blocker_diagnosis.yaml
+python_bin=/data/jinzhihong/envs/vaevas-rl/bin/python
+repo_root=/data/jinzhihong/vaevas-training-paper-design
+$ /data/jinzhihong/envs/vaevas-rl/bin/python - <gpu_blocker_diagnosis.py>
+gpu_blocker_diagnosis_status=GPU_READY
+likely_cause=no_gpu_blocker_detected
+result_dir=train/infra/results/gpu-blocker-diagnosis-20260620T152748Z
+safe_next_action=rerun train/infra/run_server_platform_probe.sh to confirm READY status

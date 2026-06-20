@@ -1,0 +1,14 @@
+run_id=gpu-blocker-diagnosis-20260620T152748Z
+job_path=train/infra/jobs/phase1_gpu_blocker_diagnosis.yaml
+status=GPU_READY
+likely_cause=no_gpu_blocker_detected
+hostname=huaxiyun085
+python_executable=/data/jinzhihong/envs/vaevas-rl/bin/python
+python_version=3.11.15
+git_branch=training-paper-design-20260620
+git_commit=86618cea9262af0f1f4e5438605948e0626d621e
+nvidia_smi_ok=True
+has_nvidia_device_files=True
+torch_gpu_ok=True
+torch_cuda_available=True
+torch_device_count=8

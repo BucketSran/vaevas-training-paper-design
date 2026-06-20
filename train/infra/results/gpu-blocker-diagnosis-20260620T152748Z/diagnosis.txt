@@ -1,0 +1,4 @@
+status=GPU_READY
+likely_cause=no_gpu_blocker_detected
+safe_next_actions:
+- rerun train/infra/run_server_platform_probe.sh to confirm READY status

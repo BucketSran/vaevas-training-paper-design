@@ -1,0 +1,98 @@
+{
+  "dev_nvidia": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "crw-rw-rw- 1 root root 195, 254 Jun 18 07:47 /dev/nvidia-modeset\ncrw-rw-rw- 1 root root 504,   0 Jun 16 12:54 /dev/nvidia-nvlink\ncrw-rw-rw- 1 root root 503,   0 Jun 16 12:53 /dev/nvidia-nvswitch0\ncrw-rw-rw- 1 root root 503,   1 Jun 16 12:53 /dev/nvidia-nvswitch1\ncrw-rw-rw- 1 root root 503,   2 Jun 16 12:53 /dev/nvidia-nvswitch2\ncrw-rw-rw- 1 root root 503,   3 Jun 16 12:53 /dev/nvidia-nvswitch3\ncrw-rw-rw- 1 root root 503,   4 Jun 16 12:53 /dev/nvidia-nvswitch4\ncrw-rw-rw- 1 root root 503,   5 Jun 16 12:53 /dev/nvidia-nvswitch5\ncrw-rw-rw- 1 root root 503, 255 Jun 16 12:53 /dev/nvidia-nvswitchctl\ncrw-rw-rw- 1 root root 502,   0 Jun 16 12:53 /dev/nvidia-uvm\ncrw-rw-rw- 1 root root 502,   1 Jun 16 12:53 /dev/nvidia-uvm-tools\ncrw-rw-rw- 1 root root 195,   0 Jun 16 12:53 /dev/nvidia0\ncrw-rw-rw- 1 root root 195,   1 Jun 16 12:53 /dev/nvidia1\ncrw-rw-rw- 1 root root 195,   2 Jun 16 12:53 /dev/nvidia2\ncrw-rw-rw- 1 root root 195,   3 Jun 16 12:53 /dev/nvidia3\ncrw-rw-rw- 1 root root 195,   4 Jun 16 12:53 /dev/nvidia4\ncrw-rw-rw- 1 root root 195,   5 Jun 16 12:53 /dev/nvidia5\ncrw-rw-rw- 1 root root 195,   6 Jun 16 12:53 /dev/nvidia6\ncrw-rw-rw- 1 root root 195,   7 Jun 16 12:53 /dev/nvidia7\ncrw-rw-rw- 1 root root 195, 255 Jun 16 12:53 /dev/nvidiactl\n\n/dev/nvidia-caps:\ntotal 0\ncr-------- 1 root root 505, 0 Jun 16 12:53 nvidia-cap0\ncr-------- 1 root root 505, 1 Jun 16 12:53 nvidia-cap1\ncr--r--r-- 1 root root 505, 2 Jun 16 12:53 nvidia-cap2"
+  },
+  "groups": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "jinzhihong"
+  },
+  "hostname": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "huaxiyun085"
+  },
+  "id": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "uid=1034(jinzhihong) gid=1034(jinzhihong) groups=1034(jinzhihong)"
+  },
+  "lsmod_nvidia": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "nvidia_uvm           4648960  24\nnvidia_drm             98304  0\nnvidia_modeset       1343488  1 nvidia_drm\nnvidia              54018048  699 nvidia_uvm,nvidia_modeset\nnouveau              2306048  0"
+  },
+  "lspci_nvidia": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "51:00.0 3D controller: NVIDIA Corporation GA100 [A100 SXM4 80GB] (rev a1)\n56:00.0 3D controller: NVIDIA Corporation GA100 [A100 SXM4 80GB] (rev a1)\n6b:00.0 3D controller: NVIDIA Corporation GA100 [A100 SXM4 80GB] (rev a1)\n71:00.0 3D controller: NVIDIA Corporation GA100 [A100 SXM4 80GB] (rev a1)\n8a:00.0 3D controller: NVIDIA Corporation GA100 [A100 SXM4 80GB] (rev a1)\n8e:00.0 3D controller: NVIDIA Corporation GA100 [A100 SXM4 80GB] (rev a1)\n97:00.0 Bridge: NVIDIA Corporation Device 1af1 (rev a1)\n98:00.0 Bridge: NVIDIA Corporation Device 1af1 (rev a1)\n99:00.0 Bridge: NVIDIA Corporation Device 1af1 (rev a1)\n9a:00.0 Bridge: NVIDIA Corporation Device 1af1 (rev a1)\n9b:00.0 Bridge: NVIDIA Corporation Device 1af1 (rev a1)\n9c:00.0 Bridge: NVIDIA Corporation Device 1af1 (rev a1)\nd9:00.0 3D controller: NVIDIA Corporation GA100 [A100 SXM4 80GB] (rev a1)\ndc:00.0 3D controller: NVIDIA Corporation GA100 [A100 SXM4 80GB] (rev a1)"
+  },
+  "nvcc_version": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2021 NVIDIA Corporation\nBuilt on Thu_Nov_18_09:45:30_PST_2021\nCuda compilation tools, release 11.5, V11.5.119\nBuild cuda_11.5.r11.5/compiler.30672275_0"
+  },
+  "nvidia_smi": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Sat Jun 20 15:27:48 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |\n|-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA A100-SXM4-80GB          Off |   00000000:51:00.0 Off |                    0 |\n| N/A   36C    P0             63W /  400W |       3MiB /  81920MiB |      0%      Default |\n|                                         |                        |             Disabled |\n+-----------------------------------------+------------------------+----------------------+\n|   1  NVIDIA A100-SXM4-80GB          Off |   00000000:56:00.0 Off |                    0 |\n| N/A   32C    P0             69W /  400W |   12937MiB /  81920MiB |      0%      Default |\n|                                         |                        |             Disabled |\n+-----------------------------------------+------------------------+----------------------+\n|   2  NVIDIA A100-SXM4-80GB          Off |   00000000:6B:00.0 Off |                    0 |\n| N/A   32C    P0             63W /  400W |       3MiB /  81920MiB |      0%      Default |\n|                                         |                        |             Disabled |\n+-----------------------------------------+------------------------+----------------------+\n|   3  NVIDIA A100-SXM4-80GB          Off |   00000000:71:00.0 Off |                    0 |\n| N/A   42C    P0            109W /  400W |   22915MiB /  81920MiB |     44%      Default |\n|                                         |                        |             Disabled |\n+-----------------------------------------+------------------------+----------------------+\n|   4  NVIDIA A100-SXM4-80GB          Off |   00000000:8A:00.0 Off |                    0 |\n| N/A   37C    P0             65W /  400W |       3MiB /  81920MiB |      0%      Default |\n|                                         |                        |             Disabled |\n+-----------------------------------------+------------------------+----------------------+\n|   5  NVIDIA A100-SXM4-80GB          Off |   00000000:8E:00.0 Off |                    0 |\n| N/A   32C    P0             69W /  400W |    7498MiB /  81920MiB |      0%      Default |\n|                                         |                        |             Disabled |\n+-----------------------------------------+------------------------+----------------------+\n|   6  NVIDIA A100-SXM4-80GB          Off |   00000000:D9:00.0 Off |                    0 |\n| N/A   32C    P0             62W /  400W |       5MiB /  81920MiB |      0%      Default |\n|                                         |                        |             Disabled |\n+-----------------------------------------+------------------------+----------------------+\n|   7  NVIDIA A100-SXM4-80GB          Off |   00000000:DC:00.0 Off |                    0 |\n| N/A   36C    P0             64W /  400W |       3MiB /  81920MiB |      0%      Default |\n|                                         |                        |             Disabled |\n+-----------------------------------------+------------------------+----------------------+\n                                                                                         \n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    1   N/A  N/A   3308135      C   ...nda3/envs/assetwm_core39/bin/python      12928MiB |\n|    3   N/A  N/A    159310      C   ...nda3/envs/assetwm_core39/bin/python      22906MiB |\n|    5   N/A  N/A    294652      C   ...nda3/envs/assetwm_core39/bin/python       2996MiB |\n|    5   N/A  N/A   3207148      C   ...nvm/versions/node/v24.14.0/bin/node        722MiB |\n|    5   N/A  N/A   3207177      C   ...nvm/versions/node/v24.14.0/bin/node        746MiB |\n|    5   N/A  N/A   3207204      C   ...nvm/versions/node/v24.14.0/bin/node        718MiB |\n|    5   N/A  N/A   3207233      C   ...nvm/versions/node/v24.14.0/bin/node       1544MiB |\n|    5   N/A  N/A   3207239      C   ...nvm/versions/node/v24.14.0/bin/node        736MiB |\n+-----------------------------------------------------------------------------------------+"
+  },
+  "nvidia_smi_L": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "GPU 0: NVIDIA A100-SXM4-80GB (UUID: GPU-4b56bcb6-6300-8eff-ac2b-3e4d9e135133)\nGPU 1: NVIDIA A100-SXM4-80GB (UUID: GPU-32d0e3c4-d542-4270-5cc3-34c3dad1b2d0)\nGPU 2: NVIDIA A100-SXM4-80GB (UUID: GPU-a5463dd9-9d03-6aae-e984-516940f76913)\nGPU 3: NVIDIA A100-SXM4-80GB (UUID: GPU-812b941b-e6b4-fb4b-7355-44b437a1e226)\nGPU 4: NVIDIA A100-SXM4-80GB (UUID: GPU-ce181669-5226-7058-ce2d-3cac6c10f071)\nGPU 5: NVIDIA A100-SXM4-80GB (UUID: GPU-c15bb15b-1bff-7bde-cf30-484b85ca0fc2)\nGPU 6: NVIDIA A100-SXM4-80GB (UUID: GPU-18a5b19a-072e-34ce-ca04-d2938deefa1e)\nGPU 7: NVIDIA A100-SXM4-80GB (UUID: GPU-9fd5c84b-d74f-d338-1486-d3592cf5fe92)"
+  },
+  "nvidia_smi_query": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "0, NVIDIA A100-SXM4-80GB, 81920 MiB, 3 MiB, 0 %, 550.54.15\n1, NVIDIA A100-SXM4-80GB, 81920 MiB, 12937 MiB, 0 %, 550.54.15\n2, NVIDIA A100-SXM4-80GB, 81920 MiB, 3 MiB, 0 %, 550.54.15\n3, NVIDIA A100-SXM4-80GB, 81920 MiB, 22915 MiB, 39 %, 550.54.15\n4, NVIDIA A100-SXM4-80GB, 81920 MiB, 3 MiB, 0 %, 550.54.15\n5, NVIDIA A100-SXM4-80GB, 81920 MiB, 7498 MiB, 0 %, 550.54.15\n6, NVIDIA A100-SXM4-80GB, 81920 MiB, 5 MiB, 0 %, 550.54.15\n7, NVIDIA A100-SXM4-80GB, 81920 MiB, 3 MiB, 0 %, 550.54.15"
+  },
+  "proc_driver_nvidia": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "NVRM version: NVIDIA UNIX x86_64 Kernel Module  550.54.15  Tue Mar  5 22:23:56 UTC 2024\nGCC version:  gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3)"
+  },
+  "slurm_env": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "systemctl_nvidia_persistenced": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "inactive"
+  },
+  "uname": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Linux huaxiyun085 5.15.0-181-generic #191-Ubuntu SMP Fri May 22 19:09:02 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux"
+  },
+  "which_nvcc": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "/usr/bin/nvcc"
+  },
+  "which_nvidia_smi": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "/usr/bin/nvidia-smi"
+  }
+}
