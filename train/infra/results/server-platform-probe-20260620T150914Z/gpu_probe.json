@@ -1,0 +1,25 @@
+{
+  "nvcc": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2021 NVIDIA Corporation\nBuilt on Thu_Nov_18_09:45:30_PST_2021\nCuda compilation tools, release 11.5, V11.5.119\nBuild cuda_11.5.r11.5/compiler.30672275_0"
+  },
+  "nvidia_smi": {
+    "ok": false,
+    "returncode": 9,
+    "stderr": "",
+    "stdout": "NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running."
+  },
+  "torch": {
+    "available": true,
+    "bf16_supported": false,
+    "cuda_available": false,
+    "cuda_build": "12.4",
+    "cuda_tensor_smoke": false,
+    "device_count": 0,
+    "devices": [],
+    "error": null,
+    "version": "2.6.0+cu124"
+  }
+}

@@ -1,0 +1,14 @@
+run_id=server-platform-probe-20260620T150914Z
+job_path=train/infra/jobs/phase1_server_platform_probe.yaml
+status=BLOCKED_GPU
+hostname=huaxiyun085
+python_executable=/data/jinzhihong/envs/vaevas-rl/bin/python
+python_version=3.11.15
+git_branch=training-paper-design-20260620
+git_commit=fcbce2f1a1f89c56edd4ab6fc44f79e585ea341e
+gpu_ready=False
+sft_stack_ready=False
+grpo_stack_ready=False
+known_model_found=True
+blocking_reasons=gpu_not_ready
+warnings=flash_attn_missing_optional

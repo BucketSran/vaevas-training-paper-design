@@ -1,0 +1,13 @@
+run_id=server-platform-probe-20260620T150914Z
+job_path=train/infra/jobs/phase1_server_platform_probe.yaml
+python_bin=/data/jinzhihong/envs/vaevas-rl/bin/python
+model_paths=/data/jinzhihong/vaEVAS/models/base/Qwen2.5-Coder-7B-Instruct-vaevas /data/jinzhihong/vaEVAS/models/base/Qwen2.5-Coder-7B-Instruct
+repo_root=/data/jinzhihong/vaevas-training-paper-design
+$ /data/jinzhihong/envs/vaevas-rl/bin/python - <platform_probe.py>
+server_platform_probe_status=BLOCKED_GPU
+result_dir=train/infra/results/server-platform-probe-20260620T150914Z
+gpu_ready=False
+sft_stack_ready=False
+grpo_stack_ready=False
+blocking_reasons=gpu_not_ready
+warnings=flash_attn_missing_optional

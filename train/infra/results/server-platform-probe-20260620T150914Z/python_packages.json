@@ -1,0 +1,67 @@
+{
+  "accelerate": {
+    "available": true,
+    "error": null,
+    "version": "1.13.0"
+  },
+  "datasets": {
+    "available": true,
+    "error": null,
+    "version": "5.0.0"
+  },
+  "deepspeed": {
+    "available": false,
+    "error": null,
+    "version": null
+  },
+  "flash_attn": {
+    "available": false,
+    "error": null,
+    "version": null
+  },
+  "peft": {
+    "available": true,
+    "error": null,
+    "version": "0.19.1"
+  },
+  "pydantic": {
+    "available": true,
+    "error": null,
+    "version": "2.13.4"
+  },
+  "ray": {
+    "available": true,
+    "error": null,
+    "version": "2.55.1"
+  },
+  "torch": {
+    "available": true,
+    "error": null,
+    "version": "2.6.0+cu124"
+  },
+  "transformers": {
+    "available": true,
+    "error": null,
+    "version": "4.51.3"
+  },
+  "trl": {
+    "available": true,
+    "error": null,
+    "version": "0.18.2"
+  },
+  "verl": {
+    "available": true,
+    "error": null,
+    "version": "0.9.0.dev0"
+  },
+  "vllm": {
+    "available": true,
+    "error": null,
+    "version": "0.8.5.post1"
+  },
+  "yaml": {
+    "available": true,
+    "error": null,
+    "version": "6.0.3"
+  }
+}
