@@ -27,8 +27,14 @@ protected_index
   -> sft_pack_manifest / grpo_prompt_manifest
 ```
 
-These files are not training data. They use fake hashes and placeholder artifact
-paths to test field names, references, and state transitions.
+These files are not training data. Report-level hashes remain fixture values for
+cross-reference testing, while the toy candidate's contract and artifact hashes
+now bind to real fixture files so local packers can fail closed on hash mismatch.
+
+The current toy candidate also includes tiny fixture-only artifacts under
+`examples/artifacts/` so local packers can verify file hashes and emit temporary
+SFT/GRPO JSONL under `/private/tmp` during smoke tests. These artifacts are not
+paper training data.
 
 Validate the current examples with:
 

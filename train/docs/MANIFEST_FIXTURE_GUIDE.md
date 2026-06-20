@@ -240,18 +240,20 @@ GRPO prompt = exam question without answer, graded by verifier reward
 The validator checks that the transcript and grading sheets refer to the same
 student, question, and evidence.
 
-## Next Implementation Step
+## Current Implementation Status
 
-The next useful implementation is to turn this fixture validator into reusable
-schema modules for real Phase 1 pipelines:
+The fixture validator has now been split into reusable schema and local pipeline
+tools:
 
 ```text
-train/schemas/manifests.py
+train/pipelines/manifest_schemas.py
 train/pipelines/build_protected_index.py
 train/pipelines/check_contamination.py
 train/pipelines/pack_sft.py
 train/pipelines/pack_grpo.py
 ```
 
-Do not start bulk LLM synthesis before the protected index writer and
-contamination checker exist.
+The closed-loop relationship is documented in
+`PHASE1_CLOSED_LOOP_PIPELINES.md`. Do not start bulk LLM synthesis before the
+protected index and contamination checker are run against the actual protected
+vaBench release assets.

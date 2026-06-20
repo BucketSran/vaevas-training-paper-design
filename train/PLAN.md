@@ -6,9 +6,9 @@
 
 ### Status
 In progress. Phase 0 design docs are complete enough to proceed. Phase 1
-parameter choices, manifest interfaces, minimal toy fixtures, remote platform
-memory, and the server-free local execution plan are now materialized under
-`docs/`, `data/manifests/examples/`, and `pipelines/`.
+parameter choices, manifest interfaces, minimal toy fixtures, local closed-loop
+pipeline tools, remote platform memory, and the server-free local execution plan
+are now materialized under `docs/`, `data/manifests/examples/`, and `pipelines/`.
 
 No clean-room training data has been admitted yet. Current work is limited to
 schema discipline, toy manifest fixtures, local validators, and learning
@@ -23,8 +23,9 @@ documentation that explains how contracts become SFT/GRPO training examples.
 | 3 | Add minimal manifest fixtures | `data/manifests/examples/*.yaml` | Candidate → report → admitted → SFT/GRPO refs are internally consistent |
 | 4 | Add fixture validator | `pipelines/validate_manifest_fixtures.py` | `python3 -m train.pipelines.validate_manifest_fixtures` passes |
 | 5 | Add learning guide | `docs/MANIFEST_FIXTURE_GUIDE.md` | Explains contract, manifest, admitted item, SFT pack, and GRPO prompt with a toy example |
-| 6 | Draft reusable schema modules | `pipelines/manifest_schemas.py` or equivalent | Unit tests cover valid fixtures and common invalid cases |
-| 7 | Draft first packer | `pipelines/build_sft_pack.py` | Emits JSONL from admitted manifests without leaking held-out or GRPO-forbidden fields |
+| 6 | Draft reusable schema modules | `pipelines/manifest_schemas.py` | Fixture validator and packers import shared Pydantic models |
+| 7 | Draft local packers | `pipelines/pack_sft.py`, `pipelines/pack_grpo.py` | Emits JSONL from admitted manifests; GRPO prompt leak check passes |
+| 8 | Draft contamination gate | `pipelines/build_protected_index.py`, `pipelines/check_contamination.py` | Clean fixture passes; exact-hash negative control rejects |
 
 ### Decisions already accepted
 
@@ -40,8 +41,8 @@ documentation that explains how contracts become SFT/GRPO training examples.
 
 1. **Synthesis LLM choice** — Claude / GPT / both, plus cost and review budget.
 2. **First batch size** — keep small enough for manual audit but large enough to test L0/L1/L2/task-form diversity.
-3. **Validator promotion** — decide whether toy-fixture Pydantic models become the canonical schema module or get split into package-style modules first.
-4. **Spectre shadow schedule** — choose exact pilot cadence once real candidates exist.
+3. **Spectre shadow schedule** — choose exact pilot cadence once real candidates exist.
+4. **First real synthesis protocol** — decide how many clean-room candidates to generate before EVAS verification and manual review.
 
 ### Non-tasks
 

@@ -1,0 +1,4 @@
+// Fixture-only Spectre-style testbench placeholder.
+// It is not used for paper claims.
+simulator lang=spectre
+global 0

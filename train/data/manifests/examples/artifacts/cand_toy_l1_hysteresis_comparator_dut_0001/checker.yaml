@@ -1,0 +1,11 @@
+fixture_only: true
+candidate_id: cand_toy_l1_hysteresis_comparator_dut_0001
+properties:
+  - id: rail_bounds
+    type: voltage_bounds
+  - id: rising_threshold
+    type: threshold_crossing
+  - id: falling_threshold
+    type: threshold_crossing
+  - id: no_chatter
+    type: event_count

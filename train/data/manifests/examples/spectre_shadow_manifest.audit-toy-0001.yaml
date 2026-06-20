@@ -17,9 +17,9 @@ items:
   - candidate_id: cand_toy_l1_hysteresis_comparator_dut_0001
     contract_id: cg_l1_hysteresis_comparator_dut_0001
     artifact_hashes:
-      dut_va: sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-      tb_scs: sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-      checker_yaml: sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+      dut_va: sha256:ced917b9d1989936b64b44934f01867e0b7960c2c5fa128e6507213e11b91835
+      tb_scs: sha256:528043651f61fba5abbab0a9370cb6368b0233cdf5cfcf5d5d5f8af3badb4fcf
+      checker_yaml: sha256:56300b5826f8379f562eb8e5136071f63133058c4ed56f0b7d753fac464bf557
 spectre_shadow_manifest_hash: sha256:6666666666666666666666666666666666666666666666666666666666666666
 fixture_notes:
   - No Spectre command was run for this fixture.

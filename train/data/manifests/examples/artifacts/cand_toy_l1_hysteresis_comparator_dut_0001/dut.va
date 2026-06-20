@@ -1,0 +1,27 @@
+`include "constants.vams"
+`include "disciplines.vams"
+
+module hysteresis_comparator(inp, inn, out);
+  input inp, inn;
+  output out;
+  electrical inp, inn, out;
+
+  parameter real vhi = 1.2;
+  parameter real vlo = 0.0;
+  parameter real vhyst = 0.02;
+  parameter real td = 1.0e-10;
+  parameter real tr = 2.0e-11;
+
+  integer state;
+  real vdiff;
+  real target;
+
+  analog begin
+    @(initial_step) state = 0;
+    vdiff = V(inp) - V(inn);
+    @(cross(vdiff - vhyst / 2.0, +1)) state = 1;
+    @(cross(vdiff + vhyst / 2.0, -1)) state = 0;
+    target = state ? vhi : vlo;
+    V(out) <+ transition(target, td, tr, tr);
+  end
+endmodule

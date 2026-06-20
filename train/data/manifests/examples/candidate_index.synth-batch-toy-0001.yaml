@@ -10,7 +10,7 @@ items:
   - candidate_id: cand_toy_l1_hysteresis_comparator_dut_0001
     contract_id: cg_l1_hysteresis_comparator_dut_0001
     contract_ref: data/contracts/examples/l1_hysteresis_comparator_dut.yaml
-    contract_sha256: sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+    contract_sha256: sha256:bb8f20ec74f1a6e76a636175e668cadc3665f1d3276d97d9dfdef6b8f4d56d06
     state: evas_verified
     level: L1
     task_form: dut
@@ -29,13 +29,13 @@ items:
           - copy_release_prompt
           - copy_release_gold
     artifact_refs:
-      dut_va: data/synthesized/synth-batch-toy-0001/cand_toy_l1_hysteresis_comparator_dut_0001/dut.va
-      tb_scs: data/synthesized/synth-batch-toy-0001/cand_toy_l1_hysteresis_comparator_dut_0001/tb.scs
-      checker_yaml: data/synthesized/synth-batch-toy-0001/cand_toy_l1_hysteresis_comparator_dut_0001/checker.yaml
+      dut_va: data/manifests/examples/artifacts/cand_toy_l1_hysteresis_comparator_dut_0001/dut.va
+      tb_scs: data/manifests/examples/artifacts/cand_toy_l1_hysteresis_comparator_dut_0001/tb.scs
+      checker_yaml: data/manifests/examples/artifacts/cand_toy_l1_hysteresis_comparator_dut_0001/checker.yaml
     artifact_hashes:
-      dut_va: sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-      tb_scs: sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-      checker_yaml: sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+      dut_va: sha256:ced917b9d1989936b64b44934f01867e0b7960c2c5fa128e6507213e11b91835
+      tb_scs: sha256:528043651f61fba5abbab0a9370cb6368b0233cdf5cfcf5d5d5f8af3badb4fcf
+      checker_yaml: sha256:56300b5826f8379f562eb8e5136071f63133058c4ed56f0b7d753fac464bf557
     allowed_features:
       domain: voltage
       event_driven: true
