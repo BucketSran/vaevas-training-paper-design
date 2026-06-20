@@ -15,10 +15,12 @@ future automation to know what command was intended.
 | `phase1_gpu_blocker_diagnosis.yaml` | Diagnose `BLOCKED_GPU` without package installs, driver changes, or training. |
 | `phase1_tiny_sft_smoke.yaml` | Run two-step LoRA SFT smoke on toy admitted data and upload small evidence files. |
 | `phase1_prompt_gate.yaml` | Validate pilot prompt rendering without LLM calls, training, EVAS, or Spectre. |
+| `phase1_contract_synthesis_smoke.yaml` | Generate five draft contract YAMLs from clean-room prompts and upload a small review result directory. |
 | `REMOTE_CODEX_TASK_PLATFORM_PROBE.md` | Copy-paste instructions for a remote Codex session controlling the server. |
 | `REMOTE_CODEX_TASK_GPU_BLOCKER.md` | Copy-paste instructions for remote Codex to diagnose GPU visibility and rerun platform probe only after safe session-level fixes. |
 | `REMOTE_CODEX_TASK_TINY_SFT_SMOKE.md` | Copy-paste instructions for remote Codex to run tiny SFT smoke after platform `READY`. |
 | `REMOTE_CODEX_TASK_PROMPT_GATE.md` | Copy-paste instructions for remote Codex to validate the prompt gate. |
+| `REMOTE_CODEX_TASK_CONTRACT_SYNTHESIS_SMOKE.md` | Copy-paste instructions for remote Codex to run the one-shot contract synthesis smoke and return summary directly. |
 
 ## Job Rules
 
@@ -31,3 +33,4 @@ future automation to know what command was intended.
 - GPU blocker diagnosis must not run `sudo`, install packages, or change drivers.
 - Tiny SFT smoke may write adapters/checkpoints only to an untracked work directory; never commit them.
 - Prompt gate jobs must not call external LLM APIs or commit rendered prompt JSONL.
+- Contract synthesis smoke may commit exactly five draft contract YAML files plus their generated contract index as review evidence; it must not commit Verilog-A artifacts or training packs.

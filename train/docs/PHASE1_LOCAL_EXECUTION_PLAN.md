@@ -140,6 +140,23 @@ Status: prompt gate prepared at `CONTRACT_REVIEW_CHECKLIST.md`,
 `../data/prompts/templates/`, and `../pipelines/render_pilot_prompts.py`. It
 renders 15 scratch prompt records for the five pilot seed candidates.
 
+### Step 7: Contract synthesis smoke package
+
+Before asking the remote server to create draft contracts, prepare:
+
+- synthesis run plan with hash-stable policy fields;
+- request packer that filters only `contract_proposal` prompts;
+- generated contract index writer;
+- generated contract validator;
+- one-shot remote Codex task that returns final summary directly.
+
+Status: prepared as
+`../data/manifests/synthesis/synthesis_run.contract-smoke-0001.yaml`,
+`../pipelines/prepare_contract_synthesis_requests.py`,
+`../pipelines/write_generated_contract_index.py`,
+`../pipelines/validate_generated_contracts.py`, and
+`../infra/jobs/REMOTE_CODEX_TASK_CONTRACT_SYNTHESIS_SMOKE.md`.
+
 ## Decisions Not Reopened
 
 Do not reopen these unless new evidence breaks them:

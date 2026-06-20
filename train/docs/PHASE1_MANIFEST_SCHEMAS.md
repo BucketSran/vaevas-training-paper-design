@@ -193,6 +193,66 @@ Rules:
 - Rendered records should go to a temp directory unless intentionally promoted
   as a tiny fixture.
 
+## Synthesis Run Plan
+
+File:
+
+```text
+data/manifests/synthesis/synthesis_run.<run_id>.yaml
+```
+
+Purpose: define a bounded synthesis job before any model creates draft
+contracts or artifacts.
+
+Current smoke run:
+
+```text
+data/manifests/synthesis/synthesis_run.contract-smoke-0001.yaml
+```
+
+Required policy blocks:
+
+| Block | Purpose |
+| --- | --- |
+| `prompt_selection` | Which rendered prompt kinds can be used and how many requests are allowed. |
+| `model_policy` | Whether external APIs are allowed and how many contracts may be created. |
+| `output_policy` | What the job may write and what it must not write. |
+| `review_policy` | Manual/mechanical review requirements before downstream stages. |
+| `validation_policy` | Required validators before outputs can be committed. |
+| `remote_handoff` | One-shot return and commit behavior for server-mediated work. |
+
+The current smoke permits only `contract_proposal` prompts and forbids
+Verilog-A artifacts, SFT/GRPO packs, simulator outputs, and checkpoints.
+
+## Generated Contract Index
+
+File:
+
+```text
+train/infra/results/<run_id>/generated_contract_index.yaml
+```
+
+Purpose: index draft contract YAMLs produced by a synthesis smoke run. This is
+review evidence, not admitted training data.
+
+Required fields:
+
+| Field | Meaning |
+| --- | --- |
+| `run_id` | Synthesis run ID. |
+| `synthesis_run_hash` | Hash of the run plan. |
+| `source_refs` | Run plan, request JSONL, and contracts directory. |
+| `summary` | Counts by decision, level, task form, and category. |
+| `items` | Contract refs, hashes, prompt refs, seed refs, and mechanical review output. |
+| `generated_contract_index_hash` | Stable hash of the index payload. |
+
+Current validators:
+
+```text
+train/pipelines/write_generated_contract_index.py
+train/pipelines/validate_generated_contracts.py
+```
+
 ## Protected Index
 
 File:

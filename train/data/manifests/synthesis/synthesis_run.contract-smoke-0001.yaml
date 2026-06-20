@@ -1,0 +1,73 @@
+schema_version: phase1.v0.1
+run_id: contract-synthesis-smoke-0001
+purpose: 'Prepare a one-shot remote contract synthesis smoke from the five pilot clean-room
+  seed candidates. This run may create draft contract YAML files for review, but it
+  must not generate Verilog-A artifacts, training data, EVAS reports, Spectre reports,
+  SFT packs, or GRPO packs.
+
+  '
+producer:
+  name: local_codex
+  version: phase1-contract-synthesis-smoke
+  git_commit: null
+seed_catalog_ref: data/seeds/seed_catalog.phase1-pilot-0001.yaml
+seed_catalog_hash: sha256:50026df993449be89a244425765c20f51dece035dd0a04c28d8bd3e70a68b056
+pilot_plan_ref: data/manifests/pilot/batch_plan.synth-batch-pilot-0001.yaml
+pilot_plan_hash: sha256:eabc9f9f81a4cc2566ecdf3695119729b3dc74efd7adb605415be5b372ef1b38
+prompt_template_dir: data/prompts/templates
+prompt_selection:
+  include_prompt_kinds:
+  - contract_proposal
+  max_requests: 5
+  require_one_request_per_planned_seed: true
+  exclude_prompt_kinds:
+  - contract_review
+  - artifact_proposal
+model_policy:
+  execution_mode: remote_codex_or_llm
+  allowed_models:
+  - remote_codex_default
+  - user_approved_llm
+  external_api_allowed: false
+  max_contracts: 5
+  require_model_ref_in_index: true
+output_policy:
+  result_root_template: train/infra/results/contract-synthesis-smoke-YYYYMMDDTHHMMSSZ
+  required_files:
+  - status.txt
+  - summary.json
+  - commands.log
+  - generated_contract_index.yaml
+  allowed_generated_files:
+  - contracts/*.yaml
+  forbidden_outputs:
+  - Verilog-A artifacts
+  - SFT JSONL
+  - GRPO JSONL
+  - model checkpoints
+  - simulator dumps
+  - secrets or .env files
+  commit_result_dir: true
+review_policy:
+  mechanical_review_required: true
+  manual_review_required_before_artifact_generation: true
+  accept_labels:
+  - needs_manual_review
+  reject_labels:
+  - reject
+  - quarantine
+validation_policy:
+  require_synthesis_run_validation: true
+  require_contract_schema_validation: true
+  require_generated_contract_index: true
+  require_no_training_data_generated: true
+  require_no_llm_api_when_external_api_allowed_false: true
+remote_handoff:
+  one_shot_required: true
+  return_summary_in_final_response: true
+  commit_small_result_dir: true
+  remote_task_ref: infra/jobs/REMOTE_CODEX_TASK_CONTRACT_SYNTHESIS_SMOKE.md
+fixture_notes:
+- This plan prepares a tiny smoke run only.
+- Draft contracts produced by this run are review inputs, not admitted data.
+synthesis_run_hash: sha256:db353834ee9d676957167131a8ec1644e77dc5514570778b27468561278869d1

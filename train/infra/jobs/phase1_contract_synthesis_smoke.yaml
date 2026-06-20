@@ -1,0 +1,49 @@
+schema_version: phase1.job.v0.1
+job_id: phase1_contract_synthesis_smoke
+purpose: >
+  Generate five draft contract YAML files from clean-room pilot contract
+  proposal requests, validate them mechanically, and upload only a small result
+  directory for local review.
+branch: training-paper-design-20260620
+entrypoint:
+  command: follow train/infra/jobs/REMOTE_CODEX_TASK_CONTRACT_SYNTHESIS_SMOKE.md
+permissions:
+  uses_gpu: false
+  writes_checkpoints: false
+  writes_generated_training_data: false
+  writes_draft_contracts: true
+  may_push_results_to_github: true
+  may_commit_checkpoints: false
+  may_commit_model_weights: false
+  may_call_external_llm_api: false
+inputs:
+  synthesis_run: train/data/manifests/synthesis/synthesis_run.contract-smoke-0001.yaml
+  request_script: train/pipelines/prepare_contract_synthesis_requests.py
+  generated_contract_writer: train/pipelines/write_generated_contract_index.py
+  generated_contract_validator: train/pipelines/validate_generated_contracts.py
+outputs:
+  result_root: train/infra/results/contract-synthesis-smoke-<YYYYMMDDTHHMMSSZ>
+  required_committed_files:
+    - status.txt
+    - summary.json
+    - commands.log
+    - generated_contract_index.yaml
+    - contracts/*.yaml
+  forbidden_committed_files:
+    - /tmp/vaevas_*_requests/*
+    - model checkpoints
+    - Verilog-A artifacts
+    - SFT JSONL
+    - GRPO JSONL
+expected_assertions:
+  status: PASS
+  contract_count: 5
+  training_data_admitted: false
+  verilog_a_generated: false
+  evas_run: false
+  spectre_run: false
+  sft_run: false
+  grpo_run: false
+notes:
+  - Draft contract YAMLs are review inputs only.
+  - Manual review and contamination checks remain required before artifact generation.

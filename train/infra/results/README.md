@@ -12,6 +12,8 @@ Allowed:
 - small one-item toy JSONL files produced by the smoke, if needed for debugging
 - tiny smoke evidence such as `loss.csv`, `sample_generation.txt`, and adapter
   manifests that do not contain model weights
+- small draft contract synthesis smoke results, including
+  `generated_contract_index.yaml` and a bounded `contracts/*.yaml` review set
 
 Forbidden:
 
@@ -19,6 +21,7 @@ Forbidden:
 - LoRA adapters;
 - merged model weights;
 - full generated training datasets;
+- bulk generated contract/candidate corpora;
 - raw simulator outputs or waveform dumps;
 - secrets, tokens, `.env` files;
 - wandb local directories.

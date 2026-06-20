@@ -71,3 +71,24 @@ python3 -m train.pipelines.render_pilot_prompts --out-dir /tmp/vaevas_phase1_pro
 
 Rendered prompt JSONL is scratch synthesis input and should not be committed
 unless a later task explicitly promotes it as a small fixture.
+
+## Current Synthesis Run Plan
+
+`synthesis/` contains the first one-shot contract synthesis smoke plan:
+
+```text
+data/manifests/synthesis/synthesis_run.contract-smoke-0001.yaml
+  -> /tmp/vaevas_contract_synthesis_requests/contract_synthesis_requests.jsonl
+  -> train/infra/results/contract-synthesis-smoke-<timestamp>/
+```
+
+Validate and prepare requests with:
+
+```bash
+python3 -m train.pipelines.validate_synthesis_run
+python3 -m train.pipelines.prepare_contract_synthesis_requests --out-dir /tmp/vaevas_contract_synthesis_requests
+```
+
+The smoke run may produce five draft contract YAML files for review evidence,
+but it must not generate Verilog-A artifacts, admitted data, SFT JSONL, or GRPO
+JSONL.

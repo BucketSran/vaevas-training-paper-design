@@ -21,6 +21,11 @@ manifests, not raw generated candidates.
 | `validate_manifest_fixtures.py` | Validate toy Phase 1 manifest fixtures and cross-manifest references | `data/manifests/examples/` | exit 0 if schemas and references are coherent |
 | `validate_pilot_plan.py` | Validate the clean-room seed catalog and pilot batch plan before generation | seed catalog + pilot batch plan | exit 0 if hashes, provenance, coverage, and gates are coherent |
 | `render_pilot_prompts.py` | Render contract proposal/review/artifact prompt records from the pilot plan without calling an LLM | seed catalog + pilot plan + templates | scratch JSONL + summary under temp output dir |
+| `validate_synthesis_run.py` | Validate a synthesis run plan before any LLM generation | synthesis run YAML | exit 0 if hashes, refs, prompt selection, and handoff policy are coherent |
+| `prepare_contract_synthesis_requests.py` | Write contract-proposal request JSONL for a synthesis run without calling an LLM | synthesis run YAML | scratch request JSONL + summary |
+| `contract_review_gate.py` | Shared mechanical contract review checks | contract YAML + schema | review decision, blockers, warnings |
+| `write_generated_contract_index.py` | Validate generated draft contracts and write an index | contracts dir + request JSONL + synthesis run | generated contract index YAML |
+| `validate_generated_contracts.py` | Revalidate a generated contract index and referenced contracts | generated contract index | exit 0 if contract refs, hashes, and mechanical review are coherent |
 | `manifest_schemas.py` | Shared Pydantic models and hash/IO helpers | YAML/jsonl payloads | validated manifest objects |
 | `pipeline_common.py` | Shared contract-summary and packer helpers | contract YAML + artifacts | model-visible prompt/record text |
 
@@ -47,6 +52,10 @@ python -m train.pipelines.pack_grpo --admitted-manifest <path> --candidate-index
 python -m train.pipelines.validate_manifest_fixtures
 python -m train.pipelines.validate_pilot_plan
 python -m train.pipelines.render_pilot_prompts --out-dir /tmp/vaevas_phase1_prompt_gate
+python -m train.pipelines.validate_synthesis_run
+python -m train.pipelines.prepare_contract_synthesis_requests --out-dir /tmp/vaevas_contract_synthesis_requests
+python -m train.pipelines.write_generated_contract_index --contracts-dir <contracts-dir> --request-jsonl <request-jsonl> --out <generated_contract_index.yaml> --expect-count 5
+python -m train.pipelines.validate_generated_contracts --index <generated_contract_index.yaml> --expect-count 5
 ```
 
 Toy closed-loop smoke commands are documented in

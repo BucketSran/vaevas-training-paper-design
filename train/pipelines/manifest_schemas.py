@@ -364,6 +364,54 @@ class PilotBatchPlan(BatchPlan):
     pilot_plan_hash: str
 
 
+class SynthesisRunPlan(FixtureNotes):
+    schema_version: str
+    run_id: str
+    purpose: str
+    producer: Producer
+    seed_catalog_ref: str
+    seed_catalog_hash: str
+    pilot_plan_ref: str
+    pilot_plan_hash: str
+    prompt_template_dir: str
+    prompt_selection: dict[str, Any]
+    model_policy: dict[str, Any]
+    output_policy: dict[str, Any]
+    review_policy: dict[str, Any]
+    validation_policy: dict[str, Any]
+    remote_handoff: dict[str, Any]
+    synthesis_run_hash: str
+
+
+class GeneratedContractItem(StrictModel):
+    generated_contract_id: str
+    contract_ref: str
+    contract_sha256: str
+    source_prompt_id: str
+    prompt_sha256: str | None = None
+    seed_ids: list[str]
+    category: str
+    level: Literal["L0", "L1", "L2"]
+    task_form: Literal["dut", "tb", "bugfix", "e2e", "conformance"]
+    split_key: str
+    model_ref: str
+    generation_kind: str
+    mechanical_review: dict[str, Any]
+    intended_next_stage: str
+    notes: list[str]
+
+
+class GeneratedContractIndex(FixtureNotes):
+    schema_version: str
+    run_id: str
+    synthesis_run_hash: str
+    producer: Producer
+    source_refs: dict[str, str]
+    summary: dict[str, Any]
+    items: list[GeneratedContractItem]
+    generated_contract_index_hash: str
+
+
 class FixtureBundle(StrictModel):
     batch_plan: BatchPlan
     protected_index: ProtectedIndex

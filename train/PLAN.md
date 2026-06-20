@@ -34,6 +34,7 @@ documentation that explains how contracts become SFT/GRPO training examples.
 | 13 | Draft tiny SFT smoke | `docs/SERVER_TINY_SFT_SMOKE.md`, `infra/run_tiny_sft_smoke.sh`, `train_sft/tiny_sft_smoke.py` | Remote can run two LoRA SFT steps on toy admitted data and upload evidence only |
 | 14 | Draft clean-room pilot gate | `data/seeds/seed_catalog.phase1-pilot-0001.yaml`, `data/manifests/pilot/batch_plan.synth-batch-pilot-0001.yaml`, `pipelines/validate_pilot_plan.py` | `python3 -m train.pipelines.validate_pilot_plan` passes |
 | 15 | Draft prompt rendering gate | `docs/CONTRACT_REVIEW_CHECKLIST.md`, `data/prompts/templates/*.md`, `pipelines/render_pilot_prompts.py` | `python3 -m train.pipelines.render_pilot_prompts` emits 15 scratch prompt records |
+| 16 | Draft contract synthesis smoke gate | `data/manifests/synthesis/synthesis_run.contract-smoke-0001.yaml`, `pipelines/prepare_contract_synthesis_requests.py`, `pipelines/write_generated_contract_index.py`, `infra/jobs/REMOTE_CODEX_TASK_CONTRACT_SYNTHESIS_SMOKE.md` | Local request prep and generated-contract index validation pass on scratch contracts |
 
 ### Decisions already accepted
 
@@ -56,6 +57,7 @@ documentation that explains how contracts become SFT/GRPO training examples.
 7. **Tiny SFT smoke boundary** — two-step toy-data LoRA smoke is engineering evidence only; it is not clean-room data, not a model-quality metric, and not a Phase 2 SFT result.
 8. **Pilot seed boundary** — the first seed catalog contains review-pending clean-room seed candidates only. It does not admit training data and must pass contamination review before generation.
 9. **Prompt gate boundary** — rendered prompt records are synthesis requests only. They are not LLM outputs, SFT/GRPO examples, or admitted data.
+10. **Contract synthesis smoke boundary** — draft contract YAMLs are review evidence only. They do not admit SFT/GRPO/eval data and do not imply EVAS/Spectre success.
 
 ### Non-tasks
 
