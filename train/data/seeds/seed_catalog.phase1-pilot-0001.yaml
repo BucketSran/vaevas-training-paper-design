@@ -1,0 +1,164 @@
+schema_version: phase1.v0.1
+catalog_id: seed-catalog-phase1-pilot-0001
+purpose: Clean-room pilot seed candidates for the first SFT/GRPO data-generation dry
+  run.
+policy_version: clean_room_seed_policy.v0.1
+producer:
+  name: local_codex
+  version: phase1-pilot
+  git_commit: null
+seed_catalog_hash: sha256:50026df993449be89a244425765c20f51dece035dd0a04c28d8bd3e70a68b056
+fixture_notes:
+- Planning catalog only; no generated training data is admitted by this file.
+- All entries require contamination review before SFT/GRPO packing.
+items:
+- seed_id: seed_manual_l0_cross_event_0001
+  source_tier: A_manual_clean_room
+  source_kind: manual_contract_seed
+  source_ref: data/contracts/examples/l0_cross_event_conformance.yaml
+  license: internal_clean_room
+  allowed_uses:
+  - contract_proposal
+  - prompt_template_test
+  - static_validator_test
+  forbidden_uses:
+  - benchmark_eval
+  - copy_release_prompt
+  - copy_release_gold
+  - paper_metric_direct_claim
+  intended_levels:
+  - L0
+  intended_task_forms:
+  - conformance
+  category: L0 EVAS/Spectre Conformance
+  provenance_notes:
+  - Manual Phase 1 contract example under train/data/contracts/examples.
+  - Used to keep parser/event conformance separate from scored circuit-function tasks.
+  reviewer: pending
+  status: seed_candidate
+  contamination_review:
+    checked: false
+    release_overlap: unknown
+    review_required_before_generation: true
+    protected_release_source: false
+- seed_id: seed_manual_l1_hysteresis_comparator_0001
+  source_tier: A_manual_clean_room
+  source_kind: manual_contract_seed
+  source_ref: data/contracts/examples/l1_hysteresis_comparator_dut.yaml
+  license: internal_clean_room
+  allowed_uses:
+  - contract_proposal
+  - prompt_template_test
+  - sft_candidate_generation
+  - grpo_prompt_generation
+  forbidden_uses:
+  - benchmark_eval
+  - copy_release_prompt
+  - copy_release_gold
+  - paper_metric_direct_claim
+  intended_levels:
+  - L1
+  intended_task_forms:
+  - dut
+  category: Comparator and Decision Circuits
+  provenance_notes:
+  - Manual clean-room behavioral intent for comparator hysteresis.
+  - No vaBench release file is referenced as a source.
+  reviewer: pending
+  status: seed_candidate
+  contamination_review:
+    checked: false
+    release_overlap: unknown
+    review_required_before_generation: true
+    protected_release_source: false
+- seed_id: seed_manual_l1_gain_measurement_tb_0001
+  source_tier: A_manual_clean_room
+  source_kind: manual_contract_seed
+  source_ref: data/contracts/examples/l1_gain_measurement_tb.yaml
+  license: internal_clean_room
+  allowed_uses:
+  - contract_proposal
+  - prompt_template_test
+  - sft_candidate_generation
+  - grpo_prompt_generation
+  forbidden_uses:
+  - benchmark_eval
+  - copy_release_prompt
+  - copy_release_gold
+  - paper_metric_direct_claim
+  intended_levels:
+  - L1
+  intended_task_forms:
+  - tb
+  category: Measurement Instrumentation Flows
+  provenance_notes:
+  - Manual clean-room testbench contract seed.
+  - Intended to exercise observable measurement behavior rather than DUT code reuse.
+  reviewer: pending
+  status: seed_candidate
+  contamination_review:
+    checked: false
+    release_overlap: unknown
+    review_required_before_generation: true
+    protected_release_source: false
+- seed_id: seed_manual_l1_track_hold_bugfix_0001
+  source_tier: A_manual_clean_room
+  source_kind: manual_contract_seed
+  source_ref: data/contracts/examples/l1_track_hold_bugfix.yaml
+  license: internal_clean_room
+  allowed_uses:
+  - contract_proposal
+  - prompt_template_test
+  - repair_data_proposal
+  - grpo_prompt_generation
+  forbidden_uses:
+  - benchmark_eval
+  - copy_release_prompt
+  - copy_release_gold
+  - paper_metric_direct_claim
+  intended_levels:
+  - L1
+  intended_task_forms:
+  - bugfix
+  category: Sampling and Analog Memory
+  provenance_notes:
+  - Manual clean-room repair-intent seed.
+  - Intended for future diagnostic reward and repair-loop examples.
+  reviewer: pending
+  status: seed_candidate
+  contamination_review:
+    checked: false
+    release_overlap: unknown
+    review_required_before_generation: true
+    protected_release_source: false
+- seed_id: seed_manual_l2_sar_adc_e2e_0001
+  source_tier: A_manual_clean_room
+  source_kind: manual_contract_seed
+  source_ref: data/contracts/examples/l2_sar_adc_e2e.yaml
+  license: internal_clean_room
+  allowed_uses:
+  - contract_proposal
+  - prompt_template_test
+  - sft_candidate_generation
+  - grpo_prompt_generation
+  - spectre_shadow_queue
+  forbidden_uses:
+  - benchmark_eval
+  - copy_release_prompt
+  - copy_release_gold
+  - paper_metric_direct_claim
+  intended_levels:
+  - L2
+  intended_task_forms:
+  - e2e
+  category: Data Converter Models
+  provenance_notes:
+  - Manual clean-room composed-flow seed for L2 difficulty coverage.
+  - Must be shadow-audited by Spectre before any paper-facing training claim.
+  reviewer: pending
+  status: seed_candidate
+  contamination_review:
+    checked: false
+    release_overlap: unknown
+    review_required_before_generation: true
+    protected_release_source: false

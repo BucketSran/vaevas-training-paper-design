@@ -77,6 +77,26 @@ class SeedRef(StrictModel):
     forbidden_uses: list[str]
 
 
+class SeedCatalogItem(SeedRef):
+    intended_levels: list[Literal["L0", "L1", "L2"]]
+    intended_task_forms: list[Literal["dut", "tb", "bugfix", "e2e", "conformance"]]
+    category: str
+    provenance_notes: list[str]
+    reviewer: str
+    status: Literal["seed_candidate", "accepted_seed", "rejected"]
+    contamination_review: dict[str, Any]
+
+
+class SeedCatalog(FixtureNotes):
+    schema_version: str
+    catalog_id: str
+    purpose: str
+    policy_version: str
+    producer: Producer
+    seed_catalog_hash: str
+    items: list[SeedCatalogItem]
+
+
 class CandidateItem(StrictModel):
     candidate_id: str
     contract_id: str
@@ -332,6 +352,16 @@ class BatchPlan(StrictModel):
     ood_holdout: dict[str, Any]
     admission_policy: dict[str, Any]
     notes: list[str]
+
+
+class PilotBatchPlan(BatchPlan):
+    seed_catalog_ref: str
+    seed_catalog_hash: str
+    planned_seed_ids: list[str]
+    split_policy: dict[str, Any]
+    generation_budget: dict[str, Any]
+    verification_queue: dict[str, Any]
+    pilot_plan_hash: str
 
 
 class FixtureBundle(StrictModel):

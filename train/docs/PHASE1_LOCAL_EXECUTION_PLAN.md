@@ -100,6 +100,10 @@ Define the first seed catalog with tiers:
 The seed catalog should be smaller than the generated candidate pool. Its job is
 to provide diverse intents, not direct training examples.
 
+Status: first pilot seed catalog prepared at
+`../data/seeds/seed_catalog.phase1-pilot-0001.yaml`. It contains review-pending
+seed candidates only and does not admit training data.
+
 ### Step 5: Pilot batch plan
 
 Draft `synth-batch-0001` around the accepted pilot targets:
@@ -116,6 +120,10 @@ The first batch should intentionally cover all interfaces:
 - at least one L1 TB contract;
 - at least one L1 bugfix contract;
 - at least one L2 E2E contract.
+
+Status: first pilot batch plan prepared at
+`../data/manifests/pilot/batch_plan.synth-batch-pilot-0001.yaml` and validated
+by `../pipelines/validate_pilot_plan.py`.
 
 ## Decisions Not Reopened
 

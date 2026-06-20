@@ -1,0 +1,77 @@
+schema_version: phase1.v0.1
+batch_id: synth-batch-pilot-0001
+purpose: First clean-room pilot planning batch; validates seed coverage and admission
+  policy before generation.
+target_counts:
+  seed_contracts: 25
+  llm_contract_drafts: 25
+  generated_candidates: 100
+  manual_review_min: 25
+  evas_verified_min: 20
+  spectre_shadow_queue_min: 10
+  admitted_min: 15
+categories:
+  L0 EVAS/Spectre Conformance: 4
+  Comparator and Decision Circuits: 6
+  Measurement Instrumentation Flows: 5
+  Sampling and Analog Memory: 5
+  Data Converter Models: 5
+ood_holdout:
+  primary_axis: category
+  heldout_categories:
+  - Data Converter Models
+  secondary_axis: level
+  heldout_levels:
+  - L2
+  policy: Held-out categories and levels are planning targets only until a split manifest
+    exists.
+admission_policy:
+  require_contract_review: true
+  require_static_check: true
+  require_contamination_clean: true
+  require_evas: true
+  require_spectre_shadow_for:
+  - L2_e2e
+  - first_property_type
+  - high_reward_samples
+  reject_evas_pass_spectre_fail: true
+  grpo_prompt_leakage_block: true
+  notes:
+  - Spectre is a shadow audit gate for this pilot, not a training-time reward loop.
+  - Seed candidates must pass contamination review before generation.
+notes:
+- This manifest defines a pilot target distribution; it does not claim admitted clean-room
+  data exists.
+- The target is intentionally smaller than Phase 1 bulk targets to support manual
+  review.
+seed_catalog_ref: data/seeds/seed_catalog.phase1-pilot-0001.yaml
+seed_catalog_hash: sha256:50026df993449be89a244425765c20f51dece035dd0a04c28d8bd3e70a68b056
+planned_seed_ids:
+- seed_manual_l0_cross_event_0001
+- seed_manual_l1_hysteresis_comparator_0001
+- seed_manual_l1_gain_measurement_tb_0001
+- seed_manual_l1_track_hold_bugfix_0001
+- seed_manual_l2_sar_adc_e2e_0001
+split_policy:
+  train_split: sft_train
+  validation_split: validation
+  ood_split: ood_eval
+  split_key_required: true
+  forbid_spec_overlap_between_train_and_eval: true
+  holdout_before_sft_packing: true
+generation_budget:
+  max_contract_variants_per_seed: 5
+  min_candidates_per_contract: 3
+  max_candidates_per_contract: 4
+  max_total_candidates: 100
+  stop_after_first_evas_pass_per_contract: false
+verification_queue:
+  require_contract_schema_validation: true
+  require_static_check: true
+  require_evas_compile: true
+  require_evas_simulate: true
+  spectre_shadow_min_count: 10
+  spectre_shadow_min_l2_fraction: 0.5
+  enqueue_all_first_property_types: true
+  enqueue_all_evas_pass_spectre_unknown: true
+pilot_plan_hash: sha256:eabc9f9f81a4cc2566ecdf3695119729b3dc74efd7adb605415be5b372ef1b38

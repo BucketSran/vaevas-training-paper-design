@@ -1,6 +1,6 @@
 # manifests/
 
-Phase 1 manifest examples and future generated manifest outputs.
+Phase 1 manifest examples, pilot plans, and future generated manifest outputs.
 
 The source-of-truth schema description is
 `../../docs/PHASE1_MANIFEST_SCHEMAS.md`.
@@ -43,3 +43,22 @@ python3 -m train.pipelines.validate_manifest_fixtures
 ```
 
 The learning guide is `../../docs/MANIFEST_FIXTURE_GUIDE.md`.
+
+## Current Pilot Plan
+
+`pilot/` contains the first clean-room planning batch:
+
+```text
+data/seeds/seed_catalog.phase1-pilot-0001.yaml
+  -> data/manifests/pilot/batch_plan.synth-batch-pilot-0001.yaml
+  -> future contract/candidate generation
+```
+
+Validate it with:
+
+```bash
+python3 -m train.pipelines.validate_pilot_plan
+```
+
+The pilot plan is not admitted data; it only fixes target counts, seed coverage,
+OOD holdout policy, and verification gates before generation.

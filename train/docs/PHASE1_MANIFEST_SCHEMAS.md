@@ -88,6 +88,78 @@ serve one of these purposes:
 They must not enter SFT gold, GRPO prompt pools, or eval sets unless the relevant
 admission gates pass.
 
+## Seed Catalog
+
+File:
+
+```text
+data/seeds/seed_catalog.<catalog_id>.yaml
+```
+
+Purpose: record clean-room seed candidates before any LLM synthesis. A seed
+catalog is not training data and does not admit examples by itself.
+
+Required top-level fields:
+
+| Field | Meaning |
+| --- | --- |
+| `schema_version` | Manifest version. |
+| `catalog_id` | Stable seed catalog ID. |
+| `purpose` | Why this catalog exists. |
+| `policy_version` | Clean-room seed policy version. |
+| `producer` | Script/agent and commit if available. |
+| `seed_catalog_hash` | Hash of the normalized catalog payload. |
+| `items` | Seed entries. |
+
+Required seed fields:
+
+| Field | Meaning |
+| --- | --- |
+| `seed_id` | Stable seed ID. |
+| `source_tier` | Clean-room source tier, such as `A_manual_clean_room`. |
+| `source_kind` | Manual, EVAS example, public source, or reviewed skill source. |
+| `source_ref` | Source path or citation. Must not point at protected vaBench release assets. |
+| `license` | Usage/license statement. |
+| `allowed_uses` | Explicit allowed downstream planning uses. |
+| `forbidden_uses` | Explicit forbidden uses, including benchmark evaluation and release copying. |
+| `intended_levels` | Target L0/L1/L2 coverage. |
+| `intended_task_forms` | Target `dut`, `tb`, `bugfix`, `e2e`, or `conformance` coverage. |
+| `category` | Benchmark-aligned circuit-role category. |
+| `status` | `seed_candidate`, `accepted_seed`, or `rejected`. |
+| `contamination_review` | Review state and protected-source flags. |
+
+Rules:
+
+- `seed_candidate` entries require review before generation.
+- `accepted_seed` still does not bypass candidate-level contamination checks.
+- `rejected` seeds must not be referenced by a batch plan.
+
+## Pilot Batch Plan
+
+File:
+
+```text
+data/manifests/pilot/batch_plan.<batch_id>.yaml
+```
+
+Purpose: lock target distribution, seed coverage, split policy, generation
+budget, and verification queue before a first pilot generation run.
+
+Required fields extend the base batch plan with:
+
+| Field | Meaning |
+| --- | --- |
+| `seed_catalog_ref` | Seed catalog path relative to `train/`. |
+| `seed_catalog_hash` | Hash of the referenced catalog. |
+| `planned_seed_ids` | Seed IDs intended for this pilot. |
+| `split_policy` | Train/validation/OOD split constraints. |
+| `generation_budget` | Candidate-per-contract and total candidate limits. |
+| `verification_queue` | Static, EVAS, Spectre-shadow queue requirements. |
+| `pilot_plan_hash` | Hash of the normalized pilot plan payload. |
+
+The current pilot gate is implemented by
+`train/pipelines/validate_pilot_plan.py`.
+
 ## Protected Index
 
 File:

@@ -19,6 +19,7 @@ manifests, not raw generated candidates.
 | `pack_sft.py` | Concatenate admitted SFT-eligible items into `train.jsonl`/`val.jsonl` in SFT format | admitted manifest + candidate index | SFT JSONL + SFT pack manifest |
 | `pack_grpo.py` | Extract GRPO prompts and reward runtime metadata without gold completions | admitted manifest + candidate index | GRPO prompt JSONL + GRPO prompt manifest |
 | `validate_manifest_fixtures.py` | Validate toy Phase 1 manifest fixtures and cross-manifest references | `data/manifests/examples/` | exit 0 if schemas and references are coherent |
+| `validate_pilot_plan.py` | Validate the clean-room seed catalog and pilot batch plan before generation | seed catalog + pilot batch plan | exit 0 if hashes, provenance, coverage, and gates are coherent |
 | `manifest_schemas.py` | Shared Pydantic models and hash/IO helpers | YAML/jsonl payloads | validated manifest objects |
 | `pipeline_common.py` | Shared contract-summary and packer helpers | contract YAML + artifacts | model-visible prompt/record text |
 
@@ -43,6 +44,7 @@ python -m train.pipelines.write_admitted_manifest --candidate-index <path> --sta
 python -m train.pipelines.pack_sft --admitted-manifest <path> --candidate-index <path> --out-dir <dir> --manifest-out <manifest.yaml>
 python -m train.pipelines.pack_grpo --admitted-manifest <path> --candidate-index <path> --out-dir <dir> --manifest-out <manifest.yaml>
 python -m train.pipelines.validate_manifest_fixtures
+python -m train.pipelines.validate_pilot_plan
 ```
 
 Toy closed-loop smoke commands are documented in

@@ -7,9 +7,9 @@
 ### Status
 In progress. Phase 0 design docs are complete enough to proceed. Phase 1
 parameter choices, manifest interfaces, minimal toy fixtures, local closed-loop
-pipeline tools, remote platform memory, and the server-free local execution plan
-are now materialized under `docs/`, `data/manifests/examples/`, `pipelines/`,
-and `infra/`.
+pipeline tools, remote platform memory, the server-free local execution plan,
+and the first clean-room seed/pilot batch planning gate are now materialized
+under `docs/`, `data/`, `pipelines/`, and `infra/`.
 
 No clean-room training data has been admitted yet. Current work is limited to
 schema discipline, toy manifest fixtures, local validators, and learning
@@ -32,6 +32,7 @@ documentation that explains how contracts become SFT/GRPO training examples.
 | 11 | Draft server platform probe | `docs/SERVER_PLATFORM_PROBE.md`, `infra/run_server_platform_probe.sh` | Server can report CUDA/PyTorch/SFT/GRPO readiness without training |
 | 12 | Draft GPU blocker triage | `docs/SERVER_GPU_BLOCKER_TRIAGE.md`, `infra/run_gpu_blocker_diagnosis.sh` | Remote Codex can diagnose `BLOCKED_GPU` without admin changes |
 | 13 | Draft tiny SFT smoke | `docs/SERVER_TINY_SFT_SMOKE.md`, `infra/run_tiny_sft_smoke.sh`, `train_sft/tiny_sft_smoke.py` | Remote can run two LoRA SFT steps on toy admitted data and upload evidence only |
+| 14 | Draft clean-room pilot gate | `data/seeds/seed_catalog.phase1-pilot-0001.yaml`, `data/manifests/pilot/batch_plan.synth-batch-pilot-0001.yaml`, `pipelines/validate_pilot_plan.py` | `python3 -m train.pipelines.validate_pilot_plan` passes |
 
 ### Decisions already accepted
 
@@ -52,6 +53,7 @@ documentation that explains how contracts become SFT/GRPO training examples.
 5. **Server execution mode** — use GitHub handoff while SSH is unavailable; switch to SSH only after non-destructive live checks pass.
 6. **Platform probe boundary** — remote probe may report blockers but must not install packages, change drivers, start training, or write checkpoints.
 7. **Tiny SFT smoke boundary** — two-step toy-data LoRA smoke is engineering evidence only; it is not clean-room data, not a model-quality metric, and not a Phase 2 SFT result.
+8. **Pilot seed boundary** — the first seed catalog contains review-pending clean-room seed candidates only. It does not admit training data and must pass contamination review before generation.
 
 ### Non-tasks
 
