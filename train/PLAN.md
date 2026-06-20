@@ -24,8 +24,9 @@ documentation that explains how contracts become SFT/GRPO training examples.
 | 4 | Add fixture validator | `pipelines/validate_manifest_fixtures.py` | `python3 -m train.pipelines.validate_manifest_fixtures` passes |
 | 5 | Add learning guide | `docs/MANIFEST_FIXTURE_GUIDE.md` | Explains contract, manifest, admitted item, SFT pack, and GRPO prompt with a toy example |
 | 6 | Draft reusable schema modules | `pipelines/manifest_schemas.py` | Fixture validator and packers import shared Pydantic models |
-| 7 | Draft local packers | `pipelines/pack_sft.py`, `pipelines/pack_grpo.py` | Emits JSONL from admitted manifests; GRPO prompt leak check passes |
-| 8 | Draft contamination gate | `pipelines/build_protected_index.py`, `pipelines/check_contamination.py` | Clean fixture passes; exact-hash negative control rejects |
+| 7 | Draft admission gate | `pipelines/write_admitted_manifest.py` | Evidence reports produce one admitted item for the toy fixture |
+| 8 | Draft local packers | `pipelines/pack_sft.py`, `pipelines/pack_grpo.py` | Emits JSONL from generated admitted manifests; GRPO prompt leak check passes |
+| 9 | Draft contamination gate | `pipelines/build_protected_index.py`, `pipelines/check_contamination.py` | Clean fixture passes; exact-hash negative control rejects |
 
 ### Decisions already accepted
 

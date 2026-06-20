@@ -249,6 +249,7 @@ tools:
 train/pipelines/manifest_schemas.py
 train/pipelines/build_protected_index.py
 train/pipelines/check_contamination.py
+train/pipelines/write_admitted_manifest.py
 train/pipelines/pack_sft.py
 train/pipelines/pack_grpo.py
 ```

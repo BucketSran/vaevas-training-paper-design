@@ -15,6 +15,7 @@ manifests, not raw generated candidates.
 | `build_trajectory.py` | Future trajectory builder for verified `<spec, va, tb>` items | `data/verified/<batch>/` | adds `trajectory.json` per entry |
 | `build_protected_index.py` | Build protected material fingerprints from a read-only asset tree | protected asset root | protected index |
 | `check_contamination.py` | Compare candidate index against protected index using hash, normalized, signature, and split-leakage checks | protected index + candidate index | contamination report |
+| `write_admitted_manifest.py` | Apply admission gates across static, EVAS, contamination, Spectre, diversity, and split reports | evidence reports | admitted manifest |
 | `pack_sft.py` | Concatenate admitted SFT-eligible items into `train.jsonl`/`val.jsonl` in SFT format | admitted manifest + candidate index | SFT JSONL + SFT pack manifest |
 | `pack_grpo.py` | Extract GRPO prompts and reward runtime metadata without gold completions | admitted manifest + candidate index | GRPO prompt JSONL + GRPO prompt manifest |
 | `validate_manifest_fixtures.py` | Validate toy Phase 1 manifest fixtures and cross-manifest references | `data/manifests/examples/` | exit 0 if schemas and references are coherent |
@@ -38,6 +39,7 @@ python -m train.pipelines.synthesize  --seeds <path> --contracts <path> --n 100 
 python -m train.pipelines.verify_evas --candidate-index <path>
 python -m train.pipelines.build_trajectory --batch <id>
 python -m train.pipelines.check_contamination --protected-index <path> --candidate-index <path> --out <report.yaml>
+python -m train.pipelines.write_admitted_manifest --candidate-index <path> --static-check-report <path> --evas-report <path> --contamination-report <path> --diversity-report <path> --split-manifest <path> --out <admitted.yaml>
 python -m train.pipelines.pack_sft --admitted-manifest <path> --candidate-index <path> --out-dir <dir> --manifest-out <manifest.yaml>
 python -m train.pipelines.pack_grpo --admitted-manifest <path> --candidate-index <path> --out-dir <dir> --manifest-out <manifest.yaml>
 python -m train.pipelines.validate_manifest_fixtures

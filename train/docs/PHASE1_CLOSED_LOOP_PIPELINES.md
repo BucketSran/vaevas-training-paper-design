@@ -15,7 +15,7 @@ data-control chain:
 protected assets
   -> protected index
   -> candidate index
-  -> contamination report
+  -> static / EVAS / contamination / Spectre shadow / diversity / split reports
   -> admitted manifest
   -> SFT JSONL
   -> GRPO prompt JSONL
@@ -32,9 +32,10 @@ packing can only consume manifest-admitted, hash-bound items.
 | 1 | `manifest_schemas.py` | YAML payloads | Pydantic objects | Shared type contract across scripts. |
 | 2 | `build_protected_index.py` | Read-only asset tree | `protected_index.yaml` | Fingerprints protected material that candidates must not overlap. |
 | 3 | `check_contamination.py` | protected index + candidate index | `contamination_report.yaml` | Rejects exact protected overlap and quarantines unsafe provenance. |
-| 4 | `pack_sft.py` | admitted manifest + candidate index | `train.jsonl`, `val.jsonl`, SFT pack manifest | Creates supervised examples with gold output. |
-| 5 | `pack_grpo.py` | admitted manifest + candidate index | `prompts.jsonl`, GRPO prompt manifest | Creates reward-training prompts without gold output. |
-| 6 | `validate_manifest_fixtures.py` | toy manifest directory | pass/fail summary | Regression check for the fixture chain. |
+| 4 | `write_admitted_manifest.py` | candidate index + evidence reports | `admitted_manifest.yaml` | Applies gates and creates the only packer-consumable item list. |
+| 5 | `pack_sft.py` | admitted manifest + candidate index | `train.jsonl`, `val.jsonl`, SFT pack manifest | Creates supervised examples with gold output. |
+| 6 | `pack_grpo.py` | admitted manifest + candidate index | `prompts.jsonl`, GRPO prompt manifest | Creates reward-training prompts without gold output. |
+| 7 | `validate_manifest_fixtures.py` | toy manifest directory | pass/fail summary | Regression check for the fixture chain. |
 
 ## Concrete Toy Flow
 
@@ -79,8 +80,29 @@ rejected=0
 Then SFT packing:
 
 ```bash
+python3 -m train.pipelines.write_admitted_manifest \
+  --candidate-index train/data/manifests/examples/candidate_index.synth-batch-toy-0001.yaml \
+  --static-check-report train/data/manifests/examples/static_check_report.synth-batch-toy-0001.yaml \
+  --evas-report train/data/manifests/examples/evas_verification_report.synth-batch-toy-0001.yaml \
+  --contamination-report train/data/manifests/examples/contamination_report.synth-batch-toy-0001.yaml \
+  --diversity-report train/data/manifests/examples/diversity_report.synth-batch-toy-0001.yaml \
+  --split-manifest train/data/manifests/examples/split_manifest.synth-batch-toy-0001.yaml \
+  --spectre-report train/data/manifests/examples/spectre_shadow_report.audit-toy-0001.yaml \
+  --require-spectre-shadow \
+  --out /private/tmp/vaevas_phase1_closed_loop/admitted_manifest.yaml
+```
+
+Expected shape:
+
+```text
+admitted_manifest_ok=1
+admitted_count=1
+rejected_count=0
+```
+
+```bash
 python3 -m train.pipelines.pack_sft \
-  --admitted-manifest train/data/manifests/examples/admitted_manifest.synth-batch-toy-0001.yaml \
+  --admitted-manifest /private/tmp/vaevas_phase1_closed_loop/admitted_manifest.yaml \
   --candidate-index train/data/manifests/examples/candidate_index.synth-batch-toy-0001.yaml \
   --out-dir /private/tmp/vaevas_phase1_closed_loop/sft \
   --manifest-out /private/tmp/vaevas_phase1_closed_loop/sft_pack_manifest.yaml \
@@ -104,7 +126,7 @@ Then GRPO packing:
 
 ```bash
 python3 -m train.pipelines.pack_grpo \
-  --admitted-manifest train/data/manifests/examples/admitted_manifest.synth-batch-toy-0001.yaml \
+  --admitted-manifest /private/tmp/vaevas_phase1_closed_loop/admitted_manifest.yaml \
   --candidate-index train/data/manifests/examples/candidate_index.synth-batch-toy-0001.yaml \
   --out-dir /private/tmp/vaevas_phase1_closed_loop/grpo \
   --manifest-out /private/tmp/vaevas_phase1_closed_loop/grpo_prompt_manifest.yaml \
