@@ -2,6 +2,9 @@
 
 How we measure model quality. **Disjoint from vaBench by construction.**
 
+Contamination and Spectre audit gates are specified in
+`CONTAMINATION_CHECKER_SPEC.md` and `SPECTRE_SHADOW_AUDIT_PROTOCOL.md`.
+
 ## Three eval layers
 
 1. **Sanity eval (during SFT)** — small, fast; runs after every epoch
@@ -59,7 +62,7 @@ The OOD axis is chosen in Phase 1 (see `PLAN.md` decision #2). Options:
 - **Circuit-held-out**: e.g., train without any comparators, test on comparators
 - **Difficulty-held-out**: e.g., train on easy/medium, test on hard
 
-Default if undecided: **circuit-held-out** with 1-2 categories withheld. Why: most realistic generalization probe; family-held-out is too harsh, difficulty-held-out is too easy.
+Default if undecided: **circuit-held-out** with 1-2 categories withheld. Why: most realistic generalization probe; full-task-form-held-out is often too harsh, difficulty-held-out is too easy.
 
 Report OOD metrics SEPARATELY from in-distribution metrics. Do not collapse them into one average.
 

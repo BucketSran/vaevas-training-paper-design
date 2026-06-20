@@ -377,6 +377,8 @@ backlog triage.
 
 ## EVAS/Spectre Audit Plan
 
+Detailed protocol: `SPECTRE_SHADOW_AUDIT_PROTOCOL.md`.
+
 ### Roles
 
 - Spectre is the reference oracle for paper-facing correctness claims.
@@ -492,10 +494,12 @@ No claim is allowed unless the corresponding evidence exists:
 
 ## Immediate Next Artifacts
 
-1. `train/docs/SPECTRE_SHADOW_AUDIT_PROTOCOL.md`: sampling schedule and mismatch
-   triage.
-2. `train/pipelines/check_contamination.py`: first implementation task for data
-   admission.
+1. `train/pipelines/check_contamination.py`: implement
+   `CONTAMINATION_CHECKER_SPEC.md` as the first Phase 1 data-admission gate.
+2. `train/pipelines/sample_spectre_shadow.py`: implement
+   `SPECTRE_SHADOW_AUDIT_PROTOCOL.md` after the first verified candidate batch.
+3. Phase 1 pilot manifests: protected index, candidate index, audit manifest,
+   contamination report, and Spectre shadow report.
 
 ## Local Decision Records
 

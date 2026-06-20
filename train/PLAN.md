@@ -6,7 +6,9 @@
 
 ### Status
 In progress. Directory tree created. Top-level docs written. Training-paper
-experiment design and contract-first data schema are now drafted.
+experiment design, contract-first data schema, diagnostic reward spec, synthetic
+factory protocol, Spectre audit protocol, and contamination-checker spec are now
+drafted.
 
 ### Concrete tasks (this session)
 
@@ -18,19 +20,21 @@ experiment design and contract-first data schema are now drafted.
 | 4 | Learning notes | `docs/00-06*.md` + `REFERENCES.md` | Each note >100 lines, references cited |
 | 5 | gitignore | `train/.gitignore`, `data/.gitignore`, `models/.gitignore`, `logs/.gitignore` | Confirms checkpoints / raw data excluded |
 | 6 | User review | User reads `BRIEF.md` + `SCOPE_BOUNDARY.md` and approves | Explicit "Phase 0 approved, proceed to Phase 1" |
-| 7 | Training-paper design | `docs/TRAINING_PAPER_EXPERIMENT_DESIGN.md`, `data/contracts/schema.yaml`, example contracts, `docs/DIAGNOSTIC_REWARD_SPEC.md`, `docs/SYNTHETIC_DATA_FACTORY.md` | YAML parses; L0/L1/L2 and `dut/tb/bugfix/e2e` covered; reward spec has profiles and calibration gates; factory protocol has admission gates |
+| 7 | Training-paper design | `docs/TRAINING_PAPER_EXPERIMENT_DESIGN.md`, `data/contracts/schema.yaml`, example contracts, `docs/DIAGNOSTIC_REWARD_SPEC.md`, `docs/SYNTHETIC_DATA_FACTORY.md`, `docs/SPECTRE_SHADOW_AUDIT_PROTOCOL.md`, `docs/CONTAMINATION_CHECKER_SPEC.md` | YAML parses; L0/L1/L2 and `dut/tb/bugfix/e2e` covered; reward spec has profiles and calibration gates; factory protocol has admission gates; audit/checker specs define manifests and stop conditions |
 
 ### Decisions to surface to the user before Phase 1
 
 1. **Data source clarification** — current decision: rebuild a clean-room training set. Historical experiment outputs and benchmark-adjacent artifacts are excluded by default and may only inform taxonomy/error types unless re-audited item by item.
-2. **OOD held-out strategy** — which task family or circuit type to withhold from training? Options:
-   - Withhold one full family (e.g., all `tb-generation` tasks)
+2. **OOD held-out strategy** — which `task_form` or circuit type to withhold from training? Options:
+   - Withhold one full `task_form` (e.g., all `tb-generation` tasks)
    - Withhold one circuit class (e.g., all comparators)
    - Withhold by difficulty (e.g., all "hard" tasks)
 3. **Remote infra access** — confirm remote server SSH details and CUDA/PyTorch versions before Phase 2 infra scripts are written.
 4. **Synthesis LLM choice** — Claude / GPT-4 / both for data synthesis? Cost budget?
 5. **Contract schema approval** — review `data/contracts/schema.yaml` and the example contracts before writing synthesis or verifier pipelines.
 6. **Synthetic factory approval** — review `docs/SYNTHETIC_DATA_FACTORY.md` before running bulk LLM generation.
+7. **Spectre audit budget** — choose pilot audit size and final held-out Spectre coverage policy.
+8. **Contamination threshold policy** — approve conservative initial thresholds and human-review workflow before data promotion.
 
 ### Non-tasks (deliberately deferred to later phases)
 

@@ -26,14 +26,18 @@
 | `behavioral-veriloga-eval/_archives/` | Same as above. |
 | Any future inventory under `behavioral-veriloga-eval/` | Same as above. |
 
-### ✅ ALLOWED without audit
+### ✅ ALLOWED as seed sources
 
 | Source | Notes |
 |---|---|
-| `EVAS/evas/examples/` | Bundled simulator examples, public, not in vaBench. |
-| `veriloga-skills/` reference templates | Skill docs and worked examples. |
-| Public Verilog-A code (textbooks, open IP, papers) | Cite source. |
-| LLM-synthesized novel specs **+ EVAS-verified** | Must not paraphrase any release task. Document the seed prompt and synthesis pipeline. |
+| `EVAS/evas/examples/` | Bundled simulator examples. Still run provenance and release-overlap checks before promotion. |
+| `veriloga-skills/` reference templates | Skill docs and worked examples. Still run provenance and release-overlap checks before promotion. |
+| Public Verilog-A code (textbooks, open IP, papers) | Cite source and run release-overlap checks before promotion. |
+| LLM-synthesized novel specs **+ EVAS-verified** | Must not paraphrase any release task. Document the seed prompt and synthesis pipeline, then run the contamination checker. |
+
+"Allowed as seed" means the source may enter the Phase 1 inventory. It does not
+mean it may enter `train/data/sft/`, `train/data/rl/`, or `train/data/eval/`
+without the checker in `docs/CONTAMINATION_CHECKER_SPEC.md`.
 
 ## Audit Procedure
 
@@ -60,7 +64,7 @@ A data file without `vabench_audit.checked == true` and `release_overlap == fals
 `train/eval/` evaluates on **its own held-out set** (see `train/data/eval/`). This held-out set:
 
 - MUST be disjoint from the training set at the **specification level**, not just the prompt level.
-- SHOULD include a topology held-out slice — at least one circuit family the model has not seen during training (e.g., train without comparators, then test on comparators).
+- SHOULD include a topology held-out slice — at least one circuit category or `task_form` the model has not seen during training (e.g., train without comparators, then test on comparators).
 - MUST NOT be used to make claims about vaBench performance unless an explicit, separately gated experiment is run AFTER training is frozen.
 
 ## Reporting Rule

@@ -76,7 +76,7 @@ Curated reading list. Star ratings reflect how essential each is for **this proj
 ### Repositories to study (paper-companion code)
 - **deepseek-math**: official paper artifacts (GRPO reference implementation)
 - **CircuitThink dataset**: https://github.com/7jiangyq/CircuitThink (only 100/3100 items released, but trajectory format is canonical reference)
-- **RTL-Coder** (cloned at `train/references/RTL-Coder/`): https://github.com/hkust-zhiyao/RTL-Coder — **the real-world SFT pipeline we study line-by-line**; see [`docs/sft/02b_real_world_reference.md`](./sft/02b_real_world_reference.md)
+- **RTL-Coder**: https://github.com/hkust-zhiyao/RTL-Coder — **the real-world SFT pipeline we study line-by-line**; see [`docs/sft/02b_real_world_reference.md`](./sft/02b_real_world_reference.md)
 
 ### Existing project artifacts (in this repo)
 - `EVAS/README.md` — simulator interface
@@ -157,7 +157,7 @@ Curated reading list. Star ratings reflect how essential each is for **this proj
 ### 学习路径推荐
 
 **现在（SFT 学习阶段）**：
-1. 读 RTL-Coder upstream `train/mle.py`（第三方源码不 vendored 到本设计快照）
+1. 读 RTL-Coder upstream `train/mle.py`
 2. 扫一眼 [LLaMA-Factory 中文文档](https://llamafactory.readthedocs.io/zh-cn/latest/) 的 SFT 例子（30 分钟感受 YAML 风格）
 3. 知道 [`trl.SFTTrainer`](https://huggingface.co/docs/trl/sft_trainer) 在做什么
 

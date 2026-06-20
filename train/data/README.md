@@ -2,7 +2,7 @@
 
 All training, validation, and held-out evaluation data lives here. **Contents are gitignored** — only structure and metadata schemas are tracked.
 
-> **Hard rule**: nothing lands in `sft/`, `rl/`, or `eval/` without provenance metadata showing `vabench_audit.release_overlap == false`. See `../SCOPE_BOUNDARY.md`.
+> **Hard rule**: nothing lands in `sft/`, `rl/`, or `eval/` without provenance metadata showing `vabench_audit.release_overlap == false`. See `../SCOPE_BOUNDARY.md` and `../docs/CONTAMINATION_CHECKER_SPEC.md`.
 
 ## Flow
 
@@ -22,7 +22,7 @@ contracts/      →    raw/             →    synthesized/    →    verified/ 
 | `contracts/` | Contract schema and example task contracts for clean-room synthetic data generation. These are metadata/design artifacts, not training samples. | Phase 0/1 design gate |
 | `raw/` | Source materials before any transformation: EVAS example copies, skill templates, textbook excerpts. One subdir per source. | Phase 1 task 1 (source inventory) |
 | `synthesized/` | LLM-generated `<spec, va, tb>` candidates, not yet verified. Includes failed candidates for diagnostic logging. | Phase 1 task 2 (synthesis) |
-| `verified/` | EVAS-compile + simulate passing candidates, with provenance + EVAS log + simulation output. Schema: see `verified/SCHEMA.md` (to be added in Phase 1). | Phase 1 task 2/3 |
+| `verified/` | EVAS-compile + simulate passing candidates, with provenance, EVAS diagnostics, contamination report refs, and Spectre shadow-audit refs when required. Schema: see `verified/SCHEMA.md` (to be added in Phase 1). | Phase 1 task 2/3 |
 | `sft/` | Final SFT-ready data: `train.jsonl`, `val.jsonl`. Each line is one prompt-completion pair with trajectory. | Phase 1 task 5 (packing) |
 | `rl/` | RL prompts + reference answers for reflective learning: `prompts.jsonl`, `ref_answers.jsonl`. | Phase 1 task 5 (packing) |
 | `eval/` | Held-out evaluation set. See `eval/README.md` for split rules. | Phase 1 task 5 (held-out) |
@@ -56,12 +56,16 @@ provenance:
     release_overlap: false
     overlap_check_script: ../pipelines/check_contamination.py
     overlap_check_run: 2026-MM-DD
+    report_ref: <path-to-contamination-report>
 artifacts:
   spec: <path-to-spec.md>
   gold_va: <path-to-gold.va>
   gold_tb: <path-to-tb.scs>
   evas_run_log: <path-to-evas-log>
   evas_tran_csv: <path-to-tran-csv>
+verifier_evidence:
+  evas: <path-or-id>
+  spectre_shadow: <path-or-id-or-null>
 classification:
   level: L0 | L1 | L2
   task_form: dut | tb | bugfix | e2e | conformance

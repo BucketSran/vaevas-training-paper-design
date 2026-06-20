@@ -264,6 +264,8 @@ EVAS failure does not automatically discard the candidate. It may become:
 
 ### Stage 7: Spectre shadow audit
 
+Detailed protocol: `SPECTRE_SHADOW_AUDIT_PROTOCOL.md`.
+
 Spectre is not required for every candidate during pilot generation, but it is
 required for claims and for high-risk slices.
 
@@ -287,6 +289,8 @@ Mismatch handling:
 | Both fail | Keep only as failed candidate or repair input if useful. |
 
 ### Stage 8: Contamination check
+
+Detailed specification: `CONTAMINATION_CHECKER_SPEC.md`.
 
 Run contamination checks before any candidate enters SFT/GRPO/eval.
 

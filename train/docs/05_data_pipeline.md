@@ -21,8 +21,9 @@ schema          skill templates     candidates          verified            for 
 3. **Synthesis pipeline** — expand contract-reviewed seeds via multi-view LLM-generated candidates
 4. **Verification pipeline** — drop anything EVAS rejects
 5. **Trajectory builder** — decompose verified items into step-by-step CoT
-6. **Contamination check** — gate before packing
-7. **Pack and split** — SFT/RL/eval
+6. **Contamination check** — gate before packing; see `CONTAMINATION_CHECKER_SPEC.md`
+7. **Spectre shadow audit** — high-risk and claim-facing slices; see `SPECTRE_SHADOW_AUDIT_PROTOCOL.md`
+8. **Pack and split** — SFT/RL/eval
 
 ## Source-by-source notes
 

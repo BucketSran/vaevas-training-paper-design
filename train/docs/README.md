@@ -12,6 +12,8 @@ Design notes, learning materials, decision logs. **The first thing a new contrib
 | `02_grpo_principles.md` | GRPO algorithm in detail, advantage normalization, KL term, why it works on this task. |
 | `03_reward_design.md` | Historical simple reward sketch kept for context; superseded by `DIAGNOSTIC_REWARD_SPEC.md`. |
 | `DIAGNOSTIC_REWARD_SPEC.md` | Current concrete GRPO reward design: component formulas, profiles, L2 decomposition, repair reward, anti-hack policy, and calibration gates. |
+| `SPECTRE_SHADOW_AUDIT_PROTOCOL.md` | Current Spectre audit protocol: sampling schedule, mismatch triage, claim gates, manifests, and speed/correctness reporting boundaries. |
+| `CONTAMINATION_CHECKER_SPEC.md` | Current contamination-checker specification: protected/candidate indexes, match tiers, split leakage, report schema, and Phase 1 implementation plan. |
 | `04_trajectory_format.md` | The step-by-step CoT structure for vaBench tasks (analog of Circuit-Think's port→device→connection). |
 | `05_data_pipeline.md` | How data flows from raw sources → synthesized → EVAS-verified → SFT/RL ready. |
 | `SYNTHETIC_DATA_FACTORY.md` | Current contract-first LLM data factory protocol: batch planning, multi-view artifact generation, verification gates, diversity filtering, and admission rules. |

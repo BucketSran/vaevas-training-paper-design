@@ -5,7 +5,7 @@
 > 2. **介绍 RTL-Coder 这个真实电路领域 SFT 工程**
 > 3. **把 RTL-Coder 的代码逐段拆开**，对照 02 章概念，再讲怎么改写成 vaEvas 用得上的范式
 
-RTL-Coder 是外部参考仓库；本设计快照不 vendor 第三方源码。
+RTL-Coder 是外部参考仓库；本设计文档不要求 vendored 第三方源码。
 
 ---
 

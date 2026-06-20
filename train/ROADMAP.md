@@ -41,9 +41,13 @@ Scaffold         Data Pipeline    SFT End-to-End   GRPO End-to-End  Full Eval Re
 3. **Trajectory builder** (3-5 days):
    - Implement `pipelines/build_trajectory.py` — given a verified `<spec, va, tb>`, decompose into step-by-step CoT (see `docs/04_trajectory_format.md`).
 4. **Contamination check** (1-2 days):
-   - Implement `pipelines/check_contamination.py` — hash-match against vaBench release prompts and gold code.
+   - Implement `pipelines/check_contamination.py` from `docs/CONTAMINATION_CHECKER_SPEC.md`.
+   - Build protected/candidate indexes, match tiers, split-leakage report, and admission decisions.
    - Run on every batch before promotion.
-5. **Held-out construction**:
+5. **Spectre shadow audit**:
+   - Implement pilot manifests from `docs/SPECTRE_SHADOW_AUDIT_PROTOCOL.md`.
+   - Run Spectre on required high-risk slices before paper-facing claims.
+6. **Held-out construction**:
    - Set aside ≥ 50 verified items as `train/data/eval/`, disjoint at spec level.
    - At least one `task_form` slice or one circuit category withheld for OOD probe.
 
