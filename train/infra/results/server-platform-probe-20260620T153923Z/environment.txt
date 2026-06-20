@@ -1,0 +1,14 @@
+run_id=server-platform-probe-20260620T153923Z
+job_path=train/infra/jobs/phase1_server_platform_probe.yaml
+status=READY
+hostname=huaxiyun085
+python_executable=/data/jinzhihong/envs/vaevas-rl/bin/python
+python_version=3.11.15
+git_branch=training-paper-design-20260620
+git_commit=4d10e73898fd09dc6be35592aa457eed97a4dc4c
+gpu_ready=True
+sft_stack_ready=True
+grpo_stack_ready=True
+known_model_found=True
+blocking_reasons=
+warnings=flash_attn_missing_optional

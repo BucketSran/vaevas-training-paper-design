@@ -1,0 +1,82 @@
+{
+  "nvcc": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2021 NVIDIA Corporation\nBuilt on Thu_Nov_18_09:45:30_PST_2021\nCuda compilation tools, release 11.5, V11.5.119\nBuild cuda_11.5.r11.5/compiler.30672275_0"
+  },
+  "nvidia_smi": {
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "0, NVIDIA A100-SXM4-80GB, 81920 MiB, 501 MiB, 8 %, 550.54.15\n1, NVIDIA A100-SXM4-80GB, 81920 MiB, 12937 MiB, 0 %, 550.54.15\n2, NVIDIA A100-SXM4-80GB, 81920 MiB, 3 MiB, 0 %, 550.54.15\n3, NVIDIA A100-SXM4-80GB, 81920 MiB, 22915 MiB, 31 %, 550.54.15\n4, NVIDIA A100-SXM4-80GB, 81920 MiB, 3 MiB, 0 %, 550.54.15\n5, NVIDIA A100-SXM4-80GB, 81920 MiB, 7498 MiB, 0 %, 550.54.15\n6, NVIDIA A100-SXM4-80GB, 81920 MiB, 5 MiB, 0 %, 550.54.15\n7, NVIDIA A100-SXM4-80GB, 81920 MiB, 3 MiB, 0 %, 550.54.15"
+  },
+  "torch": {
+    "available": true,
+    "bf16_supported": true,
+    "cuda_available": true,
+    "cuda_build": "12.4",
+    "cuda_tensor_smoke": true,
+    "device_count": 8,
+    "devices": [
+      {
+        "index": 0,
+        "major": 8,
+        "minor": 0,
+        "name": "NVIDIA A100-SXM4-80GB",
+        "total_memory_gb": 79.14
+      },
+      {
+        "index": 1,
+        "major": 8,
+        "minor": 0,
+        "name": "NVIDIA A100-SXM4-80GB",
+        "total_memory_gb": 79.14
+      },
+      {
+        "index": 2,
+        "major": 8,
+        "minor": 0,
+        "name": "NVIDIA A100-SXM4-80GB",
+        "total_memory_gb": 79.14
+      },
+      {
+        "index": 3,
+        "major": 8,
+        "minor": 0,
+        "name": "NVIDIA A100-SXM4-80GB",
+        "total_memory_gb": 79.14
+      },
+      {
+        "index": 4,
+        "major": 8,
+        "minor": 0,
+        "name": "NVIDIA A100-SXM4-80GB",
+        "total_memory_gb": 79.14
+      },
+      {
+        "index": 5,
+        "major": 8,
+        "minor": 0,
+        "name": "NVIDIA A100-SXM4-80GB",
+        "total_memory_gb": 79.14
+      },
+      {
+        "index": 6,
+        "major": 8,
+        "minor": 0,
+        "name": "NVIDIA A100-SXM4-80GB",
+        "total_memory_gb": 79.14
+      },
+      {
+        "index": 7,
+        "major": 8,
+        "minor": 0,
+        "name": "NVIDIA A100-SXM4-80GB",
+        "total_memory_gb": 79.14
+      }
+    ],
+    "error": null,
+    "version": "2.6.0+cu124"
+  }
+}
