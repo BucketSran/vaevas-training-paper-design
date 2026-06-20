@@ -1,0 +1,50 @@
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.validate_manifest_fixtures
+manifest_fixture_validation_ok=1
+examples_dir=train/data/manifests/examples
+candidate_count=1
+admitted_count=1
+candidate_ids=cand_toy_l1_hysteresis_comparator_dut_0001
+admitted_item_ids=adm_toy_l1_hysteresis_comparator_dut_0001
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.build_protected_index --root train/data/contracts/examples --out train/infra/results/server-handoff-20260620T132607Z/artifacts/protected_index.yaml --benchmark-release-id clean-room-contract-smoke --source-manifest-ref data/contracts/schema.yaml
+protected_index_ok=1
+out=train/infra/results/server-handoff-20260620T132607Z/artifacts/protected_index.yaml
+item_count=5
+protected_index_hash=sha256:b16ee332a19455366aa713167566830453066e835aa2d47ddc6bd18d50075ee8
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.check_contamination --protected-index train/data/manifests/examples/protected_index.yaml --candidate-index train/data/manifests/examples/candidate_index.synth-batch-toy-0001.yaml --out train/infra/results/server-handoff-20260620T132607Z/artifacts/contamination_clean.yaml
+contamination_check_ok=1
+out=train/infra/results/server-handoff-20260620T132607Z/artifacts/contamination_clean.yaml
+total=1
+clean=1
+needs_review=0
+quarantined=0
+rejected=0
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.check_contamination --protected-index train/infra/results/server-handoff-20260620T132607Z/artifacts/protected_index.yaml --candidate-index train/data/manifests/examples/candidate_index.synth-batch-toy-0001.yaml --out train/infra/results/server-handoff-20260620T132607Z/artifacts/contamination_reject.yaml
+contamination_check_ok=1
+out=train/infra/results/server-handoff-20260620T132607Z/artifacts/contamination_reject.yaml
+total=1
+clean=0
+needs_review=0
+quarantined=0
+rejected=1
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.write_admitted_manifest --candidate-index train/data/manifests/examples/candidate_index.synth-batch-toy-0001.yaml --static-check-report train/data/manifests/examples/static_check_report.synth-batch-toy-0001.yaml --evas-report train/data/manifests/examples/evas_verification_report.synth-batch-toy-0001.yaml --contamination-report train/data/manifests/examples/contamination_report.synth-batch-toy-0001.yaml --diversity-report train/data/manifests/examples/diversity_report.synth-batch-toy-0001.yaml --split-manifest train/data/manifests/examples/split_manifest.synth-batch-toy-0001.yaml --spectre-report train/data/manifests/examples/spectre_shadow_report.audit-toy-0001.yaml --require-spectre-shadow --out train/infra/results/server-handoff-20260620T132607Z/artifacts/admitted_manifest.yaml
+admitted_manifest_ok=1
+out=train/infra/results/server-handoff-20260620T132607Z/artifacts/admitted_manifest.yaml
+admitted_count=1
+rejected_count=0
+admitted_manifest_hash=sha256:5e9a7a383f170539636d279f2451b1b179a2590c1366377c94d8d947b25b4699
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.write_admitted_manifest --candidate-index train/data/manifests/examples/candidate_index.synth-batch-toy-0001.yaml --static-check-report train/data/manifests/examples/static_check_report.synth-batch-toy-0001.yaml --evas-report train/data/manifests/examples/evas_verification_report.synth-batch-toy-0001.yaml --contamination-report train/infra/results/server-handoff-20260620T132607Z/artifacts/contamination_reject.yaml --diversity-report train/data/manifests/examples/diversity_report.synth-batch-toy-0001.yaml --split-manifest train/data/manifests/examples/split_manifest.synth-batch-toy-0001.yaml --spectre-report train/data/manifests/examples/spectre_shadow_report.audit-toy-0001.yaml --require-spectre-shadow --out train/infra/results/server-handoff-20260620T132607Z/artifacts/admitted_manifest_reject.yaml
+admitted_manifest_ok=1
+out=train/infra/results/server-handoff-20260620T132607Z/artifacts/admitted_manifest_reject.yaml
+admitted_count=0
+rejected_count=1
+admitted_manifest_hash=sha256:3a8072d78da3d35c169c841f05301503336d123da6df0f45250bf6d6c1f8a29e
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.pack_sft --admitted-manifest train/infra/results/server-handoff-20260620T132607Z/artifacts/admitted_manifest.yaml --candidate-index train/data/manifests/examples/candidate_index.synth-batch-toy-0001.yaml --out-dir train/infra/results/server-handoff-20260620T132607Z/artifacts/sft --manifest-out train/infra/results/server-handoff-20260620T132607Z/artifacts/sft_pack_manifest.yaml --run-id server-handoff-20260620T132607Z-sft
+sft_pack_ok=1
+train_count=1
+val_count=0
+train_hash=sha256:88fad09d0a47f3e89bfdf5e425a2a5f10c315153bd653051a351f51f2db429db
+val_hash=sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m train.pipelines.pack_grpo --admitted-manifest train/infra/results/server-handoff-20260620T132607Z/artifacts/admitted_manifest.yaml --candidate-index train/data/manifests/examples/candidate_index.synth-batch-toy-0001.yaml --out-dir train/infra/results/server-handoff-20260620T132607Z/artifacts/grpo --manifest-out train/infra/results/server-handoff-20260620T132607Z/artifacts/grpo_prompt_manifest.yaml --run-id server-handoff-20260620T132607Z-grpo
+grpo_pack_ok=1
+prompt_count=1
+prompt_hash=sha256:8a303fda0b9124c65eceeb60c219da48acc40e5dcaa426a18945db20be206713

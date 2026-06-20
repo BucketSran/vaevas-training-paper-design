@@ -1,0 +1,26 @@
+run_id=server-handoff-20260620T132607Z
+job_path=train/infra/jobs/phase1_github_handoff_smoke.yaml
+repo_root=/data/jinzhihong/vaevas-training-paper-design
+utc_time=2026-06-20T13:26:07Z
+hostname=huaxiyun085
+git_branch=training-paper-design-20260620
+git_commit=31f161f389cc4ef846a689522c944c9dff6e2d84
+python=Python 3.11.15
+
+[gpu]
+NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.
+
+
+[python-imports]
+yaml=OK version=6.0.3
+pydantic=OK version=2.13.4
+torch=OK version=2.6.0+cu124
+transformers=OK version=4.51.3
+trl=OK version=0.18.2
+datasets=OK version=5.0.0
+accelerate=OK version=1.13.0
+INFO 06-20 13:26:14 [__init__.py:243] No platform detected, vLLM is running on UnspecifiedPlatform
+vllm=OK version=0.8.5.post1
+verl=OK version=0.9.0.dev
+ray=OK version=2.55.1
+flash_attn=MISSING ModuleNotFoundError: No module named 'flash_attn'

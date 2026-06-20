@@ -1,0 +1,44 @@
+schema_version: phase1.v0.1
+run_id: server-handoff-20260620T132607Z-grpo
+admitted_manifest_hash: sha256:5e9a7a383f170539636d279f2451b1b179a2590c1366377c94d8d947b25b4699
+producer:
+  name: train.pipelines.pack_grpo
+  version: phase1-local-v0
+  git_commit: null
+output_files:
+  prompts: infra/results/server-handoff-20260620T132607Z/artifacts/grpo/prompts.jsonl
+output_hashes:
+  prompts: sha256:8a303fda0b9124c65eceeb60c219da48acc40e5dcaa426a18945db20be206713
+format: trl_grpo
+base_checkpoint_ref: Qwen/Qwen2.5-Coder-7B-Instruct
+reward_runtime_ref:
+  config_ref: train/docs/DIAGNOSTIC_REWARD_SPEC.md
+  implementation_commit: null
+  evas_profile: balanced
+  timeout_s: 10
+  anti_hack_policy: diagnostic-reward-spec-v0
+reward_profiles:
+- L1_dut
+group_size_hint: 8
+item_ids:
+  prompts:
+  - adm_toy_l1_hysteresis_comparator_dut_0001
+prompt_format_contract:
+  required_jsonl_keys:
+  - item_id
+  - prompt
+  - contract_ref
+  - reward_profile
+  - reward_runtime_ref
+  forbidden_jsonl_keys:
+  - answer
+  - completion
+  - gold_completion
+  - output
+  model_visible_fields:
+  - public_prompt
+  - public_contract_summary
+  model_hidden_fields:
+  - artifact_hashes
+  - contamination_report
+  - spectre_shadow_report

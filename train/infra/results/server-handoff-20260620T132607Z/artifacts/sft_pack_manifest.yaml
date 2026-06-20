@@ -1,0 +1,40 @@
+schema_version: phase1.v0.1
+run_id: server-handoff-20260620T132607Z-sft
+admitted_manifest_hash: sha256:5e9a7a383f170539636d279f2451b1b179a2590c1366377c94d8d947b25b4699
+producer:
+  name: train.pipelines.pack_sft
+  version: phase1-local-v0
+  git_commit: null
+output_files:
+  train: infra/results/server-handoff-20260620T132607Z/artifacts/sft/train.jsonl
+  val: infra/results/server-handoff-20260620T132607Z/artifacts/sft/val.jsonl
+output_hashes:
+  train: sha256:88fad09d0a47f3e89bfdf5e425a2a5f10c315153bd653051a351f51f2db429db
+  val: sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+format: llamafactory_alpaca
+base_model_ref: Qwen/Qwen2.5-Coder-7B-Instruct
+tokenizer_ref: Qwen/Qwen2.5-Coder-7B-Instruct
+special_tokens:
+- <think>
+- </think>
+- <answer>
+- </answer>
+dataset_info_ref: data/llamafactory/dataset_info.json
+item_ids:
+  train:
+  - adm_toy_l1_hysteresis_comparator_dut_0001
+  val: []
+pack_format_contract:
+  required_jsonl_keys:
+  - instruction
+  - input
+  - output
+  - system
+  model_visible_fields:
+  - public_prompt
+  - public_contract_summary
+  - gold_completion
+  model_hidden_fields:
+  - artifact_hashes
+  - contamination_report
+  - spectre_shadow_report

@@ -1,0 +1,34 @@
+{
+  "admission": {
+    "admitted_count": 1,
+    "admitted_manifest_hash": "sha256:5e9a7a383f170539636d279f2451b1b179a2590c1366377c94d8d947b25b4699",
+    "reject_control_count": 1,
+    "rejected_count": 0
+  },
+  "contamination": {
+    "clean_count": 1,
+    "reject_count": 1
+  },
+  "git": {
+    "branch": "training-paper-design-20260620",
+    "commit": "31f161f389cc4ef846a689522c944c9dff6e2d84"
+  },
+  "grpo": {
+    "no_answer_leak": true,
+    "prompt_hash": "sha256:8a303fda0b9124c65eceeb60c219da48acc40e5dcaa426a18945db20be206713",
+    "prompt_lines": 1
+  },
+  "job_path": "train/infra/jobs/phase1_github_handoff_smoke.yaml",
+  "pipeline": {
+    "protected_index_hash": "sha256:b16ee332a19455366aa713167566830453066e835aa2d47ddc6bd18d50075ee8",
+    "validate_fixture": true
+  },
+  "run_id": "server-handoff-20260620T132607Z",
+  "schema_version": "phase1.handoff_result.v0.1",
+  "sft": {
+    "train_hash": "sha256:88fad09d0a47f3e89bfdf5e425a2a5f10c315153bd653051a351f51f2db429db",
+    "train_lines": 1,
+    "val_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "status": "PASS"
+}

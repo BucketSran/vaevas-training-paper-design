@@ -1,0 +1,67 @@
+schema_version: phase1.v0.1
+protected_root_ref: data/contracts/examples
+benchmark_release_id: clean-room-contract-smoke
+source_manifest_refs:
+- data/contracts/schema.yaml
+indexed_at: '2026-06-20T13:26:20+00:00'
+producer:
+  name: train.pipelines.build_protected_index
+  version: phase1-local-v0
+  git_commit: null
+protected_index_hash: sha256:b16ee332a19455366aa713167566830453066e835aa2d47ddc6bd18d50075ee8
+items:
+- protected_id: prot_l0_cross_event_conformance_yaml
+  source_kind: metadata
+  source_path: data/contracts/examples/l0_cross_event_conformance.yaml
+  task_id: cg_l0_cross_event_conformance_0001
+  counted_in_score: false
+  asset_role: metadata
+  raw_sha256: sha256:6debd56cde84fc2b0c4083373fbe09a688016b3447b3c9618fa64dc9b9e0e2b5
+  normalized_sha256: sha256:39f8811a52dcdb84779de1490ca1b45b678fa6bba47c7f759c270d1b42b81d14
+  ngram_minhash: null
+  module_signature_hash: null
+  property_signature_hash: sha256:6a86d9ef25b7e8b162b68e77f50917c21da59f869d7031798dfbad8d9a42b53c
+- protected_id: prot_l1_gain_measurement_tb_yaml
+  source_kind: metadata
+  source_path: data/contracts/examples/l1_gain_measurement_tb.yaml
+  task_id: cg_l1_gain_measurement_tb_0001
+  counted_in_score: false
+  asset_role: metadata
+  raw_sha256: sha256:ddca73fe172550bd9708a1a4ffacf23625b350b7612c2b3f6fb2b239d724503d
+  normalized_sha256: sha256:ab229c6d8303233462b6b0277840feb83811e9c0915fa2bcdd187dd399fefa58
+  ngram_minhash: null
+  module_signature_hash: null
+  property_signature_hash: sha256:0da7edd0b12c701e2d1554e0ccf560392b3a1ed3eeb1d0ffd2e0967d3368aa78
+- protected_id: prot_l1_hysteresis_comparator_dut_yaml
+  source_kind: metadata
+  source_path: data/contracts/examples/l1_hysteresis_comparator_dut.yaml
+  task_id: cg_l1_hysteresis_comparator_dut_0001
+  counted_in_score: false
+  asset_role: metadata
+  raw_sha256: sha256:bb8f20ec74f1a6e76a636175e668cadc3665f1d3276d97d9dfdef6b8f4d56d06
+  normalized_sha256: sha256:32f7d52567ab523bee6b549b1a63f2beba6672fa6c300bbe53ae9f1b417bf2f2
+  ngram_minhash: null
+  module_signature_hash: null
+  property_signature_hash: sha256:38c90c4e717cd5cd571ac3f7eb25d13878b1ee7c3e7d8cf96f98c77507e92782
+- protected_id: prot_l1_track_hold_bugfix_yaml
+  source_kind: metadata
+  source_path: data/contracts/examples/l1_track_hold_bugfix.yaml
+  task_id: cg_l1_track_hold_bugfix_0001
+  counted_in_score: false
+  asset_role: metadata
+  raw_sha256: sha256:f8cff41a6300f37f574bd8b2f9e8c4cd47cb6712e1440291bed0746e51cdf13b
+  normalized_sha256: sha256:5f646f84d2964fddbf3994c1f1acfecefd4db4e14a6fd8bfef508010c4544e05
+  ngram_minhash: null
+  module_signature_hash: null
+  property_signature_hash: sha256:aad8345f81b0f83100bf1cf03e7ac01b45e93dda2b02c4518704bd20e137eef0
+- protected_id: prot_l2_sar_adc_e2e_yaml
+  source_kind: metadata
+  source_path: data/contracts/examples/l2_sar_adc_e2e.yaml
+  task_id: cg_l2_sar_adc_e2e_0001
+  counted_in_score: false
+  asset_role: metadata
+  raw_sha256: sha256:37c0a4171fd295c52d5c7cf062e1552e033169a6e6cddc2528f436ae2792ddcd
+  normalized_sha256: sha256:6d08fb1ca3a5b1d2124abdf986fe9394b53c3db4fd3f6191635436f592e54dd7
+  ngram_minhash: null
+  module_signature_hash: null
+  property_signature_hash: sha256:e87f92051fe1c5ca32673178d4c4e9549eb120fe340b7bf1fb975d639bdd8c72

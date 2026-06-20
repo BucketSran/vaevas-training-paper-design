@@ -1,0 +1,37 @@
+schema_version: phase1.v0.1
+protected_index_hash: sha256:1111111111111111111111111111111111111111111111111111111111111111
+candidate_index_hash: sha256:2222222222222222222222222222222222222222222222222222222222222222
+policy_version: contamination-policy-phase1-local-v0
+producer:
+  name: train.pipelines.check_contamination
+  version: phase1-local-v0
+  git_commit: null
+summary:
+  total: 1
+  clean: 1
+  needs_review: 0
+  quarantined: 0
+  rejected: 0
+split_report:
+  split_key_collisions: 0
+  collision_candidate_ids: &id001 []
+  near_duplicate_train_eval_pairs: 0
+  blocked_split_keys: *id001
+items:
+- candidate_id: cand_toy_l1_hysteresis_comparator_dut_0001
+  decision: clean
+  strongest_match_tier: none
+  matched_protected_ids: []
+  signals:
+    raw_hash_match: false
+    normalized_hash_match: false
+    ngram_similarity_max: 0.0
+    module_signature_match: false
+    property_signature_match: false
+    forbidden_lineage: false
+    split_key_collision: false
+    missing_provenance: false
+  reviewer: null
+  notes:
+  - No exact protected overlap or forbidden lineage detected.
+contamination_report_hash: sha256:8634b2afcd83a1631ce78657832aa177b0a0f863de8f853e39f6bcac97208d2a

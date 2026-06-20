@@ -1,0 +1,34 @@
+schema_version: phase1.v0.1
+batch_id: synth-batch-toy-0001
+source_hashes:
+  candidate_index: sha256:2222222222222222222222222222222222222222222222222222222222222222
+  static_check_report: sha256:3333333333333333333333333333333333333333333333333333333333333333
+  evas_verification_report: sha256:4444444444444444444444444444444444444444444444444444444444444444
+  contamination_report: sha256:a823c9238106bafdbbbff6d2e6486189db7bc9997861d5d7fd03be4a8048caf2
+  diversity_report: sha256:8888888888888888888888888888888888888888888888888888888888888888
+  split_manifest: sha256:9999999999999999999999999999999999999999999999999999999999999999
+  spectre_shadow_report: sha256:7777777777777777777777777777777777777777777777777777777777777777
+producer:
+  name: train.pipelines.write_admitted_manifest
+  version: phase1-local-v0
+  git_commit: null
+admission_policy:
+  policy_version: admission-policy-phase1-local-v0
+  require_static_pass: true
+  require_evas_compile_pass: true
+  require_evas_sim_pass: true
+  require_evas_property_pass: true
+  require_contamination_clean: true
+  require_split_leakage_clear: true
+  require_spectre_shadow_if_selected: true
+  require_diversity_accept: true
+summary:
+  total: 0
+  rejected: 1
+  by_split: {}
+  by_level: {}
+  by_task_form: {}
+  by_category: {}
+  by_reward_profile: {}
+items: []
+admitted_manifest_hash: sha256:3a8072d78da3d35c169c841f05301503336d123da6df0f45250bf6d6c1f8a29e

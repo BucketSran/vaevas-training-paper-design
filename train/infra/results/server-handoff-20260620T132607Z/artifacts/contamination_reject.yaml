@@ -1,0 +1,38 @@
+schema_version: phase1.v0.1
+protected_index_hash: sha256:b16ee332a19455366aa713167566830453066e835aa2d47ddc6bd18d50075ee8
+candidate_index_hash: sha256:2222222222222222222222222222222222222222222222222222222222222222
+policy_version: contamination-policy-phase1-local-v0
+producer:
+  name: train.pipelines.check_contamination
+  version: phase1-local-v0
+  git_commit: null
+summary:
+  total: 1
+  clean: 0
+  needs_review: 0
+  quarantined: 0
+  rejected: 1
+split_report:
+  split_key_collisions: 0
+  collision_candidate_ids: &id001 []
+  near_duplicate_train_eval_pairs: 0
+  blocked_split_keys: *id001
+items:
+- candidate_id: cand_toy_l1_hysteresis_comparator_dut_0001
+  decision: rejected
+  strongest_match_tier: exact_hash
+  matched_protected_ids:
+  - prot_l1_hysteresis_comparator_dut_yaml
+  signals:
+    raw_hash_match: true
+    normalized_hash_match: false
+    ngram_similarity_max: 0.0
+    module_signature_match: false
+    property_signature_match: false
+    forbidden_lineage: false
+    split_key_collision: false
+    missing_provenance: false
+  reviewer: null
+  notes:
+  - Exact protected raw or normalized hash matched.
+contamination_report_hash: sha256:a823c9238106bafdbbbff6d2e6486189db7bc9997861d5d7fd03be4a8048caf2
