@@ -10,6 +10,12 @@ Supervised fine-tuning of `Qwen2.5-Coder-7B` on EVAS-verified `<prompt, trajecto
 | `config/qwen25_coder_7b.yaml` | Hyperparameters: batch size, LR, epochs, seq length, deepspeed/accelerate config |
 | `launch.sh` | Wrapper for remote (2× A100) launch |
 
+## Phase 1 Smoke File
+
+| File | Role |
+|---|---|
+| `tiny_sft_smoke.py` | Complete two-step LoRA SFT smoke used by `../infra/run_tiny_sft_smoke.sh`; writes evidence only and keeps adapters/checkpoints out of Git. |
+
 ## Recipe (mirrors Circuit-Think SFT stage)
 
 | Item | Value (default, tune in Phase 2) |
@@ -54,3 +60,6 @@ Every run produces `../logs/sft_<run-id>/`:
 ## When to advance to GRPO
 
 Per `../KPI.md` Phase 2 gate: held-out compile rate ≥ 60%. Do not start RL on a checkpoint that didn't pass this gate.
+
+The tiny SFT smoke does not satisfy this gate. It proves only that the remote
+training loop can run and reload a toy-data adapter.

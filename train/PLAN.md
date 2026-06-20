@@ -31,6 +31,7 @@ documentation that explains how contracts become SFT/GRPO training examples.
 | 10 | Draft GitHub server handoff | `docs/SERVER_HANDOFF_RUNBOOK.md`, `infra/run_github_handoff_smoke.sh` | Server can pull branch, run toy smoke, and push small result artifacts |
 | 11 | Draft server platform probe | `docs/SERVER_PLATFORM_PROBE.md`, `infra/run_server_platform_probe.sh` | Server can report CUDA/PyTorch/SFT/GRPO readiness without training |
 | 12 | Draft GPU blocker triage | `docs/SERVER_GPU_BLOCKER_TRIAGE.md`, `infra/run_gpu_blocker_diagnosis.sh` | Remote Codex can diagnose `BLOCKED_GPU` without admin changes |
+| 13 | Draft tiny SFT smoke | `docs/SERVER_TINY_SFT_SMOKE.md`, `infra/run_tiny_sft_smoke.sh`, `train_sft/tiny_sft_smoke.py` | Remote can run two LoRA SFT steps on toy admitted data and upload evidence only |
 
 ### Decisions already accepted
 
@@ -50,6 +51,7 @@ documentation that explains how contracts become SFT/GRPO training examples.
 4. **First real synthesis protocol** — decide how many clean-room candidates to generate before EVAS verification and manual review.
 5. **Server execution mode** — use GitHub handoff while SSH is unavailable; switch to SSH only after non-destructive live checks pass.
 6. **Platform probe boundary** — remote probe may report blockers but must not install packages, change drivers, start training, or write checkpoints.
+7. **Tiny SFT smoke boundary** — two-step toy-data LoRA smoke is engineering evidence only; it is not clean-room data, not a model-quality metric, and not a Phase 2 SFT result.
 
 ### Non-tasks
 

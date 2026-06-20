@@ -11,6 +11,7 @@ artifacts back to GitHub for local inspection.
 | `run_github_handoff_smoke.sh` | Server-side smoke: environment snapshot + Phase 1 manifest/admission/SFT/GRPO pack loop |
 | `run_server_platform_probe.sh` | Server-side platform probe: CUDA/PyTorch/package/model-path readiness without training |
 | `run_gpu_blocker_diagnosis.sh` | Server-side GPU blocker triage after `BLOCKED_GPU` without admin changes |
+| `run_tiny_sft_smoke.sh` | Server-side two-step LoRA SFT smoke on toy admitted data; commits evidence only |
 | `jobs/` | YAML job manifests that describe what the server should run |
 | `results/` | Small result upload area; no checkpoints or raw training data |
 
@@ -64,5 +65,5 @@ Pinned versions go into `requirements.txt` once Phase 2 starts.
 ## Phase 0 placeholders
 
 Full SFT/GRPO launch scripts remain deferred until Phase 2. The current scripts
-only validate handoff, platform readiness, environment visibility, and toy
-Phase 1 data plumbing.
+only validate handoff, platform readiness, environment visibility, toy Phase 1
+data plumbing, and tiny toy-data SFT training-loop health.

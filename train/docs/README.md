@@ -21,6 +21,7 @@ Design notes, learning materials, decision logs. **The first thing a new contrib
 | `SERVER_HANDOFF_RUNBOOK.md` | GitHub-based server handoff procedure for screen-share-controlled remote execution and result upload. |
 | `SERVER_PLATFORM_PROBE.md` | Non-destructive remote probe for CUDA/PyTorch/SFT/GRPO package readiness after handoff. |
 | `SERVER_GPU_BLOCKER_TRIAGE.md` | Follow-up procedure when the remote platform probe reports `BLOCKED_GPU`. |
+| `SERVER_TINY_SFT_SMOKE.md` | Two-step toy-data LoRA SFT smoke after remote platform readiness is `READY`. |
 | `REMOTE_PLATFORM_STATUS.md` | Local memory snapshot of the remote 7B/LLaMA-Factory smoke-tested platform and what still needs live revalidation. |
 | `PHASE1_LOCAL_EXECUTION_PLAN.md` | Server-free Phase 1 bridge plan: manifest fixtures, protected index dry-run, seed catalog, batch plan, and packer contracts. |
 | `04_trajectory_format.md` | The step-by-step CoT structure for vaBench tasks (analog of Circuit-Think's port→device→connection). |

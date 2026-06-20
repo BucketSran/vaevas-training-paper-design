@@ -1,0 +1,47 @@
+schema_version: phase1.job.v0.1
+job_id: phase1_tiny_sft_smoke
+purpose: >
+  Verify that the READY remote platform can load the tokenizer/base model, build
+  toy admitted SFT JSONL from Phase 1 fixtures, run a two-step LoRA SFT update,
+  save and reload the adapter in an untracked work directory, and upload only
+  small evidence files.
+branch: training-paper-design-20260620
+entrypoint:
+  command: bash train/infra/run_tiny_sft_smoke.sh --job train/infra/jobs/phase1_tiny_sft_smoke.yaml --python /data/jinzhihong/envs/vaevas-rl/bin/python --cuda-visible-devices 0
+permissions:
+  uses_gpu: true
+  writes_checkpoints: true
+  writes_generated_training_data: false
+  may_push_results_to_github: true
+  may_commit_checkpoints: false
+  may_commit_model_weights: false
+inputs:
+  model_path: /data/jinzhihong/vaEVAS/models/base/Qwen2.5-Coder-7B-Instruct-vaevas
+  python: /data/jinzhihong/envs/vaevas-rl/bin/python
+  cuda_visible_devices: "0"
+  source_data: train/data/manifests/examples
+  toy_data_only: true
+outputs:
+  result_root: train/infra/results/<run_id>
+  untracked_work_root: /tmp/vaevas-training-paper-design-tiny-sft/<run_id>
+  required_committed_files:
+    - status.txt
+    - summary.json
+    - commands.log
+    - environment.txt
+    - loss.csv
+    - sample_generation.txt
+    - adapter_manifest.json
+    - sft_pack_manifest.yaml
+    - admitted_manifest.yaml
+expected_assertions:
+  status: PASS
+  max_steps: 2
+  toy_data_only: true
+  adapter_dir_committed: false
+  loss_csv_exists: true
+  adapter_reload_check_ok: true
+notes:
+  - This is an engineering smoke, not a paper metric.
+  - The adapter/checkpoints stay in the untracked work directory and must not be committed.
+  - The committed result directory must contain only small text/JSON/CSV/YAML evidence.

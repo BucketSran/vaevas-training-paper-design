@@ -13,8 +13,10 @@ future automation to know what command was intended.
 | `phase1_github_handoff_smoke.yaml` | Validate server can run the local Phase 1 manifest/admission/SFT/GRPO pack loop and upload small results. |
 | `phase1_server_platform_probe.yaml` | Validate CUDA/PyTorch/SFT/GRPO package readiness without training. |
 | `phase1_gpu_blocker_diagnosis.yaml` | Diagnose `BLOCKED_GPU` without package installs, driver changes, or training. |
+| `phase1_tiny_sft_smoke.yaml` | Run two-step LoRA SFT smoke on toy admitted data and upload small evidence files. |
 | `REMOTE_CODEX_TASK_PLATFORM_PROBE.md` | Copy-paste instructions for a remote Codex session controlling the server. |
 | `REMOTE_CODEX_TASK_GPU_BLOCKER.md` | Copy-paste instructions for remote Codex to diagnose GPU visibility and rerun platform probe only after safe session-level fixes. |
+| `REMOTE_CODEX_TASK_TINY_SFT_SMOKE.md` | Copy-paste instructions for remote Codex to run tiny SFT smoke after platform `READY`. |
 
 ## Job Rules
 
@@ -25,3 +27,4 @@ future automation to know what command was intended.
 - Default smoke jobs must not launch full SFT/GRPO training.
 - Blocked platform probes must still upload their result directory for diagnosis.
 - GPU blocker diagnosis must not run `sudo`, install packages, or change drivers.
+- Tiny SFT smoke may write adapters/checkpoints only to an untracked work directory; never commit them.

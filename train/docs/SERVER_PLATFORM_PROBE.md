@@ -54,6 +54,8 @@ Missing `flash_attn` is only a warning at this stage.
 For `BLOCKED_GPU`, follow `SERVER_GPU_BLOCKER_TRIAGE.md` and ask remote Codex
 to execute `train/infra/jobs/REMOTE_CODEX_TASK_GPU_BLOCKER.md`.
 
+For `READY`, the next GitHub-mediated task is `SERVER_TINY_SFT_SMOKE.md`.
+
 ## Upload Result Back
 
 After running the probe:
