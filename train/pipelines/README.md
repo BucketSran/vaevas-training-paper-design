@@ -20,6 +20,7 @@ manifests, not raw generated candidates.
 | `pack_grpo.py` | Extract GRPO prompts and reward runtime metadata without gold completions | admitted manifest + candidate index | GRPO prompt JSONL + GRPO prompt manifest |
 | `validate_manifest_fixtures.py` | Validate toy Phase 1 manifest fixtures and cross-manifest references | `data/manifests/examples/` | exit 0 if schemas and references are coherent |
 | `validate_pilot_plan.py` | Validate the clean-room seed catalog and pilot batch plan before generation | seed catalog + pilot batch plan | exit 0 if hashes, provenance, coverage, and gates are coherent |
+| `render_pilot_prompts.py` | Render contract proposal/review/artifact prompt records from the pilot plan without calling an LLM | seed catalog + pilot plan + templates | scratch JSONL + summary under temp output dir |
 | `manifest_schemas.py` | Shared Pydantic models and hash/IO helpers | YAML/jsonl payloads | validated manifest objects |
 | `pipeline_common.py` | Shared contract-summary and packer helpers | contract YAML + artifacts | model-visible prompt/record text |
 
@@ -45,6 +46,7 @@ python -m train.pipelines.pack_sft --admitted-manifest <path> --candidate-index 
 python -m train.pipelines.pack_grpo --admitted-manifest <path> --candidate-index <path> --out-dir <dir> --manifest-out <manifest.yaml>
 python -m train.pipelines.validate_manifest_fixtures
 python -m train.pipelines.validate_pilot_plan
+python -m train.pipelines.render_pilot_prompts --out-dir /tmp/vaevas_phase1_prompt_gate
 ```
 
 Toy closed-loop smoke commands are documented in

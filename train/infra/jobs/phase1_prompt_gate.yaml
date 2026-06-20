@@ -1,0 +1,33 @@
+schema_version: phase1.job.v0.1
+job_id: phase1_prompt_gate
+purpose: >
+  Validate the clean-room seed catalog, pilot batch plan, and prompt templates
+  before any LLM generation or remote training.
+branch: training-paper-design-20260620
+entrypoint:
+  command: python3 -m train.pipelines.render_pilot_prompts --out-dir /tmp/vaevas_phase1_prompt_gate_remote
+permissions:
+  uses_gpu: false
+  writes_checkpoints: false
+  writes_generated_training_data: false
+  may_push_results_to_github: false
+  may_commit_checkpoints: false
+  may_commit_model_weights: false
+inputs:
+  seed_catalog: train/data/seeds/seed_catalog.phase1-pilot-0001.yaml
+  pilot_plan: train/data/manifests/pilot/batch_plan.synth-batch-pilot-0001.yaml
+  prompt_templates: train/data/prompts/templates
+outputs:
+  result_root: /tmp/vaevas_phase1_prompt_gate_remote
+  committed_outputs: []
+expected_assertions:
+  prompt_count: 15
+  prompt_kinds:
+    - contract_proposal
+    - contract_review
+    - artifact_proposal
+  no_llm_api_calls: true
+  no_training_data_generated: true
+notes:
+  - This is a metadata/prompt rendering validation only.
+  - Rendered prompt JSONL is scratch evidence and should not be committed.

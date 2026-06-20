@@ -62,3 +62,12 @@ python3 -m train.pipelines.validate_pilot_plan
 
 The pilot plan is not admitted data; it only fixes target counts, seed coverage,
 OOD holdout policy, and verification gates before generation.
+
+Prompt rendering for this pilot is handled by:
+
+```bash
+python3 -m train.pipelines.render_pilot_prompts --out-dir /tmp/vaevas_phase1_prompt_gate
+```
+
+Rendered prompt JSONL is scratch synthesis input and should not be committed
+unless a later task explicitly promotes it as a small fixture.

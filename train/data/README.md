@@ -19,6 +19,7 @@ contracts/      →    synthesized/     →    manifests/      →    admitted/ 
 |---|---|---|
 | `seeds/` | Clean-room seed catalogs with source tier, allowed uses, forbidden uses, and review status. These are planning inputs, not training examples. | Phase 1 seed gate |
 | `contracts/` | Contract schema and example task contracts for clean-room synthetic data generation. These are metadata/design artifacts, not training samples. | Phase 0/1 design gate |
+| `prompts/` | Prompt templates for contract proposal, contract review, and artifact proposal. Rendered prompt records are scratch synthesis requests, not training data. | Phase 1 prompt gate |
 | `raw/` | Source materials before any transformation: EVAS example copies, skill templates, textbook excerpts. One subdir per source. | Phase 1 task 1 (source inventory) |
 | `synthesized/` | LLM-generated `<spec, va, tb>` candidates, not yet verified. Includes failed candidates for diagnostic logging. | Phase 1 task 2 (synthesis) |
 | `manifests/` | Protected/candidate/EVAS/contamination/Spectre/diversity/split/admitted/pack manifests. See `../docs/PHASE1_MANIFEST_SCHEMAS.md`. | Phase 1 gates |

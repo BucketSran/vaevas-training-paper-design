@@ -125,6 +125,21 @@ Status: first pilot batch plan prepared at
 `../data/manifests/pilot/batch_plan.synth-batch-pilot-0001.yaml` and validated
 by `../pipelines/validate_pilot_plan.py`.
 
+### Step 6: Contract review checklist and prompt templates
+
+Before calling any LLM, prepare:
+
+- a manual review checklist for generated contracts;
+- contract proposal prompt template;
+- contract review prompt template;
+- artifact proposal prompt template;
+- a renderer that writes scratch prompt records outside the repository by
+  default.
+
+Status: prompt gate prepared at `CONTRACT_REVIEW_CHECKLIST.md`,
+`../data/prompts/templates/`, and `../pipelines/render_pilot_prompts.py`. It
+renders 15 scratch prompt records for the five pilot seed candidates.
+
 ## Decisions Not Reopened
 
 Do not reopen these unless new evidence breaks them:

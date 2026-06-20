@@ -160,6 +160,39 @@ Required fields extend the base batch plan with:
 The current pilot gate is implemented by
 `train/pipelines/validate_pilot_plan.py`.
 
+## Prompt Gate Records
+
+File:
+
+```text
+<temp>/pilot_generation_prompts.jsonl
+```
+
+Purpose: render prompt-template records from the seed catalog and pilot batch
+plan before any LLM generation. These records are scratch synthesis requests,
+not model outputs and not training data.
+
+Current renderer:
+
+```text
+train/pipelines/render_pilot_prompts.py
+```
+
+Current prompt kinds:
+
+| Kind | Purpose |
+| --- | --- |
+| `contract_proposal` | Ask an LLM to draft a new contract YAML from a clean-room seed. |
+| `contract_review` | Ask a reviewer to apply `CONTRACT_REVIEW_CHECKLIST.md`. |
+| `artifact_proposal` | Ask an LLM to generate the artifact requested by an already reviewed contract. |
+
+Rules:
+
+- The renderer must not call external LLM APIs.
+- Rendered records must not include target completions or hidden checker secrets.
+- Rendered records should go to a temp directory unless intentionally promoted
+  as a tiny fixture.
+
 ## Protected Index
 
 File:
