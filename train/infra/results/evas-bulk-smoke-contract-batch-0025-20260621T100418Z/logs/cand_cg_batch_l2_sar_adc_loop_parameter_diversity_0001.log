@@ -1,0 +1,9 @@
+COMMAND: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l2_sar_adc_loop_parameter_diversity_0001/tb.scs --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l2_sar_adc_loop_parameter_diversity_0001
+RETURN_CODE: 1
+
+EVAS -- Event-driven Verilog-A Simulator
+Simulating `tb.scs' at 10:11:46 AM, Sun Jun 21, 2026.
+Reading file: tb.scs
+WARNING: ahdl_include resolved to 'solution.va' (original path not found, used scs directory fallback)
+ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported Verilog-A function call: $rtoi()
+evas completes with 1 errors, 1 warnings.

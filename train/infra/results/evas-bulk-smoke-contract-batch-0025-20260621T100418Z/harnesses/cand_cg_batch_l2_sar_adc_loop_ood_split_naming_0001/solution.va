@@ -1,0 +1,51 @@
+`include "constants.vams"
+`include "disciplines.vams"
+
+module cg_batch_l2_sar_adc_loop_ood_split_naming_0001(vin, clk, start, done, bit0, bit1, bit2, bit3);
+  input vin;
+  input clk;
+  input start;
+  output done;
+  output bit0;
+  output bit1;
+  output bit2;
+  output bit3;
+  electrical vin, clk, start, done, bit0, bit1, bit2, bit3;
+  parameter real vref = 1.0;
+  parameter real nbits = 4;
+  parameter real clk_period = 2e-08;
+  parameter real logic_threshold = 0.5;
+  integer active;
+  integer trial_count;
+  integer code_value;
+  real sample_value;
+
+  analog begin
+    @(initial_step) begin
+      active = 0;
+      trial_count = 0;
+      code_value = 0;
+      sample_value = 0.0;
+    end
+    @(cross(V(start) - logic_threshold, +1)) begin
+      active = 1;
+      trial_count = 0;
+      sample_value = V(vin);
+      code_value = 0;
+    end
+    @(cross(V(clk) - logic_threshold, +1)) begin
+      if (active != 0) begin
+        trial_count = trial_count + 1;
+        if (trial_count >= nbits) begin
+          code_value = min(15, max(0, $rtoi((sample_value / vref) * 15.0 + 0.5)));
+          active = 0;
+        end
+      end
+    end
+    V(done) <+ transition((active == 0 && trial_count >= nbits) ? vref : 0.0, 1.0e-10, 1.0e-10);
+    V(bit0) <+ transition(((code_value >> 0) & 1) ? vref : 0.0, 1.0e-10, 1.0e-10);
+    V(bit1) <+ transition(((code_value >> 1) & 1) ? vref : 0.0, 1.0e-10, 1.0e-10);
+    V(bit2) <+ transition(((code_value >> 2) & 1) ? vref : 0.0, 1.0e-10, 1.0e-10);
+    V(bit3) <+ transition(((code_value >> 3) & 1) ? vref : 0.0, 1.0e-10, 1.0e-10);
+  end
+endmodule

@@ -1,0 +1,334 @@
+schema_version: phase1.evas_bulk_smoke.v0.1
+run_id: evas-bulk-smoke-contract-batch-0025-20260621T100418Z
+status: PASS
+candidate_index: train/infra/results/contract-batch-0025-20260621T053934Z/artifact_candidate_index.yaml
+candidate_index_hash: sha256:8ab7801cc796f3535f5bed575c8a7344852529be7b3f67d2e72b2528904b0594
+evaluator_profile:
+  profile_ref: train/infra/results/evas-profile-pr12-e1e73c0-rustfix-20260621T065830Z/evas_profile.yaml
+  evaluator_profile_id: evas-pr12-e1e73c0
+  git_commit: e1e73c056ceb91dbda47c5029d8b37f57d9c0fa7
+  shared_library_sha256: 976ad75cb45efef9433fb277281e70408de0dbd235b28ce3eba81b47f600ab8d
+boundaries:
+  spectre_run: false
+  sft_run: false
+  grpo_run: false
+  checkpoints_written: false
+  admitted_training_data_generated: false
+summary:
+  total_candidates: 25
+  harness_generated: 25
+  evas_pass: 15
+  evas_fail: 10
+  not_runnable_no_harness: 0
+  blocked: 0
+items:
+- candidate_id: cand_cg_batch_l0_cross_event_latch_boundary_tolerance_0001
+  contract_id: cg_batch_l0_cross_event_latch_boundary_tolerance_0001
+  level: L0
+  task_form: conformance
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l0_cross_event_latch_boundary_tolerance_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l0_cross_event_latch_boundary_tolerance_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l0_cross_event_latch_boundary_tolerance_0001.log
+  status: evas_fail
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l0_cross_event_latch_boundary_tolerance_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l0_cross_event_latch_boundary_tolerance_0001
+  return_code: 1
+  diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible
+    Verilog-A: transition() contribution is inside a conditional/event/loop/case statement'
+- candidate_id: cand_cg_batch_l0_cross_event_latch_observable_clarity_0001
+  contract_id: cg_batch_l0_cross_event_latch_observable_clarity_0001
+  level: L0
+  task_form: conformance
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l0_cross_event_latch_observable_clarity_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l0_cross_event_latch_observable_clarity_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l0_cross_event_latch_observable_clarity_0001.log
+  status: evas_fail
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l0_cross_event_latch_observable_clarity_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l0_cross_event_latch_observable_clarity_0001
+  return_code: 1
+  diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible
+    Verilog-A: transition() contribution is inside a conditional/event/loop/case statement'
+- candidate_id: cand_cg_batch_l0_cross_event_latch_ood_split_naming_0001
+  contract_id: cg_batch_l0_cross_event_latch_ood_split_naming_0001
+  level: L0
+  task_form: conformance
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l0_cross_event_latch_ood_split_naming_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l0_cross_event_latch_ood_split_naming_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l0_cross_event_latch_ood_split_naming_0001.log
+  status: evas_fail
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l0_cross_event_latch_ood_split_naming_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l0_cross_event_latch_ood_split_naming_0001
+  return_code: 1
+  diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible
+    Verilog-A: transition() contribution is inside a conditional/event/loop/case statement'
+- candidate_id: cand_cg_batch_l0_cross_event_latch_parameter_diversity_0001
+  contract_id: cg_batch_l0_cross_event_latch_parameter_diversity_0001
+  level: L0
+  task_form: conformance
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l0_cross_event_latch_parameter_diversity_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l0_cross_event_latch_parameter_diversity_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l0_cross_event_latch_parameter_diversity_0001.log
+  status: evas_fail
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l0_cross_event_latch_parameter_diversity_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l0_cross_event_latch_parameter_diversity_0001
+  return_code: 1
+  diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible
+    Verilog-A: transition() contribution is inside a conditional/event/loop/case statement'
+- candidate_id: cand_cg_batch_l0_cross_event_latch_waveform_coverage_0001
+  contract_id: cg_batch_l0_cross_event_latch_waveform_coverage_0001
+  level: L0
+  task_form: conformance
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l0_cross_event_latch_waveform_coverage_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l0_cross_event_latch_waveform_coverage_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l0_cross_event_latch_waveform_coverage_0001.log
+  status: evas_fail
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l0_cross_event_latch_waveform_coverage_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l0_cross_event_latch_waveform_coverage_0001
+  return_code: 1
+  diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible
+    Verilog-A: transition() contribution is inside a conditional/event/loop/case statement'
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_boundary_tolerance_0001
+  contract_id: cg_batch_l1_gain_probe_tb_boundary_tolerance_0001
+  level: L1
+  task_form: tb
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_gain_probe_tb_boundary_tolerance_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_gain_probe_tb_boundary_tolerance_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_gain_probe_tb_boundary_tolerance_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_gain_probe_tb_boundary_tolerance_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_gain_probe_tb_boundary_tolerance_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_observable_clarity_0001
+  contract_id: cg_batch_l1_gain_probe_tb_observable_clarity_0001
+  level: L1
+  task_form: tb
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_gain_probe_tb_observable_clarity_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_gain_probe_tb_observable_clarity_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_gain_probe_tb_observable_clarity_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_gain_probe_tb_observable_clarity_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_gain_probe_tb_observable_clarity_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_ood_split_naming_0001
+  contract_id: cg_batch_l1_gain_probe_tb_ood_split_naming_0001
+  level: L1
+  task_form: tb
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_gain_probe_tb_ood_split_naming_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_gain_probe_tb_ood_split_naming_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_gain_probe_tb_ood_split_naming_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_gain_probe_tb_ood_split_naming_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_gain_probe_tb_ood_split_naming_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_parameter_diversity_0001
+  contract_id: cg_batch_l1_gain_probe_tb_parameter_diversity_0001
+  level: L1
+  task_form: tb
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_gain_probe_tb_parameter_diversity_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_gain_probe_tb_parameter_diversity_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_gain_probe_tb_parameter_diversity_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_gain_probe_tb_parameter_diversity_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_gain_probe_tb_parameter_diversity_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_waveform_coverage_0001
+  contract_id: cg_batch_l1_gain_probe_tb_waveform_coverage_0001
+  level: L1
+  task_form: tb
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_gain_probe_tb_waveform_coverage_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_gain_probe_tb_waveform_coverage_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_gain_probe_tb_waveform_coverage_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_gain_probe_tb_waveform_coverage_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_gain_probe_tb_waveform_coverage_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001
+  level: L1
+  task_form: dut
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_observable_clarity_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_observable_clarity_0001
+  level: L1
+  task_form: dut
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_hysteresis_comparator_observable_clarity_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_hysteresis_comparator_observable_clarity_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_hysteresis_comparator_observable_clarity_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_hysteresis_comparator_observable_clarity_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_hysteresis_comparator_observable_clarity_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_ood_split_naming_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_ood_split_naming_0001
+  level: L1
+  task_form: dut
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_hysteresis_comparator_ood_split_naming_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_hysteresis_comparator_ood_split_naming_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_hysteresis_comparator_ood_split_naming_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_hysteresis_comparator_ood_split_naming_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_hysteresis_comparator_ood_split_naming_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_parameter_diversity_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_parameter_diversity_0001
+  level: L1
+  task_form: dut
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_hysteresis_comparator_parameter_diversity_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_hysteresis_comparator_parameter_diversity_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_hysteresis_comparator_parameter_diversity_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_hysteresis_comparator_parameter_diversity_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_hysteresis_comparator_parameter_diversity_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_waveform_coverage_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_waveform_coverage_0001
+  level: L1
+  task_form: dut
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_hysteresis_comparator_waveform_coverage_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_hysteresis_comparator_waveform_coverage_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_hysteresis_comparator_waveform_coverage_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_hysteresis_comparator_waveform_coverage_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_hysteresis_comparator_waveform_coverage_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_track_hold_repair_boundary_tolerance_0001
+  contract_id: cg_batch_l1_track_hold_repair_boundary_tolerance_0001
+  level: L1
+  task_form: bugfix
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_track_hold_repair_boundary_tolerance_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_track_hold_repair_boundary_tolerance_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_track_hold_repair_boundary_tolerance_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_track_hold_repair_boundary_tolerance_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_track_hold_repair_boundary_tolerance_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_track_hold_repair_observable_clarity_0001
+  contract_id: cg_batch_l1_track_hold_repair_observable_clarity_0001
+  level: L1
+  task_form: bugfix
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_track_hold_repair_observable_clarity_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_track_hold_repair_observable_clarity_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_track_hold_repair_observable_clarity_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_track_hold_repair_observable_clarity_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_track_hold_repair_observable_clarity_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_track_hold_repair_ood_split_naming_0001
+  contract_id: cg_batch_l1_track_hold_repair_ood_split_naming_0001
+  level: L1
+  task_form: bugfix
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_track_hold_repair_ood_split_naming_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_track_hold_repair_ood_split_naming_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_track_hold_repair_ood_split_naming_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_track_hold_repair_ood_split_naming_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_track_hold_repair_ood_split_naming_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_track_hold_repair_parameter_diversity_0001
+  contract_id: cg_batch_l1_track_hold_repair_parameter_diversity_0001
+  level: L1
+  task_form: bugfix
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_track_hold_repair_parameter_diversity_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_track_hold_repair_parameter_diversity_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_track_hold_repair_parameter_diversity_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_track_hold_repair_parameter_diversity_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_track_hold_repair_parameter_diversity_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_track_hold_repair_waveform_coverage_0001
+  contract_id: cg_batch_l1_track_hold_repair_waveform_coverage_0001
+  level: L1
+  task_form: bugfix
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_track_hold_repair_waveform_coverage_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_track_hold_repair_waveform_coverage_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l1_track_hold_repair_waveform_coverage_0001.log
+  status: evas_pass
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l1_track_hold_repair_waveform_coverage_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l1_track_hold_repair_waveform_coverage_0001
+  return_code: 0
+  diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_boundary_tolerance_0001
+  contract_id: cg_batch_l2_sar_adc_loop_boundary_tolerance_0001
+  level: L2
+  task_form: e2e
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l2_sar_adc_loop_boundary_tolerance_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l2_sar_adc_loop_boundary_tolerance_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l2_sar_adc_loop_boundary_tolerance_0001.log
+  status: evas_fail
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l2_sar_adc_loop_boundary_tolerance_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l2_sar_adc_loop_boundary_tolerance_0001
+  return_code: 1
+  diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported
+    Verilog-A function call: $rtoi()'
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_observable_clarity_0001
+  contract_id: cg_batch_l2_sar_adc_loop_observable_clarity_0001
+  level: L2
+  task_form: e2e
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l2_sar_adc_loop_observable_clarity_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l2_sar_adc_loop_observable_clarity_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l2_sar_adc_loop_observable_clarity_0001.log
+  status: evas_fail
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l2_sar_adc_loop_observable_clarity_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l2_sar_adc_loop_observable_clarity_0001
+  return_code: 1
+  diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported
+    Verilog-A function call: $rtoi()'
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_ood_split_naming_0001
+  contract_id: cg_batch_l2_sar_adc_loop_ood_split_naming_0001
+  level: L2
+  task_form: e2e
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l2_sar_adc_loop_ood_split_naming_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l2_sar_adc_loop_ood_split_naming_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l2_sar_adc_loop_ood_split_naming_0001.log
+  status: evas_fail
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l2_sar_adc_loop_ood_split_naming_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l2_sar_adc_loop_ood_split_naming_0001
+  return_code: 1
+  diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported
+    Verilog-A function call: $rtoi()'
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_parameter_diversity_0001
+  contract_id: cg_batch_l2_sar_adc_loop_parameter_diversity_0001
+  level: L2
+  task_form: e2e
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l2_sar_adc_loop_parameter_diversity_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l2_sar_adc_loop_parameter_diversity_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l2_sar_adc_loop_parameter_diversity_0001.log
+  status: evas_fail
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l2_sar_adc_loop_parameter_diversity_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l2_sar_adc_loop_parameter_diversity_0001
+  return_code: 1
+  diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported
+    Verilog-A function call: $rtoi()'
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_waveform_coverage_0001
+  contract_id: cg_batch_l2_sar_adc_loop_waveform_coverage_0001
+  level: L2
+  task_form: e2e
+  artifact_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l2_sar_adc_loop_waveform_coverage_0001/solution.va
+  harness_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l2_sar_adc_loop_waveform_coverage_0001/tb.scs
+  log_ref: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/logs/cand_cg_batch_l2_sar_adc_loop_waveform_coverage_0001.log
+  status: evas_fail
+  command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/harnesses/cand_cg_batch_l2_sar_adc_loop_waveform_coverage_0001/tb.scs
+    --engine evas-rust -o /tmp/evas-bulk-smoke-contract-batch-0025-20260621T100418Z_evas_outputs/cand_cg_batch_l2_sar_adc_loop_waveform_coverage_0001
+  return_code: 1
+  diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported
+    Verilog-A function call: $rtoi()'

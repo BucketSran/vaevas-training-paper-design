@@ -1,0 +1,28 @@
+`include "constants.vams"
+`include "disciplines.vams"
+
+module cg_batch_l1_hysteresis_comparator_waveform_coverage_0001(vip, vim, vout);
+  input vip;
+  input vim;
+  output vout;
+  electrical vip, vim, vout;
+  parameter real voh = 1.2;
+  parameter real vol = 0.0;
+  parameter real vtrip = 0.0;
+  parameter real vhyst = 0.03;
+  parameter real td = 2e-10;
+  integer state;
+  real diff_v;
+  real upper_trip;
+  real lower_trip;
+
+  analog begin
+    @(initial_step) state = 0;
+    diff_v = V(vip) - V(vim);
+    upper_trip = vtrip + 0.5 * vhyst;
+    lower_trip = vtrip - 0.5 * vhyst;
+    @(cross(diff_v - upper_trip, +1)) state = 1;
+    @(cross(diff_v - lower_trip, -1)) state = 0;
+    V(vout) <+ transition(state ? voh : vol, td, td);
+  end
+endmodule

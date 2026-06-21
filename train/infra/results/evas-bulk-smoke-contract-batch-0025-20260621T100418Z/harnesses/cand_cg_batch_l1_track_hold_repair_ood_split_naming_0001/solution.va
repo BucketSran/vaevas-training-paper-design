@@ -1,0 +1,28 @@
+`include "constants.vams"
+`include "disciplines.vams"
+
+module cg_batch_l1_track_hold_repair_ood_split_naming_0001(vin, vclk, vhold);
+  input vin;
+  input vclk;
+  output vhold;
+  electrical vin, vclk, vhold;
+  parameter real clk_threshold = 0.6;
+  parameter real aperture_delay = 2e-09;
+  parameter real transition_time = 7.5e-10;
+  real held_value;
+  real next_sample_time;
+
+  analog begin
+    @(initial_step) begin
+      held_value = 0.0;
+      next_sample_time = 0.0;
+    end
+    @(cross(V(vclk) - clk_threshold, +1)) begin
+      next_sample_time = $abstime + aperture_delay;
+    end
+    @(timer(next_sample_time)) begin
+      held_value = V(vin);
+    end
+    V(vhold) <+ transition(held_value, transition_time, transition_time);
+  end
+endmodule

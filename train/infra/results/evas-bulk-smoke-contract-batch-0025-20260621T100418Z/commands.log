@@ -1,0 +1,114 @@
+RUN_ID=evas-bulk-smoke-contract-batch-0025-20260621T100418Z
+RESULT_DIR=train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z
+JOB_FILE=train/infra/queue/running/20260621-evas-bulk-smoke-25.md
+$ git fetch origin training-paper-design-20260620
+From https://github.com/BucketSran/vaevas-training-paper-design
+ * branch            training-paper-design-20260620 -> FETCH_HEAD
+$ git checkout training-paper-design-20260620
+Already on 'training-paper-design-20260620'
+Your branch is up to date with 'origin/training-paper-design-20260620'.
+$ git pull --ff-only origin training-paper-design-20260620
+From https://github.com/BucketSran/vaevas-training-paper-design
+ * branch            training-paper-design-20260620 -> FETCH_HEAD
+Already up to date.
+$ cd /data/jinzhihong/vaevas-evaluator/EVAS
+$ source $HOME/.cargo/env
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m evas list
+Available examples (5):
+  adc_dac_ideal_4b
+  clk_div
+  comparator
+  digital_basics
+  noise_gen
+$ git rev-parse HEAD
+e1e73c056ceb91dbda47c5029d8b37f57d9c0fa7
+$ test -f evas/rust_core/target/release/libevas_rust_core.so
+$ sha256sum evas/rust_core/target/release/libevas_rust_core.so
+976ad75cb45efef9433fb277281e70408de0dbd235b28ce3eba81b47f600ab8d  evas/rust_core/target/release/libevas_rust_core.so
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m evas --help
+usage: evas [-h] <command> ...
+
+EVAS — Event-driven Verilog-A Simulator
+
+positional arguments:
+  <command>
+    simulate  Simulate a Spectre .scs netlist
+    run       Run a bundled example
+    list      List all available examples
+
+options:
+  -h, --help  show this help message and exit
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m evas run --help
+usage: evas run [-h] [--tb FILE] [--engine {python,evas-rust,evas2,rust2}]
+                name
+
+positional arguments:
+  name                  Example name (see 'evas list')
+
+options:
+  -h, --help            show this help message and exit
+  --tb FILE             Testbench filename override (default: tb_<name>.scs)
+  --engine {python,evas-rust,evas2,rust2}
+                        Engine override. The default is python; evas-rust
+                        requires the Rust backend.
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate --help
+usage: evas simulate [-h] [-o OUTPUT] [-log LOG]
+                     [--engine {python,evas-rust,evas2,rust2}]
+                     input
+
+positional arguments:
+  input                 .scs netlist file
+
+options:
+  -h, --help            show this help message and exit
+  -o OUTPUT, --output OUTPUT
+                        Output directory (default: ./output)
+  -log LOG              Log file path
+  --engine {python,evas-rust,evas2,rust2}
+                        Engine override. The default is python; evas-rust
+                        requires the Rust backend.
+PASS evas_profile_verification
+
+$ generate_harnesses_and_run_bulk_smoke
+{
+  "admitted_training_data_generated": false,
+  "blocked": 0,
+  "candidate_count": 25,
+  "candidate_index_hash": "sha256:8ab7801cc796f3535f5bed575c8a7344852529be7b3f67d2e72b2528904b0594",
+  "checkpoints_written": false,
+  "evaluator_git_commit": "e1e73c056ceb91dbda47c5029d8b37f57d9c0fa7",
+  "evas_fail": 10,
+  "evas_pass": 15,
+  "grpo_run": false,
+  "harness_generated": 25,
+  "not_runnable_no_harness": 0,
+  "sft_run": false,
+  "shared_library_sha256": "976ad75cb45efef9433fb277281e70408de0dbd235b28ce3eba81b47f600ab8d",
+  "spectre_run": false,
+  "status": "PASS"
+}
+cand_cg_batch_l0_cross_event_latch_boundary_tolerance_0001 evas_fail rc=1 diag=ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible Verilog-A: transition() contribution is inside a conditional/event/loop/case statement
+cand_cg_batch_l0_cross_event_latch_observable_clarity_0001 evas_fail rc=1 diag=ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible Verilog-A: transition() contribution is inside a conditional/event/loop/case statement
+cand_cg_batch_l0_cross_event_latch_ood_split_naming_0001 evas_fail rc=1 diag=ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible Verilog-A: transition() contribution is inside a conditional/event/loop/case statement
+cand_cg_batch_l0_cross_event_latch_parameter_diversity_0001 evas_fail rc=1 diag=ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible Verilog-A: transition() contribution is inside a conditional/event/loop/case statement
+cand_cg_batch_l0_cross_event_latch_waveform_coverage_0001 evas_fail rc=1 diag=ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible Verilog-A: transition() contribution is inside a conditional/event/loop/case statement
+cand_cg_batch_l1_gain_probe_tb_boundary_tolerance_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_gain_probe_tb_observable_clarity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_gain_probe_tb_ood_split_naming_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_gain_probe_tb_parameter_diversity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_gain_probe_tb_waveform_coverage_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_hysteresis_comparator_observable_clarity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_hysteresis_comparator_ood_split_naming_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_hysteresis_comparator_parameter_diversity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_hysteresis_comparator_waveform_coverage_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_track_hold_repair_boundary_tolerance_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_track_hold_repair_observable_clarity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_track_hold_repair_ood_split_naming_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_track_hold_repair_parameter_diversity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_track_hold_repair_waveform_coverage_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l2_sar_adc_loop_boundary_tolerance_0001 evas_fail rc=1 diag=ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported Verilog-A function call: $rtoi()
+cand_cg_batch_l2_sar_adc_loop_observable_clarity_0001 evas_fail rc=1 diag=ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported Verilog-A function call: $rtoi()
+cand_cg_batch_l2_sar_adc_loop_ood_split_naming_0001 evas_fail rc=1 diag=ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported Verilog-A function call: $rtoi()
+cand_cg_batch_l2_sar_adc_loop_parameter_diversity_0001 evas_fail rc=1 diag=ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported Verilog-A function call: $rtoi()
+cand_cg_batch_l2_sar_adc_loop_waveform_coverage_0001 evas_fail rc=1 diag=ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported Verilog-A function call: $rtoi()

@@ -250,3 +250,13 @@ NEXT_RISKS=<Spectre shadow audit still local; this is not admission>
 - worker_user: jinzhihong
 - branch: training-paper-design-20260620
 - repo_commit_at_claim: abcd32844eb85ba1021c7ff4ea8daaf98bd4715b
+
+## Worker Completion
+
+- finished_at_utc: 2026-06-21T12:07:44Z
+- finish_status: done
+- worker_host: huaxiyun085
+- repo_commit_before_finish: 584899c51026630d9222d1fbee0c393d00da0a07
+- summary: EVAS bulk smoke completed for contract-batch-0025; see summary.json
+- result_paths:
+  - train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z

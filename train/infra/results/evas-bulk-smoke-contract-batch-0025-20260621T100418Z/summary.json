@@ -1,0 +1,17 @@
+{
+  "admitted_training_data_generated": false,
+  "blocked": 0,
+  "candidate_count": 25,
+  "candidate_index_hash": "sha256:8ab7801cc796f3535f5bed575c8a7344852529be7b3f67d2e72b2528904b0594",
+  "checkpoints_written": false,
+  "evaluator_git_commit": "e1e73c056ceb91dbda47c5029d8b37f57d9c0fa7",
+  "evas_fail": 10,
+  "evas_pass": 15,
+  "grpo_run": false,
+  "harness_generated": 25,
+  "not_runnable_no_harness": 0,
+  "sft_run": false,
+  "shared_library_sha256": "976ad75cb45efef9433fb277281e70408de0dbd235b28ce3eba81b47f600ab8d",
+  "spectre_run": false,
+  "status": "PASS"
+}
