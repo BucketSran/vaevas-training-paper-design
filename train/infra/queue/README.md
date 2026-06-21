@@ -15,6 +15,7 @@ the job to `done/` or `failed/`, and pushes.
 | `running/` | Jobs claimed by one remote worker. |
 | `done/` | Jobs completed with a committed result. |
 | `failed/` | Jobs that hit a hard blocker but still uploaded diagnostics. |
+| `control/` | Human control flags such as pausing the training line. |
 
 ## Rules
 
@@ -23,4 +24,4 @@ the job to `done/` or `failed/`, and pushes.
 - Remote workers must return a final result directly; no intermediate confirmation loops.
 - Result directories must stay small: no checkpoints, simulator dumps, package caches, `.env`, or secrets.
 - Draft training data stays draft until contamination, EVAS, Spectre-shadow, and admission gates pass.
-
+- Active control flags override new queue creation and claiming.
