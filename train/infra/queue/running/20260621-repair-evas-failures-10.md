@@ -300,3 +300,11 @@ VALIDATION=<candidate-index validation, EVAS profile verification, EVAS smoke su
 NEXT_RISKS=<Spectre shadow audit still local; repaired data still unadmitted>
 ```
 
+
+## Worker Claim
+
+- claimed_at_utc: 2026-06-21T14:33:54Z
+- worker_host: huaxiyun085
+- worker_user: jinzhihong
+- branch: training-paper-design-20260620
+- repo_commit_at_claim: fa1e174847d9d9b3ab867abbc3b164826d64e672
