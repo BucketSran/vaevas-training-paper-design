@@ -412,6 +412,28 @@ class GeneratedContractIndex(FixtureNotes):
     generated_contract_index_hash: str
 
 
+class ContractReviewItem(StrictModel):
+    generated_contract_id: str
+    contract_ref: str
+    decision: Literal["accept_for_generation", "needs_revision", "quarantine", "reject"]
+    reviewer: str
+    blocking_findings: list[str]
+    required_edits: list[str]
+    allowed_next_stage: Literal["artifact_generation", "contract_revision", "none"]
+    rationale: str
+
+
+class ContractReviewManifest(FixtureNotes):
+    schema_version: str
+    run_id: str
+    generated_contract_index_hash: str
+    producer: Producer
+    review_policy: dict[str, Any]
+    summary: dict[str, Any]
+    items: list[ContractReviewItem]
+    contract_review_manifest_hash: str
+
+
 class FixtureBundle(StrictModel):
     batch_plan: BatchPlan
     protected_index: ProtectedIndex

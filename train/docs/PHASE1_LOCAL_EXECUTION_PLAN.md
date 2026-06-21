@@ -157,6 +157,28 @@ Status: prepared as
 `../pipelines/validate_generated_contracts.py`, and
 `../infra/jobs/REMOTE_CODEX_TASK_CONTRACT_SYNTHESIS_SMOKE.md`.
 
+### Step 8: Overnight draft artifact/training package
+
+After the five-contract smoke succeeds, the next larger overnight handoff is:
+
+- 25 draft contracts from five pilot seeds and five variation foci;
+- structured review manifest;
+- artifact requests for accepted contracts;
+- draft Verilog-A `solution.va` artifacts for accepted contracts;
+- artifact candidate index with hashes;
+- draft unadmitted SFT/GRPO JSONL packs for inspection.
+
+Status: prepared as
+`../data/manifests/synthesis/synthesis_run.contract-batch-0025.yaml`,
+`../pipelines/write_artifact_candidate_index.py`,
+`../pipelines/validate_artifact_candidate_index.py`,
+`../pipelines/pack_draft_training.py`, and
+`../infra/jobs/REMOTE_CODEX_TASK_CONTRACT_BATCH_OVERNIGHT.md`.
+
+Boundary: this step may generate Verilog-A and draft JSONL, but it still does
+not run SFT/GRPO training, EVAS, Spectre, or admission. The draft JSONL is a
+pipeline artifact, not final clean training data.
+
 ## Decisions Not Reopened
 
 Do not reopen these unless new evidence breaks them:

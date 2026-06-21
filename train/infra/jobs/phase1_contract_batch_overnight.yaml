@@ -1,0 +1,64 @@
+job_id: phase1_contract_batch_overnight
+purpose: >
+  Generate a 25-contract clean-room draft pool from the pilot seed catalog,
+  run structured review, generate draft Verilog-A artifacts for accepted
+  contracts, and pack draft unadmitted SFT/GRPO JSONL. This job prepares
+  inspectable training inputs only; it must not run model training, write
+  checkpoints, run EVAS/Spectre, or claim admitted training data.
+execution:
+  mode: github_mediated_remote_codex
+  command: follow train/infra/jobs/REMOTE_CODEX_TASK_CONTRACT_BATCH_OVERNIGHT.md
+  gpu_required: false
+  writes_checkpoints: false
+  writes_draft_contracts: true
+  writes_veriloga_artifacts: true
+  writes_draft_training_data: true
+  writes_admitted_training_data: false
+  commits_results: true
+inputs:
+  synthesis_run: train/data/manifests/synthesis/synthesis_run.contract-batch-0025.yaml
+  request_script: train/pipelines/prepare_contract_synthesis_requests.py
+  generated_contract_writer: train/pipelines/write_generated_contract_index.py
+  generated_contract_validator: train/pipelines/validate_generated_contracts.py
+  review_manifest_writer: train/pipelines/write_contract_review_manifest.py
+  review_manifest_validator: train/pipelines/validate_contract_review_manifest.py
+  artifact_request_script: train/pipelines/prepare_artifact_synthesis_requests.py
+  artifact_candidate_writer: train/pipelines/write_artifact_candidate_index.py
+  artifact_candidate_validator: train/pipelines/validate_artifact_candidate_index.py
+  draft_training_packer: train/pipelines/pack_draft_training.py
+outputs:
+  result_root: train/infra/results/contract-batch-0025-<YYYYMMDDTHHMMSSZ>
+  required_files:
+    - status.txt
+    - summary.json
+    - commands.log
+    - generated_contract_index.yaml
+    - review_manifest.yaml
+    - review_report.md
+    - artifact_candidate_index.yaml
+    - draft_training_pack_manifest.yaml
+    - contracts/*.yaml
+    - artifact_requests/artifact_synthesis_request_summary.json
+    - artifacts/*/solution.va
+    - draft_training/draft_sft/train.jsonl
+    - draft_training/draft_sft/val.jsonl
+    - draft_training/draft_grpo/prompts.jsonl
+assertions:
+  contract_count: 25
+  generated_contract_index_validates: true
+  review_manifest_validates: true
+  artifact_requests_prepared: true
+  artifact_candidate_index_validates: true
+  draft_training_pack_generated: true
+  external_llm_api_called: false
+  verilog_a_generated: true
+  draft_training_data_generated: true
+  admitted_training_data_generated: false
+  sft_run: false
+  grpo_run: false
+  evas_run: false
+  spectre_run: false
+notes:
+  - Remote Codex must return final stdout and summaries in one response.
+  - Draft contracts, artifacts, and JSONL packs are not admitted data.
+  - Later contamination, EVAS, Spectre-shadow policy, and admission gates are required before paper claims.

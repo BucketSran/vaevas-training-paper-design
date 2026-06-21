@@ -74,12 +74,19 @@ unless a later task explicitly promotes it as a small fixture.
 
 ## Current Synthesis Run Plan
 
-`synthesis/` contains the first one-shot contract synthesis smoke plan:
+`synthesis/` contains the first one-shot contract synthesis smoke plan and a
+larger overnight draft-data plan:
 
 ```text
 data/manifests/synthesis/synthesis_run.contract-smoke-0001.yaml
   -> /tmp/vaevas_contract_synthesis_requests/contract_synthesis_requests.jsonl
   -> train/infra/results/contract-synthesis-smoke-<timestamp>/
+
+data/manifests/synthesis/synthesis_run.contract-batch-0025.yaml
+  -> /tmp/vaevas_contract-batch-0025-<timestamp>_requests/contract_synthesis_requests.jsonl
+  -> train/infra/results/contract-batch-0025-<timestamp>/
+  -> contracts + review_manifest + artifacts + artifact_candidate_index
+  -> draft_training/draft_sft + draft_training/draft_grpo
 ```
 
 Validate and prepare requests with:
@@ -92,3 +99,7 @@ python3 -m train.pipelines.prepare_contract_synthesis_requests --out-dir /tmp/va
 The smoke run may produce five draft contract YAML files for review evidence,
 but it must not generate Verilog-A artifacts, admitted data, SFT JSONL, or GRPO
 JSONL.
+
+The overnight batch may generate draft Verilog-A artifacts and draft SFT/GRPO
+JSONL for inspection. These outputs are not admitted data; later contamination,
+EVAS, Spectre-shadow policy, and admission gates are still required.

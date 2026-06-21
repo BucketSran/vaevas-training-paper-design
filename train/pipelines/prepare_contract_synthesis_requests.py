@@ -14,16 +14,23 @@ import tempfile
 from pathlib import Path
 
 try:
-    from .manifest_schemas import write_jsonl
+    from .manifest_schemas import sha256_text, write_jsonl
     from .render_pilot_prompts import load_inputs, load_templates, render_records
     from .validate_synthesis_run import DEFAULT_RUN_PLAN, DEFAULT_TRAIN_ROOT, load_run_plan, validate_run_plan
 except ImportError:  # pragma: no cover - direct script execution fallback
-    from manifest_schemas import write_jsonl
+    from manifest_schemas import sha256_text, write_jsonl
     from render_pilot_prompts import load_inputs, load_templates, render_records
     from validate_synthesis_run import DEFAULT_RUN_PLAN, DEFAULT_TRAIN_ROOT, load_run_plan, validate_run_plan
 
 
 DEFAULT_OUT_DIR = Path(tempfile.gettempdir()) / "vaevas_contract_synthesis_requests"
+DEFAULT_VARIATION_FOCI = [
+    "boundary conditions and tolerance stress",
+    "alternative stimulus waveform coverage",
+    "parameter sweep diversity",
+    "checker-observable clarity",
+    "OOD-style naming and split-key diversity",
+]
 
 
 def require(condition: bool, message: str) -> None:
@@ -37,6 +44,8 @@ def write_summary(out_dir: Path, requests: list[dict], request_hash: str, run_id
         "run_id": run_id,
         "synthesis_run_hash": run_hash,
         "request_count": len(requests),
+        "seed_count": len({request["seed_id"] for request in requests}),
+        "variant_count": len({request["variant_id"] for request in requests}),
         "prompt_kinds": sorted({request["prompt_kind"] for request in requests}),
         "request_jsonl_hash": request_hash,
         "llm_api_called": False,
@@ -66,30 +75,50 @@ def main() -> None:
     prompt_records = render_records(catalog, pilot_plan, templates, args.train_root)
 
     selected_kinds = set(run_plan.prompt_selection["include_prompt_kinds"])
+    variants_per_seed = int(run_plan.prompt_selection.get("variants_per_seed", 1))
+    variation_foci = list(run_plan.prompt_selection.get("variation_foci", DEFAULT_VARIATION_FOCI))
+    if not variation_foci:
+        variation_foci = DEFAULT_VARIATION_FOCI
     requests: list[dict] = []
     for record in prompt_records:
         if record["prompt_kind"] not in selected_kinds:
             continue
-        requests.append(
-            {
-                "request_id": record["prompt_id"],
-                "prompt_id": record["prompt_id"],
-                "prompt_kind": record["prompt_kind"],
-                "seed_id": record["seed_id"],
-                "contract_id_hint": record["contract_id"],
-                "category": record["category"],
-                "level": record["level"],
-                "task_form": record["task_form"],
-                "model_visible_prompt": record["model_visible_prompt"],
-                "prompt_sha256": record["prompt_sha256"],
-                "hidden_metadata": {
-                    **record["hidden_metadata"],
-                    "synthesis_run_hash": run_plan.synthesis_run_hash,
-                    "expected_output": "one draft contract YAML matching train/data/contracts/schema.yaml",
-                    "not_training_data": True,
-                },
-            }
-        )
+        for variant_index in range(1, variants_per_seed + 1):
+            variant_id = f"v{variant_index:02d}"
+            variation_focus = variation_foci[(variant_index - 1) % len(variation_foci)]
+            variant_prompt = (
+                f"{record['model_visible_prompt'].rstrip()}\n\n"
+                "## Variant Requirements\n\n"
+                f"- variant_id: `{variant_id}`\n"
+                f"- variation_focus: {variation_focus}\n"
+                "- Create a distinct contract, not only a rename of the seed contract.\n"
+                "- Use a new `id` and a new `split_key` that includes the variant focus.\n"
+                "- Preserve the requested category, level, task_form, and clean-room provenance.\n"
+            )
+            requests.append(
+                {
+                    "request_id": f"{record['prompt_id']}.{variant_id}",
+                    "prompt_id": record["prompt_id"],
+                    "prompt_kind": record["prompt_kind"],
+                    "seed_id": record["seed_id"],
+                    "variant_id": variant_id,
+                    "variation_focus": variation_focus,
+                    "contract_id_hint": record["contract_id"],
+                    "category": record["category"],
+                    "level": record["level"],
+                    "task_form": record["task_form"],
+                    "model_visible_prompt": variant_prompt,
+                    "prompt_sha256": sha256_text(variant_prompt),
+                    "hidden_metadata": {
+                        **record["hidden_metadata"],
+                        "synthesis_run_hash": run_plan.synthesis_run_hash,
+                        "expected_output": "one draft contract YAML matching train/data/contracts/schema.yaml",
+                        "not_training_data": True,
+                        "variant_id": variant_id,
+                        "variation_focus": variation_focus,
+                    },
+                }
+            )
 
     max_requests = int(run_plan.prompt_selection["max_requests"])
     require(len(requests) == max_requests, f"expected {max_requests} requests, got {len(requests)}")
@@ -107,4 +136,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

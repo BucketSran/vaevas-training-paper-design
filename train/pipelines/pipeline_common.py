@@ -90,12 +90,16 @@ def grpo_prompt_from_contract(contract: dict[str, Any]) -> str:
     return f"{instruction_from_contract(contract)}\n\n{public_contract_summary(contract)}"
 
 
-def sft_output_from_dut(contract: dict[str, Any], dut_text: str) -> str:
+def sft_output_from_artifact(contract: dict[str, Any], artifact_text: str) -> str:
     reasoning = (
         "<think>\n"
         f"<port>{format_ports(contract)}</port>\n"
         f"<behavior>{contract.get('intent')}</behavior>\n"
         "</think>"
     )
-    answer = f"<answer>\n{dut_text.rstrip()}\n</answer>"
+    answer = f"<answer>\n{artifact_text.rstrip()}\n</answer>"
     return f"{reasoning}\n{answer}"
+
+
+def sft_output_from_dut(contract: dict[str, Any], dut_text: str) -> str:
+    return sft_output_from_artifact(contract, dut_text)

@@ -26,6 +26,12 @@ manifests, not raw generated candidates.
 | `contract_review_gate.py` | Shared mechanical contract review checks | contract YAML + schema | review decision, blockers, warnings |
 | `write_generated_contract_index.py` | Validate generated draft contracts and write an index | contracts dir + request JSONL + synthesis run | generated contract index YAML |
 | `validate_generated_contracts.py` | Revalidate a generated contract index and referenced contracts | generated contract index | exit 0 if contract refs, hashes, and mechanical review are coherent |
+| `write_contract_review_manifest.py` | Write a structured review manifest for generated contracts | generated contract index | review manifest + Markdown report |
+| `validate_contract_review_manifest.py` | Validate review decisions and next-stage permissions | review manifest + generated contract index | exit 0 if decisions are internally coherent |
+| `prepare_artifact_synthesis_requests.py` | Write artifact-generation request JSONL for accepted contracts | generated contract index + review manifest | scratch/request-dir JSONL + summary |
+| `write_artifact_candidate_index.py` | Hash-track generated Verilog-A artifacts as candidate items | generated contract index + review manifest + artifacts | artifact candidate index YAML |
+| `validate_artifact_candidate_index.py` | Revalidate artifact candidate refs and hashes | artifact candidate index | exit 0 if artifact refs and hashes are coherent |
+| `pack_draft_training.py` | Pack draft unadmitted SFT/GRPO JSONL from artifact candidates | artifact candidate index | draft SFT JSONL + draft GRPO prompt JSONL + manifest |
 | `manifest_schemas.py` | Shared Pydantic models and hash/IO helpers | YAML/jsonl payloads | validated manifest objects |
 | `pipeline_common.py` | Shared contract-summary and packer helpers | contract YAML + artifacts | model-visible prompt/record text |
 
@@ -55,7 +61,13 @@ python -m train.pipelines.render_pilot_prompts --out-dir /tmp/vaevas_phase1_prom
 python -m train.pipelines.validate_synthesis_run
 python -m train.pipelines.prepare_contract_synthesis_requests --out-dir /tmp/vaevas_contract_synthesis_requests
 python -m train.pipelines.write_generated_contract_index --contracts-dir <contracts-dir> --request-jsonl <request-jsonl> --out <generated_contract_index.yaml> --expect-count 5
-python -m train.pipelines.validate_generated_contracts --index <generated_contract_index.yaml> --expect-count 5
+python -m train.pipelines.validate_generated_contracts --index <generated_contract_index.yaml> --synthesis-run <synthesis_run.yaml> --expect-count 5
+python -m train.pipelines.write_contract_review_manifest --index <generated_contract_index.yaml> --out <review_manifest.yaml> --report-out <review_report.md>
+python -m train.pipelines.validate_contract_review_manifest --review-manifest <review_manifest.yaml> --generated-contract-index <generated_contract_index.yaml>
+python -m train.pipelines.prepare_artifact_synthesis_requests --generated-contract-index <generated_contract_index.yaml> --review-manifest <review_manifest.yaml> --out-dir <artifact-request-dir>
+python -m train.pipelines.write_artifact_candidate_index --generated-contract-index <generated_contract_index.yaml> --review-manifest <review_manifest.yaml> --artifact-root <artifacts-dir> --out <artifact_candidate_index.yaml>
+python -m train.pipelines.validate_artifact_candidate_index --candidate-index <artifact_candidate_index.yaml>
+python -m train.pipelines.pack_draft_training --candidate-index <artifact_candidate_index.yaml> --out-dir <draft-training-dir> --manifest-out <draft_training_pack_manifest.yaml> --run-id <run-id>
 ```
 
 Toy closed-loop smoke commands are documented in

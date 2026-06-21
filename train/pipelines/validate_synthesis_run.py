@@ -41,7 +41,8 @@ except ImportError:  # pragma: no cover - direct script execution fallback
 DEFAULT_TRAIN_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_RUN_PLAN = DEFAULT_TRAIN_ROOT / "data/manifests/synthesis/synthesis_run.contract-smoke-0001.yaml"
 ALLOWED_PROMPT_KINDS = {"contract_proposal", "contract_review", "artifact_proposal"}
-FORBIDDEN_OUTPUT_KEYWORDS = {"SFT JSONL", "GRPO JSONL", "model checkpoints", "simulator dumps", "secrets or .env files"}
+ALWAYS_FORBIDDEN_OUTPUT_KEYWORDS = {"model checkpoints", "simulator dumps", "secrets or .env files"}
+TRAINING_PACK_FORBIDDEN_OUTPUT_KEYWORDS = {"SFT JSONL", "GRPO JSONL"}
 
 
 def require(condition: bool, message: str) -> None:
@@ -106,9 +107,16 @@ def validate_run_plan(plan: SynthesisRunPlan, train_root: Path) -> None:
     )
 
     max_requests = int(plan.prompt_selection.get("max_requests", 0))
+    variants_per_seed = int(plan.prompt_selection.get("variants_per_seed", 1))
     require(max_requests > 0, "prompt_selection.max_requests must be positive")
+    require(variants_per_seed > 0, "prompt_selection.variants_per_seed must be positive when present")
     if plan.prompt_selection.get("require_one_request_per_planned_seed"):
         require(max_requests == len(pilot_plan.planned_seed_ids), "max_requests must match planned_seed_ids count")
+    else:
+        require(
+            max_requests == len(pilot_plan.planned_seed_ids) * variants_per_seed,
+            "max_requests must match planned_seed_ids * variants_per_seed",
+        )
 
     max_contracts = int(plan.model_policy.get("max_contracts", 0))
     require(max_contracts == max_requests, "model_policy.max_contracts must match prompt max_requests")
@@ -121,7 +129,10 @@ def validate_run_plan(plan: SynthesisRunPlan, train_root: Path) -> None:
 
     require(plan.output_policy.get("commit_result_dir") is True, "smoke result dir should be committed for handoff")
     forbidden_outputs = set(plan.output_policy.get("forbidden_outputs", []))
-    missing_forbidden = FORBIDDEN_OUTPUT_KEYWORDS - forbidden_outputs
+    required_forbidden = set(ALWAYS_FORBIDDEN_OUTPUT_KEYWORDS)
+    if not plan.output_policy.get("allow_draft_training_packs", False):
+        required_forbidden |= TRAINING_PACK_FORBIDDEN_OUTPUT_KEYWORDS
+    missing_forbidden = required_forbidden - forbidden_outputs
     require(not missing_forbidden, f"output_policy.forbidden_outputs missing {sorted(missing_forbidden)}")
     require(
         plan.review_policy.get("manual_review_required_before_artifact_generation") is True,

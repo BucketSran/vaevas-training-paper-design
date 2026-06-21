@@ -204,10 +204,11 @@ data/manifests/synthesis/synthesis_run.<run_id>.yaml
 Purpose: define a bounded synthesis job before any model creates draft
 contracts or artifacts.
 
-Current smoke run:
+Current smoke and overnight runs:
 
 ```text
 data/manifests/synthesis/synthesis_run.contract-smoke-0001.yaml
+data/manifests/synthesis/synthesis_run.contract-batch-0025.yaml
 ```
 
 Required policy blocks:
@@ -221,8 +222,11 @@ Required policy blocks:
 | `validation_policy` | Required validators before outputs can be committed. |
 | `remote_handoff` | One-shot return and commit behavior for server-mediated work. |
 
-The current smoke permits only `contract_proposal` prompts and forbids
-Verilog-A artifacts, SFT/GRPO packs, simulator outputs, and checkpoints.
+The smoke permits only `contract_proposal` prompts and forbids Verilog-A
+artifacts, SFT/GRPO packs, simulator outputs, and checkpoints. The overnight
+batch permits draft Verilog-A artifact generation and draft unadmitted SFT/GRPO
+JSONL packing, but still forbids checkpoints, simulator dumps, and admitted
+training-data claims.
 
 ## Generated Contract Index
 
@@ -252,6 +256,58 @@ Current validators:
 train/pipelines/write_generated_contract_index.py
 train/pipelines/validate_generated_contracts.py
 ```
+
+## Contract Review Manifest
+
+File:
+
+```text
+train/infra/results/<run_id>/review_manifest.yaml
+```
+
+Purpose: record review decisions after mechanical contract validation. Accepted
+contracts may proceed to artifact generation; other contracts remain in
+revision, quarantine, or reject states.
+
+Current validators:
+
+```text
+train/pipelines/write_contract_review_manifest.py
+train/pipelines/validate_contract_review_manifest.py
+```
+
+## Artifact Candidate Index
+
+File:
+
+```text
+train/infra/results/<run_id>/artifact_candidate_index.yaml
+```
+
+Purpose: hash-track generated Verilog-A artifacts as draft candidate items. This
+index enables draft pack generation, but it is not an admitted manifest and does
+not imply EVAS/Spectre success.
+
+Current validators:
+
+```text
+train/pipelines/write_artifact_candidate_index.py
+train/pipelines/validate_artifact_candidate_index.py
+```
+
+## Draft Training Pack Manifest
+
+File:
+
+```text
+train/infra/results/<run_id>/draft_training_pack_manifest.yaml
+```
+
+Purpose: record draft SFT/GRPO JSONL generated from artifact candidates for
+inspection and later pipeline testing. It must carry
+`status: draft_unadmitted_training_pack` and cannot be used for paper claims
+until contamination, EVAS, Spectre-shadow policy, and admitted-manifest gates
+pass.
 
 ## Protected Index
 

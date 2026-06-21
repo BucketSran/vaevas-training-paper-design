@@ -61,7 +61,11 @@ def build_prompt_map(request_jsonl: Path | None) -> dict[str, dict[str, Any]]:
     if request_jsonl is None:
         return {}
     records = read_jsonl(request_jsonl)
-    return {str(record["prompt_id"]): record for record in records}
+    prompt_map: dict[str, dict[str, Any]] = {}
+    for record in records:
+        prompt_map[str(record["prompt_id"])] = record
+        prompt_map[str(record.get("request_id", record["prompt_id"]))] = record
+    return prompt_map
 
 
 def collect_contract_paths(contracts_dir: Path) -> list[Path]:
@@ -107,9 +111,10 @@ def main() -> None:
 
         seed_ids = list(review["seed_ids"])
         require(seed_ids, f"{contract_path} has no seed IDs")
-        source_prompt_id = f"{seed_ids[0]}.contract_proposal"
+        generator = contract.get("provenance", {}).get("generator", {})
+        source_prompt_id = str(generator.get("prompt_id") or f"{seed_ids[0]}.contract_proposal")
         prompt_record = prompt_map.get(source_prompt_id, {})
-        prompt_sha256 = prompt_record.get("prompt_sha256")
+        prompt_sha256 = prompt_record.get("prompt_sha256") or generator.get("prompt_hash")
 
         item = {
             "generated_contract_id": str(contract["id"]),

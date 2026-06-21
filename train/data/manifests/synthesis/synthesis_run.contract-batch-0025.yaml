@@ -1,0 +1,102 @@
+schema_version: phase1.v0.1
+run_id: contract-batch-0025-0001
+purpose: 'Prepare an overnight one-shot remote synthesis batch with five variants
+  for each clean-room pilot seed. This run may create 25 draft contract YAML files,
+  generate reviewed draft Verilog-A artifacts for accepted contracts, and pack draft
+  unadmitted SFT/GRPO JSONL for inspection. It must not run model training, write
+  checkpoints, run EVAS/Spectre, or claim admitted training data.
+
+  '
+producer:
+  name: local_codex
+  version: phase1-contract-batch-0025
+  git_commit: null
+seed_catalog_ref: data/seeds/seed_catalog.phase1-pilot-0001.yaml
+seed_catalog_hash: sha256:50026df993449be89a244425765c20f51dece035dd0a04c28d8bd3e70a68b056
+pilot_plan_ref: data/manifests/pilot/batch_plan.synth-batch-pilot-0001.yaml
+pilot_plan_hash: sha256:eabc9f9f81a4cc2566ecdf3695119729b3dc74efd7adb605415be5b372ef1b38
+prompt_template_dir: data/prompts/templates
+prompt_selection:
+  include_prompt_kinds:
+  - contract_proposal
+  variants_per_seed: 5
+  max_requests: 25
+  require_one_request_per_planned_seed: false
+  variation_foci:
+  - boundary conditions and tolerance stress
+  - alternative stimulus waveform coverage
+  - parameter sweep diversity
+  - checker-observable clarity
+  - OOD-style naming and split-key diversity
+  exclude_prompt_kinds:
+  - contract_review
+  - artifact_proposal
+model_policy:
+  execution_mode: remote_codex_or_llm
+  allowed_models:
+  - remote_codex_default
+  - user_approved_llm
+  external_api_allowed: false
+  max_contracts: 25
+  require_model_ref_in_index: true
+output_policy:
+  result_root_template: train/infra/results/contract-batch-0025-YYYYMMDDTHHMMSSZ
+  allow_artifact_generation: true
+  allow_draft_training_packs: true
+  required_files:
+  - status.txt
+  - summary.json
+  - commands.log
+  - generated_contract_index.yaml
+  - review_manifest.yaml
+  - review_report.md
+  - artifact_candidate_index.yaml
+  - draft_training_pack_manifest.yaml
+  allowed_generated_files:
+  - contracts/*.yaml
+  - artifact_requests/*.jsonl
+  - artifact_requests/*.json
+  - artifacts/*/*.va
+  - artifacts/*/*.scs
+  - artifacts/*/*.yaml
+  - artifacts/*/*.md
+  - draft_training/draft_sft/*.jsonl
+  - draft_training/draft_grpo/*.jsonl
+  forbidden_outputs:
+  - admitted SFT JSONL
+  - admitted GRPO JSONL
+  - model checkpoints
+  - simulator dumps
+  - secrets or .env files
+  commit_result_dir: true
+review_policy:
+  mechanical_review_required: true
+  structured_review_manifest_required: true
+  manual_review_required_before_artifact_generation: true
+  accept_labels:
+  - accept_for_generation
+  soft_labels:
+  - needs_revision
+  reject_labels:
+  - reject
+  - quarantine
+validation_policy:
+  require_synthesis_run_validation: true
+  require_contract_schema_validation: true
+  require_generated_contract_index: true
+  require_review_manifest: true
+  require_artifact_candidate_index: true
+  require_draft_training_pack: true
+  require_no_admitted_training_data_generated: true
+  require_no_llm_api_when_external_api_allowed_false: true
+  require_no_model_training: true
+  require_no_checkpoints: true
+remote_handoff:
+  one_shot_required: true
+  return_summary_in_final_response: true
+  commit_small_result_dir: true
+  remote_task_ref: infra/jobs/REMOTE_CODEX_TASK_CONTRACT_BATCH_OVERNIGHT.md
+fixture_notes:
+- This plan prepares a larger overnight contract batch only.
+- Draft contracts produced by this run are review inputs, not admitted data.
+synthesis_run_hash: sha256:565ab47a9d4ad8ff7d6ca2bd6cdc401fea09787c1188564068076d451e5dd1ca
