@@ -1,0 +1,59 @@
+{
+  "schema_version": "phase1.evas_rust_toolchain_fix.v0.1",
+  "run_id": "evas-profile-pr12-e1e73c0-rustfix-20260621T065830Z",
+  "status": "built_smoke_tested",
+  "evaluator_profile_id": "evas-pr12-e1e73c0",
+  "evaluator_kind": "evas_rust",
+  "repo": "https://github.com/BucketSran/EVAS.git",
+  "upstream_pr": "https://github.com/Arcadia-1/EVAS/pull/12",
+  "branch": "codex/stochastic-semantics-and-cross-law",
+  "git_commit": "e1e73c056ceb91dbda47c5029d8b37f57d9c0fa7",
+  "workdir": "/data/jinzhihong/vaevas-evaluator/EVAS",
+  "python": {
+    "path": "/data/jinzhihong/envs/vaevas-rl/bin/python",
+    "editable_install_command": "/data/jinzhihong/envs/vaevas-rl/bin/python -m pip install -e \".[dev]\"",
+    "first_attempt_status": "FAIL_SANDBOX_DNS",
+    "network_retry_status": "PASS"
+  },
+  "rust_toolchain": {
+    "install_method": "user_local_rustup",
+    "rustup_installer": "/tmp/rustup-init.sh",
+    "cargo_version": "cargo 1.96.0 (30a34c682 2026-05-25)",
+    "rustc_version": "rustc 1.96.0 (ac68faa20 2026-05-25)",
+    "cargo_path": "/data/jinzhihong/.cargo/bin/cargo",
+    "rustc_path": "/data/jinzhihong/.cargo/bin/rustc",
+    "sudo_used": false
+  },
+  "build": {
+    "command": "cargo build --manifest-path evas/rust_core/Cargo.toml --release",
+    "return_code": 0,
+    "status": "PASS",
+    "summary": "Finished `release` profile [optimized] target(s) in 2.92s",
+    "artifact": "evas/rust_core/target/release/libevas_rust_core.so",
+    "artifact_exists": true,
+    "artifact_size_bytes": 596568,
+    "artifact_sha256": "976ad75cb45efef9433fb277281e70408de0dbd235b28ce3eba81b47f600ab8d"
+  },
+  "smoke_tests": {
+    "evas_list": {
+      "command": "/data/jinzhihong/envs/vaevas-rl/bin/python -m evas list",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": "Available examples: adc_dac_ideal_4b, clk_div, comparator, digital_basics, noise_gen"
+    },
+    "clk_div_evas_rust": {
+      "command": "/data/jinzhihong/envs/vaevas-rl/bin/python -m evas run clk_div --engine evas-rust",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": "EVAS completed clk_div with evas-rust, 0 errors and 1 warning; Rust fastpath available/enabled counters were present; output CSV/strobe/plots were written under the EVAS checkout only."
+    }
+  },
+  "boundaries": {
+    "training_run": false,
+    "spectre_run": false,
+    "checkpoints_written": false,
+    "external_llm_api_called": false
+  },
+  "commands_log": "train/infra/results/evas-profile-pr12-e1e73c0-rustfix-20260621T065830Z/commands.log",
+  "next_blocker": "none"
+}

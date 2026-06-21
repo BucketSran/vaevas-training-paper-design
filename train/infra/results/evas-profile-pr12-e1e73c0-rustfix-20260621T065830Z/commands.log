@@ -1,0 +1,2935 @@
+RUN_ID=evas-profile-pr12-e1e73c0-rustfix-20260621T065830Z
+RESULT_DIR=train/infra/results/evas-profile-pr12-e1e73c0-rustfix-20260621T065830Z
+$ git checkout --detach e1e73c056ceb91dbda47c5029d8b37f57d9c0fa7
+HEAD is now at e1e73c0 Merge phase classifier refinement (open item 3)
+$ git rev-parse HEAD
+e1e73c056ceb91dbda47c5029d8b37f57d9c0fa7
+PASS pinned_commit
+$ command -v cargo
+$ command -v rustc
+$ find $HOME /data/jinzhihong -maxdepth 4 -type f (cargo/rustc)
+$ curl --proto ... https://sh.rustup.rs -o /tmp/rustup-init.sh
+PASS downloaded rustup installer
+$ sh /tmp/rustup-init.sh -y --profile minimal --default-toolchain stable
+PASS installed user-local stable-x86_64-unknown-linux-gnu toolchain
+$ source $HOME/.cargo/env; cargo --version
+cargo 1.96.0 (30a34c682 2026-05-25)
+$ source $HOME/.cargo/env; rustc --version
+rustc 1.96.0 (ac68faa20 2026-05-25)
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m pip install -e .[dev]
+Obtaining file:///data/jinzhihong/vaevas-evaluator/EVAS
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'error'
+  error: subprocess-exited-with-error
+
+  × installing build dependencies did not run successfully.
+  │ exit code: 1
+  ╰─> [7 lines of output]
+      WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='pypi.org', port=443): Failed to resolve 'pypi.org' ([Errno -2] Name or service not known)")': /simple/setuptools/
+      WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='pypi.org', port=443): Failed to resolve 'pypi.org' ([Errno -2] Name or service not known)")': /simple/setuptools/
+      WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='pypi.org', port=443): Failed to resolve 'pypi.org' ([Errno -2] Name or service not known)")': /simple/setuptools/
+      WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='pypi.org', port=443): Failed to resolve 'pypi.org' ([Errno -2] Name or service not known)")': /simple/setuptools/
+      WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='pypi.org', port=443): Failed to resolve 'pypi.org' ([Errno -2] Name or service not known)")': /simple/setuptools/
+      ERROR: Could not find a version that satisfies the requirement setuptools>=61 (from versions: none)
+      ERROR: No matching distribution found for setuptools>=61
+      [end of output]
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+ERROR: Failed to build 'file:///data/jinzhihong/vaevas-evaluator/EVAS' when installing build dependencies
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m pip install -e .[dev] (network retry)
+Obtaining file:///data/jinzhihong/vaevas-evaluator/EVAS
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: numpy in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from evas-sim==0.4.4) (1.26.4)
+Requirement already satisfied: matplotlib in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from evas-sim==0.4.4) (3.10.9)
+Requirement already satisfied: pytest>=7.0 in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from evas-sim==0.4.4) (9.1.1)
+Requirement already satisfied: pytest-cov in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from evas-sim==0.4.4) (7.1.0)
+Requirement already satisfied: ruff in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from evas-sim==0.4.4) (0.15.18)
+Requirement already satisfied: iniconfig>=1.0.1 in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from pytest>=7.0->evas-sim==0.4.4) (2.3.0)
+Requirement already satisfied: packaging>=22 in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from pytest>=7.0->evas-sim==0.4.4) (25.0)
+Requirement already satisfied: pluggy<2,>=1.5 in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from pytest>=7.0->evas-sim==0.4.4) (1.6.0)
+Requirement already satisfied: pygments>=2.7.2 in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from pytest>=7.0->evas-sim==0.4.4) (2.20.0)
+Requirement already satisfied: contourpy>=1.0.1 in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from matplotlib->evas-sim==0.4.4) (1.3.3)
+Requirement already satisfied: cycler>=0.10 in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from matplotlib->evas-sim==0.4.4) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from matplotlib->evas-sim==0.4.4) (4.63.0)
+Requirement already satisfied: kiwisolver>=1.3.1 in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from matplotlib->evas-sim==0.4.4) (1.5.0)
+Requirement already satisfied: pillow>=8 in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from matplotlib->evas-sim==0.4.4) (12.2.0)
+Requirement already satisfied: pyparsing>=3 in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from matplotlib->evas-sim==0.4.4) (3.3.2)
+Requirement already satisfied: python-dateutil>=2.7 in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from matplotlib->evas-sim==0.4.4) (2.9.0.post0)
+Requirement already satisfied: six>=1.5 in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from python-dateutil>=2.7->matplotlib->evas-sim==0.4.4) (1.17.0)
+Requirement already satisfied: coverage>=7.10.6 in /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages (from coverage[toml]>=7.10.6->pytest-cov->evas-sim==0.4.4) (7.14.2)
+Building wheels for collected packages: evas-sim
+  Building editable for evas-sim (pyproject.toml): started
+  Building editable for evas-sim (pyproject.toml): finished with status 'done'
+  Created wheel for evas-sim: filename=evas_sim-0.4.4-0.editable-py3-none-any.whl size=6967 sha256=a74e58bebfa8ffd03e084de6ab05489cee65b034e57d1bd26ed9cb7dd75a2dbd
+  Stored in directory: /tmp/pip-ephem-wheel-cache-8p2_psuc/wheels/ab/99/40/2b06b5e4c5df27cf1ddbb93d1092e3ca3963dd2ff8f74cbeb6
+Successfully built evas-sim
+Installing collected packages: evas-sim
+  Attempting uninstall: evas-sim
+    Found existing installation: evas-sim 0.4.4
+    Uninstalling evas-sim-0.4.4:
+      Successfully uninstalled evas-sim-0.4.4
+Successfully installed evas-sim-0.4.4
+$ source $HOME/.cargo/env; cargo build --manifest-path evas/rust_core/Cargo.toml --release
+   Compiling evas_rust_core v0.1.0 (/data/jinzhihong/vaevas-evaluator/EVAS/evas/rust_core)
+    Finished `release` profile [optimized] target(s) in 2.92s
+$ test -f evas/rust_core/target/release/libevas_rust_core.so
+PASS rust_backend_build
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m evas list
+Available examples (5):
+  adc_dac_ideal_4b
+  clk_div
+  comparator
+  digital_basics
+  noise_gen
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m evas run clk_div --engine evas-rust
+Running example 'clk_div': tb_clk_div.scs → /data/jinzhihong/vaevas-evaluator/EVAS/output/clk_div
+EVAS -- Event-driven Verilog-A Simulator
+Version 0.4.4 -- Jun 2026
+
+Simulating `tb_clk_div.scs' at 7:09:08 AM, Sun Jun 21, 2026.
+Command line:
+    /data/jinzhihong/vaevas-evaluator/EVAS/evas/__main__.py run clk_div --engine evas-rust
+
+Reading file: tb_clk_div.scs
+WARNING: ahdl_include resolved to 'clk_div.va' (original path not found, used scs directory fallback)
+Compiled Verilog-A module: clk_div
+
+Circuit inventory:
+               nodes 2
+             clk_div 1
+             vsource 1
+
+*****************************************************
+Transient Analysis `tran': time = (0 s -> 100 ns)
+*****************************************************
+Important parameter values:
+    start = 0 s
+    stop  = 100 ns
+    step  = 100 ps
+    reltol = 0.001
+    vabstol = 1e-06
+    iabstol = 1e-12
+    refine_factor = 16
+    refine_steps  = 8
+    evas_rust_full_model_fastpath = true
+    evas_rust_full_model_required = true
+    evas_engine = evas-rust
+    evas_rust_required = true
+
+    tran: time = 10 ns        ( 10 %)
+    tran: time = 20 ns        ( 20 %)
+    tran: time = 30 ns        ( 30 %)
+    tran: time = 40 ns        ( 40 %)
+    tran: time = 50 ns        ( 50 %)
+    tran: time = 60 ns        ( 60 %)
+    tran: time = 70 ns        ( 70 %)
+    tran: time = 80 ns        ( 80 %)
+    tran: time = 90 ns        ( 90 %)
+    tran: time = 100 ns       (100 %)
+Number of accepted tran steps = 1550
+Performance counters:
+    bound_step_clamps = 0
+    bound_step_scan_calls = 0
+    cross_event_steps = 0
+    cross_refine_triggers = 0
+    dynamic_node_cache_bypasses_total = 0
+    dynamic_node_cache_entries = 0
+    dynamic_node_cache_hits_total = 0
+    dynamic_node_cache_misses_total = 0
+    dynamic_node_cache_models = 0
+    dynamic_step_grows = 0
+    dynamic_step_shrinks = 0
+    err_ratio_skipped_outputs = 0
+    err_ratio_skipped_sources = 0
+    event_trace_audit_above_events_total = 0
+    event_trace_audit_array_writes_total = 0
+    event_trace_audit_body_entries_total = 0
+    event_trace_audit_combined_events_total = 0
+    event_trace_audit_cross_events_total = 0
+    event_trace_audit_enabled = 0
+    event_trace_audit_events_total = 0
+    event_trace_audit_final_step_events_total = 0
+    event_trace_audit_in_event_writes_total = 0
+    event_trace_audit_initial_step_events_total = 0
+    event_trace_audit_output_writes_total = 0
+    event_trace_audit_records_dropped_total = 0
+    event_trace_audit_requested = 0
+    event_trace_audit_state_writes_total = 0
+    event_trace_audit_timer_events_total = 0
+    event_trace_audit_timer_last_fired_writes_total = 0
+    event_trace_audit_timer_state_writes_total = 0
+    event_trace_audit_transition_output_writes_total = 0
+    event_trace_audit_transition_writes_total = 0
+    future_node_lazy_descriptors = 0
+    future_node_snapshots = 0
+    generic_executor_blocked_runs = 0
+    generic_executor_dispatchable_runs = 0
+    generic_executor_models_with_candidate = 0
+    generic_executor_runs = 0
+    generic_executor_runtime_fallbacks = 0
+    indexed_array_dirty_nodes_checked = 0
+    indexed_array_dirty_syncs = 0
+    indexed_array_dirty_validation_enabled = 0
+    indexed_array_dynamic_nodes = 0
+    indexed_array_err_ratio_reads = 0
+    indexed_array_mismatches = 0
+    indexed_array_prev_snapshot_dirty_skips = 0
+    indexed_array_record_id_reads = 0
+    indexed_array_record_reads = 0
+    indexed_array_snapshots = 0
+    indexed_array_source_updates = 0
+    indexed_array_syncs = 0
+    indexed_array_values_checked = 0
+    indexed_model_io_mapped_ports = 0
+    indexed_model_io_models = 0
+    indexed_model_io_outputs = 0
+    indexed_model_io_refreshes = 0
+    indexed_output_write_through_nodes = 0
+    indexed_output_write_throughs = 0
+    indexed_post_model_sync_repairs = 0
+    indexed_prev_snapshots = 0
+    indexed_snapshot_dynamic_nodes = 0
+    indexed_snapshot_mismatches = 0
+    indexed_snapshot_values_checked = 0
+    indexed_state_array_oob_writes_total = 0
+    indexed_state_array_reads_total = 0
+    indexed_state_array_writes_total = 0
+    indexed_state_scalar_reads_total = 0
+    indexed_state_scalar_writes_total = 0
+    indexed_state_storage_array_slots = 0
+    indexed_state_storage_enabled = 0
+    indexed_state_storage_integer_slots = 0
+    indexed_state_storage_models = 0
+    indexed_state_storage_scalar_slots = 0
+    indexed_voltage_probe_event_skips = 0
+    indexed_voltage_probe_max_abs_diff = 0.0
+    indexed_voltage_probe_mismatches = 0
+    indexed_voltage_probe_missing_nodes = 0
+    indexed_voltage_probes = 0
+    indexed_voltage_read_fallbacks = 0
+    indexed_voltage_read_nodes = 0
+    indexed_voltage_reads = 0
+    min_step_clamps = 0
+    model_breakpoint_clamps = 0
+    model_breakpoint_scan_calls = 0
+    model_post_update_calls = 0
+    model_post_update_skips = 0
+    model_prepare_step_calls = 0
+    model_prepare_step_skips = 0
+    model_timer_expire_calls = 0
+    model_timer_expire_skips = 0
+    node_resolution_cache_entries = 0
+    node_resolution_cache_models = 0
+    output_step_clamps = 0
+    rust_above_production_calls_total = 0
+    rust_above_production_fallbacks_total = 0
+    rust_above_production_fires_total = 0
+    rust_array_err_ratio_fallbacks = 0
+    rust_array_err_ratio_reads = 0
+    rust_array_err_ratio_scans = 0
+    rust_array_loop_enabled = 0
+    rust_array_record_fallbacks = 0
+    rust_array_record_scans = 0
+    rust_array_record_values = 0
+    rust_array_snapshot_copies = 0
+    rust_array_snapshot_fallbacks = 0
+    rust_body_ir_available = 0
+    rust_body_ir_candidate_models = 0
+    rust_body_ir_enabled = 0
+    rust_body_ir_expr_ops = 0
+    rust_body_ir_models = 0
+    rust_body_ir_production_batches_total = 0
+    rust_body_ir_production_calls_total = 0
+    rust_body_ir_production_executed_total = 0
+    rust_body_ir_production_fallbacks_total = 0
+    rust_body_ir_production_node_writes_total = 0
+    rust_body_ir_production_state_writes_total = 0
+    rust_body_ir_requested = 0
+    rust_body_ir_stmt_ops = 0
+    rust_cross_above_production_available = 0
+    rust_cross_above_production_enabled = 0
+    rust_cross_above_production_requested = 0
+    rust_cross_production_calls_total = 0
+    rust_cross_production_fallbacks_total = 0
+    rust_cross_production_fires_total = 0
+    rust_event_due_shadow_above_checks_total = 0
+    rust_event_due_shadow_available = 0
+    rust_event_due_shadow_cross_checks_total = 0
+    rust_event_due_shadow_enabled = 0
+    rust_event_due_shadow_errors_total = 0
+    rust_event_due_shadow_matches_total = 0
+    rust_event_due_shadow_max_time_diff_total = 0.0
+    rust_event_due_shadow_mismatches_total = 0
+    rust_event_due_shadow_requested = 0
+    rust_event_due_shadow_timer_absolute_checks_total = 0
+    rust_event_due_shadow_timer_periodic_checks_total = 0
+    rust_event_interpolation_available = 0
+    rust_event_interpolation_batches_total = 0
+    rust_event_interpolation_cache_hits_total = 0
+    rust_event_interpolation_enabled = 0
+    rust_event_interpolation_fallbacks_total = 0
+    rust_event_interpolation_nodes_total = 0
+    rust_event_interpolation_requested = 0
+    rust_event_linear_write_batches_total = 0
+    rust_event_linear_write_production_calls_total = 0
+    rust_event_linear_write_production_executed_total = 0
+    rust_event_linear_write_production_fallbacks_total = 0
+    rust_event_linear_write_shadow_checks_total = 0
+    rust_event_linear_write_shadow_errors_total = 0
+    rust_event_linear_write_shadow_matches_total = 0
+    rust_event_linear_write_shadow_mismatches_total = 0
+    rust_event_transition_plan_core_candidate_models = 1
+    rust_event_transition_plan_core_due_triggers = 2
+    rust_event_transition_plan_core_event_statements = 2
+    rust_event_transition_plan_core_output_writes = 0
+    rust_event_transition_plan_core_transitions = 1
+    rust_event_transition_plan_ordered_v1_candidate_models = 1
+    rust_event_transition_plan_ordered_v1_due_triggers = 2
+    rust_event_transition_plan_ordered_v1_event_statements = 2
+    rust_event_transition_plan_ordered_v1_output_writes = 0
+    rust_event_transition_plan_ordered_v1_transitions = 1
+    rust_event_transition_plan_side_effect_candidate_models = 1
+    rust_event_transition_plan_side_effect_due_triggers = 2
+    rust_event_transition_plan_side_effect_event_statements = 2
+    rust_event_transition_plan_side_effect_output_writes = 0
+    rust_event_transition_plan_side_effect_transitions = 1
+    rust_event_transition_production_available = 0
+    rust_event_transition_production_breakpoint_clamps_total = 0
+    rust_event_transition_production_breakpoint_scans_total = 0
+    rust_event_transition_production_calls_total = 0
+    rust_event_transition_production_candidate_models = 0
+    rust_event_transition_production_enabled = 0
+    rust_event_transition_production_executed_total = 0
+    rust_event_transition_production_fallbacks_total = 0
+    rust_event_transition_production_fired_events_total = 0
+    rust_event_transition_production_models = 0
+    rust_event_transition_production_output_writes_total = 0
+    rust_event_transition_production_requested = 0
+    rust_event_transition_production_state_writes_total = 0
+    rust_event_transition_shadow_available = 0
+    rust_event_transition_shadow_calls_total = 0
+    rust_event_transition_shadow_candidate_models = 0
+    rust_event_transition_shadow_enabled = 0
+    rust_event_transition_shadow_errors_total = 0
+    rust_event_transition_shadow_matches_total = 0
+    rust_event_transition_shadow_max_abs_diff = 0.0
+    rust_event_transition_shadow_mismatches_total = 0
+    rust_event_transition_shadow_models = 0
+    rust_event_transition_shadow_requested = 0
+    rust_event_transition_shadow_value_checks_total = 0
+    rust_event_write_production_available = 0
+    rust_event_write_production_calls_total = 0
+    rust_event_write_production_enabled = 0
+    rust_event_write_production_executed_total = 0
+    rust_event_write_production_fallbacks_total = 0
+    rust_event_write_production_requested = 0
+    rust_event_write_shadow_available = 0
+    rust_event_write_shadow_checks_total = 0
+    rust_event_write_shadow_enabled = 0
+    rust_event_write_shadow_errors_total = 0
+    rust_event_write_shadow_matches_total = 0
+    rust_event_write_shadow_mismatches_total = 0
+    rust_event_write_shadow_requested = 0
+    rust_full_model_cmp_delay_clock_events = 0
+    rust_full_model_cmp_delay_enabled = 0
+    rust_full_model_cmp_delay_rust_enabled = 0
+    rust_full_model_cmp_delay_rust_fallbacks = 0
+    rust_full_model_cmp_delay_rust_points = 0
+    rust_full_model_cmp_delay_rust_requested = 0
+    rust_full_model_cppll_reacquire_dco_toggles = 0
+    rust_full_model_cppll_reacquire_enabled = 0
+    rust_full_model_cppll_reacquire_fb_crosses = 0
+    rust_full_model_cppll_reacquire_ref_crosses = 0
+    rust_full_model_cppll_reacquire_ref_toggles = 0
+    rust_full_model_cppll_reacquire_rust_enabled = 0
+    rust_full_model_cppll_reacquire_rust_fallbacks = 0
+    rust_full_model_cppll_reacquire_rust_points = 0
+    rust_full_model_cppll_reacquire_rust_requested = 0
+    rust_full_model_event_transition_core_build_errors = 0
+    rust_full_model_event_transition_core_calls_total = 0
+    rust_full_model_event_transition_core_enabled = 0
+    rust_full_model_event_transition_core_fired_events = 0
+    rust_full_model_event_transition_core_native_trace_enabled = 0
+    rust_full_model_event_transition_core_native_trace_fallbacks = 0
+    rust_full_model_event_transition_core_native_trace_fired_events = 0
+    rust_full_model_event_transition_core_native_trace_points = 0
+    rust_full_model_event_transition_core_native_trace_requested = 0
+    rust_full_model_event_transition_core_native_trace_source_breakpoints = 0
+    rust_full_model_event_transition_core_native_trace_transition_breakpoints = 0
+    rust_full_model_event_transition_core_runtime_fallbacks = 0
+    rust_full_model_event_transition_core_rust_enabled = 0
+    rust_full_model_event_transition_core_rust_points = 0
+    rust_full_model_event_transition_core_rust_requested = 0
+    rust_full_model_event_transition_core_source_breakpoints = 0
+    rust_full_model_event_transition_core_transition_breakpoints = 0
+    rust_full_model_fastpath_available = 1
+    rust_full_model_fastpath_enabled = 1
+    rust_full_model_fastpath_fallbacks_total = 0
+    rust_full_model_fastpath_requested = 1
+    rust_full_model_gain_measurement_flow_enabled = 0
+    rust_full_model_gain_measurement_flow_lfsr_events = 0
+    rust_full_model_gain_measurement_flow_rust_enabled = 0
+    rust_full_model_gain_measurement_flow_rust_fallbacks = 0
+    rust_full_model_gain_measurement_flow_rust_points = 0
+    rust_full_model_gain_measurement_flow_rust_requested = 0
+    rust_full_model_gain_measurement_flow_vin_events = 0
+    rust_full_model_gain_timer_reduction_enabled = 0
+    rust_full_model_gain_timer_reduction_rust_enabled = 0
+    rust_full_model_gain_timer_reduction_rust_fallbacks = 0
+    rust_full_model_gain_timer_reduction_rust_points = 0
+    rust_full_model_gain_timer_reduction_rust_requested = 0
+    rust_full_model_gain_timer_reduction_samples = 0
+    rust_full_model_lfsr_transition_cross_events = 0
+    rust_full_model_lfsr_transition_outputs = 0
+    rust_full_model_lfsr_transition_points = 0
+    rust_full_model_prbs7_cross_events = 0
+    rust_full_model_prbs7_points = 0
+    rust_full_model_prbs7_scheduled_crosses = 0
+    rust_full_model_required_failures = 0
+    rust_full_model_required_requested = 1
+    rust_full_model_sar_loop_clock_events = 0
+    rust_full_model_sar_loop_enabled = 0
+    rust_full_model_sar_loop_rust_enabled = 0
+    rust_full_model_sar_loop_rust_fallbacks = 0
+    rust_full_model_sar_loop_rust_points = 0
+    rust_full_model_sar_loop_rust_requested = 0
+    rust_full_model_sim_program_event_transition_record_enabled = 1
+    rust_full_model_timer_static_linear_default_trace_enabled = 0
+    rust_full_model_timer_static_linear_enabled = 0
+    rust_full_model_timer_static_linear_events = 0
+    rust_full_model_timer_static_linear_rust_enabled = 0
+    rust_full_model_timer_static_linear_rust_fallbacks = 0
+    rust_full_model_timer_static_linear_rust_points = 0
+    rust_full_model_timer_static_linear_rust_requested = 0
+    rust_full_model_timer_static_linear_timer_count = 0
+    rust_full_model_whole_segment_points = 1551
+    rust_sim_program_abi_build_elapsed_s = 0.00026528199668973684
+    rust_sim_program_always_body_count = 0
+    rust_sim_program_available = 1
+    rust_sim_program_body_expr_ops = 36
+    rust_sim_program_body_stmt_ops = 9
+    rust_sim_program_continuous_linear_ops = 0
+    rust_sim_program_enabled = 1
+    rust_sim_program_event_count = 2
+    rust_sim_program_event_fires = 101
+    rust_sim_program_event_transition_enabled = 1
+    rust_sim_program_fastpath_total_elapsed_s = 0.011902981030289084
+    rust_sim_program_final_capacity = 12936
+    rust_sim_program_lower_elapsed_s = 0.0008322339854203165
+    rust_sim_program_node_count = 2
+    rust_sim_program_points = 1551
+    rust_sim_program_record_count = 2
+    rust_sim_program_record_replay_elapsed_s = 0.00023966300068423152
+    rust_sim_program_rejections = 0
+    rust_sim_program_requested = 1
+    rust_sim_program_runtime_attempts = 1
+    rust_sim_program_runtime_elapsed_s = 0.00909650296671316
+    rust_sim_program_side_effects = 101
+    rust_sim_program_source_breakpoints = 501
+    rust_sim_program_source_count = 1
+    rust_sim_program_source_record_enabled = 1
+    rust_sim_program_state_count = 2
+    rust_sim_program_state_sync_elapsed_s = 2.9129034373909235e-05
+    rust_sim_program_time_grid_elapsed_s = 0.001420173968654126
+    rust_sim_program_transition_breakpoints = 50
+    rust_sim_program_transition_count = 1
+    rust_static_eval_available = 0
+    rust_static_eval_calls = 0
+    rust_static_eval_candidate_models = 0
+    rust_static_eval_coeff_eval_fallbacks = 0
+    rust_static_eval_deferred_output_syncs = 0
+    rust_static_eval_errors = 0
+    rust_static_eval_fallback_models = 0
+    rust_static_eval_gated_models = 0
+    rust_static_eval_gated_ops = 0
+    rust_static_eval_gated_segments = 0
+    rust_static_eval_integer_state_write_ops = 0
+    rust_static_eval_lifecycle_model_skips = 0
+    rust_static_eval_max_segment_models = 0
+    rust_static_eval_mixed_small_fallbacks = 0
+    rust_static_eval_models = 0
+    rust_static_eval_no_candidate_models = 0
+    rust_static_eval_no_segment_fallbacks = 0
+    rust_static_eval_node_voltage_syncs = 0
+    rust_static_eval_ops = 0
+    rust_static_eval_output_syncs = 0
+    rust_static_eval_requested = 0
+    rust_static_eval_runtime_param_ops = 0
+    rust_static_eval_segments = 0
+    rust_static_eval_state_read_terms = 0
+    rust_static_eval_state_write_ops = 0
+    rust_static_eval_terms = 0
+    rust_static_fast_sync_enabled = 0
+    rust_static_fast_sync_node_voltage_sync_skips = 0
+    rust_static_fast_sync_requested = 0
+    rust_static_fast_sync_validation_skips = 0
+    rust_timer_breakpoint_enabled = 0
+    rust_timer_breakpoint_fallbacks_total = 0
+    rust_timer_breakpoint_scans_total = 0
+    rust_timer_breakpoint_state_scans_total = 0
+    rust_timer_event_available = 0
+    rust_timer_event_enabled = 0
+    rust_timer_event_production_absolute_calls_total = 0
+    rust_timer_event_production_expirations_total = 0
+    rust_timer_event_production_fallbacks_total = 0
+    rust_timer_event_production_fires_total = 0
+    rust_timer_event_production_periodic_calls_total = 0
+    rust_timer_event_production_skips_total = 0
+    rust_timer_event_requested = 0
+    rust_timer_lfsr_output_batches_total = 0
+    rust_timer_lfsr_output_calls_total = 0
+    rust_timer_lfsr_output_due_total = 0
+    rust_timer_lfsr_output_executed_total = 0
+    rust_timer_lfsr_output_fallbacks_total = 0
+    rust_timer_lfsr_output_skips_total = 0
+    rust_timer_lfsr_output_writes_total = 0
+    rust_transition_batch_fallbacks_total = 0
+    rust_transition_batch_flushes_total = 0
+    rust_transition_batch_max_slots_total = 0
+    rust_transition_batch_slot_total_total = 0
+    rust_transition_breakpoint_enabled = 0
+    rust_transition_breakpoint_fallbacks_total = 0
+    rust_transition_breakpoint_scans_total = 0
+    rust_transition_breakpoint_state_scans_total = 0
+    rust_transition_lazy_enqueues_total = 0
+    rust_transition_production_available = 0
+    rust_transition_production_enabled = 0
+    rust_transition_production_requested = 0
+    rust_transition_shadow_available = 0
+    rust_transition_shadow_calls = 0
+    rust_transition_shadow_candidate_models = 0
+    rust_transition_shadow_errors = 0
+    rust_transition_shadow_matches = 0
+    rust_transition_shadow_max_abs_diff = 0.0
+    rust_transition_shadow_mismatches = 0
+    rust_transition_shadow_models = 0
+    rust_transition_shadow_requested = 0
+    rust_transition_shadow_segments = 0
+    rust_transition_shadow_skips = 0
+    rust_transition_shadow_state_matches = 0
+    rust_transition_shadow_state_max_abs_diff = 0.0
+    rust_transition_shadow_state_mismatches = 0
+    rust_transition_shadow_static_ops = 0
+    rust_transition_shadow_target_ops = 0
+    rust_transition_state_buffer_alloc_grand_total = 0
+    rust_transition_state_buffer_reuse_calls_total = 0
+    rust_transition_state_production_calls_total = 0
+    rust_transition_state_production_fallbacks_total = 0
+    rust_transition_state_production_outputs_total = 0
+    source_breakpoint_clamps = 0
+    source_breakpoint_scan_calls = 0
+    static_branch_direct_array_models = 0
+    static_branch_direct_array_read_nodes = 0
+    static_branch_direct_array_write_nodes = 0
+    static_branch_fastpath_codegen_models = 0
+    static_branch_fastpath_fallbacks_total = 0
+    static_branch_fastpath_static_read_nodes = 0
+    static_branch_fastpath_static_write_nodes = 0
+    static_lifecycle_fastpath_enabled = 1
+    steps_total = 1550
+    timer_array_sidecar_rebuilds_total = 0
+    timer_array_sidecar_scans_total = 0
+    timer_array_sidecar_updates_total = 0
+    timer_batch_due_calls_total = 0
+    timer_batch_due_events_total = 0
+    timer_batch_due_fallbacks_total = 0
+    timer_batch_due_fires_total = 0
+    timer_breakpoint_cache_hits_total = 0
+    timer_breakpoint_hits_total = 0
+    timer_breakpoint_scans_total = 0
+    timer_state_owned_checks_total = 0
+    timer_state_owned_fallbacks_total = 0
+    timer_state_owned_fast_skips_total = 0
+    timer_state_owned_fires_total = 0
+    timer_state_owned_target_reads_total = 0
+    timer_state_updates_total = 0
+    transition_breakpoint_active_scans_total = 0
+    transition_breakpoint_inactive_skips_total = 0
+    transition_breakpoint_scans_total = 0
+    transition_calls_total = 0
+    transition_evaluate_calls_total = 0
+    transition_output_fastpath_calls_total = 0
+    transition_set_target_calls_total = 0
+    transition_target_breakpoint_clamps = 0
+    transition_target_breakpoint_scan_calls = 0
+    transition_unchanged_fastpath_enabled = 0
+    transition_unchanged_target_fastpath_total = 0
+Model event counters:
+    model[0] clk_div_Model:
+        above_fires = 0
+        cross_fires = 0
+        dynamic_node_cache_bypasses = 0
+        dynamic_node_cache_hits = 0
+        dynamic_node_cache_misses = 0
+        event_trace_audit_above_events = 0
+        event_trace_audit_array_writes = 0
+        event_trace_audit_body_entries = 0
+        event_trace_audit_combined_events = 0
+        event_trace_audit_cross_events = 0
+        event_trace_audit_events = 0
+        event_trace_audit_final_step_events = 0
+        event_trace_audit_in_event_writes = 0
+        event_trace_audit_initial_step_events = 0
+        event_trace_audit_output_writes = 0
+        event_trace_audit_records_dropped = 0
+        event_trace_audit_state_writes = 0
+        event_trace_audit_timer_events = 0
+        event_trace_audit_timer_last_fired_writes = 0
+        event_trace_audit_timer_state_writes = 0
+        event_trace_audit_transition_output_writes = 0
+        event_trace_audit_transition_writes = 0
+        indexed_state_array_oob_writes = 0
+        indexed_state_array_reads = 0
+        indexed_state_array_writes = 0
+        indexed_state_scalar_reads = 0
+        indexed_state_scalar_writes = 0
+        rust_above_production_calls = 0
+        rust_above_production_fallbacks = 0
+        rust_above_production_fires = 0
+        rust_body_ir_production_batches = 0
+        rust_body_ir_production_calls = 0
+        rust_body_ir_production_executed = 0
+        rust_body_ir_production_fallbacks = 0
+        rust_body_ir_production_node_writes = 0
+        rust_body_ir_production_state_writes = 0
+        rust_cross_production_calls = 0
+        rust_cross_production_fallbacks = 0
+        rust_cross_production_fires = 0
+        rust_event_due_shadow_above_checks = 0
+        rust_event_due_shadow_cross_checks = 0
+        rust_event_due_shadow_errors = 0
+        rust_event_due_shadow_matches = 0
+        rust_event_due_shadow_max_time_diff = 0.0
+        rust_event_due_shadow_mismatches = 0
+        rust_event_due_shadow_timer_absolute_checks = 0
+        rust_event_due_shadow_timer_periodic_checks = 0
+        rust_event_interpolation_batches = 0
+        rust_event_interpolation_cache_hits = 0
+        rust_event_interpolation_fallbacks = 0
+        rust_event_interpolation_nodes = 0
+        rust_event_linear_write_batches = 0
+        rust_event_linear_write_production_calls = 0
+        rust_event_linear_write_production_executed = 0
+        rust_event_linear_write_production_fallbacks = 0
+        rust_event_linear_write_shadow_checks = 0
+        rust_event_linear_write_shadow_errors = 0
+        rust_event_linear_write_shadow_matches = 0
+        rust_event_linear_write_shadow_mismatches = 0
+        rust_event_write_production_calls = 0
+        rust_event_write_production_executed = 0
+        rust_event_write_production_fallbacks = 0
+        rust_event_write_shadow_checks = 0
+        rust_event_write_shadow_errors = 0
+        rust_event_write_shadow_matches = 0
+        rust_event_write_shadow_mismatches = 0
+        rust_timer_breakpoint_fallbacks = 0
+        rust_timer_breakpoint_scans = 0
+        rust_timer_breakpoint_state_scans = 0
+        rust_timer_event_production_absolute_calls = 0
+        rust_timer_event_production_expirations = 0
+        rust_timer_event_production_fallbacks = 0
+        rust_timer_event_production_fires = 0
+        rust_timer_event_production_periodic_calls = 0
+        rust_timer_event_production_skips = 0
+        rust_timer_lfsr_output_batches = 0
+        rust_timer_lfsr_output_calls = 0
+        rust_timer_lfsr_output_due = 0
+        rust_timer_lfsr_output_executed = 0
+        rust_timer_lfsr_output_fallbacks = 0
+        rust_timer_lfsr_output_skips = 0
+        rust_timer_lfsr_output_writes = 0
+        rust_transition_batch_fallbacks = 0
+        rust_transition_batch_flushes = 0
+        rust_transition_batch_max_slots = 0
+        rust_transition_batch_slot_total = 0
+        rust_transition_breakpoint_fallbacks = 0
+        rust_transition_breakpoint_scans = 0
+        rust_transition_breakpoint_state_scans = 0
+        rust_transition_lazy_enqueues = 0
+        rust_transition_state_buffer_alloc_total = 0
+        rust_transition_state_buffer_reuse_calls = 0
+        rust_transition_state_production_calls = 0
+        rust_transition_state_production_fallbacks = 0
+        rust_transition_state_production_outputs = 0
+        static_branch_fastpath_fallbacks = 0
+        timer_absolute_checks = 0
+        timer_absolute_expirations = 0
+        timer_absolute_fires = 0
+        timer_array_sidecar_rebuilds = 0
+        timer_array_sidecar_scans = 0
+        timer_array_sidecar_updates = 0
+        timer_batch_due_calls = 0
+        timer_batch_due_events = 0
+        timer_batch_due_fallbacks = 0
+        timer_batch_due_fires = 0
+        timer_breakpoint_cache_hits = 0
+        timer_breakpoint_hits = 0
+        timer_breakpoint_scans = 0
+        timer_periodic_checks = 0
+        timer_periodic_fires = 0
+        timer_periodic_skips = 0
+        timer_reschedules = 0
+        timer_state_owned_checks = 0
+        timer_state_owned_fallbacks = 0
+        timer_state_owned_fast_skips = 0
+        timer_state_owned_fires = 0
+        timer_state_owned_target_reads = 0
+        timer_state_updates = 0
+        transition_breakpoint_active_scans = 0
+        transition_breakpoint_inactive_skips = 0
+        transition_breakpoint_scans = 0
+        transition_calls = 0
+        transition_evaluate_calls = 0
+        transition_output_fastpath_calls = 0
+        transition_set_target_calls = 0
+        transition_unchanged_target_fastpath = 0
+
+Maximum value achieved for any signal of each quantity:
+    V: V(clk_in) = 900 mV
+
+Tran analysis time: CPU = 13.0 ms, elapsed = 13.0 ms.
+Runner timing counters:
+    derive_bus_signals_s = 0.000143 s
+    csv_write_s = 0.003997 s
+
+Writing CSV: /data/jinzhihong/vaevas-evaluator/EVAS/output/clk_div/tran.csv (signals: clk_in, clk_out)
+Writing strobe log: /data/jinzhihong/vaevas-evaluator/EVAS/output/clk_div/strobe.txt (100 lines)
+[clk_div] t=0.128 ns | count=1 | n=0
+[clk_div] t=1.128 ns | count=2 | n=1
+[clk_div] t=2.128 ns | count=3 | n=1
+[clk_div] t=3.128 ns | count=0 | n=0
+[clk_div] t=4.128 ns | count=1 | n=0
+[clk_div] t=5.128 ns | count=2 | n=1
+[clk_div] t=6.128 ns | count=3 | n=1
+[clk_div] t=7.128 ns | count=0 | n=0
+[clk_div] t=8.128 ns | count=1 | n=0
+[clk_div] t=9.128 ns | count=2 | n=1
+[clk_div] t=10.128 ns | count=3 | n=1
+[clk_div] t=11.128 ns | count=0 | n=0
+[clk_div] t=12.128 ns | count=1 | n=0
+[clk_div] t=13.128 ns | count=2 | n=1
+[clk_div] t=14.128 ns | count=3 | n=1
+[clk_div] t=15.128 ns | count=0 | n=0
+[clk_div] t=16.128 ns | count=1 | n=0
+[clk_div] t=17.128 ns | count=2 | n=1
+[clk_div] t=18.128 ns | count=3 | n=1
+[clk_div] t=19.128 ns | count=0 | n=0
+[clk_div] t=20.128 ns | count=1 | n=0
+[clk_div] t=21.128 ns | count=2 | n=1
+[clk_div] t=22.128 ns | count=3 | n=1
+[clk_div] t=23.128 ns | count=0 | n=0
+[clk_div] t=24.128 ns | count=1 | n=0
+[clk_div] t=25.128 ns | count=2 | n=1
+[clk_div] t=26.128 ns | count=3 | n=1
+[clk_div] t=27.128 ns | count=0 | n=0
+[clk_div] t=28.128 ns | count=1 | n=0
+[clk_div] t=29.128 ns | count=2 | n=1
+[clk_div] t=30.128 ns | count=3 | n=1
+[clk_div] t=31.128 ns | count=0 | n=0
+[clk_div] t=32.128 ns | count=1 | n=0
+[clk_div] t=33.128 ns | count=2 | n=1
+[clk_div] t=34.128 ns | count=3 | n=1
+[clk_div] t=35.128 ns | count=0 | n=0
+[clk_div] t=36.128 ns | count=1 | n=0
+[clk_div] t=37.128 ns | count=2 | n=1
+[clk_div] t=38.128 ns | count=3 | n=1
+[clk_div] t=39.128 ns | count=0 | n=0
+[clk_div] t=40.128 ns | count=1 | n=0
+[clk_div] t=41.128 ns | count=2 | n=1
+[clk_div] t=42.128 ns | count=3 | n=1
+[clk_div] t=43.128 ns | count=0 | n=0
+[clk_div] t=44.128 ns | count=1 | n=0
+[clk_div] t=45.128 ns | count=2 | n=1
+[clk_div] t=46.128 ns | count=3 | n=1
+[clk_div] t=47.128 ns | count=0 | n=0
+[clk_div] t=48.128 ns | count=1 | n=0
+[clk_div] t=49.128 ns | count=2 | n=1
+[clk_div] t=50.128 ns | count=3 | n=1
+[clk_div] t=51.128 ns | count=0 | n=0
+[clk_div] t=52.128 ns | count=1 | n=0
+[clk_div] t=53.128 ns | count=2 | n=1
+[clk_div] t=54.128 ns | count=3 | n=1
+[clk_div] t=55.128 ns | count=0 | n=0
+[clk_div] t=56.128 ns | count=1 | n=0
+[clk_div] t=57.128 ns | count=2 | n=1
+[clk_div] t=58.128 ns | count=3 | n=1
+[clk_div] t=59.128 ns | count=0 | n=0
+[clk_div] t=60.128 ns | count=1 | n=0
+[clk_div] t=61.128 ns | count=2 | n=1
+[clk_div] t=62.128 ns | count=3 | n=1
+[clk_div] t=63.128 ns | count=0 | n=0
+[clk_div] t=64.128 ns | count=1 | n=0
+[clk_div] t=65.128 ns | count=2 | n=1
+[clk_div] t=66.128 ns | count=3 | n=1
+[clk_div] t=67.128 ns | count=0 | n=0
+[clk_div] t=68.128 ns | count=1 | n=0
+[clk_div] t=69.128 ns | count=2 | n=1
+[clk_div] t=70.128 ns | count=3 | n=1
+[clk_div] t=71.128 ns | count=0 | n=0
+[clk_div] t=72.128 ns | count=1 | n=0
+[clk_div] t=73.128 ns | count=2 | n=1
+[clk_div] t=74.128 ns | count=3 | n=1
+[clk_div] t=75.128 ns | count=0 | n=0
+[clk_div] t=76.128 ns | count=1 | n=0
+[clk_div] t=77.128 ns | count=2 | n=1
+[clk_div] t=78.128 ns | count=3 | n=1
+[clk_div] t=79.128 ns | count=0 | n=0
+[clk_div] t=80.128 ns | count=1 | n=0
+[clk_div] t=81.128 ns | count=2 | n=1
+[clk_div] t=82.128 ns | count=3 | n=1
+[clk_div] t=83.128 ns | count=0 | n=0
+[clk_div] t=84.128 ns | count=1 | n=0
+[clk_div] t=85.128 ns | count=2 | n=1
+[clk_div] t=86.128 ns | count=3 | n=1
+[clk_div] t=87.128 ns | count=0 | n=0
+[clk_div] t=88.128 ns | count=1 | n=0
+[clk_div] t=89.128 ns | count=2 | n=1
+[clk_div] t=90.128 ns | count=3 | n=1
+[clk_div] t=91.128 ns | count=0 | n=0
+[clk_div] t=92.128 ns | count=1 | n=0
+[clk_div] t=93.128 ns | count=2 | n=1
+[clk_div] t=94.128 ns | count=3 | n=1
+[clk_div] t=95.128 ns | count=0 | n=0
+[clk_div] t=96.128 ns | count=1 | n=0
+[clk_div] t=97.128 ns | count=2 | n=1
+[clk_div] t=98.128 ns | count=3 | n=1
+[clk_div] t=99.128 ns | count=0 | n=0
+
+evas completes with 0 errors, 1 warnings.
+Total time: CPU = 0.0 s, elapsed = 0.0 s.
+Output: /data/jinzhihong/vaevas-evaluator/EVAS/output/clk_div
+EVAS -- Event-driven Verilog-A Simulator
+Version 0.4.4 -- Jun 2026
+
+Simulating `tb_clk_div_div2.scs' at 7:09:09 AM, Sun Jun 21, 2026.
+Command line:
+    /data/jinzhihong/vaevas-evaluator/EVAS/evas/__main__.py run clk_div --engine evas-rust
+
+Reading file: tb_clk_div_div2.scs
+WARNING: ahdl_include resolved to 'clk_div.va' (original path not found, used scs directory fallback)
+Compiled Verilog-A module: clk_div
+
+Circuit inventory:
+               nodes 2
+             clk_div 1
+             vsource 1
+
+*****************************************************
+Transient Analysis `tran': time = (0 s -> 100 ns)
+*****************************************************
+Important parameter values:
+    start = 0 s
+    stop  = 100 ns
+    step  = 100 ps
+    reltol = 0.001
+    vabstol = 1e-06
+    iabstol = 1e-12
+    refine_factor = 16
+    refine_steps  = 8
+
+    tran: time = 10 ns        ( 10 %)
+    tran: time = 20 ns        ( 20 %)
+    tran: time = 30 ns        ( 30 %)
+    tran: time = 40 ns        ( 40 %)
+    tran: time = 50 ns        ( 50 %)
+    tran: time = 60 ns        ( 60 %)
+    tran: time = 70 ns        ( 70 %)
+    tran: time = 80 ns        ( 80 %)
+    tran: time = 90 ns        ( 90 %)
+    tran: time = 100 ns       (100 %)
+Number of accepted tran steps = 1601
+Performance counters:
+    bound_step_clamps = 0
+    bound_step_scan_calls = 0
+    cross_event_steps = 100
+    cross_refine_triggers = 0
+    dynamic_node_cache_bypasses_total = 0
+    dynamic_node_cache_entries = 0
+    dynamic_node_cache_hits_total = 0
+    dynamic_node_cache_misses_total = 0
+    dynamic_node_cache_models = 0
+    dynamic_step_grows = 8800
+    dynamic_step_shrinks = 13601
+    err_ratio_skipped_outputs = 0
+    err_ratio_skipped_sources = 0
+    event_trace_audit_above_events_total = 0
+    event_trace_audit_array_writes_total = 0
+    event_trace_audit_body_entries_total = 0
+    event_trace_audit_combined_events_total = 0
+    event_trace_audit_cross_events_total = 0
+    event_trace_audit_enabled = 0
+    event_trace_audit_events_total = 0
+    event_trace_audit_final_step_events_total = 0
+    event_trace_audit_in_event_writes_total = 0
+    event_trace_audit_initial_step_events_total = 0
+    event_trace_audit_output_writes_total = 0
+    event_trace_audit_records_dropped_total = 0
+    event_trace_audit_requested = 0
+    event_trace_audit_state_writes_total = 0
+    event_trace_audit_timer_events_total = 0
+    event_trace_audit_timer_last_fired_writes_total = 0
+    event_trace_audit_timer_state_writes_total = 0
+    event_trace_audit_transition_output_writes_total = 0
+    event_trace_audit_transition_writes_total = 0
+    future_node_lazy_descriptors = 72500
+    future_node_snapshots = 0
+    generic_executor_blocked_runs = 0
+    generic_executor_dispatchable_runs = 0
+    generic_executor_models_with_candidate = 0
+    generic_executor_runs = 0
+    generic_executor_runtime_fallbacks = 0
+    indexed_array_dirty_nodes_checked = 0
+    indexed_array_dirty_syncs = 0
+    indexed_array_dirty_validation_enabled = 0
+    indexed_array_dynamic_nodes = 0
+    indexed_array_err_ratio_reads = 0
+    indexed_array_mismatches = 0
+    indexed_array_prev_snapshot_dirty_skips = 0
+    indexed_array_record_id_reads = 0
+    indexed_array_record_reads = 0
+    indexed_array_snapshots = 0
+    indexed_array_source_updates = 0
+    indexed_array_syncs = 0
+    indexed_array_values_checked = 0
+    indexed_model_io_mapped_ports = 0
+    indexed_model_io_models = 0
+    indexed_model_io_outputs = 0
+    indexed_model_io_refreshes = 0
+    indexed_output_write_through_nodes = 0
+    indexed_output_write_throughs = 0
+    indexed_post_model_sync_repairs = 0
+    indexed_prev_snapshots = 0
+    indexed_snapshot_dynamic_nodes = 0
+    indexed_snapshot_mismatches = 0
+    indexed_snapshot_values_checked = 0
+    indexed_state_array_oob_writes_total = 0
+    indexed_state_array_reads_total = 0
+    indexed_state_array_writes_total = 0
+    indexed_state_scalar_reads_total = 0
+    indexed_state_scalar_writes_total = 0
+    indexed_state_storage_array_slots = 0
+    indexed_state_storage_enabled = 0
+    indexed_state_storage_integer_slots = 0
+    indexed_state_storage_models = 0
+    indexed_state_storage_scalar_slots = 0
+    indexed_voltage_probe_event_skips = 0
+    indexed_voltage_probe_max_abs_diff = 0.0
+    indexed_voltage_probe_mismatches = 0
+    indexed_voltage_probe_missing_nodes = 0
+    indexed_voltage_probes = 0
+    indexed_voltage_read_fallbacks = 0
+    indexed_voltage_read_nodes = 0
+    indexed_voltage_reads = 0
+    min_step_clamps = 301
+    model_breakpoint_clamps = 200
+    model_breakpoint_scan_calls = 72500
+    model_post_update_calls = 0
+    model_post_update_skips = 72500
+    model_prepare_step_calls = 72500
+    model_prepare_step_skips = 0
+    model_timer_expire_calls = 72500
+    model_timer_expire_skips = 0
+    node_resolution_cache_entries = 2
+    node_resolution_cache_models = 1
+    output_step_clamps = 894
+    rust_above_production_calls_total = 0
+    rust_above_production_fallbacks_total = 0
+    rust_above_production_fires_total = 0
+    rust_array_err_ratio_fallbacks = 0
+    rust_array_err_ratio_reads = 0
+    rust_array_err_ratio_scans = 0
+    rust_array_loop_enabled = 0
+    rust_array_record_fallbacks = 0
+    rust_array_record_scans = 0
+    rust_array_record_values = 0
+    rust_array_snapshot_copies = 0
+    rust_array_snapshot_fallbacks = 0
+    rust_body_ir_available = 0
+    rust_body_ir_candidate_models = 0
+    rust_body_ir_enabled = 0
+    rust_body_ir_expr_ops = 0
+    rust_body_ir_models = 0
+    rust_body_ir_production_batches_total = 0
+    rust_body_ir_production_calls_total = 0
+    rust_body_ir_production_executed_total = 0
+    rust_body_ir_production_fallbacks_total = 0
+    rust_body_ir_production_node_writes_total = 0
+    rust_body_ir_production_state_writes_total = 0
+    rust_body_ir_requested = 0
+    rust_body_ir_stmt_ops = 0
+    rust_cross_above_production_available = 0
+    rust_cross_above_production_enabled = 0
+    rust_cross_above_production_requested = 0
+    rust_cross_production_calls_total = 0
+    rust_cross_production_fallbacks_total = 0
+    rust_cross_production_fires_total = 0
+    rust_event_due_shadow_above_checks_total = 0
+    rust_event_due_shadow_available = 0
+    rust_event_due_shadow_cross_checks_total = 0
+    rust_event_due_shadow_enabled = 0
+    rust_event_due_shadow_errors_total = 0
+    rust_event_due_shadow_matches_total = 0
+    rust_event_due_shadow_max_time_diff_total = 0.0
+    rust_event_due_shadow_mismatches_total = 0
+    rust_event_due_shadow_requested = 0
+    rust_event_due_shadow_timer_absolute_checks_total = 0
+    rust_event_due_shadow_timer_periodic_checks_total = 0
+    rust_event_interpolation_available = 0
+    rust_event_interpolation_batches_total = 0
+    rust_event_interpolation_cache_hits_total = 0
+    rust_event_interpolation_enabled = 0
+    rust_event_interpolation_fallbacks_total = 0
+    rust_event_interpolation_nodes_total = 0
+    rust_event_interpolation_requested = 0
+    rust_event_linear_write_batches_total = 0
+    rust_event_linear_write_production_calls_total = 0
+    rust_event_linear_write_production_executed_total = 0
+    rust_event_linear_write_production_fallbacks_total = 0
+    rust_event_linear_write_shadow_checks_total = 0
+    rust_event_linear_write_shadow_errors_total = 0
+    rust_event_linear_write_shadow_matches_total = 0
+    rust_event_linear_write_shadow_mismatches_total = 0
+    rust_event_transition_plan_core_candidate_models = 1
+    rust_event_transition_plan_core_due_triggers = 2
+    rust_event_transition_plan_core_event_statements = 2
+    rust_event_transition_plan_core_output_writes = 0
+    rust_event_transition_plan_core_transitions = 1
+    rust_event_transition_plan_ordered_v1_candidate_models = 1
+    rust_event_transition_plan_ordered_v1_due_triggers = 2
+    rust_event_transition_plan_ordered_v1_event_statements = 2
+    rust_event_transition_plan_ordered_v1_output_writes = 0
+    rust_event_transition_plan_ordered_v1_transitions = 1
+    rust_event_transition_plan_side_effect_candidate_models = 1
+    rust_event_transition_plan_side_effect_due_triggers = 2
+    rust_event_transition_plan_side_effect_event_statements = 2
+    rust_event_transition_plan_side_effect_output_writes = 0
+    rust_event_transition_plan_side_effect_transitions = 1
+    rust_event_transition_production_available = 0
+    rust_event_transition_production_breakpoint_clamps_total = 0
+    rust_event_transition_production_breakpoint_scans_total = 0
+    rust_event_transition_production_calls_total = 0
+    rust_event_transition_production_candidate_models = 0
+    rust_event_transition_production_enabled = 0
+    rust_event_transition_production_executed_total = 0
+    rust_event_transition_production_fallbacks_total = 0
+    rust_event_transition_production_fired_events_total = 0
+    rust_event_transition_production_models = 0
+    rust_event_transition_production_output_writes_total = 0
+    rust_event_transition_production_requested = 0
+    rust_event_transition_production_state_writes_total = 0
+    rust_event_transition_shadow_available = 0
+    rust_event_transition_shadow_calls_total = 0
+    rust_event_transition_shadow_candidate_models = 0
+    rust_event_transition_shadow_enabled = 0
+    rust_event_transition_shadow_errors_total = 0
+    rust_event_transition_shadow_matches_total = 0
+    rust_event_transition_shadow_max_abs_diff = 0.0
+    rust_event_transition_shadow_mismatches_total = 0
+    rust_event_transition_shadow_models = 0
+    rust_event_transition_shadow_requested = 0
+    rust_event_transition_shadow_value_checks_total = 0
+    rust_event_write_production_available = 0
+    rust_event_write_production_calls_total = 0
+    rust_event_write_production_enabled = 0
+    rust_event_write_production_executed_total = 0
+    rust_event_write_production_fallbacks_total = 0
+    rust_event_write_production_requested = 0
+    rust_event_write_shadow_available = 0
+    rust_event_write_shadow_checks_total = 0
+    rust_event_write_shadow_enabled = 0
+    rust_event_write_shadow_errors_total = 0
+    rust_event_write_shadow_matches_total = 0
+    rust_event_write_shadow_mismatches_total = 0
+    rust_event_write_shadow_requested = 0
+    rust_full_model_cmp_delay_clock_events = 0
+    rust_full_model_cmp_delay_enabled = 0
+    rust_full_model_cmp_delay_rust_enabled = 0
+    rust_full_model_cmp_delay_rust_fallbacks = 0
+    rust_full_model_cmp_delay_rust_points = 0
+    rust_full_model_cmp_delay_rust_requested = 0
+    rust_full_model_cppll_reacquire_dco_toggles = 0
+    rust_full_model_cppll_reacquire_enabled = 0
+    rust_full_model_cppll_reacquire_fb_crosses = 0
+    rust_full_model_cppll_reacquire_ref_crosses = 0
+    rust_full_model_cppll_reacquire_ref_toggles = 0
+    rust_full_model_cppll_reacquire_rust_enabled = 0
+    rust_full_model_cppll_reacquire_rust_fallbacks = 0
+    rust_full_model_cppll_reacquire_rust_points = 0
+    rust_full_model_cppll_reacquire_rust_requested = 0
+    rust_full_model_event_transition_core_build_errors = 0
+    rust_full_model_event_transition_core_calls_total = 0
+    rust_full_model_event_transition_core_enabled = 0
+    rust_full_model_event_transition_core_fired_events = 0
+    rust_full_model_event_transition_core_native_trace_enabled = 0
+    rust_full_model_event_transition_core_native_trace_fallbacks = 0
+    rust_full_model_event_transition_core_native_trace_fired_events = 0
+    rust_full_model_event_transition_core_native_trace_points = 0
+    rust_full_model_event_transition_core_native_trace_requested = 0
+    rust_full_model_event_transition_core_native_trace_source_breakpoints = 0
+    rust_full_model_event_transition_core_native_trace_transition_breakpoints = 0
+    rust_full_model_event_transition_core_runtime_fallbacks = 0
+    rust_full_model_event_transition_core_rust_enabled = 0
+    rust_full_model_event_transition_core_rust_points = 0
+    rust_full_model_event_transition_core_rust_requested = 0
+    rust_full_model_event_transition_core_source_breakpoints = 0
+    rust_full_model_event_transition_core_transition_breakpoints = 0
+    rust_full_model_fastpath_available = 0
+    rust_full_model_fastpath_enabled = 0
+    rust_full_model_fastpath_fallbacks_total = 0
+    rust_full_model_fastpath_requested = 0
+    rust_full_model_gain_measurement_flow_enabled = 0
+    rust_full_model_gain_measurement_flow_lfsr_events = 0
+    rust_full_model_gain_measurement_flow_rust_enabled = 0
+    rust_full_model_gain_measurement_flow_rust_fallbacks = 0
+    rust_full_model_gain_measurement_flow_rust_points = 0
+    rust_full_model_gain_measurement_flow_rust_requested = 0
+    rust_full_model_gain_measurement_flow_vin_events = 0
+    rust_full_model_gain_timer_reduction_enabled = 0
+    rust_full_model_gain_timer_reduction_rust_enabled = 0
+    rust_full_model_gain_timer_reduction_rust_fallbacks = 0
+    rust_full_model_gain_timer_reduction_rust_points = 0
+    rust_full_model_gain_timer_reduction_rust_requested = 0
+    rust_full_model_gain_timer_reduction_samples = 0
+    rust_full_model_lfsr_transition_cross_events = 0
+    rust_full_model_lfsr_transition_outputs = 0
+    rust_full_model_lfsr_transition_points = 0
+    rust_full_model_prbs7_cross_events = 0
+    rust_full_model_prbs7_points = 0
+    rust_full_model_prbs7_scheduled_crosses = 0
+    rust_full_model_required_failures = 0
+    rust_full_model_required_requested = 0
+    rust_full_model_sar_loop_clock_events = 0
+    rust_full_model_sar_loop_enabled = 0
+    rust_full_model_sar_loop_rust_enabled = 0
+    rust_full_model_sar_loop_rust_fallbacks = 0
+    rust_full_model_sar_loop_rust_points = 0
+    rust_full_model_sar_loop_rust_requested = 0
+    rust_full_model_timer_static_linear_default_trace_enabled = 0
+    rust_full_model_timer_static_linear_enabled = 0
+    rust_full_model_timer_static_linear_events = 0
+    rust_full_model_timer_static_linear_rust_enabled = 0
+    rust_full_model_timer_static_linear_rust_fallbacks = 0
+    rust_full_model_timer_static_linear_rust_points = 0
+    rust_full_model_timer_static_linear_rust_requested = 0
+    rust_full_model_timer_static_linear_timer_count = 0
+    rust_full_model_whole_segment_points = 0
+    rust_sim_program_abi_build_elapsed_s = 0.0
+    rust_sim_program_always_body_count = 0
+    rust_sim_program_available = 0
+    rust_sim_program_body_expr_ops = 0
+    rust_sim_program_body_stmt_ops = 0
+    rust_sim_program_continuous_linear_ops = 0
+    rust_sim_program_enabled = 0
+    rust_sim_program_event_count = 0
+    rust_sim_program_event_fires = 0
+    rust_sim_program_event_transition_enabled = 0
+    rust_sim_program_fastpath_total_elapsed_s = 0.0
+    rust_sim_program_final_capacity = 0
+    rust_sim_program_lower_elapsed_s = 0.0
+    rust_sim_program_node_count = 0
+    rust_sim_program_points = 0
+    rust_sim_program_record_count = 0
+    rust_sim_program_record_replay_elapsed_s = 0.0
+    rust_sim_program_rejections = 0
+    rust_sim_program_requested = 0
+    rust_sim_program_runtime_attempts = 0
+    rust_sim_program_runtime_elapsed_s = 0.0
+    rust_sim_program_source_breakpoints = 0
+    rust_sim_program_source_count = 0
+    rust_sim_program_source_record_enabled = 0
+    rust_sim_program_state_count = 0
+    rust_sim_program_state_sync_elapsed_s = 0.0
+    rust_sim_program_time_grid_elapsed_s = 0.0
+    rust_sim_program_transition_breakpoints = 0
+    rust_sim_program_transition_count = 0
+    rust_static_eval_available = 0
+    rust_static_eval_calls = 0
+    rust_static_eval_candidate_models = 0
+    rust_static_eval_coeff_eval_fallbacks = 0
+    rust_static_eval_deferred_output_syncs = 0
+    rust_static_eval_errors = 0
+    rust_static_eval_fallback_models = 0
+    rust_static_eval_gated_models = 0
+    rust_static_eval_gated_ops = 0
+    rust_static_eval_gated_segments = 0
+    rust_static_eval_integer_state_write_ops = 0
+    rust_static_eval_lifecycle_model_skips = 0
+    rust_static_eval_max_segment_models = 0
+    rust_static_eval_mixed_small_fallbacks = 0
+    rust_static_eval_models = 0
+    rust_static_eval_no_candidate_models = 0
+    rust_static_eval_no_segment_fallbacks = 0
+    rust_static_eval_node_voltage_syncs = 0
+    rust_static_eval_ops = 0
+    rust_static_eval_output_syncs = 0
+    rust_static_eval_requested = 0
+    rust_static_eval_runtime_param_ops = 0
+    rust_static_eval_segments = 0
+    rust_static_eval_state_read_terms = 0
+    rust_static_eval_state_write_ops = 0
+    rust_static_eval_terms = 0
+    rust_static_fast_sync_enabled = 0
+    rust_static_fast_sync_node_voltage_sync_skips = 0
+    rust_static_fast_sync_requested = 0
+    rust_static_fast_sync_validation_skips = 0
+    rust_timer_breakpoint_enabled = 0
+    rust_timer_breakpoint_fallbacks_total = 0
+    rust_timer_breakpoint_scans_total = 0
+    rust_timer_breakpoint_state_scans_total = 0
+    rust_timer_event_available = 0
+    rust_timer_event_enabled = 0
+    rust_timer_event_production_absolute_calls_total = 0
+    rust_timer_event_production_expirations_total = 0
+    rust_timer_event_production_fallbacks_total = 0
+    rust_timer_event_production_fires_total = 0
+    rust_timer_event_production_periodic_calls_total = 0
+    rust_timer_event_production_skips_total = 0
+    rust_timer_event_requested = 0
+    rust_timer_lfsr_output_batches_total = 0
+    rust_timer_lfsr_output_calls_total = 0
+    rust_timer_lfsr_output_due_total = 0
+    rust_timer_lfsr_output_executed_total = 0
+    rust_timer_lfsr_output_fallbacks_total = 0
+    rust_timer_lfsr_output_skips_total = 0
+    rust_timer_lfsr_output_writes_total = 0
+    rust_transition_batch_fallbacks_total = 0
+    rust_transition_batch_flushes_total = 0
+    rust_transition_batch_max_slots_total = 0
+    rust_transition_batch_slot_total_total = 0
+    rust_transition_breakpoint_enabled = 0
+    rust_transition_breakpoint_fallbacks_total = 0
+    rust_transition_breakpoint_scans_total = 0
+    rust_transition_breakpoint_state_scans_total = 0
+    rust_transition_lazy_enqueues_total = 0
+    rust_transition_production_available = 0
+    rust_transition_production_enabled = 0
+    rust_transition_production_requested = 0
+    rust_transition_shadow_available = 0
+    rust_transition_shadow_calls = 0
+    rust_transition_shadow_candidate_models = 0
+    rust_transition_shadow_errors = 0
+    rust_transition_shadow_matches = 0
+    rust_transition_shadow_max_abs_diff = 0.0
+    rust_transition_shadow_mismatches = 0
+    rust_transition_shadow_models = 0
+    rust_transition_shadow_requested = 0
+    rust_transition_shadow_segments = 0
+    rust_transition_shadow_skips = 0
+    rust_transition_shadow_state_matches = 0
+    rust_transition_shadow_state_max_abs_diff = 0.0
+    rust_transition_shadow_state_mismatches = 0
+    rust_transition_shadow_static_ops = 0
+    rust_transition_shadow_target_ops = 0
+    rust_transition_state_buffer_alloc_grand_total = 0
+    rust_transition_state_buffer_reuse_calls_total = 0
+    rust_transition_state_production_calls_total = 0
+    rust_transition_state_production_fallbacks_total = 0
+    rust_transition_state_production_outputs_total = 0
+    source_breakpoint_clamps = 600
+    source_breakpoint_scan_calls = 72500
+    static_branch_direct_array_models = 0
+    static_branch_direct_array_read_nodes = 0
+    static_branch_direct_array_write_nodes = 0
+    static_branch_fastpath_codegen_models = 0
+    static_branch_fastpath_fallbacks_total = 0
+    static_branch_fastpath_static_read_nodes = 0
+    static_branch_fastpath_static_write_nodes = 0
+    static_lifecycle_fastpath_enabled = 1
+    steps_total = 72500
+    timer_array_sidecar_rebuilds_total = 0
+    timer_array_sidecar_scans_total = 0
+    timer_array_sidecar_updates_total = 0
+    timer_batch_due_calls_total = 0
+    timer_batch_due_events_total = 0
+    timer_batch_due_fallbacks_total = 0
+    timer_batch_due_fires_total = 0
+    timer_breakpoint_cache_hits_total = 0
+    timer_breakpoint_hits_total = 0
+    timer_breakpoint_scans_total = 1
+    timer_state_owned_checks_total = 0
+    timer_state_owned_fallbacks_total = 0
+    timer_state_owned_fast_skips_total = 0
+    timer_state_owned_fires_total = 0
+    timer_state_owned_target_reads_total = 0
+    timer_state_updates_total = 0
+    transition_breakpoint_active_scans_total = 13100
+    transition_breakpoint_inactive_skips_total = 59400
+    transition_breakpoint_scans_total = 13100
+    transition_calls_total = 72502
+    transition_evaluate_calls_total = 72500
+    transition_output_fastpath_calls_total = 72502
+    transition_set_target_calls_total = 72500
+    transition_target_breakpoint_clamps = 0
+    transition_target_breakpoint_scan_calls = 72500
+    transition_unchanged_fastpath_enabled = 0
+    transition_unchanged_target_fastpath_total = 0
+Model event counters:
+    model[0] clk_div_Model:
+        above_fires = 0
+        cross_fires = 100
+        dynamic_node_cache_bypasses = 0
+        dynamic_node_cache_hits = 0
+        dynamic_node_cache_misses = 0
+        event_trace_audit_above_events = 0
+        event_trace_audit_array_writes = 0
+        event_trace_audit_body_entries = 0
+        event_trace_audit_combined_events = 0
+        event_trace_audit_cross_events = 0
+        event_trace_audit_events = 0
+        event_trace_audit_final_step_events = 0
+        event_trace_audit_in_event_writes = 0
+        event_trace_audit_initial_step_events = 0
+        event_trace_audit_output_writes = 0
+        event_trace_audit_records_dropped = 0
+        event_trace_audit_state_writes = 0
+        event_trace_audit_timer_events = 0
+        event_trace_audit_timer_last_fired_writes = 0
+        event_trace_audit_timer_state_writes = 0
+        event_trace_audit_transition_output_writes = 0
+        event_trace_audit_transition_writes = 0
+        indexed_state_array_oob_writes = 0
+        indexed_state_array_reads = 0
+        indexed_state_array_writes = 0
+        indexed_state_scalar_reads = 0
+        indexed_state_scalar_writes = 0
+        rust_above_production_calls = 0
+        rust_above_production_fallbacks = 0
+        rust_above_production_fires = 0
+        rust_body_ir_production_batches = 0
+        rust_body_ir_production_calls = 0
+        rust_body_ir_production_executed = 0
+        rust_body_ir_production_fallbacks = 0
+        rust_body_ir_production_node_writes = 0
+        rust_body_ir_production_state_writes = 0
+        rust_cross_production_calls = 0
+        rust_cross_production_fallbacks = 0
+        rust_cross_production_fires = 0
+        rust_event_due_shadow_above_checks = 0
+        rust_event_due_shadow_cross_checks = 0
+        rust_event_due_shadow_errors = 0
+        rust_event_due_shadow_matches = 0
+        rust_event_due_shadow_max_time_diff = 0.0
+        rust_event_due_shadow_mismatches = 0
+        rust_event_due_shadow_timer_absolute_checks = 0
+        rust_event_due_shadow_timer_periodic_checks = 0
+        rust_event_interpolation_batches = 0
+        rust_event_interpolation_cache_hits = 0
+        rust_event_interpolation_fallbacks = 0
+        rust_event_interpolation_nodes = 0
+        rust_event_linear_write_batches = 0
+        rust_event_linear_write_production_calls = 0
+        rust_event_linear_write_production_executed = 0
+        rust_event_linear_write_production_fallbacks = 0
+        rust_event_linear_write_shadow_checks = 0
+        rust_event_linear_write_shadow_errors = 0
+        rust_event_linear_write_shadow_matches = 0
+        rust_event_linear_write_shadow_mismatches = 0
+        rust_event_write_production_calls = 0
+        rust_event_write_production_executed = 0
+        rust_event_write_production_fallbacks = 0
+        rust_event_write_shadow_checks = 0
+        rust_event_write_shadow_errors = 0
+        rust_event_write_shadow_matches = 0
+        rust_event_write_shadow_mismatches = 0
+        rust_timer_breakpoint_fallbacks = 0
+        rust_timer_breakpoint_scans = 0
+        rust_timer_breakpoint_state_scans = 0
+        rust_timer_event_production_absolute_calls = 0
+        rust_timer_event_production_expirations = 0
+        rust_timer_event_production_fallbacks = 0
+        rust_timer_event_production_fires = 0
+        rust_timer_event_production_periodic_calls = 0
+        rust_timer_event_production_skips = 0
+        rust_timer_lfsr_output_batches = 0
+        rust_timer_lfsr_output_calls = 0
+        rust_timer_lfsr_output_due = 0
+        rust_timer_lfsr_output_executed = 0
+        rust_timer_lfsr_output_fallbacks = 0
+        rust_timer_lfsr_output_skips = 0
+        rust_timer_lfsr_output_writes = 0
+        rust_transition_batch_fallbacks = 0
+        rust_transition_batch_flushes = 0
+        rust_transition_batch_max_slots = 0
+        rust_transition_batch_slot_total = 0
+        rust_transition_breakpoint_fallbacks = 0
+        rust_transition_breakpoint_scans = 0
+        rust_transition_breakpoint_state_scans = 0
+        rust_transition_lazy_enqueues = 0
+        rust_transition_state_buffer_alloc_total = 0
+        rust_transition_state_buffer_reuse_calls = 0
+        rust_transition_state_production_calls = 0
+        rust_transition_state_production_fallbacks = 0
+        rust_transition_state_production_outputs = 0
+        static_branch_fastpath_fallbacks = 0
+        timer_absolute_checks = 0
+        timer_absolute_expirations = 0
+        timer_absolute_fires = 0
+        timer_array_sidecar_rebuilds = 0
+        timer_array_sidecar_scans = 0
+        timer_array_sidecar_updates = 0
+        timer_batch_due_calls = 0
+        timer_batch_due_events = 0
+        timer_batch_due_fallbacks = 0
+        timer_batch_due_fires = 0
+        timer_breakpoint_cache_hits = 0
+        timer_breakpoint_hits = 0
+        timer_breakpoint_scans = 1
+        timer_periodic_checks = 0
+        timer_periodic_fires = 0
+        timer_periodic_skips = 0
+        timer_reschedules = 0
+        timer_state_owned_checks = 0
+        timer_state_owned_fallbacks = 0
+        timer_state_owned_fast_skips = 0
+        timer_state_owned_fires = 0
+        timer_state_owned_target_reads = 0
+        timer_state_updates = 0
+        transition_breakpoint_active_scans = 13100
+        transition_breakpoint_inactive_skips = 59400
+        transition_breakpoint_scans = 13100
+        transition_calls = 72502
+        transition_evaluate_calls = 72500
+        transition_output_fastpath_calls = 72502
+        transition_set_target_calls = 72500
+        transition_unchanged_target_fastpath = 0
+
+Maximum value achieved for any signal of each quantity:
+    V: V(clk_in) = 900 mV
+
+Tran analysis time: CPU = 2493.8 ms, elapsed = 2493.8 ms.
+Runner timing counters:
+    derive_bus_signals_s = 0.000072 s
+    csv_write_s = 0.007821 s
+
+Writing CSV: /data/jinzhihong/vaevas-evaluator/EVAS/output/clk_div/div2/tran.csv (signals: clk_in, clk_out)
+Writing strobe log: /data/jinzhihong/vaevas-evaluator/EVAS/output/clk_div/div2/strobe.txt (100 lines)
+[clk_div] t=0.128 ns | count=1 | n=1
+[clk_div] t=1.128 ns | count=0 | n=0
+[clk_div] t=2.128 ns | count=1 | n=1
+[clk_div] t=3.128 ns | count=0 | n=0
+[clk_div] t=4.128 ns | count=1 | n=1
+[clk_div] t=5.128 ns | count=0 | n=0
+[clk_div] t=6.128 ns | count=1 | n=1
+[clk_div] t=7.128 ns | count=0 | n=0
+[clk_div] t=8.128 ns | count=1 | n=1
+[clk_div] t=9.128 ns | count=0 | n=0
+[clk_div] t=10.128 ns | count=1 | n=1
+[clk_div] t=11.128 ns | count=0 | n=0
+[clk_div] t=12.128 ns | count=1 | n=1
+[clk_div] t=13.128 ns | count=0 | n=0
+[clk_div] t=14.128 ns | count=1 | n=1
+[clk_div] t=15.128 ns | count=0 | n=0
+[clk_div] t=16.128 ns | count=1 | n=1
+[clk_div] t=17.128 ns | count=0 | n=0
+[clk_div] t=18.128 ns | count=1 | n=1
+[clk_div] t=19.128 ns | count=0 | n=0
+[clk_div] t=20.128 ns | count=1 | n=1
+[clk_div] t=21.128 ns | count=0 | n=0
+[clk_div] t=22.128 ns | count=1 | n=1
+[clk_div] t=23.128 ns | count=0 | n=0
+[clk_div] t=24.128 ns | count=1 | n=1
+[clk_div] t=25.128 ns | count=0 | n=0
+[clk_div] t=26.128 ns | count=1 | n=1
+[clk_div] t=27.128 ns | count=0 | n=0
+[clk_div] t=28.128 ns | count=1 | n=1
+[clk_div] t=29.128 ns | count=0 | n=0
+[clk_div] t=30.128 ns | count=1 | n=1
+[clk_div] t=31.128 ns | count=0 | n=0
+[clk_div] t=32.128 ns | count=1 | n=1
+[clk_div] t=33.128 ns | count=0 | n=0
+[clk_div] t=34.128 ns | count=1 | n=1
+[clk_div] t=35.128 ns | count=0 | n=0
+[clk_div] t=36.128 ns | count=1 | n=1
+[clk_div] t=37.128 ns | count=0 | n=0
+[clk_div] t=38.128 ns | count=1 | n=1
+[clk_div] t=39.128 ns | count=0 | n=0
+[clk_div] t=40.128 ns | count=1 | n=1
+[clk_div] t=41.128 ns | count=0 | n=0
+[clk_div] t=42.128 ns | count=1 | n=1
+[clk_div] t=43.128 ns | count=0 | n=0
+[clk_div] t=44.128 ns | count=1 | n=1
+[clk_div] t=45.128 ns | count=0 | n=0
+[clk_div] t=46.128 ns | count=1 | n=1
+[clk_div] t=47.128 ns | count=0 | n=0
+[clk_div] t=48.128 ns | count=1 | n=1
+[clk_div] t=49.128 ns | count=0 | n=0
+[clk_div] t=50.128 ns | count=1 | n=1
+[clk_div] t=51.128 ns | count=0 | n=0
+[clk_div] t=52.128 ns | count=1 | n=1
+[clk_div] t=53.128 ns | count=0 | n=0
+[clk_div] t=54.128 ns | count=1 | n=1
+[clk_div] t=55.128 ns | count=0 | n=0
+[clk_div] t=56.128 ns | count=1 | n=1
+[clk_div] t=57.128 ns | count=0 | n=0
+[clk_div] t=58.128 ns | count=1 | n=1
+[clk_div] t=59.128 ns | count=0 | n=0
+[clk_div] t=60.128 ns | count=1 | n=1
+[clk_div] t=61.128 ns | count=0 | n=0
+[clk_div] t=62.128 ns | count=1 | n=1
+[clk_div] t=63.128 ns | count=0 | n=0
+[clk_div] t=64.128 ns | count=1 | n=1
+[clk_div] t=65.128 ns | count=0 | n=0
+[clk_div] t=66.128 ns | count=1 | n=1
+[clk_div] t=67.128 ns | count=0 | n=0
+[clk_div] t=68.128 ns | count=1 | n=1
+[clk_div] t=69.128 ns | count=0 | n=0
+[clk_div] t=70.128 ns | count=1 | n=1
+[clk_div] t=71.128 ns | count=0 | n=0
+[clk_div] t=72.128 ns | count=1 | n=1
+[clk_div] t=73.128 ns | count=0 | n=0
+[clk_div] t=74.128 ns | count=1 | n=1
+[clk_div] t=75.128 ns | count=0 | n=0
+[clk_div] t=76.128 ns | count=1 | n=1
+[clk_div] t=77.128 ns | count=0 | n=0
+[clk_div] t=78.128 ns | count=1 | n=1
+[clk_div] t=79.128 ns | count=0 | n=0
+[clk_div] t=80.128 ns | count=1 | n=1
+[clk_div] t=81.128 ns | count=0 | n=0
+[clk_div] t=82.128 ns | count=1 | n=1
+[clk_div] t=83.128 ns | count=0 | n=0
+[clk_div] t=84.128 ns | count=1 | n=1
+[clk_div] t=85.128 ns | count=0 | n=0
+[clk_div] t=86.128 ns | count=1 | n=1
+[clk_div] t=87.128 ns | count=0 | n=0
+[clk_div] t=88.128 ns | count=1 | n=1
+[clk_div] t=89.128 ns | count=0 | n=0
+[clk_div] t=90.128 ns | count=1 | n=1
+[clk_div] t=91.128 ns | count=0 | n=0
+[clk_div] t=92.128 ns | count=1 | n=1
+[clk_div] t=93.128 ns | count=0 | n=0
+[clk_div] t=94.128 ns | count=1 | n=1
+[clk_div] t=95.128 ns | count=0 | n=0
+[clk_div] t=96.128 ns | count=1 | n=1
+[clk_div] t=97.128 ns | count=0 | n=0
+[clk_div] t=98.128 ns | count=1 | n=1
+[clk_div] t=99.128 ns | count=0 | n=0
+
+evas completes with 0 errors, 1 warnings.
+Total time: CPU = 2.5 s, elapsed = 2.5 s.
+EVAS -- Event-driven Verilog-A Simulator
+Version 0.4.4 -- Jun 2026
+
+Simulating `tb_clk_div.scs' at 7:09:12 AM, Sun Jun 21, 2026.
+Command line:
+    /data/jinzhihong/vaevas-evaluator/EVAS/evas/__main__.py run clk_div --engine evas-rust
+
+Reading file: tb_clk_div.scs
+WARNING: ahdl_include resolved to 'clk_div.va' (original path not found, used scs directory fallback)
+Compiled Verilog-A module: clk_div
+
+Circuit inventory:
+               nodes 2
+             clk_div 1
+             vsource 1
+
+*****************************************************
+Transient Analysis `tran': time = (0 s -> 100 ns)
+*****************************************************
+Important parameter values:
+    start = 0 s
+    stop  = 100 ns
+    step  = 100 ps
+    reltol = 0.001
+    vabstol = 1e-06
+    iabstol = 1e-12
+    refine_factor = 16
+    refine_steps  = 8
+
+    tran: time = 10 ns        ( 10 %)
+    tran: time = 20 ns        ( 20 %)
+    tran: time = 30 ns        ( 30 %)
+    tran: time = 40 ns        ( 40 %)
+    tran: time = 50 ns        ( 50 %)
+    tran: time = 60 ns        ( 60 %)
+    tran: time = 70 ns        ( 70 %)
+    tran: time = 80 ns        ( 80 %)
+    tran: time = 90 ns        ( 90 %)
+    tran: time = 100 ns       (100 %)
+Number of accepted tran steps = 1551
+Performance counters:
+    bound_step_clamps = 0
+    bound_step_scan_calls = 0
+    cross_event_steps = 100
+    cross_refine_triggers = 0
+    dynamic_node_cache_bypasses_total = 0
+    dynamic_node_cache_entries = 0
+    dynamic_node_cache_hits_total = 0
+    dynamic_node_cache_misses_total = 0
+    dynamic_node_cache_models = 0
+    dynamic_step_grows = 8701
+    dynamic_step_shrinks = 7441
+    err_ratio_skipped_outputs = 0
+    err_ratio_skipped_sources = 0
+    event_trace_audit_above_events_total = 0
+    event_trace_audit_array_writes_total = 0
+    event_trace_audit_body_entries_total = 0
+    event_trace_audit_combined_events_total = 0
+    event_trace_audit_cross_events_total = 0
+    event_trace_audit_enabled = 0
+    event_trace_audit_events_total = 0
+    event_trace_audit_final_step_events_total = 0
+    event_trace_audit_in_event_writes_total = 0
+    event_trace_audit_initial_step_events_total = 0
+    event_trace_audit_output_writes_total = 0
+    event_trace_audit_records_dropped_total = 0
+    event_trace_audit_requested = 0
+    event_trace_audit_state_writes_total = 0
+    event_trace_audit_timer_events_total = 0
+    event_trace_audit_timer_last_fired_writes_total = 0
+    event_trace_audit_timer_state_writes_total = 0
+    event_trace_audit_transition_output_writes_total = 0
+    event_trace_audit_transition_writes_total = 0
+    future_node_lazy_descriptors = 64970
+    future_node_snapshots = 0
+    generic_executor_blocked_runs = 0
+    generic_executor_dispatchable_runs = 0
+    generic_executor_models_with_candidate = 0
+    generic_executor_runs = 0
+    generic_executor_runtime_fallbacks = 0
+    indexed_array_dirty_nodes_checked = 0
+    indexed_array_dirty_syncs = 0
+    indexed_array_dirty_validation_enabled = 0
+    indexed_array_dynamic_nodes = 0
+    indexed_array_err_ratio_reads = 0
+    indexed_array_mismatches = 0
+    indexed_array_prev_snapshot_dirty_skips = 0
+    indexed_array_record_id_reads = 0
+    indexed_array_record_reads = 0
+    indexed_array_snapshots = 0
+    indexed_array_source_updates = 0
+    indexed_array_syncs = 0
+    indexed_array_values_checked = 0
+    indexed_model_io_mapped_ports = 0
+    indexed_model_io_models = 0
+    indexed_model_io_outputs = 0
+    indexed_model_io_refreshes = 0
+    indexed_output_write_through_nodes = 0
+    indexed_output_write_throughs = 0
+    indexed_post_model_sync_repairs = 0
+    indexed_prev_snapshots = 0
+    indexed_snapshot_dynamic_nodes = 0
+    indexed_snapshot_mismatches = 0
+    indexed_snapshot_values_checked = 0
+    indexed_state_array_oob_writes_total = 0
+    indexed_state_array_reads_total = 0
+    indexed_state_array_writes_total = 0
+    indexed_state_scalar_reads_total = 0
+    indexed_state_scalar_writes_total = 0
+    indexed_state_storage_array_slots = 0
+    indexed_state_storage_enabled = 0
+    indexed_state_storage_integer_slots = 0
+    indexed_state_storage_models = 0
+    indexed_state_storage_scalar_slots = 0
+    indexed_voltage_probe_event_skips = 0
+    indexed_voltage_probe_max_abs_diff = 0.0
+    indexed_voltage_probe_mismatches = 0
+    indexed_voltage_probe_missing_nodes = 0
+    indexed_voltage_probes = 0
+    indexed_voltage_read_fallbacks = 0
+    indexed_voltage_read_nodes = 0
+    indexed_voltage_reads = 0
+    min_step_clamps = 104
+    model_breakpoint_clamps = 150
+    model_breakpoint_scan_calls = 64970
+    model_post_update_calls = 0
+    model_post_update_skips = 64970
+    model_prepare_step_calls = 64970
+    model_prepare_step_skips = 0
+    model_timer_expire_calls = 64970
+    model_timer_expire_skips = 0
+    node_resolution_cache_entries = 2
+    node_resolution_cache_models = 1
+    output_step_clamps = 894
+    rust_above_production_calls_total = 0
+    rust_above_production_fallbacks_total = 0
+    rust_above_production_fires_total = 0
+    rust_array_err_ratio_fallbacks = 0
+    rust_array_err_ratio_reads = 0
+    rust_array_err_ratio_scans = 0
+    rust_array_loop_enabled = 0
+    rust_array_record_fallbacks = 0
+    rust_array_record_scans = 0
+    rust_array_record_values = 0
+    rust_array_snapshot_copies = 0
+    rust_array_snapshot_fallbacks = 0
+    rust_body_ir_available = 0
+    rust_body_ir_candidate_models = 0
+    rust_body_ir_enabled = 0
+    rust_body_ir_expr_ops = 0
+    rust_body_ir_models = 0
+    rust_body_ir_production_batches_total = 0
+    rust_body_ir_production_calls_total = 0
+    rust_body_ir_production_executed_total = 0
+    rust_body_ir_production_fallbacks_total = 0
+    rust_body_ir_production_node_writes_total = 0
+    rust_body_ir_production_state_writes_total = 0
+    rust_body_ir_requested = 0
+    rust_body_ir_stmt_ops = 0
+    rust_cross_above_production_available = 0
+    rust_cross_above_production_enabled = 0
+    rust_cross_above_production_requested = 0
+    rust_cross_production_calls_total = 0
+    rust_cross_production_fallbacks_total = 0
+    rust_cross_production_fires_total = 0
+    rust_event_due_shadow_above_checks_total = 0
+    rust_event_due_shadow_available = 0
+    rust_event_due_shadow_cross_checks_total = 0
+    rust_event_due_shadow_enabled = 0
+    rust_event_due_shadow_errors_total = 0
+    rust_event_due_shadow_matches_total = 0
+    rust_event_due_shadow_max_time_diff_total = 0.0
+    rust_event_due_shadow_mismatches_total = 0
+    rust_event_due_shadow_requested = 0
+    rust_event_due_shadow_timer_absolute_checks_total = 0
+    rust_event_due_shadow_timer_periodic_checks_total = 0
+    rust_event_interpolation_available = 0
+    rust_event_interpolation_batches_total = 0
+    rust_event_interpolation_cache_hits_total = 0
+    rust_event_interpolation_enabled = 0
+    rust_event_interpolation_fallbacks_total = 0
+    rust_event_interpolation_nodes_total = 0
+    rust_event_interpolation_requested = 0
+    rust_event_linear_write_batches_total = 0
+    rust_event_linear_write_production_calls_total = 0
+    rust_event_linear_write_production_executed_total = 0
+    rust_event_linear_write_production_fallbacks_total = 0
+    rust_event_linear_write_shadow_checks_total = 0
+    rust_event_linear_write_shadow_errors_total = 0
+    rust_event_linear_write_shadow_matches_total = 0
+    rust_event_linear_write_shadow_mismatches_total = 0
+    rust_event_transition_plan_core_candidate_models = 1
+    rust_event_transition_plan_core_due_triggers = 2
+    rust_event_transition_plan_core_event_statements = 2
+    rust_event_transition_plan_core_output_writes = 0
+    rust_event_transition_plan_core_transitions = 1
+    rust_event_transition_plan_ordered_v1_candidate_models = 1
+    rust_event_transition_plan_ordered_v1_due_triggers = 2
+    rust_event_transition_plan_ordered_v1_event_statements = 2
+    rust_event_transition_plan_ordered_v1_output_writes = 0
+    rust_event_transition_plan_ordered_v1_transitions = 1
+    rust_event_transition_plan_side_effect_candidate_models = 1
+    rust_event_transition_plan_side_effect_due_triggers = 2
+    rust_event_transition_plan_side_effect_event_statements = 2
+    rust_event_transition_plan_side_effect_output_writes = 0
+    rust_event_transition_plan_side_effect_transitions = 1
+    rust_event_transition_production_available = 0
+    rust_event_transition_production_breakpoint_clamps_total = 0
+    rust_event_transition_production_breakpoint_scans_total = 0
+    rust_event_transition_production_calls_total = 0
+    rust_event_transition_production_candidate_models = 0
+    rust_event_transition_production_enabled = 0
+    rust_event_transition_production_executed_total = 0
+    rust_event_transition_production_fallbacks_total = 0
+    rust_event_transition_production_fired_events_total = 0
+    rust_event_transition_production_models = 0
+    rust_event_transition_production_output_writes_total = 0
+    rust_event_transition_production_requested = 0
+    rust_event_transition_production_state_writes_total = 0
+    rust_event_transition_shadow_available = 0
+    rust_event_transition_shadow_calls_total = 0
+    rust_event_transition_shadow_candidate_models = 0
+    rust_event_transition_shadow_enabled = 0
+    rust_event_transition_shadow_errors_total = 0
+    rust_event_transition_shadow_matches_total = 0
+    rust_event_transition_shadow_max_abs_diff = 0.0
+    rust_event_transition_shadow_mismatches_total = 0
+    rust_event_transition_shadow_models = 0
+    rust_event_transition_shadow_requested = 0
+    rust_event_transition_shadow_value_checks_total = 0
+    rust_event_write_production_available = 0
+    rust_event_write_production_calls_total = 0
+    rust_event_write_production_enabled = 0
+    rust_event_write_production_executed_total = 0
+    rust_event_write_production_fallbacks_total = 0
+    rust_event_write_production_requested = 0
+    rust_event_write_shadow_available = 0
+    rust_event_write_shadow_checks_total = 0
+    rust_event_write_shadow_enabled = 0
+    rust_event_write_shadow_errors_total = 0
+    rust_event_write_shadow_matches_total = 0
+    rust_event_write_shadow_mismatches_total = 0
+    rust_event_write_shadow_requested = 0
+    rust_full_model_cmp_delay_clock_events = 0
+    rust_full_model_cmp_delay_enabled = 0
+    rust_full_model_cmp_delay_rust_enabled = 0
+    rust_full_model_cmp_delay_rust_fallbacks = 0
+    rust_full_model_cmp_delay_rust_points = 0
+    rust_full_model_cmp_delay_rust_requested = 0
+    rust_full_model_cppll_reacquire_dco_toggles = 0
+    rust_full_model_cppll_reacquire_enabled = 0
+    rust_full_model_cppll_reacquire_fb_crosses = 0
+    rust_full_model_cppll_reacquire_ref_crosses = 0
+    rust_full_model_cppll_reacquire_ref_toggles = 0
+    rust_full_model_cppll_reacquire_rust_enabled = 0
+    rust_full_model_cppll_reacquire_rust_fallbacks = 0
+    rust_full_model_cppll_reacquire_rust_points = 0
+    rust_full_model_cppll_reacquire_rust_requested = 0
+    rust_full_model_event_transition_core_build_errors = 0
+    rust_full_model_event_transition_core_calls_total = 0
+    rust_full_model_event_transition_core_enabled = 0
+    rust_full_model_event_transition_core_fired_events = 0
+    rust_full_model_event_transition_core_native_trace_enabled = 0
+    rust_full_model_event_transition_core_native_trace_fallbacks = 0
+    rust_full_model_event_transition_core_native_trace_fired_events = 0
+    rust_full_model_event_transition_core_native_trace_points = 0
+    rust_full_model_event_transition_core_native_trace_requested = 0
+    rust_full_model_event_transition_core_native_trace_source_breakpoints = 0
+    rust_full_model_event_transition_core_native_trace_transition_breakpoints = 0
+    rust_full_model_event_transition_core_runtime_fallbacks = 0
+    rust_full_model_event_transition_core_rust_enabled = 0
+    rust_full_model_event_transition_core_rust_points = 0
+    rust_full_model_event_transition_core_rust_requested = 0
+    rust_full_model_event_transition_core_source_breakpoints = 0
+    rust_full_model_event_transition_core_transition_breakpoints = 0
+    rust_full_model_fastpath_available = 0
+    rust_full_model_fastpath_enabled = 0
+    rust_full_model_fastpath_fallbacks_total = 0
+    rust_full_model_fastpath_requested = 0
+    rust_full_model_gain_measurement_flow_enabled = 0
+    rust_full_model_gain_measurement_flow_lfsr_events = 0
+    rust_full_model_gain_measurement_flow_rust_enabled = 0
+    rust_full_model_gain_measurement_flow_rust_fallbacks = 0
+    rust_full_model_gain_measurement_flow_rust_points = 0
+    rust_full_model_gain_measurement_flow_rust_requested = 0
+    rust_full_model_gain_measurement_flow_vin_events = 0
+    rust_full_model_gain_timer_reduction_enabled = 0
+    rust_full_model_gain_timer_reduction_rust_enabled = 0
+    rust_full_model_gain_timer_reduction_rust_fallbacks = 0
+    rust_full_model_gain_timer_reduction_rust_points = 0
+    rust_full_model_gain_timer_reduction_rust_requested = 0
+    rust_full_model_gain_timer_reduction_samples = 0
+    rust_full_model_lfsr_transition_cross_events = 0
+    rust_full_model_lfsr_transition_outputs = 0
+    rust_full_model_lfsr_transition_points = 0
+    rust_full_model_prbs7_cross_events = 0
+    rust_full_model_prbs7_points = 0
+    rust_full_model_prbs7_scheduled_crosses = 0
+    rust_full_model_required_failures = 0
+    rust_full_model_required_requested = 0
+    rust_full_model_sar_loop_clock_events = 0
+    rust_full_model_sar_loop_enabled = 0
+    rust_full_model_sar_loop_rust_enabled = 0
+    rust_full_model_sar_loop_rust_fallbacks = 0
+    rust_full_model_sar_loop_rust_points = 0
+    rust_full_model_sar_loop_rust_requested = 0
+    rust_full_model_timer_static_linear_default_trace_enabled = 0
+    rust_full_model_timer_static_linear_enabled = 0
+    rust_full_model_timer_static_linear_events = 0
+    rust_full_model_timer_static_linear_rust_enabled = 0
+    rust_full_model_timer_static_linear_rust_fallbacks = 0
+    rust_full_model_timer_static_linear_rust_points = 0
+    rust_full_model_timer_static_linear_rust_requested = 0
+    rust_full_model_timer_static_linear_timer_count = 0
+    rust_full_model_whole_segment_points = 0
+    rust_sim_program_abi_build_elapsed_s = 0.0
+    rust_sim_program_always_body_count = 0
+    rust_sim_program_available = 0
+    rust_sim_program_body_expr_ops = 0
+    rust_sim_program_body_stmt_ops = 0
+    rust_sim_program_continuous_linear_ops = 0
+    rust_sim_program_enabled = 0
+    rust_sim_program_event_count = 0
+    rust_sim_program_event_fires = 0
+    rust_sim_program_event_transition_enabled = 0
+    rust_sim_program_fastpath_total_elapsed_s = 0.0
+    rust_sim_program_final_capacity = 0
+    rust_sim_program_lower_elapsed_s = 0.0
+    rust_sim_program_node_count = 0
+    rust_sim_program_points = 0
+    rust_sim_program_record_count = 0
+    rust_sim_program_record_replay_elapsed_s = 0.0
+    rust_sim_program_rejections = 0
+    rust_sim_program_requested = 0
+    rust_sim_program_runtime_attempts = 0
+    rust_sim_program_runtime_elapsed_s = 0.0
+    rust_sim_program_source_breakpoints = 0
+    rust_sim_program_source_count = 0
+    rust_sim_program_source_record_enabled = 0
+    rust_sim_program_state_count = 0
+    rust_sim_program_state_sync_elapsed_s = 0.0
+    rust_sim_program_time_grid_elapsed_s = 0.0
+    rust_sim_program_transition_breakpoints = 0
+    rust_sim_program_transition_count = 0
+    rust_static_eval_available = 0
+    rust_static_eval_calls = 0
+    rust_static_eval_candidate_models = 0
+    rust_static_eval_coeff_eval_fallbacks = 0
+    rust_static_eval_deferred_output_syncs = 0
+    rust_static_eval_errors = 0
+    rust_static_eval_fallback_models = 0
+    rust_static_eval_gated_models = 0
+    rust_static_eval_gated_ops = 0
+    rust_static_eval_gated_segments = 0
+    rust_static_eval_integer_state_write_ops = 0
+    rust_static_eval_lifecycle_model_skips = 0
+    rust_static_eval_max_segment_models = 0
+    rust_static_eval_mixed_small_fallbacks = 0
+    rust_static_eval_models = 0
+    rust_static_eval_no_candidate_models = 0
+    rust_static_eval_no_segment_fallbacks = 0
+    rust_static_eval_node_voltage_syncs = 0
+    rust_static_eval_ops = 0
+    rust_static_eval_output_syncs = 0
+    rust_static_eval_requested = 0
+    rust_static_eval_runtime_param_ops = 0
+    rust_static_eval_segments = 0
+    rust_static_eval_state_read_terms = 0
+    rust_static_eval_state_write_ops = 0
+    rust_static_eval_terms = 0
+    rust_static_fast_sync_enabled = 0
+    rust_static_fast_sync_node_voltage_sync_skips = 0
+    rust_static_fast_sync_requested = 0
+    rust_static_fast_sync_validation_skips = 0
+    rust_timer_breakpoint_enabled = 0
+    rust_timer_breakpoint_fallbacks_total = 0
+    rust_timer_breakpoint_scans_total = 0
+    rust_timer_breakpoint_state_scans_total = 0
+    rust_timer_event_available = 0
+    rust_timer_event_enabled = 0
+    rust_timer_event_production_absolute_calls_total = 0
+    rust_timer_event_production_expirations_total = 0
+    rust_timer_event_production_fallbacks_total = 0
+    rust_timer_event_production_fires_total = 0
+    rust_timer_event_production_periodic_calls_total = 0
+    rust_timer_event_production_skips_total = 0
+    rust_timer_event_requested = 0
+    rust_timer_lfsr_output_batches_total = 0
+    rust_timer_lfsr_output_calls_total = 0
+    rust_timer_lfsr_output_due_total = 0
+    rust_timer_lfsr_output_executed_total = 0
+    rust_timer_lfsr_output_fallbacks_total = 0
+    rust_timer_lfsr_output_skips_total = 0
+    rust_timer_lfsr_output_writes_total = 0
+    rust_transition_batch_fallbacks_total = 0
+    rust_transition_batch_flushes_total = 0
+    rust_transition_batch_max_slots_total = 0
+    rust_transition_batch_slot_total_total = 0
+    rust_transition_breakpoint_enabled = 0
+    rust_transition_breakpoint_fallbacks_total = 0
+    rust_transition_breakpoint_scans_total = 0
+    rust_transition_breakpoint_state_scans_total = 0
+    rust_transition_lazy_enqueues_total = 0
+    rust_transition_production_available = 0
+    rust_transition_production_enabled = 0
+    rust_transition_production_requested = 0
+    rust_transition_shadow_available = 0
+    rust_transition_shadow_calls = 0
+    rust_transition_shadow_candidate_models = 0
+    rust_transition_shadow_errors = 0
+    rust_transition_shadow_matches = 0
+    rust_transition_shadow_max_abs_diff = 0.0
+    rust_transition_shadow_mismatches = 0
+    rust_transition_shadow_models = 0
+    rust_transition_shadow_requested = 0
+    rust_transition_shadow_segments = 0
+    rust_transition_shadow_skips = 0
+    rust_transition_shadow_state_matches = 0
+    rust_transition_shadow_state_max_abs_diff = 0.0
+    rust_transition_shadow_state_mismatches = 0
+    rust_transition_shadow_static_ops = 0
+    rust_transition_shadow_target_ops = 0
+    rust_transition_state_buffer_alloc_grand_total = 0
+    rust_transition_state_buffer_reuse_calls_total = 0
+    rust_transition_state_production_calls_total = 0
+    rust_transition_state_production_fallbacks_total = 0
+    rust_transition_state_production_outputs_total = 0
+    source_breakpoint_clamps = 600
+    source_breakpoint_scan_calls = 64970
+    static_branch_direct_array_models = 0
+    static_branch_direct_array_read_nodes = 0
+    static_branch_direct_array_write_nodes = 0
+    static_branch_fastpath_codegen_models = 0
+    static_branch_fastpath_fallbacks_total = 0
+    static_branch_fastpath_static_read_nodes = 0
+    static_branch_fastpath_static_write_nodes = 0
+    static_lifecycle_fastpath_enabled = 1
+    steps_total = 64970
+    timer_array_sidecar_rebuilds_total = 0
+    timer_array_sidecar_scans_total = 0
+    timer_array_sidecar_updates_total = 0
+    timer_batch_due_calls_total = 0
+    timer_batch_due_events_total = 0
+    timer_batch_due_fallbacks_total = 0
+    timer_batch_due_fires_total = 0
+    timer_breakpoint_cache_hits_total = 0
+    timer_breakpoint_hits_total = 0
+    timer_breakpoint_scans_total = 1
+    timer_state_owned_checks_total = 0
+    timer_state_owned_fallbacks_total = 0
+    timer_state_owned_fast_skips_total = 0
+    timer_state_owned_fires_total = 0
+    timer_state_owned_target_reads_total = 0
+    timer_state_updates_total = 0
+    transition_breakpoint_active_scans_total = 6592
+    transition_breakpoint_inactive_skips_total = 58378
+    transition_breakpoint_scans_total = 6592
+    transition_calls_total = 64972
+    transition_evaluate_calls_total = 64970
+    transition_output_fastpath_calls_total = 64972
+    transition_set_target_calls_total = 64970
+    transition_target_breakpoint_clamps = 0
+    transition_target_breakpoint_scan_calls = 64970
+    transition_unchanged_fastpath_enabled = 0
+    transition_unchanged_target_fastpath_total = 0
+Model event counters:
+    model[0] clk_div_Model:
+        above_fires = 0
+        cross_fires = 100
+        dynamic_node_cache_bypasses = 0
+        dynamic_node_cache_hits = 0
+        dynamic_node_cache_misses = 0
+        event_trace_audit_above_events = 0
+        event_trace_audit_array_writes = 0
+        event_trace_audit_body_entries = 0
+        event_trace_audit_combined_events = 0
+        event_trace_audit_cross_events = 0
+        event_trace_audit_events = 0
+        event_trace_audit_final_step_events = 0
+        event_trace_audit_in_event_writes = 0
+        event_trace_audit_initial_step_events = 0
+        event_trace_audit_output_writes = 0
+        event_trace_audit_records_dropped = 0
+        event_trace_audit_state_writes = 0
+        event_trace_audit_timer_events = 0
+        event_trace_audit_timer_last_fired_writes = 0
+        event_trace_audit_timer_state_writes = 0
+        event_trace_audit_transition_output_writes = 0
+        event_trace_audit_transition_writes = 0
+        indexed_state_array_oob_writes = 0
+        indexed_state_array_reads = 0
+        indexed_state_array_writes = 0
+        indexed_state_scalar_reads = 0
+        indexed_state_scalar_writes = 0
+        rust_above_production_calls = 0
+        rust_above_production_fallbacks = 0
+        rust_above_production_fires = 0
+        rust_body_ir_production_batches = 0
+        rust_body_ir_production_calls = 0
+        rust_body_ir_production_executed = 0
+        rust_body_ir_production_fallbacks = 0
+        rust_body_ir_production_node_writes = 0
+        rust_body_ir_production_state_writes = 0
+        rust_cross_production_calls = 0
+        rust_cross_production_fallbacks = 0
+        rust_cross_production_fires = 0
+        rust_event_due_shadow_above_checks = 0
+        rust_event_due_shadow_cross_checks = 0
+        rust_event_due_shadow_errors = 0
+        rust_event_due_shadow_matches = 0
+        rust_event_due_shadow_max_time_diff = 0.0
+        rust_event_due_shadow_mismatches = 0
+        rust_event_due_shadow_timer_absolute_checks = 0
+        rust_event_due_shadow_timer_periodic_checks = 0
+        rust_event_interpolation_batches = 0
+        rust_event_interpolation_cache_hits = 0
+        rust_event_interpolation_fallbacks = 0
+        rust_event_interpolation_nodes = 0
+        rust_event_linear_write_batches = 0
+        rust_event_linear_write_production_calls = 0
+        rust_event_linear_write_production_executed = 0
+        rust_event_linear_write_production_fallbacks = 0
+        rust_event_linear_write_shadow_checks = 0
+        rust_event_linear_write_shadow_errors = 0
+        rust_event_linear_write_shadow_matches = 0
+        rust_event_linear_write_shadow_mismatches = 0
+        rust_event_write_production_calls = 0
+        rust_event_write_production_executed = 0
+        rust_event_write_production_fallbacks = 0
+        rust_event_write_shadow_checks = 0
+        rust_event_write_shadow_errors = 0
+        rust_event_write_shadow_matches = 0
+        rust_event_write_shadow_mismatches = 0
+        rust_timer_breakpoint_fallbacks = 0
+        rust_timer_breakpoint_scans = 0
+        rust_timer_breakpoint_state_scans = 0
+        rust_timer_event_production_absolute_calls = 0
+        rust_timer_event_production_expirations = 0
+        rust_timer_event_production_fallbacks = 0
+        rust_timer_event_production_fires = 0
+        rust_timer_event_production_periodic_calls = 0
+        rust_timer_event_production_skips = 0
+        rust_timer_lfsr_output_batches = 0
+        rust_timer_lfsr_output_calls = 0
+        rust_timer_lfsr_output_due = 0
+        rust_timer_lfsr_output_executed = 0
+        rust_timer_lfsr_output_fallbacks = 0
+        rust_timer_lfsr_output_skips = 0
+        rust_timer_lfsr_output_writes = 0
+        rust_transition_batch_fallbacks = 0
+        rust_transition_batch_flushes = 0
+        rust_transition_batch_max_slots = 0
+        rust_transition_batch_slot_total = 0
+        rust_transition_breakpoint_fallbacks = 0
+        rust_transition_breakpoint_scans = 0
+        rust_transition_breakpoint_state_scans = 0
+        rust_transition_lazy_enqueues = 0
+        rust_transition_state_buffer_alloc_total = 0
+        rust_transition_state_buffer_reuse_calls = 0
+        rust_transition_state_production_calls = 0
+        rust_transition_state_production_fallbacks = 0
+        rust_transition_state_production_outputs = 0
+        static_branch_fastpath_fallbacks = 0
+        timer_absolute_checks = 0
+        timer_absolute_expirations = 0
+        timer_absolute_fires = 0
+        timer_array_sidecar_rebuilds = 0
+        timer_array_sidecar_scans = 0
+        timer_array_sidecar_updates = 0
+        timer_batch_due_calls = 0
+        timer_batch_due_events = 0
+        timer_batch_due_fallbacks = 0
+        timer_batch_due_fires = 0
+        timer_breakpoint_cache_hits = 0
+        timer_breakpoint_hits = 0
+        timer_breakpoint_scans = 1
+        timer_periodic_checks = 0
+        timer_periodic_fires = 0
+        timer_periodic_skips = 0
+        timer_reschedules = 0
+        timer_state_owned_checks = 0
+        timer_state_owned_fallbacks = 0
+        timer_state_owned_fast_skips = 0
+        timer_state_owned_fires = 0
+        timer_state_owned_target_reads = 0
+        timer_state_updates = 0
+        transition_breakpoint_active_scans = 6592
+        transition_breakpoint_inactive_skips = 58378
+        transition_breakpoint_scans = 6592
+        transition_calls = 64972
+        transition_evaluate_calls = 64970
+        transition_output_fastpath_calls = 64972
+        transition_set_target_calls = 64970
+        transition_unchanged_target_fastpath = 0
+
+Maximum value achieved for any signal of each quantity:
+    V: V(clk_in) = 900 mV
+
+Tran analysis time: CPU = 2273.3 ms, elapsed = 2273.3 ms.
+Runner timing counters:
+    derive_bus_signals_s = 0.000094 s
+    csv_write_s = 0.004873 s
+
+Writing CSV: /data/jinzhihong/vaevas-evaluator/EVAS/output/clk_div/div4/tran.csv (signals: clk_in, clk_out)
+Writing strobe log: /data/jinzhihong/vaevas-evaluator/EVAS/output/clk_div/div4/strobe.txt (100 lines)
+[clk_div] t=0.128 ns | count=1 | n=0
+[clk_div] t=1.128 ns | count=2 | n=1
+[clk_div] t=2.128 ns | count=3 | n=1
+[clk_div] t=3.128 ns | count=0 | n=0
+[clk_div] t=4.128 ns | count=1 | n=0
+[clk_div] t=5.128 ns | count=2 | n=1
+[clk_div] t=6.128 ns | count=3 | n=1
+[clk_div] t=7.128 ns | count=0 | n=0
+[clk_div] t=8.128 ns | count=1 | n=0
+[clk_div] t=9.128 ns | count=2 | n=1
+[clk_div] t=10.128 ns | count=3 | n=1
+[clk_div] t=11.128 ns | count=0 | n=0
+[clk_div] t=12.128 ns | count=1 | n=0
+[clk_div] t=13.128 ns | count=2 | n=1
+[clk_div] t=14.128 ns | count=3 | n=1
+[clk_div] t=15.128 ns | count=0 | n=0
+[clk_div] t=16.128 ns | count=1 | n=0
+[clk_div] t=17.128 ns | count=2 | n=1
+[clk_div] t=18.128 ns | count=3 | n=1
+[clk_div] t=19.128 ns | count=0 | n=0
+[clk_div] t=20.128 ns | count=1 | n=0
+[clk_div] t=21.128 ns | count=2 | n=1
+[clk_div] t=22.128 ns | count=3 | n=1
+[clk_div] t=23.128 ns | count=0 | n=0
+[clk_div] t=24.128 ns | count=1 | n=0
+[clk_div] t=25.128 ns | count=2 | n=1
+[clk_div] t=26.128 ns | count=3 | n=1
+[clk_div] t=27.128 ns | count=0 | n=0
+[clk_div] t=28.128 ns | count=1 | n=0
+[clk_div] t=29.128 ns | count=2 | n=1
+[clk_div] t=30.128 ns | count=3 | n=1
+[clk_div] t=31.128 ns | count=0 | n=0
+[clk_div] t=32.128 ns | count=1 | n=0
+[clk_div] t=33.128 ns | count=2 | n=1
+[clk_div] t=34.128 ns | count=3 | n=1
+[clk_div] t=35.128 ns | count=0 | n=0
+[clk_div] t=36.128 ns | count=1 | n=0
+[clk_div] t=37.128 ns | count=2 | n=1
+[clk_div] t=38.128 ns | count=3 | n=1
+[clk_div] t=39.128 ns | count=0 | n=0
+[clk_div] t=40.128 ns | count=1 | n=0
+[clk_div] t=41.128 ns | count=2 | n=1
+[clk_div] t=42.128 ns | count=3 | n=1
+[clk_div] t=43.128 ns | count=0 | n=0
+[clk_div] t=44.128 ns | count=1 | n=0
+[clk_div] t=45.128 ns | count=2 | n=1
+[clk_div] t=46.128 ns | count=3 | n=1
+[clk_div] t=47.128 ns | count=0 | n=0
+[clk_div] t=48.128 ns | count=1 | n=0
+[clk_div] t=49.128 ns | count=2 | n=1
+[clk_div] t=50.128 ns | count=3 | n=1
+[clk_div] t=51.128 ns | count=0 | n=0
+[clk_div] t=52.128 ns | count=1 | n=0
+[clk_div] t=53.128 ns | count=2 | n=1
+[clk_div] t=54.128 ns | count=3 | n=1
+[clk_div] t=55.128 ns | count=0 | n=0
+[clk_div] t=56.128 ns | count=1 | n=0
+[clk_div] t=57.128 ns | count=2 | n=1
+[clk_div] t=58.128 ns | count=3 | n=1
+[clk_div] t=59.128 ns | count=0 | n=0
+[clk_div] t=60.128 ns | count=1 | n=0
+[clk_div] t=61.128 ns | count=2 | n=1
+[clk_div] t=62.128 ns | count=3 | n=1
+[clk_div] t=63.128 ns | count=0 | n=0
+[clk_div] t=64.128 ns | count=1 | n=0
+[clk_div] t=65.128 ns | count=2 | n=1
+[clk_div] t=66.128 ns | count=3 | n=1
+[clk_div] t=67.128 ns | count=0 | n=0
+[clk_div] t=68.128 ns | count=1 | n=0
+[clk_div] t=69.128 ns | count=2 | n=1
+[clk_div] t=70.128 ns | count=3 | n=1
+[clk_div] t=71.128 ns | count=0 | n=0
+[clk_div] t=72.128 ns | count=1 | n=0
+[clk_div] t=73.128 ns | count=2 | n=1
+[clk_div] t=74.128 ns | count=3 | n=1
+[clk_div] t=75.128 ns | count=0 | n=0
+[clk_div] t=76.128 ns | count=1 | n=0
+[clk_div] t=77.128 ns | count=2 | n=1
+[clk_div] t=78.128 ns | count=3 | n=1
+[clk_div] t=79.128 ns | count=0 | n=0
+[clk_div] t=80.128 ns | count=1 | n=0
+[clk_div] t=81.128 ns | count=2 | n=1
+[clk_div] t=82.128 ns | count=3 | n=1
+[clk_div] t=83.128 ns | count=0 | n=0
+[clk_div] t=84.128 ns | count=1 | n=0
+[clk_div] t=85.128 ns | count=2 | n=1
+[clk_div] t=86.128 ns | count=3 | n=1
+[clk_div] t=87.128 ns | count=0 | n=0
+[clk_div] t=88.128 ns | count=1 | n=0
+[clk_div] t=89.128 ns | count=2 | n=1
+[clk_div] t=90.128 ns | count=3 | n=1
+[clk_div] t=91.128 ns | count=0 | n=0
+[clk_div] t=92.128 ns | count=1 | n=0
+[clk_div] t=93.128 ns | count=2 | n=1
+[clk_div] t=94.128 ns | count=3 | n=1
+[clk_div] t=95.128 ns | count=0 | n=0
+[clk_div] t=96.128 ns | count=1 | n=0
+[clk_div] t=97.128 ns | count=2 | n=1
+[clk_div] t=98.128 ns | count=3 | n=1
+[clk_div] t=99.128 ns | count=0 | n=0
+
+evas completes with 0 errors, 1 warnings.
+Total time: CPU = 2.3 s, elapsed = 2.3 s.
+EVAS -- Event-driven Verilog-A Simulator
+Version 0.4.4 -- Jun 2026
+
+Simulating `tb_clk_div_div8.scs' at 7:09:14 AM, Sun Jun 21, 2026.
+Command line:
+    /data/jinzhihong/vaevas-evaluator/EVAS/evas/__main__.py run clk_div --engine evas-rust
+
+Reading file: tb_clk_div_div8.scs
+WARNING: ahdl_include resolved to 'clk_div.va' (original path not found, used scs directory fallback)
+Compiled Verilog-A module: clk_div
+
+Circuit inventory:
+               nodes 2
+             clk_div 1
+             vsource 1
+
+*****************************************************
+Transient Analysis `tran': time = (0 s -> 100 ns)
+*****************************************************
+Important parameter values:
+    start = 0 s
+    stop  = 100 ns
+    step  = 100 ps
+    reltol = 0.001
+    vabstol = 1e-06
+    iabstol = 1e-12
+    refine_factor = 16
+    refine_steps  = 8
+
+    tran: time = 10 ns        ( 10 %)
+    tran: time = 20 ns        ( 20 %)
+    tran: time = 30 ns        ( 30 %)
+    tran: time = 40 ns        ( 40 %)
+    tran: time = 50 ns        ( 50 %)
+    tran: time = 60 ns        ( 60 %)
+    tran: time = 70 ns        ( 70 %)
+    tran: time = 80 ns        ( 80 %)
+    tran: time = 90 ns        ( 90 %)
+    tran: time = 100 ns       (100 %)
+Number of accepted tran steps = 1526
+Performance counters:
+    bound_step_clamps = 0
+    bound_step_scan_calls = 0
+    cross_event_steps = 100
+    cross_refine_triggers = 0
+    dynamic_node_cache_bypasses_total = 0
+    dynamic_node_cache_entries = 0
+    dynamic_node_cache_hits_total = 0
+    dynamic_node_cache_misses_total = 0
+    dynamic_node_cache_models = 0
+    dynamic_step_grows = 8651
+    dynamic_step_shrinks = 4349
+    err_ratio_skipped_outputs = 0
+    err_ratio_skipped_sources = 0
+    event_trace_audit_above_events_total = 0
+    event_trace_audit_array_writes_total = 0
+    event_trace_audit_body_entries_total = 0
+    event_trace_audit_combined_events_total = 0
+    event_trace_audit_cross_events_total = 0
+    event_trace_audit_enabled = 0
+    event_trace_audit_events_total = 0
+    event_trace_audit_final_step_events_total = 0
+    event_trace_audit_in_event_writes_total = 0
+    event_trace_audit_initial_step_events_total = 0
+    event_trace_audit_output_writes_total = 0
+    event_trace_audit_records_dropped_total = 0
+    event_trace_audit_requested = 0
+    event_trace_audit_state_writes_total = 0
+    event_trace_audit_timer_events_total = 0
+    event_trace_audit_timer_last_fired_writes_total = 0
+    event_trace_audit_timer_state_writes_total = 0
+    event_trace_audit_transition_output_writes_total = 0
+    event_trace_audit_transition_writes_total = 0
+    future_node_lazy_descriptors = 61289
+    future_node_snapshots = 0
+    generic_executor_blocked_runs = 0
+    generic_executor_dispatchable_runs = 0
+    generic_executor_models_with_candidate = 0
+    generic_executor_runs = 0
+    generic_executor_runtime_fallbacks = 0
+    indexed_array_dirty_nodes_checked = 0
+    indexed_array_dirty_syncs = 0
+    indexed_array_dirty_validation_enabled = 0
+    indexed_array_dynamic_nodes = 0
+    indexed_array_err_ratio_reads = 0
+    indexed_array_mismatches = 0
+    indexed_array_prev_snapshot_dirty_skips = 0
+    indexed_array_record_id_reads = 0
+    indexed_array_record_reads = 0
+    indexed_array_snapshots = 0
+    indexed_array_source_updates = 0
+    indexed_array_syncs = 0
+    indexed_array_values_checked = 0
+    indexed_model_io_mapped_ports = 0
+    indexed_model_io_models = 0
+    indexed_model_io_outputs = 0
+    indexed_model_io_refreshes = 0
+    indexed_output_write_through_nodes = 0
+    indexed_output_write_throughs = 0
+    indexed_post_model_sync_repairs = 0
+    indexed_prev_snapshots = 0
+    indexed_snapshot_dynamic_nodes = 0
+    indexed_snapshot_mismatches = 0
+    indexed_snapshot_values_checked = 0
+    indexed_state_array_oob_writes_total = 0
+    indexed_state_array_reads_total = 0
+    indexed_state_array_writes_total = 0
+    indexed_state_scalar_reads_total = 0
+    indexed_state_scalar_writes_total = 0
+    indexed_state_storage_array_slots = 0
+    indexed_state_storage_enabled = 0
+    indexed_state_storage_integer_slots = 0
+    indexed_state_storage_models = 0
+    indexed_state_storage_scalar_slots = 0
+    indexed_voltage_probe_event_skips = 0
+    indexed_voltage_probe_max_abs_diff = 0.0
+    indexed_voltage_probe_mismatches = 0
+    indexed_voltage_probe_missing_nodes = 0
+    indexed_voltage_probes = 0
+    indexed_voltage_read_fallbacks = 0
+    indexed_voltage_read_nodes = 0
+    indexed_voltage_reads = 0
+    min_step_clamps = 102
+    model_breakpoint_clamps = 125
+    model_breakpoint_scan_calls = 61289
+    model_post_update_calls = 0
+    model_post_update_skips = 61289
+    model_prepare_step_calls = 61289
+    model_prepare_step_skips = 0
+    model_timer_expire_calls = 61289
+    model_timer_expire_skips = 0
+    node_resolution_cache_entries = 2
+    node_resolution_cache_models = 1
+    output_step_clamps = 894
+    rust_above_production_calls_total = 0
+    rust_above_production_fallbacks_total = 0
+    rust_above_production_fires_total = 0
+    rust_array_err_ratio_fallbacks = 0
+    rust_array_err_ratio_reads = 0
+    rust_array_err_ratio_scans = 0
+    rust_array_loop_enabled = 0
+    rust_array_record_fallbacks = 0
+    rust_array_record_scans = 0
+    rust_array_record_values = 0
+    rust_array_snapshot_copies = 0
+    rust_array_snapshot_fallbacks = 0
+    rust_body_ir_available = 0
+    rust_body_ir_candidate_models = 0
+    rust_body_ir_enabled = 0
+    rust_body_ir_expr_ops = 0
+    rust_body_ir_models = 0
+    rust_body_ir_production_batches_total = 0
+    rust_body_ir_production_calls_total = 0
+    rust_body_ir_production_executed_total = 0
+    rust_body_ir_production_fallbacks_total = 0
+    rust_body_ir_production_node_writes_total = 0
+    rust_body_ir_production_state_writes_total = 0
+    rust_body_ir_requested = 0
+    rust_body_ir_stmt_ops = 0
+    rust_cross_above_production_available = 0
+    rust_cross_above_production_enabled = 0
+    rust_cross_above_production_requested = 0
+    rust_cross_production_calls_total = 0
+    rust_cross_production_fallbacks_total = 0
+    rust_cross_production_fires_total = 0
+    rust_event_due_shadow_above_checks_total = 0
+    rust_event_due_shadow_available = 0
+    rust_event_due_shadow_cross_checks_total = 0
+    rust_event_due_shadow_enabled = 0
+    rust_event_due_shadow_errors_total = 0
+    rust_event_due_shadow_matches_total = 0
+    rust_event_due_shadow_max_time_diff_total = 0.0
+    rust_event_due_shadow_mismatches_total = 0
+    rust_event_due_shadow_requested = 0
+    rust_event_due_shadow_timer_absolute_checks_total = 0
+    rust_event_due_shadow_timer_periodic_checks_total = 0
+    rust_event_interpolation_available = 0
+    rust_event_interpolation_batches_total = 0
+    rust_event_interpolation_cache_hits_total = 0
+    rust_event_interpolation_enabled = 0
+    rust_event_interpolation_fallbacks_total = 0
+    rust_event_interpolation_nodes_total = 0
+    rust_event_interpolation_requested = 0
+    rust_event_linear_write_batches_total = 0
+    rust_event_linear_write_production_calls_total = 0
+    rust_event_linear_write_production_executed_total = 0
+    rust_event_linear_write_production_fallbacks_total = 0
+    rust_event_linear_write_shadow_checks_total = 0
+    rust_event_linear_write_shadow_errors_total = 0
+    rust_event_linear_write_shadow_matches_total = 0
+    rust_event_linear_write_shadow_mismatches_total = 0
+    rust_event_transition_plan_core_candidate_models = 1
+    rust_event_transition_plan_core_due_triggers = 2
+    rust_event_transition_plan_core_event_statements = 2
+    rust_event_transition_plan_core_output_writes = 0
+    rust_event_transition_plan_core_transitions = 1
+    rust_event_transition_plan_ordered_v1_candidate_models = 1
+    rust_event_transition_plan_ordered_v1_due_triggers = 2
+    rust_event_transition_plan_ordered_v1_event_statements = 2
+    rust_event_transition_plan_ordered_v1_output_writes = 0
+    rust_event_transition_plan_ordered_v1_transitions = 1
+    rust_event_transition_plan_side_effect_candidate_models = 1
+    rust_event_transition_plan_side_effect_due_triggers = 2
+    rust_event_transition_plan_side_effect_event_statements = 2
+    rust_event_transition_plan_side_effect_output_writes = 0
+    rust_event_transition_plan_side_effect_transitions = 1
+    rust_event_transition_production_available = 0
+    rust_event_transition_production_breakpoint_clamps_total = 0
+    rust_event_transition_production_breakpoint_scans_total = 0
+    rust_event_transition_production_calls_total = 0
+    rust_event_transition_production_candidate_models = 0
+    rust_event_transition_production_enabled = 0
+    rust_event_transition_production_executed_total = 0
+    rust_event_transition_production_fallbacks_total = 0
+    rust_event_transition_production_fired_events_total = 0
+    rust_event_transition_production_models = 0
+    rust_event_transition_production_output_writes_total = 0
+    rust_event_transition_production_requested = 0
+    rust_event_transition_production_state_writes_total = 0
+    rust_event_transition_shadow_available = 0
+    rust_event_transition_shadow_calls_total = 0
+    rust_event_transition_shadow_candidate_models = 0
+    rust_event_transition_shadow_enabled = 0
+    rust_event_transition_shadow_errors_total = 0
+    rust_event_transition_shadow_matches_total = 0
+    rust_event_transition_shadow_max_abs_diff = 0.0
+    rust_event_transition_shadow_mismatches_total = 0
+    rust_event_transition_shadow_models = 0
+    rust_event_transition_shadow_requested = 0
+    rust_event_transition_shadow_value_checks_total = 0
+    rust_event_write_production_available = 0
+    rust_event_write_production_calls_total = 0
+    rust_event_write_production_enabled = 0
+    rust_event_write_production_executed_total = 0
+    rust_event_write_production_fallbacks_total = 0
+    rust_event_write_production_requested = 0
+    rust_event_write_shadow_available = 0
+    rust_event_write_shadow_checks_total = 0
+    rust_event_write_shadow_enabled = 0
+    rust_event_write_shadow_errors_total = 0
+    rust_event_write_shadow_matches_total = 0
+    rust_event_write_shadow_mismatches_total = 0
+    rust_event_write_shadow_requested = 0
+    rust_full_model_cmp_delay_clock_events = 0
+    rust_full_model_cmp_delay_enabled = 0
+    rust_full_model_cmp_delay_rust_enabled = 0
+    rust_full_model_cmp_delay_rust_fallbacks = 0
+    rust_full_model_cmp_delay_rust_points = 0
+    rust_full_model_cmp_delay_rust_requested = 0
+    rust_full_model_cppll_reacquire_dco_toggles = 0
+    rust_full_model_cppll_reacquire_enabled = 0
+    rust_full_model_cppll_reacquire_fb_crosses = 0
+    rust_full_model_cppll_reacquire_ref_crosses = 0
+    rust_full_model_cppll_reacquire_ref_toggles = 0
+    rust_full_model_cppll_reacquire_rust_enabled = 0
+    rust_full_model_cppll_reacquire_rust_fallbacks = 0
+    rust_full_model_cppll_reacquire_rust_points = 0
+    rust_full_model_cppll_reacquire_rust_requested = 0
+    rust_full_model_event_transition_core_build_errors = 0
+    rust_full_model_event_transition_core_calls_total = 0
+    rust_full_model_event_transition_core_enabled = 0
+    rust_full_model_event_transition_core_fired_events = 0
+    rust_full_model_event_transition_core_native_trace_enabled = 0
+    rust_full_model_event_transition_core_native_trace_fallbacks = 0
+    rust_full_model_event_transition_core_native_trace_fired_events = 0
+    rust_full_model_event_transition_core_native_trace_points = 0
+    rust_full_model_event_transition_core_native_trace_requested = 0
+    rust_full_model_event_transition_core_native_trace_source_breakpoints = 0
+    rust_full_model_event_transition_core_native_trace_transition_breakpoints = 0
+    rust_full_model_event_transition_core_runtime_fallbacks = 0
+    rust_full_model_event_transition_core_rust_enabled = 0
+    rust_full_model_event_transition_core_rust_points = 0
+    rust_full_model_event_transition_core_rust_requested = 0
+    rust_full_model_event_transition_core_source_breakpoints = 0
+    rust_full_model_event_transition_core_transition_breakpoints = 0
+    rust_full_model_fastpath_available = 0
+    rust_full_model_fastpath_enabled = 0
+    rust_full_model_fastpath_fallbacks_total = 0
+    rust_full_model_fastpath_requested = 0
+    rust_full_model_gain_measurement_flow_enabled = 0
+    rust_full_model_gain_measurement_flow_lfsr_events = 0
+    rust_full_model_gain_measurement_flow_rust_enabled = 0
+    rust_full_model_gain_measurement_flow_rust_fallbacks = 0
+    rust_full_model_gain_measurement_flow_rust_points = 0
+    rust_full_model_gain_measurement_flow_rust_requested = 0
+    rust_full_model_gain_measurement_flow_vin_events = 0
+    rust_full_model_gain_timer_reduction_enabled = 0
+    rust_full_model_gain_timer_reduction_rust_enabled = 0
+    rust_full_model_gain_timer_reduction_rust_fallbacks = 0
+    rust_full_model_gain_timer_reduction_rust_points = 0
+    rust_full_model_gain_timer_reduction_rust_requested = 0
+    rust_full_model_gain_timer_reduction_samples = 0
+    rust_full_model_lfsr_transition_cross_events = 0
+    rust_full_model_lfsr_transition_outputs = 0
+    rust_full_model_lfsr_transition_points = 0
+    rust_full_model_prbs7_cross_events = 0
+    rust_full_model_prbs7_points = 0
+    rust_full_model_prbs7_scheduled_crosses = 0
+    rust_full_model_required_failures = 0
+    rust_full_model_required_requested = 0
+    rust_full_model_sar_loop_clock_events = 0
+    rust_full_model_sar_loop_enabled = 0
+    rust_full_model_sar_loop_rust_enabled = 0
+    rust_full_model_sar_loop_rust_fallbacks = 0
+    rust_full_model_sar_loop_rust_points = 0
+    rust_full_model_sar_loop_rust_requested = 0
+    rust_full_model_timer_static_linear_default_trace_enabled = 0
+    rust_full_model_timer_static_linear_enabled = 0
+    rust_full_model_timer_static_linear_events = 0
+    rust_full_model_timer_static_linear_rust_enabled = 0
+    rust_full_model_timer_static_linear_rust_fallbacks = 0
+    rust_full_model_timer_static_linear_rust_points = 0
+    rust_full_model_timer_static_linear_rust_requested = 0
+    rust_full_model_timer_static_linear_timer_count = 0
+    rust_full_model_whole_segment_points = 0
+    rust_sim_program_abi_build_elapsed_s = 0.0
+    rust_sim_program_always_body_count = 0
+    rust_sim_program_available = 0
+    rust_sim_program_body_expr_ops = 0
+    rust_sim_program_body_stmt_ops = 0
+    rust_sim_program_continuous_linear_ops = 0
+    rust_sim_program_enabled = 0
+    rust_sim_program_event_count = 0
+    rust_sim_program_event_fires = 0
+    rust_sim_program_event_transition_enabled = 0
+    rust_sim_program_fastpath_total_elapsed_s = 0.0
+    rust_sim_program_final_capacity = 0
+    rust_sim_program_lower_elapsed_s = 0.0
+    rust_sim_program_node_count = 0
+    rust_sim_program_points = 0
+    rust_sim_program_record_count = 0
+    rust_sim_program_record_replay_elapsed_s = 0.0
+    rust_sim_program_rejections = 0
+    rust_sim_program_requested = 0
+    rust_sim_program_runtime_attempts = 0
+    rust_sim_program_runtime_elapsed_s = 0.0
+    rust_sim_program_source_breakpoints = 0
+    rust_sim_program_source_count = 0
+    rust_sim_program_source_record_enabled = 0
+    rust_sim_program_state_count = 0
+    rust_sim_program_state_sync_elapsed_s = 0.0
+    rust_sim_program_time_grid_elapsed_s = 0.0
+    rust_sim_program_transition_breakpoints = 0
+    rust_sim_program_transition_count = 0
+    rust_static_eval_available = 0
+    rust_static_eval_calls = 0
+    rust_static_eval_candidate_models = 0
+    rust_static_eval_coeff_eval_fallbacks = 0
+    rust_static_eval_deferred_output_syncs = 0
+    rust_static_eval_errors = 0
+    rust_static_eval_fallback_models = 0
+    rust_static_eval_gated_models = 0
+    rust_static_eval_gated_ops = 0
+    rust_static_eval_gated_segments = 0
+    rust_static_eval_integer_state_write_ops = 0
+    rust_static_eval_lifecycle_model_skips = 0
+    rust_static_eval_max_segment_models = 0
+    rust_static_eval_mixed_small_fallbacks = 0
+    rust_static_eval_models = 0
+    rust_static_eval_no_candidate_models = 0
+    rust_static_eval_no_segment_fallbacks = 0
+    rust_static_eval_node_voltage_syncs = 0
+    rust_static_eval_ops = 0
+    rust_static_eval_output_syncs = 0
+    rust_static_eval_requested = 0
+    rust_static_eval_runtime_param_ops = 0
+    rust_static_eval_segments = 0
+    rust_static_eval_state_read_terms = 0
+    rust_static_eval_state_write_ops = 0
+    rust_static_eval_terms = 0
+    rust_static_fast_sync_enabled = 0
+    rust_static_fast_sync_node_voltage_sync_skips = 0
+    rust_static_fast_sync_requested = 0
+    rust_static_fast_sync_validation_skips = 0
+    rust_timer_breakpoint_enabled = 0
+    rust_timer_breakpoint_fallbacks_total = 0
+    rust_timer_breakpoint_scans_total = 0
+    rust_timer_breakpoint_state_scans_total = 0
+    rust_timer_event_available = 0
+    rust_timer_event_enabled = 0
+    rust_timer_event_production_absolute_calls_total = 0
+    rust_timer_event_production_expirations_total = 0
+    rust_timer_event_production_fallbacks_total = 0
+    rust_timer_event_production_fires_total = 0
+    rust_timer_event_production_periodic_calls_total = 0
+    rust_timer_event_production_skips_total = 0
+    rust_timer_event_requested = 0
+    rust_timer_lfsr_output_batches_total = 0
+    rust_timer_lfsr_output_calls_total = 0
+    rust_timer_lfsr_output_due_total = 0
+    rust_timer_lfsr_output_executed_total = 0
+    rust_timer_lfsr_output_fallbacks_total = 0
+    rust_timer_lfsr_output_skips_total = 0
+    rust_timer_lfsr_output_writes_total = 0
+    rust_transition_batch_fallbacks_total = 0
+    rust_transition_batch_flushes_total = 0
+    rust_transition_batch_max_slots_total = 0
+    rust_transition_batch_slot_total_total = 0
+    rust_transition_breakpoint_enabled = 0
+    rust_transition_breakpoint_fallbacks_total = 0
+    rust_transition_breakpoint_scans_total = 0
+    rust_transition_breakpoint_state_scans_total = 0
+    rust_transition_lazy_enqueues_total = 0
+    rust_transition_production_available = 0
+    rust_transition_production_enabled = 0
+    rust_transition_production_requested = 0
+    rust_transition_shadow_available = 0
+    rust_transition_shadow_calls = 0
+    rust_transition_shadow_candidate_models = 0
+    rust_transition_shadow_errors = 0
+    rust_transition_shadow_matches = 0
+    rust_transition_shadow_max_abs_diff = 0.0
+    rust_transition_shadow_mismatches = 0
+    rust_transition_shadow_models = 0
+    rust_transition_shadow_requested = 0
+    rust_transition_shadow_segments = 0
+    rust_transition_shadow_skips = 0
+    rust_transition_shadow_state_matches = 0
+    rust_transition_shadow_state_max_abs_diff = 0.0
+    rust_transition_shadow_state_mismatches = 0
+    rust_transition_shadow_static_ops = 0
+    rust_transition_shadow_target_ops = 0
+    rust_transition_state_buffer_alloc_grand_total = 0
+    rust_transition_state_buffer_reuse_calls_total = 0
+    rust_transition_state_production_calls_total = 0
+    rust_transition_state_production_fallbacks_total = 0
+    rust_transition_state_production_outputs_total = 0
+    source_breakpoint_clamps = 600
+    source_breakpoint_scan_calls = 61289
+    static_branch_direct_array_models = 0
+    static_branch_direct_array_read_nodes = 0
+    static_branch_direct_array_write_nodes = 0
+    static_branch_fastpath_codegen_models = 0
+    static_branch_fastpath_fallbacks_total = 0
+    static_branch_fastpath_static_read_nodes = 0
+    static_branch_fastpath_static_write_nodes = 0
+    static_lifecycle_fastpath_enabled = 1
+    steps_total = 61289
+    timer_array_sidecar_rebuilds_total = 0
+    timer_array_sidecar_scans_total = 0
+    timer_array_sidecar_updates_total = 0
+    timer_batch_due_calls_total = 0
+    timer_batch_due_events_total = 0
+    timer_batch_due_fallbacks_total = 0
+    timer_batch_due_fires_total = 0
+    timer_breakpoint_cache_hits_total = 0
+    timer_breakpoint_hits_total = 0
+    timer_breakpoint_scans_total = 1
+    timer_state_owned_checks_total = 0
+    timer_state_owned_fallbacks_total = 0
+    timer_state_owned_fast_skips_total = 0
+    timer_state_owned_fires_total = 0
+    timer_state_owned_target_reads_total = 0
+    timer_state_updates_total = 0
+    transition_breakpoint_active_scans_total = 3324
+    transition_breakpoint_inactive_skips_total = 57965
+    transition_breakpoint_scans_total = 3324
+    transition_calls_total = 61291
+    transition_evaluate_calls_total = 61289
+    transition_output_fastpath_calls_total = 61291
+    transition_set_target_calls_total = 61289
+    transition_target_breakpoint_clamps = 0
+    transition_target_breakpoint_scan_calls = 61289
+    transition_unchanged_fastpath_enabled = 0
+    transition_unchanged_target_fastpath_total = 0
+Model event counters:
+    model[0] clk_div_Model:
+        above_fires = 0
+        cross_fires = 100
+        dynamic_node_cache_bypasses = 0
+        dynamic_node_cache_hits = 0
+        dynamic_node_cache_misses = 0
+        event_trace_audit_above_events = 0
+        event_trace_audit_array_writes = 0
+        event_trace_audit_body_entries = 0
+        event_trace_audit_combined_events = 0
+        event_trace_audit_cross_events = 0
+        event_trace_audit_events = 0
+        event_trace_audit_final_step_events = 0
+        event_trace_audit_in_event_writes = 0
+        event_trace_audit_initial_step_events = 0
+        event_trace_audit_output_writes = 0
+        event_trace_audit_records_dropped = 0
+        event_trace_audit_state_writes = 0
+        event_trace_audit_timer_events = 0
+        event_trace_audit_timer_last_fired_writes = 0
+        event_trace_audit_timer_state_writes = 0
+        event_trace_audit_transition_output_writes = 0
+        event_trace_audit_transition_writes = 0
+        indexed_state_array_oob_writes = 0
+        indexed_state_array_reads = 0
+        indexed_state_array_writes = 0
+        indexed_state_scalar_reads = 0
+        indexed_state_scalar_writes = 0
+        rust_above_production_calls = 0
+        rust_above_production_fallbacks = 0
+        rust_above_production_fires = 0
+        rust_body_ir_production_batches = 0
+        rust_body_ir_production_calls = 0
+        rust_body_ir_production_executed = 0
+        rust_body_ir_production_fallbacks = 0
+        rust_body_ir_production_node_writes = 0
+        rust_body_ir_production_state_writes = 0
+        rust_cross_production_calls = 0
+        rust_cross_production_fallbacks = 0
+        rust_cross_production_fires = 0
+        rust_event_due_shadow_above_checks = 0
+        rust_event_due_shadow_cross_checks = 0
+        rust_event_due_shadow_errors = 0
+        rust_event_due_shadow_matches = 0
+        rust_event_due_shadow_max_time_diff = 0.0
+        rust_event_due_shadow_mismatches = 0
+        rust_event_due_shadow_timer_absolute_checks = 0
+        rust_event_due_shadow_timer_periodic_checks = 0
+        rust_event_interpolation_batches = 0
+        rust_event_interpolation_cache_hits = 0
+        rust_event_interpolation_fallbacks = 0
+        rust_event_interpolation_nodes = 0
+        rust_event_linear_write_batches = 0
+        rust_event_linear_write_production_calls = 0
+        rust_event_linear_write_production_executed = 0
+        rust_event_linear_write_production_fallbacks = 0
+        rust_event_linear_write_shadow_checks = 0
+        rust_event_linear_write_shadow_errors = 0
+        rust_event_linear_write_shadow_matches = 0
+        rust_event_linear_write_shadow_mismatches = 0
+        rust_event_write_production_calls = 0
+        rust_event_write_production_executed = 0
+        rust_event_write_production_fallbacks = 0
+        rust_event_write_shadow_checks = 0
+        rust_event_write_shadow_errors = 0
+        rust_event_write_shadow_matches = 0
+        rust_event_write_shadow_mismatches = 0
+        rust_timer_breakpoint_fallbacks = 0
+        rust_timer_breakpoint_scans = 0
+        rust_timer_breakpoint_state_scans = 0
+        rust_timer_event_production_absolute_calls = 0
+        rust_timer_event_production_expirations = 0
+        rust_timer_event_production_fallbacks = 0
+        rust_timer_event_production_fires = 0
+        rust_timer_event_production_periodic_calls = 0
+        rust_timer_event_production_skips = 0
+        rust_timer_lfsr_output_batches = 0
+        rust_timer_lfsr_output_calls = 0
+        rust_timer_lfsr_output_due = 0
+        rust_timer_lfsr_output_executed = 0
+        rust_timer_lfsr_output_fallbacks = 0
+        rust_timer_lfsr_output_skips = 0
+        rust_timer_lfsr_output_writes = 0
+        rust_transition_batch_fallbacks = 0
+        rust_transition_batch_flushes = 0
+        rust_transition_batch_max_slots = 0
+        rust_transition_batch_slot_total = 0
+        rust_transition_breakpoint_fallbacks = 0
+        rust_transition_breakpoint_scans = 0
+        rust_transition_breakpoint_state_scans = 0
+        rust_transition_lazy_enqueues = 0
+        rust_transition_state_buffer_alloc_total = 0
+        rust_transition_state_buffer_reuse_calls = 0
+        rust_transition_state_production_calls = 0
+        rust_transition_state_production_fallbacks = 0
+        rust_transition_state_production_outputs = 0
+        static_branch_fastpath_fallbacks = 0
+        timer_absolute_checks = 0
+        timer_absolute_expirations = 0
+        timer_absolute_fires = 0
+        timer_array_sidecar_rebuilds = 0
+        timer_array_sidecar_scans = 0
+        timer_array_sidecar_updates = 0
+        timer_batch_due_calls = 0
+        timer_batch_due_events = 0
+        timer_batch_due_fallbacks = 0
+        timer_batch_due_fires = 0
+        timer_breakpoint_cache_hits = 0
+        timer_breakpoint_hits = 0
+        timer_breakpoint_scans = 1
+        timer_periodic_checks = 0
+        timer_periodic_fires = 0
+        timer_periodic_skips = 0
+        timer_reschedules = 0
+        timer_state_owned_checks = 0
+        timer_state_owned_fallbacks = 0
+        timer_state_owned_fast_skips = 0
+        timer_state_owned_fires = 0
+        timer_state_owned_target_reads = 0
+        timer_state_updates = 0
+        transition_breakpoint_active_scans = 3324
+        transition_breakpoint_inactive_skips = 57965
+        transition_breakpoint_scans = 3324
+        transition_calls = 61291
+        transition_evaluate_calls = 61289
+        transition_output_fastpath_calls = 61291
+        transition_set_target_calls = 61289
+        transition_unchanged_target_fastpath = 0
+
+Maximum value achieved for any signal of each quantity:
+    V: V(clk_in) = 900 mV
+
+Tran analysis time: CPU = 1983.5 ms, elapsed = 1983.5 ms.
+Runner timing counters:
+    derive_bus_signals_s = 0.000036 s
+    csv_write_s = 0.003880 s
+
+Writing CSV: /data/jinzhihong/vaevas-evaluator/EVAS/output/clk_div/div8/tran.csv (signals: clk_in, clk_out)
+Writing strobe log: /data/jinzhihong/vaevas-evaluator/EVAS/output/clk_div/div8/strobe.txt (100 lines)
+[clk_div] t=0.128 ns | count=1 | n=0
+[clk_div] t=1.128 ns | count=2 | n=0
+[clk_div] t=2.128 ns | count=3 | n=0
+[clk_div] t=3.128 ns | count=4 | n=1
+[clk_div] t=4.128 ns | count=5 | n=1
+[clk_div] t=5.128 ns | count=6 | n=1
+[clk_div] t=6.128 ns | count=7 | n=1
+[clk_div] t=7.128 ns | count=0 | n=0
+[clk_div] t=8.128 ns | count=1 | n=0
+[clk_div] t=9.128 ns | count=2 | n=0
+[clk_div] t=10.128 ns | count=3 | n=0
+[clk_div] t=11.128 ns | count=4 | n=1
+[clk_div] t=12.128 ns | count=5 | n=1
+[clk_div] t=13.128 ns | count=6 | n=1
+[clk_div] t=14.128 ns | count=7 | n=1
+[clk_div] t=15.128 ns | count=0 | n=0
+[clk_div] t=16.128 ns | count=1 | n=0
+[clk_div] t=17.128 ns | count=2 | n=0
+[clk_div] t=18.128 ns | count=3 | n=0
+[clk_div] t=19.128 ns | count=4 | n=1
+[clk_div] t=20.128 ns | count=5 | n=1
+[clk_div] t=21.128 ns | count=6 | n=1
+[clk_div] t=22.128 ns | count=7 | n=1
+[clk_div] t=23.128 ns | count=0 | n=0
+[clk_div] t=24.128 ns | count=1 | n=0
+[clk_div] t=25.128 ns | count=2 | n=0
+[clk_div] t=26.128 ns | count=3 | n=0
+[clk_div] t=27.128 ns | count=4 | n=1
+[clk_div] t=28.128 ns | count=5 | n=1
+[clk_div] t=29.128 ns | count=6 | n=1
+[clk_div] t=30.128 ns | count=7 | n=1
+[clk_div] t=31.128 ns | count=0 | n=0
+[clk_div] t=32.128 ns | count=1 | n=0
+[clk_div] t=33.128 ns | count=2 | n=0
+[clk_div] t=34.128 ns | count=3 | n=0
+[clk_div] t=35.128 ns | count=4 | n=1
+[clk_div] t=36.128 ns | count=5 | n=1
+[clk_div] t=37.128 ns | count=6 | n=1
+[clk_div] t=38.128 ns | count=7 | n=1
+[clk_div] t=39.128 ns | count=0 | n=0
+[clk_div] t=40.128 ns | count=1 | n=0
+[clk_div] t=41.128 ns | count=2 | n=0
+[clk_div] t=42.128 ns | count=3 | n=0
+[clk_div] t=43.128 ns | count=4 | n=1
+[clk_div] t=44.128 ns | count=5 | n=1
+[clk_div] t=45.128 ns | count=6 | n=1
+[clk_div] t=46.128 ns | count=7 | n=1
+[clk_div] t=47.128 ns | count=0 | n=0
+[clk_div] t=48.128 ns | count=1 | n=0
+[clk_div] t=49.128 ns | count=2 | n=0
+[clk_div] t=50.128 ns | count=3 | n=0
+[clk_div] t=51.128 ns | count=4 | n=1
+[clk_div] t=52.128 ns | count=5 | n=1
+[clk_div] t=53.128 ns | count=6 | n=1
+[clk_div] t=54.128 ns | count=7 | n=1
+[clk_div] t=55.128 ns | count=0 | n=0
+[clk_div] t=56.128 ns | count=1 | n=0
+[clk_div] t=57.128 ns | count=2 | n=0
+[clk_div] t=58.128 ns | count=3 | n=0
+[clk_div] t=59.128 ns | count=4 | n=1
+[clk_div] t=60.128 ns | count=5 | n=1
+[clk_div] t=61.128 ns | count=6 | n=1
+[clk_div] t=62.128 ns | count=7 | n=1
+[clk_div] t=63.128 ns | count=0 | n=0
+[clk_div] t=64.128 ns | count=1 | n=0
+[clk_div] t=65.128 ns | count=2 | n=0
+[clk_div] t=66.128 ns | count=3 | n=0
+[clk_div] t=67.128 ns | count=4 | n=1
+[clk_div] t=68.128 ns | count=5 | n=1
+[clk_div] t=69.128 ns | count=6 | n=1
+[clk_div] t=70.128 ns | count=7 | n=1
+[clk_div] t=71.128 ns | count=0 | n=0
+[clk_div] t=72.128 ns | count=1 | n=0
+[clk_div] t=73.128 ns | count=2 | n=0
+[clk_div] t=74.128 ns | count=3 | n=0
+[clk_div] t=75.128 ns | count=4 | n=1
+[clk_div] t=76.128 ns | count=5 | n=1
+[clk_div] t=77.128 ns | count=6 | n=1
+[clk_div] t=78.128 ns | count=7 | n=1
+[clk_div] t=79.128 ns | count=0 | n=0
+[clk_div] t=80.128 ns | count=1 | n=0
+[clk_div] t=81.128 ns | count=2 | n=0
+[clk_div] t=82.128 ns | count=3 | n=0
+[clk_div] t=83.128 ns | count=4 | n=1
+[clk_div] t=84.128 ns | count=5 | n=1
+[clk_div] t=85.128 ns | count=6 | n=1
+[clk_div] t=86.128 ns | count=7 | n=1
+[clk_div] t=87.128 ns | count=0 | n=0
+[clk_div] t=88.128 ns | count=1 | n=0
+[clk_div] t=89.128 ns | count=2 | n=0
+[clk_div] t=90.128 ns | count=3 | n=0
+[clk_div] t=91.128 ns | count=4 | n=1
+[clk_div] t=92.128 ns | count=5 | n=1
+[clk_div] t=93.128 ns | count=6 | n=1
+[clk_div] t=94.128 ns | count=7 | n=1
+[clk_div] t=95.128 ns | count=0 | n=0
+[clk_div] t=96.128 ns | count=1 | n=0
+[clk_div] t=97.128 ns | count=2 | n=0
+[clk_div] t=98.128 ns | count=3 | n=0
+[clk_div] t=99.128 ns | count=4 | n=1
+
+evas completes with 0 errors, 1 warnings.
+Total time: CPU = 2.0 s, elapsed = 2.0 s.
+Plot saved: /data/jinzhihong/vaevas-evaluator/EVAS/output/clk_div/clk_div_div2.png
+Plot saved: /data/jinzhihong/vaevas-evaluator/EVAS/output/clk_div/clk_div_div4.png
+Plot saved: /data/jinzhihong/vaevas-evaluator/EVAS/output/clk_div/clk_div_div8.png
+PASS evas_rust_smoke

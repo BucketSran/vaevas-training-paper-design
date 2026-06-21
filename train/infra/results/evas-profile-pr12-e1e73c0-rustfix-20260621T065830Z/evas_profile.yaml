@@ -1,0 +1,38 @@
+evaluator_profile_id: evas-pr12-e1e73c0
+evaluator_kind: evas_rust
+repo: https://github.com/BucketSran/EVAS.git
+upstream_pr: https://github.com/Arcadia-1/EVAS/pull/12
+branch: codex/stochastic-semantics-and-cross-law
+git_commit: e1e73c056ceb91dbda47c5029d8b37f57d9c0fa7
+rust_build_command: cargo build --manifest-path evas/rust_core/Cargo.toml --release
+engine_selector: evas-rust
+status: built_smoke_tested
+run_id: evas-profile-pr12-e1e73c0-rustfix-20260621T065830Z
+workdir: /data/jinzhihong/vaevas-evaluator/EVAS
+python:
+  path: /data/jinzhihong/envs/vaevas-rl/bin/python
+  editable_install_status: pass
+rust_toolchain:
+  install_method: user_local_rustup
+  cargo_version: "cargo 1.96.0 (30a34c682 2026-05-25)"
+  rustc_version: "rustc 1.96.0 (ac68faa20 2026-05-25)"
+  cargo_path: /data/jinzhihong/.cargo/bin/cargo
+  rustc_path: /data/jinzhihong/.cargo/bin/rustc
+build:
+  status: pass
+  shared_library: /data/jinzhihong/vaevas-evaluator/EVAS/evas/rust_core/target/release/libevas_rust_core.so
+  shared_library_sha256: 976ad75cb45efef9433fb277281e70408de0dbd235b28ce3eba81b47f600ab8d
+smoke_tests:
+  evas_list:
+    status: pass
+  clk_div_evas_rust:
+    status: pass
+    errors: 0
+    warnings: 1
+boundaries:
+  sudo_used: false
+  training_run: false
+  spectre_run: false
+  checkpoints_written: false
+  external_llm_api_called: false
+next_blocker: none
