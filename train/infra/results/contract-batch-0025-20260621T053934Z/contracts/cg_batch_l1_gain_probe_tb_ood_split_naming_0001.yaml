@@ -1,0 +1,175 @@
+id: cg_batch_l1_gain_probe_tb_ood_split_naming_0001
+schema_version: '0.1'
+category: Measurement Instrumentation Flows
+level: L1
+task_form: tb
+base_function: settled_gain_measurement_testbench_ood_split_naming
+domain: voltage
+difficulty: medium
+intent: A voltage-domain testbench stimulates a reference gain block, waits for settling,
+  and reports public input/output amplitude estimates. This variant emphasizes OOD-style
+  naming and split-key diversity.
+ports:
+- name: vin
+  direction: output
+  discipline: electrical
+  role: stimulus_to_reference_dut
+- name: vout
+  direction: input
+  discipline: electrical
+  role: observed_reference_dut_output
+parameters:
+- name: stim_amp
+  unit: V
+  default: 0.04
+  range:
+  - 0.01
+  - 0.15
+- name: stim_freq
+  unit: Hz
+  default: 1000000.0
+  range:
+  - 100000.0
+  - 4000000.0
+- name: settle_time
+  unit: s
+  default: 2.5e-06
+  range:
+  - 7.5e-07
+  - 5.0e-06
+- name: measure_cycles
+  unit: count
+  default: 3
+  range:
+  - 2
+  - 6
+stimulus_space:
+  waveforms:
+  - small_signal_sine
+  - two_amplitude_sine_sweep
+  - settle_then_measure_window
+  - renamed_interface_ood_case
+  sweeps:
+    stim_amp:
+    - 0.02
+    - 0.04
+    - 0.08
+    stim_freq:
+    - 200000.0
+    - 1000000.0
+    - 2500000.0
+    settle_time:
+    - 1.0e-06
+    - 2.5e-06
+    variant_focus_index:
+    - 5
+observables:
+- vin_peak_to_peak
+- vout_peak_to_peak
+- settled_gain_estimate
+- measurement_window_start
+properties:
+- id: stimulus_nonzero
+  type: voltage_bounds
+  description: The generated input stimulus reaches a measurable nonzero amplitude
+    at the DUT input.
+  observables:
+  - vin_peak_to_peak
+  expected:
+    min_peak_to_peak_v: 0.015
+  tolerance_ref: voltage_abs_v
+- id: settled_gain_reported
+  type: gain_estimate
+  description: The gain estimate is reported only after the settle interval and public
+    measurement window.
+  observables:
+  - settled_gain_estimate
+  - measurement_window_start
+  expected:
+    uses_public_input_output_amplitudes: true
+  tolerance_ref: relative_rms
+- id: no_embedded_answer
+  type: state_sequence
+  description: The testbench does not hardcode a reference gain or inspect hidden
+    DUT state.
+  observables:
+  - vin_peak_to_peak
+  - vout_peak_to_peak
+  expected:
+    hidden_state_access: false
+  tolerance_ref: state_sequence_exact
+- id: variant_ood_split_naming
+  type: state_sequence
+  description: Variant-specific coverage for OOD-style naming and split-key diversity
+    remains observable through public signals.
+  observables:
+  - vin_peak_to_peak
+  - vout_peak_to_peak
+  expected:
+    variant_focus: OOD-style naming and split-key diversity
+    public_observables_only: true
+  tolerance_ref: voltage_abs_v
+forbidden_constructs:
+- current_contribution
+- branch_current_dependency
+- idt
+- ddt
+- laplace
+- noise_operators
+- hidden_checker_logic
+- hardcoded_testbench_time
+- task_id_special_case
+tolerances:
+  voltage_abs_v: 0.006
+  relative_rms: 0.06
+  state_sequence_exact: 0.0
+generation_plan:
+  llm_may_propose:
+  - testbench
+  reference_dut_interface:
+    inputs:
+    - vin
+    outputs:
+    - vout
+    discipline: electrical
+  independently_checked:
+  - stimulus_checker
+  - settled_gain_checker
+  - hidden_logic_review
+  notes: Reference DUT internals and expected gain remain outside the generated artifact.
+  variant_focus: OOD-style naming and split-key diversity
+  request_id: seed_manual_l1_gain_measurement_tb_0001.contract_proposal.v05
+split_key: batch/measurement_gain_probe/ood_split_naming
+provenance:
+  source_tier: B_llm_synthetic
+  source_kind: llm_synthetic
+  seed_refs:
+  - seed_manual_l1_gain_measurement_tb_0001
+  generator:
+    model: remote_codex_default
+    prompt_id: seed_manual_l1_gain_measurement_tb_0001.contract_proposal.v05
+    prompt_hash: sha256:2d0739dcfc1ff05ce8f2d9ee3dbe3ccf4ee3c6406b0565732107942972030b38
+    generated_at: '2026-06-21T05:41:40Z'
+  contamination:
+    checked: false
+    release_overlap: null
+    check_run: null
+verifier_evidence:
+  evas:
+    status: not_run
+    commit: null
+    profile: null
+    result_ref: null
+  spectre_shadow:
+    status: pending
+    mode: classic
+    result_ref: null
+admission:
+  status: ready_for_generation
+  blockers:
+  - missing_contamination_check
+  - missing_evas_evidence
+  - missing_spectre_shadow_policy
+  - missing_admission_manifest
+  notes:
+  - Draft contract only; not admitted training data.

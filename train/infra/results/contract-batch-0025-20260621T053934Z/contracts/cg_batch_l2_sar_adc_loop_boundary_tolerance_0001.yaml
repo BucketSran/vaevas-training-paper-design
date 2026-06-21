@@ -1,0 +1,229 @@
+id: cg_batch_l2_sar_adc_loop_boundary_tolerance_0001
+schema_version: '0.1'
+category: Data Converter Models
+level: L2
+task_form: e2e
+base_function: four_bit_sar_conversion_loop_boundary_tolerance
+domain: voltage
+difficulty: hard
+intent: A compact SAR ADC loop coordinates sample capture, bit-trial feedback, decision
+  sequencing, and voltage-domain code outputs to complete a four-bit conversion. This
+  variant emphasizes boundary tolerance stress.
+ports:
+- name: vin
+  direction: input
+  discipline: electrical
+  role: analog_input
+- name: clk
+  direction: input
+  discipline: electrical
+  role: conversion_clock
+- name: start
+  direction: input
+  discipline: electrical
+  role: conversion_start
+- name: done
+  direction: output
+  discipline: electrical
+  role: conversion_done
+- name: bit0
+  direction: output
+  discipline: electrical
+  role: output_code_bit0
+- name: bit1
+  direction: output
+  discipline: electrical
+  role: output_code_bit1
+- name: bit2
+  direction: output
+  discipline: electrical
+  role: output_code_bit2
+- name: bit3
+  direction: output
+  discipline: electrical
+  role: output_code_bit3
+parameters:
+- name: vref
+  unit: V
+  default: 1.0
+  range:
+  - 0.8
+  - 1.2
+- name: nbits
+  unit: count
+  default: 4
+  range:
+  - 4
+  - 4
+- name: clk_period
+  unit: s
+  default: 2.0e-08
+  range:
+  - 1.0e-08
+  - 1.0e-07
+- name: logic_threshold
+  unit: V
+  default: 0.5
+  range:
+  - 0.35
+  - 0.75
+stimulus_space:
+  waveforms:
+  - dc_input_grid_with_start_pulse
+  - slowly_stepped_input_codes
+  - corner_code_transition_cases
+  - near_limit_sweep
+  sweeps:
+    vin_fraction_of_vref:
+    - 0.03
+    - 0.16
+    - 0.28
+    - 0.44
+    - 0.59
+    - 0.73
+    - 0.91
+    start_offset_cycles:
+    - 1
+    - 2
+    clk_period:
+    - 2.0e-08
+    - 5.0e-08
+    variant_focus_index:
+    - 1
+observables:
+- done
+- bit0
+- bit1
+- bit2
+- bit3
+- trial_bit_order
+- conversion_latency_cycles
+- code_error_lsb
+properties:
+- id: voltage_logic_interface
+  type: state_sequence
+  description: Handshake and code outputs are driven as voltage-domain logic signals
+    throughout conversion.
+  observables:
+  - done
+  - bit0
+  - bit1
+  - bit2
+  - bit3
+  expected:
+    logic_output_rails: true
+  tolerance_ref: voltage_abs_v
+- id: ordered_bit_trials
+  type: event_sequence
+  description: The SAR decision sequence visits each bit trial from most significant
+    to least significant exactly once.
+  observables:
+  - trial_bit_order
+  expected:
+    sequence:
+    - 3
+    - 2
+    - 1
+    - 0
+  tolerance_ref: event_sequence_exact
+- id: bounded_conversion_done
+  type: event_count
+  description: Done asserts once after the expected trial sequence and within allowed
+    conversion latency.
+  observables:
+  - done
+  - conversion_latency_cycles
+  expected:
+    done_edges: 1
+    max_cycles: 6
+  tolerance_ref: event_count_exact
+- id: quantized_code_accuracy
+  type: code_mapping
+  description: The final voltage-domain code is within one least-significant bit of
+    the ideal quantized value.
+  observables:
+  - bit0
+  - bit1
+  - bit2
+  - bit3
+  - code_error_lsb
+  expected:
+    max_abs_error_lsb: 1
+  tolerance_ref: code_error_lsb
+- id: variant_boundary_tolerance
+  type: state_sequence
+  description: Variant-specific coverage for boundary tolerance stress remains observable
+    through public signals.
+  observables:
+  - done
+  - bit0
+  expected:
+    variant_focus: boundary tolerance stress
+    public_observables_only: true
+  tolerance_ref: voltage_abs_v
+forbidden_constructs:
+- current_contribution
+- branch_current_dependency
+- idt
+- ddt
+- laplace
+- noise_operators
+- hidden_checker_logic
+- hardcoded_testbench_time
+- task_id_special_case
+tolerances:
+  voltage_abs_v: 0.04000000000000001
+  event_sequence_exact: 0
+  event_count_exact: 0
+  code_error_lsb: 1
+generation_plan:
+  llm_may_propose:
+  - top_level_system
+  - sar_control_behavior
+  independently_checked:
+  - interface_checker
+  - trial_sequence_checker
+  - done_timing_checker
+  - code_mapping_checker
+  decomposed_reward_subclaims:
+  - voltage_logic_interface
+  - ordered_bit_trials
+  - bounded_conversion_done
+  - quantized_code_accuracy
+  notes: Manual review must confirm module decomposition before any artifact generation.
+  variant_focus: boundary tolerance stress
+  request_id: seed_manual_l2_sar_adc_e2e_0001.contract_proposal.v01
+split_key: batch/data_converter_sar_loop/boundary_tolerance
+provenance:
+  source_tier: B_llm_synthetic
+  source_kind: llm_synthetic
+  seed_refs:
+  - seed_manual_l2_sar_adc_e2e_0001
+  generator:
+    model: remote_codex_default
+    prompt_id: seed_manual_l2_sar_adc_e2e_0001.contract_proposal.v01
+    prompt_hash: sha256:2ba88b943e12b3b3dbfa52dfd3d1c3d22dad2141087609aa18a6fe8fbf9084ed
+    generated_at: '2026-06-21T05:41:40Z'
+  contamination:
+    checked: false
+    release_overlap: null
+    check_run: null
+verifier_evidence:
+  evas:
+    status: not_run
+    commit: null
+    profile: null
+    result_ref: null
+  spectre_shadow:
+    status: pending
+    mode: classic
+    result_ref: null
+admission:
+  status: ready_for_generation
+  blockers:
+  - missing_contamination_check
+  - missing_evas_evidence
+  - missing_spectre_shadow_policy
+  - missing_admission_manifest
+  notes:
+  - Draft contract only; not admitted training data.

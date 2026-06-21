@@ -1,0 +1,74 @@
+RUN_ID=contract-batch-0025-20260621T053934Z
+REQUEST_DIR=/tmp/vaevas_contract-batch-0025-20260621T053934Z_requests
+RESULT_DIR=train/infra/results/contract-batch-0025-20260621T053934Z
+RUN_PLAN=train/data/manifests/synthesis/synthesis_run.contract-batch-0025.yaml
+PASS validate_synthesis_run run_id=contract-batch-0025-0001 hash=sha256:565ab47a9d4ad8ff7d6ca2bd6cdc401fea09787c1188564068076d451e5dd1ca
+PASS prepare_contract_synthesis_requests request_count=25 request_jsonl=/tmp/vaevas_contract-batch-0025-20260621T053934Z_requests/contract_synthesis_requests.jsonl summary=/tmp/vaevas_contract-batch-0025-20260621T053934Z_requests/contract_synthesis_request_summary.json
+{
+  "contracts_generated": false,
+  "llm_api_called": false,
+  "prompt_kinds": [
+    "contract_proposal"
+  ],
+  "request_count": 25,
+  "request_jsonl_hash": "sha256:b918b26eeb5e9374f70b3578a31bd32e2f609105fa783221c68b5b4b44774728",
+  "run_id": "contract-batch-0025-0001",
+  "seed_count": 5,
+  "status": "PASS",
+  "synthesis_run_hash": "sha256:565ab47a9d4ad8ff7d6ca2bd6cdc401fea09787c1188564068076d451e5dd1ca",
+  "training_data_generated": false,
+  "variant_count": 5
+}
+PASS write_generated_contract_index contracts=25 out=train/infra/results/contract-batch-0025-20260621T053934Z/generated_contract_index.yaml
+PASS validate_generated_contracts index=train/infra/results/contract-batch-0025-20260621T053934Z/generated_contract_index.yaml contracts=25
+PASS write_contract_review_manifest items=25 accepted=25 needs_revision=0
+PASS validate_contract_review_manifest items=25 accepted=25 needs_revision=0
+PASS prepare_artifact_synthesis_requests request_count=25 request_jsonl=train/infra/results/contract-batch-0025-20260621T053934Z/artifact_requests/artifact_synthesis_requests.jsonl summary=train/infra/results/contract-batch-0025-20260621T053934Z/artifact_requests/artifact_synthesis_request_summary.json
+{
+  "accepted_contract_count": 25,
+  "artifact_generated": false,
+  "contract_review_manifest_hash": "sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c",
+  "evas_run": false,
+  "generated_contract_index_hash": "sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f",
+  "request_count": 25,
+  "request_jsonl_hash": "sha256:94534c0055991400fc53e1362e33800c0f8e8cef935bb7c74eba31771cb5c7b6",
+  "run_id": "contract-batch-0025-0001",
+  "spectre_run": false,
+  "status": "PASS",
+  "training_data_generated": false
+}
+PASS write_artifact_candidate_index candidates=25 rejected=0 candidate_index_hash=sha256:8ab7801cc796f3535f5bed575c8a7344852529be7b3f67d2e72b2528904b0594
+PASS validate_artifact_candidate_index candidates=25 candidate_index_hash=sha256:8ab7801cc796f3535f5bed575c8a7344852529be7b3f67d2e72b2528904b0594
+PASS pack_draft_training sft_train=20 sft_val=5 grpo_prompts=25 draft_training_pack_hash=sha256:e4b250c7365db2a5b518060b85596a8f93840a2484839b38d46a6981fe376a61
+sft_train_hash=sha256:2bfcbc317eede6d97db1b307061d43a337efbcec3b8ead30c2a70965fac72a6f
+sft_val_hash=sha256:28dd81d80a690b5570ff35b4af299afd5d77cfec9eb458195bd83bfd628451c2
+grpo_prompt_hash=sha256:44139ddb61fe4ab69a948281b4f78a3e7a9c6c23aa17cfa6e58f57592546fcb2
+{
+  "accepted_for_generation": 25,
+  "admitted_training_data_generated": false,
+  "artifact_candidate_count": 25,
+  "artifact_candidate_index_hash": "sha256:8ab7801cc796f3535f5bed575c8a7344852529be7b3f67d2e72b2528904b0594",
+  "artifact_request_count": 25,
+  "artifact_request_jsonl_hash": "sha256:94534c0055991400fc53e1362e33800c0f8e8cef935bb7c74eba31771cb5c7b6",
+  "checkpoint_written": false,
+  "contract_count": 25,
+  "contract_review_manifest_hash": "sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c",
+  "draft_grpo_prompt_count": 25,
+  "draft_sft_train_count": 20,
+  "draft_sft_val_count": 5,
+  "draft_training_data_generated": true,
+  "draft_training_pack_hash": "sha256:e4b250c7365db2a5b518060b85596a8f93840a2484839b38d46a6981fe376a61",
+  "evas_run": false,
+  "generated_contract_index_hash": "sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f",
+  "grpo_run": false,
+  "llm_api_called": false,
+  "needs_revision": 0,
+  "review_decisions": {
+    "accept_for_generation": 25
+  },
+  "run_id": "contract-batch-0025-20260621T053934Z",
+  "sft_run": false,
+  "spectre_run": false,
+  "status": "PASS",
+  "verilog_a_generated": true
+}

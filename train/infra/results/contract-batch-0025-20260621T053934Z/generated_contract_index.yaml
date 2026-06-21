@@ -1,0 +1,739 @@
+schema_version: phase1.v0.1
+run_id: contract-batch-0025-0001
+synthesis_run_hash: sha256:565ab47a9d4ad8ff7d6ca2bd6cdc401fea09787c1188564068076d451e5dd1ca
+producer:
+  name: write_generated_contract_index
+  version: phase1.v0.1
+  git_commit: null
+source_refs:
+  synthesis_run: data/manifests/synthesis/synthesis_run.contract-batch-0025.yaml
+  request_jsonl: /tmp/vaevas_contract-batch-0025-20260621T053934Z_requests/contract_synthesis_requests.jsonl
+  contracts_dir: train/infra/results/contract-batch-0025-20260621T053934Z/contracts
+summary:
+  contract_count: 25
+  review_decisions:
+    needs_manual_review: 25
+  levels:
+    L0: 5
+    L1: 15
+    L2: 5
+  task_forms:
+    bugfix: 5
+    conformance: 5
+    dut: 5
+    e2e: 5
+    tb: 5
+  categories:
+    Comparator and Decision Circuits: 10
+    Data Converter Models: 5
+    Measurement Instrumentation Flows: 5
+    Sampling and Analog Memory: 5
+  training_data_admitted: false
+  verilog_a_generated: false
+  evas_run: false
+  spectre_run: false
+items:
+- generated_contract_id: cg_batch_l0_cross_event_latch_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_boundary_tolerance_0001.yaml
+  contract_sha256: sha256:95649cb1d38ec72461955f7acdf1923d1ed5e236169f7ab4df2e8b611b0fc29a
+  source_prompt_id: seed_manual_l0_cross_event_0001.contract_proposal.v01
+  prompt_sha256: sha256:704625212a7805b393295456c5d1b95b3b6a7c7e1a15f4034e439dfffa4c640f
+  seed_ids:
+  - seed_manual_l0_cross_event_0001
+  category: Comparator and Decision Circuits
+  level: L0
+  task_form: conformance
+  split_key: batch/comparator_cross_event/boundary_tolerance
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l0_cross_event_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l0_cross_event_latch_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_observable_clarity_0001.yaml
+  contract_sha256: sha256:cc58dc2930e4b4eb57443bb58a94bc8a95e89fb3bec55842fe3a60ef4c41c8fa
+  source_prompt_id: seed_manual_l0_cross_event_0001.contract_proposal.v04
+  prompt_sha256: sha256:8c0e71c50b9571b280e8e9ec5806eccf2f9c816bfbd0ad1944af826194bedbe2
+  seed_ids:
+  - seed_manual_l0_cross_event_0001
+  category: Comparator and Decision Circuits
+  level: L0
+  task_form: conformance
+  split_key: batch/comparator_cross_event/observable_clarity
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l0_cross_event_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l0_cross_event_latch_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_ood_split_naming_0001.yaml
+  contract_sha256: sha256:822dafe8964932bc7f09ab76eed7f2b98b16f6c9bab9ba33b69305f743745881
+  source_prompt_id: seed_manual_l0_cross_event_0001.contract_proposal.v05
+  prompt_sha256: sha256:593a041c8e48066efd7743cce3b5e6fdf4a166a9678fd384b691188cfaf1132b
+  seed_ids:
+  - seed_manual_l0_cross_event_0001
+  category: Comparator and Decision Circuits
+  level: L0
+  task_form: conformance
+  split_key: batch/comparator_cross_event/ood_split_naming
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l0_cross_event_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l0_cross_event_latch_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_parameter_diversity_0001.yaml
+  contract_sha256: sha256:9bd35f16ce567b31a427164d1dfa710539431cd2ad9efa5965af041cf972cf24
+  source_prompt_id: seed_manual_l0_cross_event_0001.contract_proposal.v03
+  prompt_sha256: sha256:9df54d69f21d5d80bbb370505f9ea9776942e1026ac5d1f7402771e1c52da0ca
+  seed_ids:
+  - seed_manual_l0_cross_event_0001
+  category: Comparator and Decision Circuits
+  level: L0
+  task_form: conformance
+  split_key: batch/comparator_cross_event/parameter_diversity
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l0_cross_event_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l0_cross_event_latch_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_waveform_coverage_0001.yaml
+  contract_sha256: sha256:001cafa87e0eba51e35aaf8a3ee632dbb9d3b98536967b10ce2e0091fd21794c
+  source_prompt_id: seed_manual_l0_cross_event_0001.contract_proposal.v02
+  prompt_sha256: sha256:2f7240a27457d9260ba30851ee516d85c3093e93d03073830093e3d5b73d7ab5
+  seed_ids:
+  - seed_manual_l0_cross_event_0001
+  category: Comparator and Decision Circuits
+  level: L0
+  task_form: conformance
+  split_key: batch/comparator_cross_event/waveform_coverage
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l0_cross_event_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_gain_probe_tb_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_boundary_tolerance_0001.yaml
+  contract_sha256: sha256:49cd451f90db1c038dacfd3a734885cc8b46c739ace871e769109993f4f0d699
+  source_prompt_id: seed_manual_l1_gain_measurement_tb_0001.contract_proposal.v01
+  prompt_sha256: sha256:1ba6d2ae3d9831405add019d97820d24f16b1c8b7bff7fe161294a1ee4e1d4b4
+  seed_ids:
+  - seed_manual_l1_gain_measurement_tb_0001
+  category: Measurement Instrumentation Flows
+  level: L1
+  task_form: tb
+  split_key: batch/measurement_gain_probe/boundary_tolerance
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_gain_measurement_tb_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_gain_probe_tb_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_observable_clarity_0001.yaml
+  contract_sha256: sha256:c8e3d0cc81b93110b1db19a405687e0655fbc9ee6e23db23ca7efa9f32f5bb8a
+  source_prompt_id: seed_manual_l1_gain_measurement_tb_0001.contract_proposal.v04
+  prompt_sha256: sha256:03151eb2fe3fa7f26ebc07ed0ec41a89770c1168b74e6b432c6e0403adb1ad77
+  seed_ids:
+  - seed_manual_l1_gain_measurement_tb_0001
+  category: Measurement Instrumentation Flows
+  level: L1
+  task_form: tb
+  split_key: batch/measurement_gain_probe/observable_clarity
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_gain_measurement_tb_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_gain_probe_tb_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_ood_split_naming_0001.yaml
+  contract_sha256: sha256:1b173c173f88950e146462b0b0a47705b20aaf58858ef558621a3aee9cbc448f
+  source_prompt_id: seed_manual_l1_gain_measurement_tb_0001.contract_proposal.v05
+  prompt_sha256: sha256:2d0739dcfc1ff05ce8f2d9ee3dbe3ccf4ee3c6406b0565732107942972030b38
+  seed_ids:
+  - seed_manual_l1_gain_measurement_tb_0001
+  category: Measurement Instrumentation Flows
+  level: L1
+  task_form: tb
+  split_key: batch/measurement_gain_probe/ood_split_naming
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_gain_measurement_tb_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_gain_probe_tb_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_parameter_diversity_0001.yaml
+  contract_sha256: sha256:ac395e8c609807df754a7be734c726be3a0aa50a11f455b29cd71cf205949c1e
+  source_prompt_id: seed_manual_l1_gain_measurement_tb_0001.contract_proposal.v03
+  prompt_sha256: sha256:e23e1936986f40f5f5af9681d1e5a0674ebfe1f0c999e67f5c64d0e863073bbe
+  seed_ids:
+  - seed_manual_l1_gain_measurement_tb_0001
+  category: Measurement Instrumentation Flows
+  level: L1
+  task_form: tb
+  split_key: batch/measurement_gain_probe/parameter_diversity
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_gain_measurement_tb_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_gain_probe_tb_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_waveform_coverage_0001.yaml
+  contract_sha256: sha256:f4f21b4f696fc307a153ef0498ec1d38fd7e2940bff25882e52afea550bbed31
+  source_prompt_id: seed_manual_l1_gain_measurement_tb_0001.contract_proposal.v02
+  prompt_sha256: sha256:f0a43a39d4ab5dc7869487c2f334287ad0fb77ad1d5972978ac9fdeb177a5f86
+  seed_ids:
+  - seed_manual_l1_gain_measurement_tb_0001
+  category: Measurement Instrumentation Flows
+  level: L1
+  task_form: tb
+  split_key: batch/measurement_gain_probe/waveform_coverage
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_gain_measurement_tb_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001.yaml
+  contract_sha256: sha256:a5503e7959fddd46c83da7c04c46f4552c9d2caebb16d5f13e4c7f181b91c699
+  source_prompt_id: seed_manual_l1_hysteresis_comparator_0001.contract_proposal.v01
+  prompt_sha256: sha256:ddcb8f9600d4cc4bc9f316aafeba6e540216d1b64f298cfd7a29a814bd7ab7e5
+  seed_ids:
+  - seed_manual_l1_hysteresis_comparator_0001
+  category: Comparator and Decision Circuits
+  level: L1
+  task_form: dut
+  split_key: batch/comparator_hysteresis/boundary_tolerance
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_hysteresis_comparator_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_hysteresis_comparator_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_observable_clarity_0001.yaml
+  contract_sha256: sha256:c1c6b513bb6ab35a922463ed5e8d8e6749dfa371eb1805a5c89a8a9d76b5aa46
+  source_prompt_id: seed_manual_l1_hysteresis_comparator_0001.contract_proposal.v04
+  prompt_sha256: sha256:1d2d7ed80c968afbac6ba2d9a44fd5b62ec85432993a3d06109110ab9cdd8d82
+  seed_ids:
+  - seed_manual_l1_hysteresis_comparator_0001
+  category: Comparator and Decision Circuits
+  level: L1
+  task_form: dut
+  split_key: batch/comparator_hysteresis/observable_clarity
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_hysteresis_comparator_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_hysteresis_comparator_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_ood_split_naming_0001.yaml
+  contract_sha256: sha256:8efe9515db721e59cb119dac4712368b007c38ccd1d5ea2f2ace8f4582960886
+  source_prompt_id: seed_manual_l1_hysteresis_comparator_0001.contract_proposal.v05
+  prompt_sha256: sha256:b687f66d207e16fdda660404aebc2341fd778afc3e3d3e704431be9bdb261f19
+  seed_ids:
+  - seed_manual_l1_hysteresis_comparator_0001
+  category: Comparator and Decision Circuits
+  level: L1
+  task_form: dut
+  split_key: batch/comparator_hysteresis/ood_split_naming
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_hysteresis_comparator_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_hysteresis_comparator_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_parameter_diversity_0001.yaml
+  contract_sha256: sha256:4b3dbdf24f1cef55569de15e8f107dc322d2092c5a09864df07be30ace7639d5
+  source_prompt_id: seed_manual_l1_hysteresis_comparator_0001.contract_proposal.v03
+  prompt_sha256: sha256:9ab2af570b25cd20bd4676bd2d7de0ff3be005bfe69704b2cb6c950f66cd06c3
+  seed_ids:
+  - seed_manual_l1_hysteresis_comparator_0001
+  category: Comparator and Decision Circuits
+  level: L1
+  task_form: dut
+  split_key: batch/comparator_hysteresis/parameter_diversity
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_hysteresis_comparator_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_hysteresis_comparator_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_waveform_coverage_0001.yaml
+  contract_sha256: sha256:f34f1f3fe3bac0037d00de5de9ae073d1f7e563dc917001613be7f0543ab474d
+  source_prompt_id: seed_manual_l1_hysteresis_comparator_0001.contract_proposal.v02
+  prompt_sha256: sha256:64b97df48f863e2209397dbc03e9d2761fbc81196e38c2cabfada127134eeac1
+  seed_ids:
+  - seed_manual_l1_hysteresis_comparator_0001
+  category: Comparator and Decision Circuits
+  level: L1
+  task_form: dut
+  split_key: batch/comparator_hysteresis/waveform_coverage
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_hysteresis_comparator_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_track_hold_repair_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_boundary_tolerance_0001.yaml
+  contract_sha256: sha256:1ba7b298537c0c508839f276067cae660116456aaa24c76afe446c4e9057d698
+  source_prompt_id: seed_manual_l1_track_hold_bugfix_0001.contract_proposal.v01
+  prompt_sha256: sha256:83f2d54384bb493800ac4738b399a5195ea60378269f236e05d610e71b9e857d
+  seed_ids:
+  - seed_manual_l1_track_hold_bugfix_0001
+  category: Sampling and Analog Memory
+  level: L1
+  task_form: bugfix
+  split_key: batch/sampling_track_hold_repair/boundary_tolerance
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_track_hold_bugfix_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_track_hold_repair_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_observable_clarity_0001.yaml
+  contract_sha256: sha256:51a4ef1edad4f3a743058a369d45567bef8d6abfece8bce7df19b7fd1dc9115f
+  source_prompt_id: seed_manual_l1_track_hold_bugfix_0001.contract_proposal.v04
+  prompt_sha256: sha256:d3ecb99c7dca83fbe77f7f2c01d3ebd7957afa76785382aff2c7aebc93a72fd8
+  seed_ids:
+  - seed_manual_l1_track_hold_bugfix_0001
+  category: Sampling and Analog Memory
+  level: L1
+  task_form: bugfix
+  split_key: batch/sampling_track_hold_repair/observable_clarity
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_track_hold_bugfix_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_track_hold_repair_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_ood_split_naming_0001.yaml
+  contract_sha256: sha256:2ce6566bcfdb0bae2e944c0db7c284e4952223f156a569f9605ad0196cd25b61
+  source_prompt_id: seed_manual_l1_track_hold_bugfix_0001.contract_proposal.v05
+  prompt_sha256: sha256:be452a589cd6c76b2c9fb223829151a6cd21a450be5875fb598e5452b927a9ae
+  seed_ids:
+  - seed_manual_l1_track_hold_bugfix_0001
+  category: Sampling and Analog Memory
+  level: L1
+  task_form: bugfix
+  split_key: batch/sampling_track_hold_repair/ood_split_naming
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_track_hold_bugfix_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_track_hold_repair_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_parameter_diversity_0001.yaml
+  contract_sha256: sha256:28b4d06b642af6958c60b592a89533ffd476b65346e5b8a0666048f6c602b4a9
+  source_prompt_id: seed_manual_l1_track_hold_bugfix_0001.contract_proposal.v03
+  prompt_sha256: sha256:6cb87d87b11dbeca93c920923669f476fbf6d09294814b4ca778e267f0264371
+  seed_ids:
+  - seed_manual_l1_track_hold_bugfix_0001
+  category: Sampling and Analog Memory
+  level: L1
+  task_form: bugfix
+  split_key: batch/sampling_track_hold_repair/parameter_diversity
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_track_hold_bugfix_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l1_track_hold_repair_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_waveform_coverage_0001.yaml
+  contract_sha256: sha256:60e6e5793743ce6b140a11a6998845c15feb8f675a93839285135e69911b80e9
+  source_prompt_id: seed_manual_l1_track_hold_bugfix_0001.contract_proposal.v02
+  prompt_sha256: sha256:c27177f5783c6d987d8880c7e701c3e4e034d0ed2ddc5cfe4940059037be82db
+  seed_ids:
+  - seed_manual_l1_track_hold_bugfix_0001
+  category: Sampling and Analog Memory
+  level: L1
+  task_form: bugfix
+  split_key: batch/sampling_track_hold_repair/waveform_coverage
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l1_track_hold_bugfix_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l2_sar_adc_loop_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_boundary_tolerance_0001.yaml
+  contract_sha256: sha256:5c985d9fc1fb20f1f93e56d6b50bc201a9be03157d344cde8f76d0423e5a573f
+  source_prompt_id: seed_manual_l2_sar_adc_e2e_0001.contract_proposal.v01
+  prompt_sha256: sha256:2ba88b943e12b3b3dbfa52dfd3d1c3d22dad2141087609aa18a6fe8fbf9084ed
+  seed_ids:
+  - seed_manual_l2_sar_adc_e2e_0001
+  category: Data Converter Models
+  level: L2
+  task_form: e2e
+  split_key: batch/data_converter_sar_loop/boundary_tolerance
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l2_sar_adc_e2e_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l2_sar_adc_loop_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_observable_clarity_0001.yaml
+  contract_sha256: sha256:dddc7770e0dc9f1d5e2df948d6a58b5f0e0478b8dcc20581121a0445a6ab3444
+  source_prompt_id: seed_manual_l2_sar_adc_e2e_0001.contract_proposal.v04
+  prompt_sha256: sha256:f1105a09b10a36ec0f9b2dfdac6e3cc8353e8353174a0b078a54e4e6f1896c71
+  seed_ids:
+  - seed_manual_l2_sar_adc_e2e_0001
+  category: Data Converter Models
+  level: L2
+  task_form: e2e
+  split_key: batch/data_converter_sar_loop/observable_clarity
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l2_sar_adc_e2e_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l2_sar_adc_loop_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_ood_split_naming_0001.yaml
+  contract_sha256: sha256:33f8caf60c195ad7d18f4b4914f13cf77664edf425bab790199513ecac0982ef
+  source_prompt_id: seed_manual_l2_sar_adc_e2e_0001.contract_proposal.v05
+  prompt_sha256: sha256:bb085fc55d8180ee8f841ec89fed2fe851405c52f0d1a2e32938ecd5ebbcf44b
+  seed_ids:
+  - seed_manual_l2_sar_adc_e2e_0001
+  category: Data Converter Models
+  level: L2
+  task_form: e2e
+  split_key: batch/data_converter_sar_loop/ood_split_naming
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l2_sar_adc_e2e_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l2_sar_adc_loop_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_parameter_diversity_0001.yaml
+  contract_sha256: sha256:b56fb774bad032289b8113a31ea54e922e04c35b1226c83f0fd1f38a796317bc
+  source_prompt_id: seed_manual_l2_sar_adc_e2e_0001.contract_proposal.v03
+  prompt_sha256: sha256:111b27c63c2a4dcf1ed563c22a5b8292b713a34736df3b0696a4a3503ade93e5
+  seed_ids:
+  - seed_manual_l2_sar_adc_e2e_0001
+  category: Data Converter Models
+  level: L2
+  task_form: e2e
+  split_key: batch/data_converter_sar_loop/parameter_diversity
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l2_sar_adc_e2e_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+- generated_contract_id: cg_batch_l2_sar_adc_loop_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_waveform_coverage_0001.yaml
+  contract_sha256: sha256:893497411fd4c73fc22909fc914f25711ad4804ef10e4f80a9f05a8e8da85273
+  source_prompt_id: seed_manual_l2_sar_adc_e2e_0001.contract_proposal.v02
+  prompt_sha256: sha256:80e5cbe0799c10a754c56261dc166443d04346b376dc6ebf32d1f4d21de1f8da
+  seed_ids:
+  - seed_manual_l2_sar_adc_e2e_0001
+  category: Data Converter Models
+  level: L2
+  task_form: e2e
+  split_key: batch/data_converter_sar_loop/waveform_coverage
+  model_ref: remote_codex_default
+  generation_kind: contract_proposal
+  mechanical_review:
+    decision: needs_manual_review
+    blocking_findings: []
+    warnings: []
+    seed_ids:
+    - seed_manual_l2_sar_adc_e2e_0001
+    checks:
+      blocking_count: 0
+      warning_count: 0
+      manual_review_required: true
+      not_admitted_training_data: true
+  intended_next_stage: manual_contract_review
+  notes:
+  - Generated draft contract only.
+  - Not admitted for SFT/GRPO/eval.
+fixture_notes:
+- Generated contract index records draft contracts only.
+- Manual review and contamination checks are still required before artifact generation.
+generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f

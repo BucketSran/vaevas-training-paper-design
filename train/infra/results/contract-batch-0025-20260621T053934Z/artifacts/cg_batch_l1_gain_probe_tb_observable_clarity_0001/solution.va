@@ -1,0 +1,31 @@
+`include "constants.vams"
+`include "disciplines.vams"
+
+module cg_batch_l1_gain_probe_tb_observable_clarity_0001(vin, vout);
+  output vin;
+  input vout;
+  electrical vin, vout;
+  parameter real stim_amp = 0.04;
+  parameter real stim_freq = 1000000.0;
+  parameter real settle_time = 2.5e-06;
+  parameter real measure_cycles = 3;
+  real t_start;
+  real input_peak;
+  real output_peak;
+  real gain_estimate;
+
+  analog begin
+    @(initial_step) begin
+      t_start = settle_time;
+      input_peak = 0.0;
+      output_peak = 0.0;
+      gain_estimate = 0.0;
+    end
+    V(vin) <+ stim_amp * sin(2.0 * `M_PI * stim_freq * $abstime);
+    if ($abstime > t_start) begin
+      input_peak = max(input_peak, abs(V(vin)));
+      output_peak = max(output_peak, abs(V(vout)));
+      if (input_peak > 1.0e-9) gain_estimate = output_peak / input_peak;
+    end
+  end
+endmodule

@@ -1,0 +1,13 @@
+{
+  "accepted_contract_count": 25,
+  "artifact_generated": false,
+  "contract_review_manifest_hash": "sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c",
+  "evas_run": false,
+  "generated_contract_index_hash": "sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f",
+  "request_count": 25,
+  "request_jsonl_hash": "sha256:94534c0055991400fc53e1362e33800c0f8e8cef935bb7c74eba31771cb5c7b6",
+  "run_id": "contract-batch-0025-0001",
+  "spectre_run": false,
+  "status": "PASS",
+  "training_data_generated": false
+}

@@ -1,0 +1,227 @@
+schema_version: phase1.v0.1
+run_id: contract-batch-0025-0001
+generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+producer:
+  name: train.pipelines.write_contract_review_manifest
+  version: phase1.v0.1
+  git_commit: null
+review_policy:
+  reviewer: remote_codex_structured_review
+  default_pass_decision: accept_for_generation
+  manual_review_required_before_artifact_generation: true
+  not_admitted_training_data: true
+summary:
+  total: 25
+  by_decision:
+    accept_for_generation: 25
+  by_allowed_next_stage:
+    artifact_generation: 25
+  accepted_for_generation: 25
+  needs_revision: 0
+  quarantined: 0
+  rejected: 0
+items:
+- generated_contract_id: cg_batch_l0_cross_event_latch_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_boundary_tolerance_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l0_cross_event_latch_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_observable_clarity_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l0_cross_event_latch_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_ood_split_naming_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l0_cross_event_latch_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_parameter_diversity_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l0_cross_event_latch_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_waveform_coverage_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_gain_probe_tb_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_boundary_tolerance_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_gain_probe_tb_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_observable_clarity_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_gain_probe_tb_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_ood_split_naming_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_gain_probe_tb_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_parameter_diversity_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_gain_probe_tb_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_waveform_coverage_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_hysteresis_comparator_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_observable_clarity_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_hysteresis_comparator_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_ood_split_naming_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_hysteresis_comparator_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_parameter_diversity_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_hysteresis_comparator_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_waveform_coverage_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_track_hold_repair_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_boundary_tolerance_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_track_hold_repair_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_observable_clarity_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_track_hold_repair_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_ood_split_naming_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_track_hold_repair_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_parameter_diversity_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l1_track_hold_repair_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_waveform_coverage_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l2_sar_adc_loop_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_boundary_tolerance_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l2_sar_adc_loop_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_observable_clarity_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l2_sar_adc_loop_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_ood_split_naming_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l2_sar_adc_loop_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_parameter_diversity_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+- generated_contract_id: cg_batch_l2_sar_adc_loop_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_waveform_coverage_0001.yaml
+  decision: accept_for_generation
+  reviewer: remote_codex_structured_review
+  blocking_findings: []
+  required_edits: []
+  allowed_next_stage: artifact_generation
+  rationale: Mechanical checks passed and reviewer approved artifact generation.
+fixture_notes:
+- Contract review manifest is a review gate only.
+- No contract is admitted as SFT/GRPO/eval data by this manifest.
+contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c

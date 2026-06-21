@@ -1,0 +1,190 @@
+id: cg_batch_l1_hysteresis_comparator_waveform_coverage_0001
+schema_version: '0.1'
+category: Comparator and Decision Circuits
+level: L1
+task_form: dut
+base_function: differential_hysteresis_comparator_waveform_coverage
+domain: voltage
+difficulty: medium
+intent: A differential comparator drives rail-like output decisions with separated
+  rising and falling thresholds so small input reversals do not chatter. This variant
+  emphasizes alternative waveform coverage.
+ports:
+- name: vip
+  direction: input
+  discipline: electrical
+  role: positive_input
+- name: vim
+  direction: input
+  discipline: electrical
+  role: negative_input
+- name: vout
+  direction: output
+  discipline: electrical
+  role: decision_output
+parameters:
+- name: voh
+  unit: V
+  default: 1.2
+  range:
+  - 0.9
+  - 1.6
+- name: vol
+  unit: V
+  default: 0.0
+  range:
+  - 0.0
+  - 0.1
+- name: vtrip
+  unit: V
+  default: 0.0
+  range:
+  - -0.03
+  - 0.03
+- name: vhyst
+  unit: V
+  default: 0.03
+  range:
+  - 0.01
+  - 0.08
+- name: td
+  unit: s
+  default: 2.0e-10
+  range:
+  - 0.0
+  - 2.0e-09
+stimulus_space:
+  waveforms:
+  - slow_differential_triangle
+  - small_signal_chatter_band
+  - large_step_overdrive
+  - piecewise_waveform_family
+  sweeps:
+    vhyst:
+    - 0.015
+    - 0.03
+    - 0.06
+    common_mode_v:
+    - 0.35
+    - 0.6
+    - 0.85
+    input_slope_v_per_s:
+    - 1000000.0
+    - 10000000.0
+    variant_focus_index:
+    - 2
+observables:
+- vip_minus_vim
+- vout
+- rising_transition_time
+- falling_transition_time
+- transition_count
+properties:
+- id: rail_limits
+  type: voltage_bounds
+  description: The output stays near declared rails after each stable decision.
+  observables:
+  - vout
+  expected:
+    low_v: 0.0
+    high_v: 1.2
+  tolerance_ref: voltage_abs_v
+- id: upper_trip_threshold
+  type: threshold_crossing
+  description: The output rises only after the differential input exceeds the upper
+    hysteresis threshold.
+  observables:
+  - vip_minus_vim
+  - rising_transition_time
+  expected:
+    threshold_expression: vtrip + vhyst/2
+  tolerance_ref: timing_abs_s
+- id: lower_trip_threshold
+  type: threshold_crossing
+  description: The output falls only after the differential input drops below the
+    lower hysteresis threshold.
+  observables:
+  - vip_minus_vim
+  - falling_transition_time
+  expected:
+    threshold_expression: vtrip - vhyst/2
+  tolerance_ref: timing_abs_s
+- id: chatter_suppression
+  type: event_count
+  description: Input movement inside the hysteresis window does not create extra output
+    transitions.
+  observables:
+  - vout
+  - transition_count
+  expected:
+    max_extra_transitions: 0
+  tolerance_ref: event_count_exact
+- id: variant_waveform_coverage
+  type: event_count
+  description: Variant-specific coverage for alternative waveform coverage remains
+    observable through public signals.
+  observables:
+  - vip_minus_vim
+  - vout
+  expected:
+    variant_focus: alternative waveform coverage
+    public_observables_only: true
+  tolerance_ref: voltage_abs_v
+forbidden_constructs:
+- current_contribution
+- branch_current_dependency
+- idt
+- ddt
+- laplace
+- noise_operators
+- hidden_checker_logic
+- hardcoded_testbench_time
+- task_id_special_case
+tolerances:
+  voltage_abs_v: 0.04
+  timing_abs_s: 7.5e-10
+  event_count_exact: 0
+generation_plan:
+  llm_may_propose:
+  - dut
+  independently_checked:
+  - threshold_checker
+  - rail_bounds_checker
+  - transition_counter
+  notes: DUT and checker must be reviewed independently.
+  variant_focus: alternative waveform coverage
+  request_id: seed_manual_l1_hysteresis_comparator_0001.contract_proposal.v02
+split_key: batch/comparator_hysteresis/waveform_coverage
+provenance:
+  source_tier: B_llm_synthetic
+  source_kind: llm_synthetic
+  seed_refs:
+  - seed_manual_l1_hysteresis_comparator_0001
+  generator:
+    model: remote_codex_default
+    prompt_id: seed_manual_l1_hysteresis_comparator_0001.contract_proposal.v02
+    prompt_hash: sha256:64b97df48f863e2209397dbc03e9d2761fbc81196e38c2cabfada127134eeac1
+    generated_at: '2026-06-21T05:41:40Z'
+  contamination:
+    checked: false
+    release_overlap: null
+    check_run: null
+verifier_evidence:
+  evas:
+    status: not_run
+    commit: null
+    profile: null
+    result_ref: null
+  spectre_shadow:
+    status: pending
+    mode: classic
+    result_ref: null
+admission:
+  status: ready_for_generation
+  blockers:
+  - missing_contamination_check
+  - missing_evas_evidence
+  - missing_spectre_shadow_policy
+  - missing_admission_manifest
+  notes:
+  - Draft contract only; not admitted training data.

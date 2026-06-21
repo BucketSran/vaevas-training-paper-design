@@ -1,0 +1,29 @@
+{
+  "accepted_for_generation": 25,
+  "admitted_training_data_generated": false,
+  "artifact_candidate_count": 25,
+  "artifact_candidate_index_hash": "sha256:8ab7801cc796f3535f5bed575c8a7344852529be7b3f67d2e72b2528904b0594",
+  "artifact_request_count": 25,
+  "artifact_request_jsonl_hash": "sha256:94534c0055991400fc53e1362e33800c0f8e8cef935bb7c74eba31771cb5c7b6",
+  "checkpoint_written": false,
+  "contract_count": 25,
+  "contract_review_manifest_hash": "sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c",
+  "draft_grpo_prompt_count": 25,
+  "draft_sft_train_count": 20,
+  "draft_sft_val_count": 5,
+  "draft_training_data_generated": true,
+  "draft_training_pack_hash": "sha256:e4b250c7365db2a5b518060b85596a8f93840a2484839b38d46a6981fe376a61",
+  "evas_run": false,
+  "generated_contract_index_hash": "sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f",
+  "grpo_run": false,
+  "llm_api_called": false,
+  "needs_revision": 0,
+  "review_decisions": {
+    "accept_for_generation": 25
+  },
+  "run_id": "contract-batch-0025-20260621T053934Z",
+  "sft_run": false,
+  "spectre_run": false,
+  "status": "PASS",
+  "verilog_a_generated": true
+}
