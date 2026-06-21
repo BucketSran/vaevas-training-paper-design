@@ -1,0 +1,40 @@
+job_id: phase1_evas_failure_repair_contract_batch_0025
+purpose: >
+  Repair the 10 EVAS Rust smoke failures from contract-batch-0025, rerun the
+  pinned EVAS Rust smoke, and only rebuild draft training packs if all 25
+  candidate artifacts pass the smoke gate.
+execution:
+  mode: github_mediated_remote_codex_queue
+  command: follow train/infra/queue/pending/20260621-repair-evas-failures-10.md
+  gpu_required: false
+  writes_checkpoints: false
+  writes_training_data: true
+  runs_evas: true
+  runs_spectre: false
+  commits_results: true
+inputs:
+  source_batch: train/infra/results/contract-batch-0025-20260621T053934Z
+  evas_smoke_report: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/evas_bulk_smoke_report.yaml
+  evaluator_profile: train/infra/results/evas-profile-pr12-e1e73c0-rustfix-20260621T065830Z/evas_profile.yaml
+expected_failure_modes:
+  transition_inside_conditional_or_event: 5
+  unsupported_rtoi: 5
+outputs:
+  result_root: train/infra/results/evas-repair-contract-batch-0025-<YYYYMMDDTHHMMSSZ>
+  required_files:
+    - status.txt
+    - summary.json
+    - repair_manifest.yaml
+    - artifact_candidate_index.yaml
+    - evas_bulk_smoke_report.yaml
+    - commands.log
+assertions:
+  no_spectre: true
+  no_training: true
+  no_checkpoints: true
+  draft_training_only_if_evas_all_pass: true
+  admitted_training_data_generated: false
+notes:
+  - This job repairs draft synthetic artifacts only; it does not modify the
+    original batch result directory and does not create admitted data.
+

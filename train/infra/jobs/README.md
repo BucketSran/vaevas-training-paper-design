@@ -19,6 +19,7 @@ future automation to know what command was intended.
 | `phase1_contract_batch_overnight.yaml` | Generate 25 draft contracts, review them, generate draft Verilog-A for accepted contracts, and pack draft unadmitted SFT/GRPO JSONL. |
 | `phase1_evas_rust_toolchain_fix.yaml` | Resolve remote EVAS PR12 Rust backend blocker by installing/exposing user-local cargo/rustc and rerunning the pinned evas-rust smoke. |
 | `phase1_remote_worker_queue.yaml` | Define the GitHub-mediated remote queue used to avoid repeated copy-paste handoffs. |
+| `phase1_evas_failure_repair.yaml` | Repair the 10 EVAS Rust smoke failures from contract-batch-0025, rerun EVAS, and rebuild draft packs only if all candidates pass. |
 | `REMOTE_CODEX_TASK_PLATFORM_PROBE.md` | Copy-paste instructions for a remote Codex session controlling the server. |
 | `REMOTE_CODEX_TASK_GPU_BLOCKER.md` | Copy-paste instructions for remote Codex to diagnose GPU visibility and rerun platform probe only after safe session-level fixes. |
 | `REMOTE_CODEX_TASK_TINY_SFT_SMOKE.md` | Copy-paste instructions for remote Codex to run tiny SFT smoke after platform `READY`. |
@@ -43,3 +44,5 @@ future automation to know what command was intended.
 - EVAS Rust toolchain fix may install or expose user-local Rust only; it must not use `sudo`, run Spectre, run training, or write checkpoints.
 - Queue worker jobs must finish with `train/infra/remote_worker/finish_job.sh`
   so `pending/`, `running/`, `done/`, and `failed/` stay consistent.
+- EVAS failure repair jobs must preserve original batch result directories and
+  write repaired draft artifacts under a new result directory.
