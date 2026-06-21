@@ -1,0 +1,36 @@
+job_id: phase1_evas_rust_toolchain_fix
+purpose: >
+  Resolve the remote EVAS PR12 profile blocker by installing or exposing a
+  user-local Rust toolchain, rebuilding the pinned evas-rust backend, and
+  rerunning the clk_div rust smoke. This job does not run training or Spectre.
+execution:
+  mode: github_mediated_remote_codex
+  command: follow train/infra/jobs/REMOTE_CODEX_TASK_EVAS_RUST_TOOLCHAIN_FIX.md
+  gpu_required: false
+  writes_checkpoints: false
+  writes_training_data: false
+  runs_spectre: false
+  commits_results: true
+inputs:
+  prior_result: train/infra/results/evas-profile-pr12-e1e73c0-20260621T064622Z
+  evas_repo: https://github.com/BucketSran/EVAS.git
+  evas_branch: codex/stochastic-semantics-and-cross-law
+  evas_commit: e1e73c056ceb91dbda47c5029d8b37f57d9c0fa7
+  python_env: /data/jinzhihong/envs/vaevas-rl/bin/python
+outputs:
+  result_root: train/infra/results/evas-profile-pr12-e1e73c0-rustfix-<YYYYMMDDTHHMMSSZ>
+  required_files:
+    - evas_profile.yaml
+    - evas_build_report.json
+    - commands.log
+assertions:
+  no_sudo: true
+  no_training: true
+  no_spectre: true
+  no_checkpoints: true
+  pinned_commit: e1e73c056ceb91dbda47c5029d8b37f57d9c0fa7
+  success_status: built_smoke_tested
+  allowed_blocked_status: blocked_missing_rust_toolchain
+notes:
+  - Previous blocker was cargo/rustc missing from PATH.
+  - Python package install already passed in /data/jinzhihong/envs/vaevas-rl.
