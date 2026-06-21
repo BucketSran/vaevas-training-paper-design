@@ -1,0 +1,74 @@
+{
+  "schema_version": "phase1.evas_profile.v0.1",
+  "run_id": "evas-profile-pr12-e1e73c0-20260621T064622Z",
+  "status": "BLOCKED_MISSING_RUST_TOOLCHAIN",
+  "evaluator_profile_id": "evas-pr12-e1e73c0",
+  "evaluator_kind": "evas_rust",
+  "repo": "https://github.com/BucketSran/EVAS.git",
+  "upstream_pr": "https://github.com/Arcadia-1/EVAS/pull/12",
+  "branch": "codex/stochastic-semantics-and-cross-law",
+  "git_commit": "e1e73c056ceb91dbda47c5029d8b37f57d9c0fa7",
+  "workdir": "/data/jinzhihong/vaevas-evaluator/EVAS",
+  "python": {
+    "requested_python3_pip_install": {
+      "command": "python3 -m pip install -e \".[dev]\"",
+      "return_code": 1,
+      "status": "FAIL",
+      "stderr": "/usr/bin/python3: No module named pip",
+      "stdout": ""
+    },
+    "effective_python": {
+      "path": "/data/jinzhihong/envs/vaevas-rl/bin/python",
+      "version": "Python 3.11.15",
+      "pip_version": "pip 26.1.1 from /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages/pip (python 3.11)",
+      "editable_install_command": "/data/jinzhihong/envs/vaevas-rl/bin/python -m pip install -e \".[dev]\"",
+      "editable_install_return_code": 0,
+      "editable_install_status": "PASS",
+      "editable_install_summary": "Successfully installed coverage-7.14.2 evas-sim-0.4.4 iniconfig-2.3.0 pluggy-1.6.0 pytest-9.1.1 pytest-cov-7.1.0 ruff-0.15.18"
+    }
+  },
+  "rust_toolchain": {
+    "cargo_available": false,
+    "rustc_available": false,
+    "cargo_probe_return_code": 127,
+    "rustc_probe_return_code": 127,
+    "cargo_probe_output": "/bin/bash: line 1: cargo: command not found",
+    "rustc_probe_output": "/bin/bash: line 1: rustc: command not found",
+    "rustup_available": false,
+    "module_command_available": false
+  },
+  "build": {
+    "command": "cargo build --manifest-path evas/rust_core/Cargo.toml --release",
+    "return_code": 127,
+    "status": "FAIL",
+    "stdout": "",
+    "stderr": "/bin/bash: line 1: cargo: command not found",
+    "combined_output": "/bin/bash: line 1: cargo: command not found",
+    "artifact_expected": "evas/rust_core/target/release/libevas_rust_core.so",
+    "artifact_built": false
+  },
+  "smoke_tests": {
+    "evas_list": {
+      "command": "/data/jinzhihong/envs/vaevas-rl/bin/python -m evas list",
+      "return_code": 0,
+      "status": "PASS",
+      "stdout": "Available examples (5):\n  adc_dac_ideal_4b\n  clk_div\n  comparator\n  digital_basics\n  noise_gen",
+      "stderr": ""
+    },
+    "clk_div_evas_rust": {
+      "command": "/data/jinzhihong/envs/vaevas-rl/bin/python -m evas run clk_div --engine evas-rust",
+      "return_code": 1,
+      "status": "FAIL",
+      "stdout": "Running example 'clk_div': tb_clk_div.scs -> /data/jinzhihong/vaevas-evaluator/EVAS/output/clk_div\nEVAS -- Event-driven Verilog-A Simulator\nVersion 0.4.4 -- Jun 2026\n\nSimulating `tb_clk_div.scs' at 6:46:06 AM, Sun Jun 21, 2026.\nCommand line:\n    /data/jinzhihong/vaevas-evaluator/EVAS/evas/__main__.py run clk_div --engine evas-rust\n\nReading file: tb_clk_div.scs\nWARNING: ahdl_include resolved to 'clk_div.va' (original path not found, used scs directory fallback)\nCompiled Verilog-A module: clk_div\n\nCircuit inventory:\n               nodes 2\n             clk_div 1\n             vsource 1\n\n*****************************************************\nTransient Analysis `tran': time = (0 s -> 100 ns)\n*****************************************************\nImportant parameter values:\n    start = 0 s\n    stop  = 100 ns\n    step  = 100 ps\n    reltol = 0.001\n    vabstol = 1e-06\n    iabstol = 1e-12\n    refine_factor = 16\n    refine_steps  = 8\n    evas_rust_full_model_fastpath = true\n    evas_rust_full_model_required = true\n    evas_engine = evas-rust\n    evas_rust_required = true",
+      "stderr": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/data/jinzhihong/vaevas-evaluator/EVAS/evas/__main__.py\", line 6, in <module>\n    main()\n  File \"/data/jinzhihong/vaevas-evaluator/EVAS/evas/cli.py\", line 189, in main\n    sys.exit(args.func(args))\n             ^^^^^^^^^^^^^^^\n  File \"/data/jinzhihong/vaevas-evaluator/EVAS/evas/cli.py\", line 125, in cmd_run\n    ok = evas_simulate(str(scs_file), output_dir=str(output_dir))\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/jinzhihong/vaevas-evaluator/EVAS/evas/netlist/runner.py\", line 1358, in evas_simulate\n    result = sim.run(tstop, tstep=tstep,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/jinzhihong/vaevas-evaluator/EVAS/evas/simulator/engine.py\", line 4511, in run\n    raise RuntimeError(\nRuntimeError: EVAS Rust backend was required but could not be loaded; build EVAS/evas/rust_core target/release/libevas_rust_core.so on this host or unset evas_rust_required.",
+      "failure_reason": "Rust backend shared library was not built because cargo is unavailable."
+    }
+  },
+  "boundaries": {
+    "training_run": false,
+    "spectre_run": false,
+    "checkpoints_written": false,
+    "external_llm_api_called": false
+  },
+  "next_action_required": "Install or expose an existing Rust toolchain with cargo/rustc in PATH, then rerun cargo build --manifest-path evas/rust_core/Cargo.toml --release and the evas-rust clk_div smoke."
+}

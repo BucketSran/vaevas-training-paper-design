@@ -1,0 +1,50 @@
+evaluator_profile_id: evas-pr12-e1e73c0
+evaluator_kind: evas_rust
+repo: https://github.com/BucketSran/EVAS.git
+upstream_pr: https://github.com/Arcadia-1/EVAS/pull/12
+branch: codex/stochastic-semantics-and-cross-law
+git_commit: e1e73c056ceb91dbda47c5029d8b37f57d9c0fa7
+rust_build_command: cargo build --manifest-path evas/rust_core/Cargo.toml --release
+engine_selector: evas-rust
+status: blocked_missing_rust_toolchain
+requested_status: built_smoke_tested
+run_id: evas-profile-pr12-e1e73c0-20260621T064622Z
+workdir: /data/jinzhihong/vaevas-evaluator/EVAS
+python:
+  requested_python3_pip_install:
+    command: python3 -m pip install -e ".[dev]"
+    status: failed
+    return_code: 1
+    stderr: "/usr/bin/python3: No module named pip"
+  effective_python:
+    path: /data/jinzhihong/envs/vaevas-rl/bin/python
+    version: "Python 3.11.15"
+    pip_version: "pip 26.1.1 from /data/jinzhihong/envs/vaevas-rl/lib/python3.11/site-packages/pip (python 3.11)"
+    editable_install_status: pass
+rust_toolchain:
+  cargo_available: false
+  rustc_available: false
+  cargo_probe: "/bin/bash: line 1: cargo: command not found"
+  rustc_probe: "/bin/bash: line 1: rustc: command not found"
+build:
+  attempted: true
+  status: fail
+  return_code: 127
+  blocker: cargo_not_found
+  stdout: ""
+  stderr: "/bin/bash: line 1: cargo: command not found"
+smoke_tests:
+  evas_list:
+    command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas list
+    status: pass
+    return_code: 0
+  clk_div_evas_rust:
+    command: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas run clk_div --engine evas-rust
+    status: fail
+    return_code: 1
+    failure_reason: "EVAS Rust backend was required but could not be loaded because evas/rust_core target/release/libevas_rust_core.so was not built."
+boundaries:
+  training_run: false
+  spectre_run: false
+  checkpoints_written: false
+  external_llm_api_called: false
