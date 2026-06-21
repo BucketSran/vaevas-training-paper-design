@@ -1,0 +1,29 @@
+job_id: phase1_remote_worker_queue
+purpose: >
+  Replace repeated manual copy-paste remote handoffs with a GitHub-mediated
+  queue. Local Codex creates pending Markdown jobs; remote Codex claims,
+  executes, uploads evidence, and marks jobs done or failed.
+execution:
+  mode: github_mediated_remote_codex_queue
+  poll_command: bash train/infra/remote_worker/poll_once.sh
+  finish_command: bash train/infra/remote_worker/finish_job.sh
+  gpu_required: false
+  writes_checkpoints: false
+  writes_training_data: false
+  runs_spectre: false
+  commits_results: true
+queue:
+  pending: train/infra/queue/pending
+  running: train/infra/queue/running
+  done: train/infra/queue/done
+  failed: train/infra/queue/failed
+assertions:
+  no_intermediate_confirmations: true
+  direct_final_response_required: true
+  no_local_proxy_for_github_retry: true
+  result_dirs_must_be_small: true
+notes:
+  - The queue scripts do not execute scientific jobs; they only manage claim
+    and finish bookkeeping.
+  - Each pending Markdown job carries its own scientific boundaries.
+

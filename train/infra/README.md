@@ -13,6 +13,8 @@ artifacts back to GitHub for local inspection.
 | `run_gpu_blocker_diagnosis.sh` | Server-side GPU blocker triage after `BLOCKED_GPU` without admin changes |
 | `run_tiny_sft_smoke.sh` | Server-side two-step LoRA SFT smoke on toy admitted data; commits evidence only |
 | `jobs/` | YAML job manifests that describe what the server should run |
+| `queue/` | GitHub-mediated pending/running/done/failed remote task queue |
+| `remote_worker/` | Remote Codex queue prompt plus claim/finish helper scripts |
 | `results/` | Small result upload area; no checkpoints or raw training data |
 
 ## Later SSH/Phase 2 Files
@@ -32,6 +34,7 @@ artifacts back to GitHub for local inspection.
 - Remote: single node, 2× NVIDIA A100 (80GB)
 - Local: M-series Mac for code + monitoring
 - Current data flow: GitHub branch -> server smoke -> GitHub result commit.
+- Queue data flow: local pending job -> remote claim -> remote result commit -> local inspection.
 - Later data flow: synthesize locally OR on remote; train on remote; pull logs back.
 
 ## Environment
@@ -51,6 +54,8 @@ Pinned versions go into `requirements.txt` once Phase 2 starts.
 
 - No long-lived SSH keys checked into the repo.
 - Remote `.env` for HF tokens, wandb keys (not committed).
+- Remote GitHub handoffs should use direct authorized GitHub access, not a
+  local `127.0.0.1:7897` proxy retry path.
 - All `rsync` operations use `--dry-run` first when going FROM remote TO local (to prevent accidental overwrites of local work).
 
 ## Cost / time estimates
