@@ -242,3 +242,11 @@ VALIDATION=<EVAS profile verification and smoke command summary>
 NEXT_RISKS=<Spectre shadow audit still local; this is not admission>
 ```
 
+
+## Worker Claim
+
+- claimed_at_utc: 2026-06-21T10:02:49Z
+- worker_host: huaxiyun085
+- worker_user: jinzhihong
+- branch: training-paper-design-20260620
+- repo_commit_at_claim: abcd32844eb85ba1021c7ff4ea8daaf98bd4715b
