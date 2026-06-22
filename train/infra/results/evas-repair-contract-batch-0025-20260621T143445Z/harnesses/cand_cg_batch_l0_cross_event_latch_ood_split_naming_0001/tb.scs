@@ -1,0 +1,13 @@
+// Auto-generated shallow EVAS Rust smoke harness for cand_cg_batch_l0_cross_event_latch_ood_split_naming_0001
+simulator lang=spectre
+global 0
+
+ahdl_include "solution.va"
+
+V_vp (vp 0) vsource type=pwl wave=[0 0.40 20n 0.60 100n 0.60]
+V_vn (vn 0) vsource dc=0.45 type=dc
+
+IDUT (vp vn vflag) cg_batch_l0_cross_event_latch_ood_split_naming_0001
+
+tran tran stop=100n maxstep=100p
+save vp:3f vn:3f vflag:d

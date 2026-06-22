@@ -1,0 +1,68 @@
+`include "constants.vams"
+`include "disciplines.vams"
+
+module cg_batch_l2_sar_adc_loop_waveform_coverage_0001(vin, clk, start, done, bit0, bit1, bit2, bit3);
+  input vin;
+  input clk;
+  input start;
+  output done;
+  output bit0;
+  output bit1;
+  output bit2;
+  output bit3;
+  electrical vin, clk, start, done, bit0, bit1, bit2, bit3;
+  parameter real vref = 1.0;
+  parameter real nbits = 4;
+  parameter real clk_period = 2e-08;
+  parameter real logic_threshold = 0.5;
+  integer active;
+  integer trial_count;
+  integer code_value;
+  real sample_value;
+
+  analog begin
+    @(initial_step) begin
+      active = 0;
+      trial_count = 0;
+      code_value = 0;
+      sample_value = 0.0;
+    end
+    @(cross(V(start) - logic_threshold, +1)) begin
+      active = 1;
+      trial_count = 0;
+      sample_value = V(vin);
+      code_value = 0;
+    end
+    @(cross(V(clk) - logic_threshold, +1)) begin
+      if (active != 0) begin
+        trial_count = trial_count + 1;
+        if (trial_count >= nbits) begin
+          if (sample_value <= 0.0) code_value = 0;
+          else if (sample_value >= vref) code_value = 15;
+          else if (sample_value >= (14.5/15.0) * vref) code_value = 15;
+          else if (sample_value >= (13.5/15.0) * vref) code_value = 14;
+          else if (sample_value >= (12.5/15.0) * vref) code_value = 13;
+          else if (sample_value >= (11.5/15.0) * vref) code_value = 12;
+          else if (sample_value >= (10.5/15.0) * vref) code_value = 11;
+          else if (sample_value >= (9.5/15.0) * vref) code_value = 10;
+          else if (sample_value >= (8.5/15.0) * vref) code_value = 9;
+          else if (sample_value >= (7.5/15.0) * vref) code_value = 8;
+          else if (sample_value >= (6.5/15.0) * vref) code_value = 7;
+          else if (sample_value >= (5.5/15.0) * vref) code_value = 6;
+          else if (sample_value >= (4.5/15.0) * vref) code_value = 5;
+          else if (sample_value >= (3.5/15.0) * vref) code_value = 4;
+          else if (sample_value >= (2.5/15.0) * vref) code_value = 3;
+          else if (sample_value >= (1.5/15.0) * vref) code_value = 2;
+          else if (sample_value >= (0.5/15.0) * vref) code_value = 1;
+          else code_value = 0;
+          active = 0;
+        end
+      end
+    end
+    V(done) <+ transition((active == 0 && trial_count >= nbits) ? vref : 0.0, 1.0e-10, 1.0e-10);
+    V(bit0) <+ transition(((code_value >> 0) & 1) ? vref : 0.0, 1.0e-10, 1.0e-10);
+    V(bit1) <+ transition(((code_value >> 1) & 1) ? vref : 0.0, 1.0e-10, 1.0e-10);
+    V(bit2) <+ transition(((code_value >> 2) & 1) ? vref : 0.0, 1.0e-10, 1.0e-10);
+    V(bit3) <+ transition(((code_value >> 3) & 1) ? vref : 0.0, 1.0e-10, 1.0e-10);
+  end
+endmodule

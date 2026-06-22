@@ -1,0 +1,124 @@
+RUN_ID=evas-repair-contract-batch-0025-20260621T143445Z
+RESULT_DIR=train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z
+JOB_FILE=train/infra/queue/running/20260621-repair-evas-failures-10.md
+$ git fetch origin training-paper-design-20260620
+From https://github.com/BucketSran/vaevas-training-paper-design
+ * branch            training-paper-design-20260620 -> FETCH_HEAD
+$ git checkout training-paper-design-20260620
+Already on 'training-paper-design-20260620'
+Your branch is up to date with 'origin/training-paper-design-20260620'.
+$ git pull --ff-only origin training-paper-design-20260620
+From https://github.com/BucketSran/vaevas-training-paper-design
+ * branch            training-paper-design-20260620 -> FETCH_HEAD
+Already up to date.
+$ cd /data/jinzhihong/vaevas-evaluator/EVAS
+$ source $HOME/.cargo/env
+$ git rev-parse HEAD
+e1e73c056ceb91dbda47c5029d8b37f57d9c0fa7
+$ test -f evas/rust_core/target/release/libevas_rust_core.so
+$ sha256sum evas/rust_core/target/release/libevas_rust_core.so
+976ad75cb45efef9433fb277281e70408de0dbd235b28ce3eba81b47f600ab8d  evas/rust_core/target/release/libevas_rust_core.so
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m evas list
+Available examples (5):
+  adc_dac_ideal_4b
+  clk_div
+  comparator
+  digital_basics
+  noise_gen
+$ /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate --help
+usage: evas simulate [-h] [-o OUTPUT] [-log LOG]
+                     [--engine {python,evas-rust,evas2,rust2}]
+                     input
+
+positional arguments:
+  input                 .scs netlist file
+
+options:
+  -h, --help            show this help message and exit
+  -o OUTPUT, --output OUTPUT
+                        Output directory (default: ./output)
+  -log LOG              Log file path
+  --engine {python,evas-rust,evas2,rust2}
+                        Engine override. The default is python; evas-rust
+                        requires the Rust backend.
+PASS evas_profile_verification
+
+$ materialize_repaired_artifact_root
+{
+  "copied_without_change": 15,
+  "repaired_transition_inside_conditional_or_event": 5,
+  "repaired_unsupported_rtoi": 5
+}
+$ write_artifact_candidate_index repaired root
+PASS write_artifact_candidate_index candidates=25 rejected=0 candidate_index_hash=sha256:ffb757019041756d07842a3b796d783ee7fe1eb0e141bb0ecedddbc1d30714de
+$ validate_artifact_candidate_index repaired root
+PASS validate_artifact_candidate_index candidates=25 candidate_index_hash=sha256:ffb757019041756d07842a3b796d783ee7fe1eb0e141bb0ecedddbc1d30714de
+
+$ rerun_evas_rust_smoke_on_repaired_artifacts
+{
+  "blocked": 0,
+  "evas_fail": 0,
+  "evas_pass": 25,
+  "harness_generated": 25,
+  "not_runnable_no_harness": 0,
+  "total_candidates": 25
+}
+cand_cg_batch_l0_cross_event_latch_boundary_tolerance_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l0_cross_event_latch_observable_clarity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l0_cross_event_latch_ood_split_naming_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l0_cross_event_latch_parameter_diversity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l0_cross_event_latch_waveform_coverage_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_gain_probe_tb_boundary_tolerance_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_gain_probe_tb_observable_clarity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_gain_probe_tb_ood_split_naming_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_gain_probe_tb_parameter_diversity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_gain_probe_tb_waveform_coverage_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_hysteresis_comparator_observable_clarity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_hysteresis_comparator_ood_split_naming_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_hysteresis_comparator_parameter_diversity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_hysteresis_comparator_waveform_coverage_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_track_hold_repair_boundary_tolerance_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_track_hold_repair_observable_clarity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_track_hold_repair_ood_split_naming_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_track_hold_repair_parameter_diversity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l1_track_hold_repair_waveform_coverage_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l2_sar_adc_loop_boundary_tolerance_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l2_sar_adc_loop_observable_clarity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l2_sar_adc_loop_ood_split_naming_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l2_sar_adc_loop_parameter_diversity_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+cand_cg_batch_l2_sar_adc_loop_waveform_coverage_0001 evas_pass rc=0 diag=evas completes with 0 errors, 1 warnings
+$ pack_draft_training repaired all-pass candidate index
+PASS pack_draft_training sft_train=20 sft_val=5 grpo_prompts=25 draft_training_pack_hash=sha256:435c8d3e4b3d4b57fd504ae6377f54dec571874d2f0a4fc1e1ba74eb7d83b1a0
+sft_train_hash=sha256:ed503282175870953fda553a9812ed55077d0a41dd160d6f52e93d0848b0d4b3
+sft_val_hash=sha256:5ae33a41a4c54ffb6ce98e01d2d7c84864cc504695a15ba32d24fd603ba3dbb8
+grpo_prompt_hash=sha256:44139ddb61fe4ab69a948281b4f78a3e7a9c6c23aa17cfa6e58f57592546fcb2
+
+$ write_summary_json_status_txt
+{
+  "admitted_training_data_generated": false,
+  "artifact_candidate_index_hash": "sha256:ffb757019041756d07842a3b796d783ee7fe1eb0e141bb0ecedddbc1d30714de",
+  "blocked": 0,
+  "candidate_count": 25,
+  "checkpoints_written": false,
+  "copied_without_change": 15,
+  "draft_grpo_prompt_count": 25,
+  "draft_sft_train_count": 20,
+  "draft_sft_val_count": 5,
+  "draft_training_data_generated": true,
+  "draft_training_pack_hash": "sha256:435c8d3e4b3d4b57fd504ae6377f54dec571874d2f0a4fc1e1ba74eb7d83b1a0",
+  "evas_fail": 0,
+  "evas_pass": 25,
+  "grpo_prompt_hash": "sha256:44139ddb61fe4ab69a948281b4f78a3e7a9c6c23aa17cfa6e58f57592546fcb2",
+  "grpo_run": false,
+  "harness_generated": 25,
+  "not_runnable_no_harness": 0,
+  "repair_count": 10,
+  "repaired_transition_inside_conditional_or_event": 5,
+  "repaired_unsupported_rtoi": 5,
+  "sft_run": false,
+  "sft_train_hash": "sha256:ed503282175870953fda553a9812ed55077d0a41dd160d6f52e93d0848b0d4b3",
+  "sft_val_hash": "sha256:5ae33a41a4c54ffb6ce98e01d2d7c84864cc504695a15ba32d24fd603ba3dbb8",
+  "spectre_run": false,
+  "status": "PASS"
+}

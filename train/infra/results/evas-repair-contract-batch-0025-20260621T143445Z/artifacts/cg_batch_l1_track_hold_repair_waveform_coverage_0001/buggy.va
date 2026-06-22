@@ -1,0 +1,21 @@
+`include "constants.vams"
+`include "disciplines.vams"
+
+module cg_batch_l1_track_hold_repair_waveform_coverage_0001_buggy(vin, vclk, vhold);
+  input vin;
+  input vclk;
+  output vhold;
+  electrical vin, vclk, vhold;
+  parameter real clk_threshold = 0.6;
+  parameter real aperture_delay = 2e-09;
+  parameter real transition_time = 7.5e-10;
+  real held_value;
+
+  analog begin
+    @(initial_step) held_value = 0.0;
+    @(cross(V(vclk) - clk_threshold, +1)) begin
+      held_value = V(vin);
+    end
+    V(vhold) <+ transition(held_value, transition_time, transition_time);
+  end
+endmodule

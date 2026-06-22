@@ -1,0 +1,85 @@
+schema_version: phase1.v0.1
+run_id: evas-repair-contract-batch-0025-20260621T143445Z
+status: draft_unadmitted_training_pack
+candidate_index_hash: sha256:ffb757019041756d07842a3b796d783ee7fe1eb0e141bb0ecedddbc1d30714de
+producer:
+  name: train.pipelines.pack_draft_training
+  version: phase1.v0.1
+  git_commit: null
+output_files:
+  sft_train: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/draft_training/draft_sft/train.jsonl
+  sft_val: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/draft_training/draft_sft/val.jsonl
+  grpo_prompts: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/draft_training/draft_grpo/prompts.jsonl
+output_hashes:
+  sft_train: sha256:ed503282175870953fda553a9812ed55077d0a41dd160d6f52e93d0848b0d4b3
+  sft_val: sha256:5ae33a41a4c54ffb6ce98e01d2d7c84864cc504695a15ba32d24fd603ba3dbb8
+  grpo_prompts: sha256:44139ddb61fe4ab69a948281b4f78a3e7a9c6c23aa17cfa6e58f57592546fcb2
+format:
+  sft: llamafactory_alpaca_draft
+  grpo: trl_grpo_prompt_draft
+base_model_ref: Qwen/Qwen2.5-Coder-7B-Instruct
+item_ids:
+  sft_train:
+  - cand_cg_batch_l0_cross_event_latch_boundary_tolerance_0001
+  - cand_cg_batch_l0_cross_event_latch_observable_clarity_0001
+  - cand_cg_batch_l0_cross_event_latch_ood_split_naming_0001
+  - cand_cg_batch_l0_cross_event_latch_parameter_diversity_0001
+  - cand_cg_batch_l1_gain_probe_tb_boundary_tolerance_0001
+  - cand_cg_batch_l1_gain_probe_tb_observable_clarity_0001
+  - cand_cg_batch_l1_gain_probe_tb_ood_split_naming_0001
+  - cand_cg_batch_l1_gain_probe_tb_parameter_diversity_0001
+  - cand_cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001
+  - cand_cg_batch_l1_hysteresis_comparator_observable_clarity_0001
+  - cand_cg_batch_l1_hysteresis_comparator_ood_split_naming_0001
+  - cand_cg_batch_l1_hysteresis_comparator_parameter_diversity_0001
+  - cand_cg_batch_l1_track_hold_repair_boundary_tolerance_0001
+  - cand_cg_batch_l1_track_hold_repair_observable_clarity_0001
+  - cand_cg_batch_l1_track_hold_repair_ood_split_naming_0001
+  - cand_cg_batch_l1_track_hold_repair_parameter_diversity_0001
+  - cand_cg_batch_l2_sar_adc_loop_boundary_tolerance_0001
+  - cand_cg_batch_l2_sar_adc_loop_observable_clarity_0001
+  - cand_cg_batch_l2_sar_adc_loop_ood_split_naming_0001
+  - cand_cg_batch_l2_sar_adc_loop_parameter_diversity_0001
+  sft_val:
+  - cand_cg_batch_l0_cross_event_latch_waveform_coverage_0001
+  - cand_cg_batch_l1_gain_probe_tb_waveform_coverage_0001
+  - cand_cg_batch_l1_hysteresis_comparator_waveform_coverage_0001
+  - cand_cg_batch_l1_track_hold_repair_waveform_coverage_0001
+  - cand_cg_batch_l2_sar_adc_loop_waveform_coverage_0001
+  grpo_prompts:
+  - cand_cg_batch_l0_cross_event_latch_boundary_tolerance_0001
+  - cand_cg_batch_l0_cross_event_latch_observable_clarity_0001
+  - cand_cg_batch_l0_cross_event_latch_ood_split_naming_0001
+  - cand_cg_batch_l0_cross_event_latch_parameter_diversity_0001
+  - cand_cg_batch_l0_cross_event_latch_waveform_coverage_0001
+  - cand_cg_batch_l1_gain_probe_tb_boundary_tolerance_0001
+  - cand_cg_batch_l1_gain_probe_tb_observable_clarity_0001
+  - cand_cg_batch_l1_gain_probe_tb_ood_split_naming_0001
+  - cand_cg_batch_l1_gain_probe_tb_parameter_diversity_0001
+  - cand_cg_batch_l1_gain_probe_tb_waveform_coverage_0001
+  - cand_cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001
+  - cand_cg_batch_l1_hysteresis_comparator_observable_clarity_0001
+  - cand_cg_batch_l1_hysteresis_comparator_ood_split_naming_0001
+  - cand_cg_batch_l1_hysteresis_comparator_parameter_diversity_0001
+  - cand_cg_batch_l1_hysteresis_comparator_waveform_coverage_0001
+  - cand_cg_batch_l1_track_hold_repair_boundary_tolerance_0001
+  - cand_cg_batch_l1_track_hold_repair_observable_clarity_0001
+  - cand_cg_batch_l1_track_hold_repair_ood_split_naming_0001
+  - cand_cg_batch_l1_track_hold_repair_parameter_diversity_0001
+  - cand_cg_batch_l1_track_hold_repair_waveform_coverage_0001
+  - cand_cg_batch_l2_sar_adc_loop_boundary_tolerance_0001
+  - cand_cg_batch_l2_sar_adc_loop_observable_clarity_0001
+  - cand_cg_batch_l2_sar_adc_loop_ood_split_naming_0001
+  - cand_cg_batch_l2_sar_adc_loop_parameter_diversity_0001
+  - cand_cg_batch_l2_sar_adc_loop_waveform_coverage_0001
+counts:
+  sft_train: 20
+  sft_val: 5
+  grpo_prompts: 25
+admission_boundary:
+  admitted_training_data: false
+  requires_contamination_gate: true
+  requires_evas_gate: true
+  requires_spectre_shadow_policy: true
+  requires_admitted_manifest_before_paper_claim: true
+draft_training_pack_hash: sha256:435c8d3e4b3d4b57fd504ae6377f54dec571874d2f0a4fc1e1ba74eb7d83b1a0

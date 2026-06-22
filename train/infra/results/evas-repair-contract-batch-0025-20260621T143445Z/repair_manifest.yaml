@@ -1,0 +1,194 @@
+schema_version: phase1.evas_repair.v0.1
+run_id: evas-repair-contract-batch-0025-20260621T143445Z
+source_batch: train/infra/results/contract-batch-0025-20260621T053934Z
+prior_evas_report: train/infra/results/evas-bulk-smoke-contract-batch-0025-20260621T100418Z/evas_bulk_smoke_report.yaml
+repair_counts:
+  copied_without_change: 15
+  repaired_transition_inside_conditional_or_event: 5
+  repaired_unsupported_rtoi: 5
+items:
+- candidate_id: cand_cg_batch_l0_cross_event_latch_boundary_tolerance_0001
+  contract_id: cg_batch_l0_cross_event_latch_boundary_tolerance_0001
+  action: repaired
+  repair_class: transition_inside_conditional_or_event
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l0_cross_event_latch_boundary_tolerance_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_boundary_tolerance_0001/solution.va
+  prior_diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible
+    Verilog-A: transition() contribution is inside a conditional/event/loop/case statement'
+- candidate_id: cand_cg_batch_l0_cross_event_latch_observable_clarity_0001
+  contract_id: cg_batch_l0_cross_event_latch_observable_clarity_0001
+  action: repaired
+  repair_class: transition_inside_conditional_or_event
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l0_cross_event_latch_observable_clarity_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_observable_clarity_0001/solution.va
+  prior_diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible
+    Verilog-A: transition() contribution is inside a conditional/event/loop/case statement'
+- candidate_id: cand_cg_batch_l0_cross_event_latch_ood_split_naming_0001
+  contract_id: cg_batch_l0_cross_event_latch_ood_split_naming_0001
+  action: repaired
+  repair_class: transition_inside_conditional_or_event
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l0_cross_event_latch_ood_split_naming_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_ood_split_naming_0001/solution.va
+  prior_diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible
+    Verilog-A: transition() contribution is inside a conditional/event/loop/case statement'
+- candidate_id: cand_cg_batch_l0_cross_event_latch_parameter_diversity_0001
+  contract_id: cg_batch_l0_cross_event_latch_parameter_diversity_0001
+  action: repaired
+  repair_class: transition_inside_conditional_or_event
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l0_cross_event_latch_parameter_diversity_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_parameter_diversity_0001/solution.va
+  prior_diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible
+    Verilog-A: transition() contribution is inside a conditional/event/loop/case statement'
+- candidate_id: cand_cg_batch_l0_cross_event_latch_waveform_coverage_0001
+  contract_id: cg_batch_l0_cross_event_latch_waveform_coverage_0001
+  action: repaired
+  repair_class: transition_inside_conditional_or_event
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l0_cross_event_latch_waveform_coverage_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_waveform_coverage_0001/solution.va
+  prior_diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible
+    Verilog-A: transition() contribution is inside a conditional/event/loop/case statement'
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_boundary_tolerance_0001
+  contract_id: cg_batch_l1_gain_probe_tb_boundary_tolerance_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_gain_probe_tb_boundary_tolerance_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_boundary_tolerance_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_observable_clarity_0001
+  contract_id: cg_batch_l1_gain_probe_tb_observable_clarity_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_gain_probe_tb_observable_clarity_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_observable_clarity_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_ood_split_naming_0001
+  contract_id: cg_batch_l1_gain_probe_tb_ood_split_naming_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_gain_probe_tb_ood_split_naming_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_ood_split_naming_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_parameter_diversity_0001
+  contract_id: cg_batch_l1_gain_probe_tb_parameter_diversity_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_gain_probe_tb_parameter_diversity_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_parameter_diversity_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_waveform_coverage_0001
+  contract_id: cg_batch_l1_gain_probe_tb_waveform_coverage_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_gain_probe_tb_waveform_coverage_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_waveform_coverage_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_observable_clarity_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_observable_clarity_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_hysteresis_comparator_observable_clarity_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_observable_clarity_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_ood_split_naming_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_ood_split_naming_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_hysteresis_comparator_ood_split_naming_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_ood_split_naming_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_parameter_diversity_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_parameter_diversity_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_hysteresis_comparator_parameter_diversity_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_parameter_diversity_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_waveform_coverage_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_waveform_coverage_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_hysteresis_comparator_waveform_coverage_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_waveform_coverage_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_track_hold_repair_boundary_tolerance_0001
+  contract_id: cg_batch_l1_track_hold_repair_boundary_tolerance_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_track_hold_repair_boundary_tolerance_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_boundary_tolerance_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_track_hold_repair_observable_clarity_0001
+  contract_id: cg_batch_l1_track_hold_repair_observable_clarity_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_track_hold_repair_observable_clarity_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_observable_clarity_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_track_hold_repair_ood_split_naming_0001
+  contract_id: cg_batch_l1_track_hold_repair_ood_split_naming_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_track_hold_repair_ood_split_naming_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_ood_split_naming_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_track_hold_repair_parameter_diversity_0001
+  contract_id: cg_batch_l1_track_hold_repair_parameter_diversity_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_track_hold_repair_parameter_diversity_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_parameter_diversity_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l1_track_hold_repair_waveform_coverage_0001
+  contract_id: cg_batch_l1_track_hold_repair_waveform_coverage_0001
+  action: copied_without_change
+  repair_class: none
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l1_track_hold_repair_waveform_coverage_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_waveform_coverage_0001/solution.va
+  prior_diagnostic: evas completes with 0 errors, 1 warnings
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_boundary_tolerance_0001
+  contract_id: cg_batch_l2_sar_adc_loop_boundary_tolerance_0001
+  action: repaired
+  repair_class: unsupported_rtoi
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l2_sar_adc_loop_boundary_tolerance_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_boundary_tolerance_0001/solution.va
+  prior_diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported
+    Verilog-A function call: $rtoi()'
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_observable_clarity_0001
+  contract_id: cg_batch_l2_sar_adc_loop_observable_clarity_0001
+  action: repaired
+  repair_class: unsupported_rtoi
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l2_sar_adc_loop_observable_clarity_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_observable_clarity_0001/solution.va
+  prior_diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported
+    Verilog-A function call: $rtoi()'
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_ood_split_naming_0001
+  contract_id: cg_batch_l2_sar_adc_loop_ood_split_naming_0001
+  action: repaired
+  repair_class: unsupported_rtoi
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l2_sar_adc_loop_ood_split_naming_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_ood_split_naming_0001/solution.va
+  prior_diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported
+    Verilog-A function call: $rtoi()'
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_parameter_diversity_0001
+  contract_id: cg_batch_l2_sar_adc_loop_parameter_diversity_0001
+  action: repaired
+  repair_class: unsupported_rtoi
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l2_sar_adc_loop_parameter_diversity_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_parameter_diversity_0001/solution.va
+  prior_diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported
+    Verilog-A function call: $rtoi()'
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_waveform_coverage_0001
+  contract_id: cg_batch_l2_sar_adc_loop_waveform_coverage_0001
+  action: repaired
+  repair_class: unsupported_rtoi
+  source_solution_ref: train/infra/results/contract-batch-0025-20260621T053934Z/artifacts/cg_batch_l2_sar_adc_loop_waveform_coverage_0001/solution.va
+  repaired_solution_ref: train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_waveform_coverage_0001/solution.va
+  prior_diagnostic: 'ERROR: Failed to compile Verilog-A file solution.va: Spectre-incompatible/unsupported
+    Verilog-A function call: $rtoi()'

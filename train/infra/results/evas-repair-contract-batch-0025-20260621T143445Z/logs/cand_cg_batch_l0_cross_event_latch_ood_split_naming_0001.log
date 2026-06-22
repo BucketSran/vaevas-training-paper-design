@@ -1,0 +1,12 @@
+COMMAND: /data/jinzhihong/envs/vaevas-rl/bin/python -m evas simulate /data/jinzhihong/vaevas-training-paper-design/train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z/harnesses/cand_cg_batch_l0_cross_event_latch_ood_split_naming_0001/tb.scs --engine evas-rust -o /tmp/evas-repair-contract-batch-0025-20260621T143445Z_evas_outputs/cand_cg_batch_l0_cross_event_latch_ood_split_naming_0001
+RETURN_CODE: 0
+
+EVAS -- Event-driven Verilog-A Simulator
+Simulating `tb.scs' at 2:39:04 PM, Sun Jun 21, 2026.
+Reading file: tb.scs
+WARNING: ahdl_include resolved to 'solution.va' (original path not found, used scs directory fallback)
+Compiled Verilog-A module: cg_batch_l0_cross_event_latch_ood_split_naming_0001
+Circuit inventory:
+Important parameter values:
+Number of accepted tran steps = 1002
+evas completes with 0 errors, 1 warnings.

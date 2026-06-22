@@ -308,3 +308,13 @@ NEXT_RISKS=<Spectre shadow audit still local; repaired data still unadmitted>
 - worker_user: jinzhihong
 - branch: training-paper-design-20260620
 - repo_commit_at_claim: fa1e174847d9d9b3ab867abbc3b164826d64e672
+
+## Worker Completion
+
+- finished_at_utc: 2026-06-22T09:46:02Z
+- finish_status: done
+- worker_host: huaxiyun085
+- repo_commit_before_finish: 7cee4ed2bcb75ec39eba5c67f59ac978bd35d009
+- summary: EVAS failure repair completed for contract-batch-0025; see summary.json
+- result_paths:
+  - train/infra/results/evas-repair-contract-batch-0025-20260621T143445Z

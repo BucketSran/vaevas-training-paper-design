@@ -1,0 +1,1425 @@
+schema_version: phase1.v0.1
+batch_id: artifact-contract-batch-0025-0001
+batch_plan_ref: data/manifests/synthesis/synthesis_run.contract-batch-0025.yaml
+producer:
+  name: train.pipelines.write_artifact_candidate_index
+  version: phase1.v0.1
+  git_commit: null
+candidate_index_hash: sha256:ffb757019041756d07842a3b796d783ee7fe1eb0e141bb0ecedddbc1d30714de
+items:
+- candidate_id: cand_cg_batch_l0_cross_event_latch_boundary_tolerance_0001
+  contract_id: cg_batch_l0_cross_event_latch_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_boundary_tolerance_0001.yaml
+  contract_sha256: sha256:95649cb1d38ec72461955f7acdf1923d1ed5e236169f7ab4df2e8b611b0fc29a
+  state: artifact_generated_unverified
+  level: L0
+  task_form: conformance
+  category: Comparator and Decision Circuits
+  split_key: batch/comparator_cross_event/boundary_tolerance
+  seed_refs:
+  - seed_id: seed_manual_l0_cross_event_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l0_cross_event_conformance.yaml
+    license: internal_clean_room
+    allowed_uses: &id001
+    - contract_proposal
+    - prompt_template_test
+    - static_validator_test
+    forbidden_uses: &id002
+    - benchmark_eval
+    - copy_release_prompt
+    - copy_release_gold
+    - paper_metric_direct_claim
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_boundary_tolerance_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_boundary_tolerance_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:cb03d2cf4ef37676f7499fab4d60d5d75992620b05b7610a87a1f8b4bb35648f
+    solution_va: sha256:f85cfe6236d47c8d978d199c56f4662f30b14b22d08b3d84523cbfa4e83d32c6
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L0_conformance
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l0_cross_event_latch_observable_clarity_0001
+  contract_id: cg_batch_l0_cross_event_latch_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_observable_clarity_0001.yaml
+  contract_sha256: sha256:cc58dc2930e4b4eb57443bb58a94bc8a95e89fb3bec55842fe3a60ef4c41c8fa
+  state: artifact_generated_unverified
+  level: L0
+  task_form: conformance
+  category: Comparator and Decision Circuits
+  split_key: batch/comparator_cross_event/observable_clarity
+  seed_refs:
+  - seed_id: seed_manual_l0_cross_event_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l0_cross_event_conformance.yaml
+    license: internal_clean_room
+    allowed_uses: *id001
+    forbidden_uses: *id002
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_observable_clarity_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_observable_clarity_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:b3849a7d86b89cc05f55e4afee813d96b19970607da2440ae540cb9f6ef26bcd
+    solution_va: sha256:10cf4ad2e55ab469ebc318ef2e629bd3502bedd581365752c584fa616b3c7236
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L0_conformance
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l0_cross_event_latch_ood_split_naming_0001
+  contract_id: cg_batch_l0_cross_event_latch_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_ood_split_naming_0001.yaml
+  contract_sha256: sha256:822dafe8964932bc7f09ab76eed7f2b98b16f6c9bab9ba33b69305f743745881
+  state: artifact_generated_unverified
+  level: L0
+  task_form: conformance
+  category: Comparator and Decision Circuits
+  split_key: batch/comparator_cross_event/ood_split_naming
+  seed_refs:
+  - seed_id: seed_manual_l0_cross_event_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l0_cross_event_conformance.yaml
+    license: internal_clean_room
+    allowed_uses: *id001
+    forbidden_uses: *id002
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_ood_split_naming_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_ood_split_naming_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:e00b12973a9bbdba91b82370d7f82b619f23f9f63d150075a8879565f3c7f645
+    solution_va: sha256:43de389b35ddb747f47f626e5b0f9b8a3f226cdf1891b689a9d250814bebdbb2
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L0_conformance
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l0_cross_event_latch_parameter_diversity_0001
+  contract_id: cg_batch_l0_cross_event_latch_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_parameter_diversity_0001.yaml
+  contract_sha256: sha256:9bd35f16ce567b31a427164d1dfa710539431cd2ad9efa5965af041cf972cf24
+  state: artifact_generated_unverified
+  level: L0
+  task_form: conformance
+  category: Comparator and Decision Circuits
+  split_key: batch/comparator_cross_event/parameter_diversity
+  seed_refs:
+  - seed_id: seed_manual_l0_cross_event_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l0_cross_event_conformance.yaml
+    license: internal_clean_room
+    allowed_uses: *id001
+    forbidden_uses: *id002
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_parameter_diversity_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_parameter_diversity_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:0e9800b5d8b3a265669b82aca357294664607080839dd4413650e14c5f93c477
+    solution_va: sha256:825c973e914ec5320f77ca9e21f0b353815a310dd74d14d641557df31f9ca338
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L0_conformance
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l0_cross_event_latch_waveform_coverage_0001
+  contract_id: cg_batch_l0_cross_event_latch_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l0_cross_event_latch_waveform_coverage_0001.yaml
+  contract_sha256: sha256:001cafa87e0eba51e35aaf8a3ee632dbb9d3b98536967b10ce2e0091fd21794c
+  state: artifact_generated_unverified
+  level: L0
+  task_form: conformance
+  category: Comparator and Decision Circuits
+  split_key: batch/comparator_cross_event/waveform_coverage
+  seed_refs:
+  - seed_id: seed_manual_l0_cross_event_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l0_cross_event_conformance.yaml
+    license: internal_clean_room
+    allowed_uses: *id001
+    forbidden_uses: *id002
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_waveform_coverage_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l0_cross_event_latch_waveform_coverage_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:9e34dab12827a9a9383434e5139b28992df212d16f46858f7ffbcce14dff55ef
+    solution_va: sha256:fde417f7e470b9469f4e7bb9866964f7c0953d4c2d79dab66a8ba38510011037
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L0_conformance
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_boundary_tolerance_0001
+  contract_id: cg_batch_l1_gain_probe_tb_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_boundary_tolerance_0001.yaml
+  contract_sha256: sha256:49cd451f90db1c038dacfd3a734885cc8b46c739ace871e769109993f4f0d699
+  state: artifact_generated_unverified
+  level: L1
+  task_form: tb
+  category: Measurement Instrumentation Flows
+  split_key: batch/measurement_gain_probe/boundary_tolerance
+  seed_refs:
+  - seed_id: seed_manual_l1_gain_measurement_tb_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_gain_measurement_tb.yaml
+    license: internal_clean_room
+    allowed_uses: &id003
+    - contract_proposal
+    - prompt_template_test
+    - sft_candidate_generation
+    - grpo_prompt_generation
+    forbidden_uses: &id004
+    - benchmark_eval
+    - copy_release_prompt
+    - copy_release_gold
+    - paper_metric_direct_claim
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_boundary_tolerance_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_boundary_tolerance_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:a49cd27abbef032007e6841a164c26e3bfd94db75168d398f46522531de21cf8
+    solution_va: sha256:200a5fb4fb821e89766a859f87b5768cebccabfc46fd1f90f83fd9804c9f791d
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_tb
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_observable_clarity_0001
+  contract_id: cg_batch_l1_gain_probe_tb_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_observable_clarity_0001.yaml
+  contract_sha256: sha256:c8e3d0cc81b93110b1db19a405687e0655fbc9ee6e23db23ca7efa9f32f5bb8a
+  state: artifact_generated_unverified
+  level: L1
+  task_form: tb
+  category: Measurement Instrumentation Flows
+  split_key: batch/measurement_gain_probe/observable_clarity
+  seed_refs:
+  - seed_id: seed_manual_l1_gain_measurement_tb_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_gain_measurement_tb.yaml
+    license: internal_clean_room
+    allowed_uses: *id003
+    forbidden_uses: *id004
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_observable_clarity_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_observable_clarity_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:a0ebbba7dbe98ec5c6ddb367d1224124cf8559e625e4c51134fbf18c1852c8c6
+    solution_va: sha256:8b1a8c012796e324640d6d0b44a6b948b4d8e29303cc3c9e6aafb6cfcdc6615a
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_tb
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_ood_split_naming_0001
+  contract_id: cg_batch_l1_gain_probe_tb_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_ood_split_naming_0001.yaml
+  contract_sha256: sha256:1b173c173f88950e146462b0b0a47705b20aaf58858ef558621a3aee9cbc448f
+  state: artifact_generated_unverified
+  level: L1
+  task_form: tb
+  category: Measurement Instrumentation Flows
+  split_key: batch/measurement_gain_probe/ood_split_naming
+  seed_refs:
+  - seed_id: seed_manual_l1_gain_measurement_tb_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_gain_measurement_tb.yaml
+    license: internal_clean_room
+    allowed_uses: *id003
+    forbidden_uses: *id004
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_ood_split_naming_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_ood_split_naming_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:0b3dfa04da971b5547caa31028051494b8276d0eed3e361d094efc2677fed22c
+    solution_va: sha256:08060febc66a3cb072c5168c585e20cba95daf38f9c2d598f78f6acc8cb093be
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_tb
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_parameter_diversity_0001
+  contract_id: cg_batch_l1_gain_probe_tb_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_parameter_diversity_0001.yaml
+  contract_sha256: sha256:ac395e8c609807df754a7be734c726be3a0aa50a11f455b29cd71cf205949c1e
+  state: artifact_generated_unverified
+  level: L1
+  task_form: tb
+  category: Measurement Instrumentation Flows
+  split_key: batch/measurement_gain_probe/parameter_diversity
+  seed_refs:
+  - seed_id: seed_manual_l1_gain_measurement_tb_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_gain_measurement_tb.yaml
+    license: internal_clean_room
+    allowed_uses: *id003
+    forbidden_uses: *id004
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_parameter_diversity_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_parameter_diversity_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:8d1227617307e324e566e0a5f54ae397435644ea7adba7a1490a3cc02fa8e7af
+    solution_va: sha256:2e0a41df203bd30b93e9d9f7a637394a2118770f4ec62b9ae9960097f4b5bcc1
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_tb
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_gain_probe_tb_waveform_coverage_0001
+  contract_id: cg_batch_l1_gain_probe_tb_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_gain_probe_tb_waveform_coverage_0001.yaml
+  contract_sha256: sha256:f4f21b4f696fc307a153ef0498ec1d38fd7e2940bff25882e52afea550bbed31
+  state: artifact_generated_unverified
+  level: L1
+  task_form: tb
+  category: Measurement Instrumentation Flows
+  split_key: batch/measurement_gain_probe/waveform_coverage
+  seed_refs:
+  - seed_id: seed_manual_l1_gain_measurement_tb_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_gain_measurement_tb.yaml
+    license: internal_clean_room
+    allowed_uses: *id003
+    forbidden_uses: *id004
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_waveform_coverage_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_gain_probe_tb_waveform_coverage_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:bc92368addfa50919759ed27450fdf7d48aee305a0cc96b367f34d80bd2457c9
+    solution_va: sha256:2aba29bbf29f0362ae3e6deb99f48ab1fdbbdf2d8a55e861f98a41ccc5a1a2dd
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_tb
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001.yaml
+  contract_sha256: sha256:a5503e7959fddd46c83da7c04c46f4552c9d2caebb16d5f13e4c7f181b91c699
+  state: artifact_generated_unverified
+  level: L1
+  task_form: dut
+  category: Comparator and Decision Circuits
+  split_key: batch/comparator_hysteresis/boundary_tolerance
+  seed_refs:
+  - seed_id: seed_manual_l1_hysteresis_comparator_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_hysteresis_comparator_dut.yaml
+    license: internal_clean_room
+    allowed_uses: &id005
+    - contract_proposal
+    - prompt_template_test
+    - sft_candidate_generation
+    - grpo_prompt_generation
+    forbidden_uses: &id006
+    - benchmark_eval
+    - copy_release_prompt
+    - copy_release_gold
+    - paper_metric_direct_claim
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_boundary_tolerance_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:4d58a870b718edfacb83d4bc4dd648af702c0940e62fa71bbb7910d3baa08ee0
+    solution_va: sha256:eeb1b0a9ae635e94e228ee9be9516b53090644d565efb8d581be752bef33dec3
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_dut
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_observable_clarity_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_observable_clarity_0001.yaml
+  contract_sha256: sha256:c1c6b513bb6ab35a922463ed5e8d8e6749dfa371eb1805a5c89a8a9d76b5aa46
+  state: artifact_generated_unverified
+  level: L1
+  task_form: dut
+  category: Comparator and Decision Circuits
+  split_key: batch/comparator_hysteresis/observable_clarity
+  seed_refs:
+  - seed_id: seed_manual_l1_hysteresis_comparator_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_hysteresis_comparator_dut.yaml
+    license: internal_clean_room
+    allowed_uses: *id005
+    forbidden_uses: *id006
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_observable_clarity_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_observable_clarity_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:a4b7c122ed71ebc548c8937d0331cb76418598770adb7a01b3f159c412b0c0f0
+    solution_va: sha256:a875d6451a65225cede50fe60701a4aee65ac8ae736213ea8d7509f5b261ad0f
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_dut
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_ood_split_naming_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_ood_split_naming_0001.yaml
+  contract_sha256: sha256:8efe9515db721e59cb119dac4712368b007c38ccd1d5ea2f2ace8f4582960886
+  state: artifact_generated_unverified
+  level: L1
+  task_form: dut
+  category: Comparator and Decision Circuits
+  split_key: batch/comparator_hysteresis/ood_split_naming
+  seed_refs:
+  - seed_id: seed_manual_l1_hysteresis_comparator_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_hysteresis_comparator_dut.yaml
+    license: internal_clean_room
+    allowed_uses: *id005
+    forbidden_uses: *id006
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_ood_split_naming_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_ood_split_naming_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:a3418df73202de7a37b923bc1192b67aeccf86bb6938500602f423799207afe1
+    solution_va: sha256:54703cfb4a2de744e539acfeab50866f4897c66ee3231be7a9a0cb20207b3f63
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_dut
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_parameter_diversity_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_parameter_diversity_0001.yaml
+  contract_sha256: sha256:4b3dbdf24f1cef55569de15e8f107dc322d2092c5a09864df07be30ace7639d5
+  state: artifact_generated_unverified
+  level: L1
+  task_form: dut
+  category: Comparator and Decision Circuits
+  split_key: batch/comparator_hysteresis/parameter_diversity
+  seed_refs:
+  - seed_id: seed_manual_l1_hysteresis_comparator_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_hysteresis_comparator_dut.yaml
+    license: internal_clean_room
+    allowed_uses: *id005
+    forbidden_uses: *id006
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_parameter_diversity_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_parameter_diversity_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:731d76a7d1c825810e2cc21eaa481d2b8bf79692b6178992de80a9fa6ee80726
+    solution_va: sha256:0ca79427f5f26b259a58609ed9f1343200be3795e797eca2ce5324964f5ed782
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_dut
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_hysteresis_comparator_waveform_coverage_0001
+  contract_id: cg_batch_l1_hysteresis_comparator_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_hysteresis_comparator_waveform_coverage_0001.yaml
+  contract_sha256: sha256:f34f1f3fe3bac0037d00de5de9ae073d1f7e563dc917001613be7f0543ab474d
+  state: artifact_generated_unverified
+  level: L1
+  task_form: dut
+  category: Comparator and Decision Circuits
+  split_key: batch/comparator_hysteresis/waveform_coverage
+  seed_refs:
+  - seed_id: seed_manual_l1_hysteresis_comparator_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_hysteresis_comparator_dut.yaml
+    license: internal_clean_room
+    allowed_uses: *id005
+    forbidden_uses: *id006
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_waveform_coverage_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_hysteresis_comparator_waveform_coverage_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:30a73048c4a9797ffdb3d348e502c784448ae11747ded822d0dae6bee2a551fb
+    solution_va: sha256:af1cc2c2871e377e19d3cf3d4fd45d0e20043c8aae0f1426a494f1eb33dc18cb
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_dut
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_track_hold_repair_boundary_tolerance_0001
+  contract_id: cg_batch_l1_track_hold_repair_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_boundary_tolerance_0001.yaml
+  contract_sha256: sha256:1ba7b298537c0c508839f276067cae660116456aaa24c76afe446c4e9057d698
+  state: artifact_generated_unverified
+  level: L1
+  task_form: bugfix
+  category: Sampling and Analog Memory
+  split_key: batch/sampling_track_hold_repair/boundary_tolerance
+  seed_refs:
+  - seed_id: seed_manual_l1_track_hold_bugfix_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_track_hold_bugfix.yaml
+    license: internal_clean_room
+    allowed_uses: &id007
+    - contract_proposal
+    - prompt_template_test
+    - repair_data_proposal
+    - grpo_prompt_generation
+    forbidden_uses: &id008
+    - benchmark_eval
+    - copy_release_prompt
+    - copy_release_gold
+    - paper_metric_direct_claim
+  artifact_refs:
+    buggy_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_boundary_tolerance_0001/buggy.va
+    fixed_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_boundary_tolerance_0001/fixed.va
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_boundary_tolerance_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_boundary_tolerance_0001/solution.va
+  artifact_hashes:
+    buggy_va: sha256:aa7995cde31b9a650bc23ae0232a512cd63b13ff55b157415dc47cdf6a336ed0
+    fixed_va: sha256:843eafd6345439f1e52187d97d483f20b81a1cc7f65ba75b6c50c95c6b5ee45f
+    notes_md: sha256:063be87138aac6ee030ab14ebd017a9182ad6c86496d2ffd3d5858bbd9ff06ff
+    solution_va: sha256:843eafd6345439f1e52187d97d483f20b81a1cc7f65ba75b6c50c95c6b5ee45f
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_bugfix
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: true
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_track_hold_repair_observable_clarity_0001
+  contract_id: cg_batch_l1_track_hold_repair_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_observable_clarity_0001.yaml
+  contract_sha256: sha256:51a4ef1edad4f3a743058a369d45567bef8d6abfece8bce7df19b7fd1dc9115f
+  state: artifact_generated_unverified
+  level: L1
+  task_form: bugfix
+  category: Sampling and Analog Memory
+  split_key: batch/sampling_track_hold_repair/observable_clarity
+  seed_refs:
+  - seed_id: seed_manual_l1_track_hold_bugfix_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_track_hold_bugfix.yaml
+    license: internal_clean_room
+    allowed_uses: *id007
+    forbidden_uses: *id008
+  artifact_refs:
+    buggy_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_observable_clarity_0001/buggy.va
+    fixed_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_observable_clarity_0001/fixed.va
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_observable_clarity_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_observable_clarity_0001/solution.va
+  artifact_hashes:
+    buggy_va: sha256:551d6bd17f752993a391700809bff61019e0d4bc57038185cd4d873bc9b81642
+    fixed_va: sha256:89ab4c84ff4779619069dbf1054ef948e0bf28f47d90d9523e6682d41d0f35b9
+    notes_md: sha256:425d8d8dd9df2c3b2d67525e693618aecc6b9d95b045d982886fd64bb94c696e
+    solution_va: sha256:89ab4c84ff4779619069dbf1054ef948e0bf28f47d90d9523e6682d41d0f35b9
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_bugfix
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: true
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_track_hold_repair_ood_split_naming_0001
+  contract_id: cg_batch_l1_track_hold_repair_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_ood_split_naming_0001.yaml
+  contract_sha256: sha256:2ce6566bcfdb0bae2e944c0db7c284e4952223f156a569f9605ad0196cd25b61
+  state: artifact_generated_unverified
+  level: L1
+  task_form: bugfix
+  category: Sampling and Analog Memory
+  split_key: batch/sampling_track_hold_repair/ood_split_naming
+  seed_refs:
+  - seed_id: seed_manual_l1_track_hold_bugfix_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_track_hold_bugfix.yaml
+    license: internal_clean_room
+    allowed_uses: *id007
+    forbidden_uses: *id008
+  artifact_refs:
+    buggy_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_ood_split_naming_0001/buggy.va
+    fixed_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_ood_split_naming_0001/fixed.va
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_ood_split_naming_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_ood_split_naming_0001/solution.va
+  artifact_hashes:
+    buggy_va: sha256:851d5dc2c0743bb8b3f748ef0c1c550db4256e82a696fa3a8eb999a8fc4b2acf
+    fixed_va: sha256:d285b366962a2540e6d29a20fc0eafa7bf7c6e38e83d00e58c019aec6d176d2a
+    notes_md: sha256:a133ea2d1f4f9ceb48d327f5c9cbf7d90cfafb520d673fcdcbd3435f9f35d6c7
+    solution_va: sha256:d285b366962a2540e6d29a20fc0eafa7bf7c6e38e83d00e58c019aec6d176d2a
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_bugfix
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: true
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_track_hold_repair_parameter_diversity_0001
+  contract_id: cg_batch_l1_track_hold_repair_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_parameter_diversity_0001.yaml
+  contract_sha256: sha256:28b4d06b642af6958c60b592a89533ffd476b65346e5b8a0666048f6c602b4a9
+  state: artifact_generated_unverified
+  level: L1
+  task_form: bugfix
+  category: Sampling and Analog Memory
+  split_key: batch/sampling_track_hold_repair/parameter_diversity
+  seed_refs:
+  - seed_id: seed_manual_l1_track_hold_bugfix_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_track_hold_bugfix.yaml
+    license: internal_clean_room
+    allowed_uses: *id007
+    forbidden_uses: *id008
+  artifact_refs:
+    buggy_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_parameter_diversity_0001/buggy.va
+    fixed_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_parameter_diversity_0001/fixed.va
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_parameter_diversity_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_parameter_diversity_0001/solution.va
+  artifact_hashes:
+    buggy_va: sha256:212223b4fe2eb9a118f74d55630551e309f28b86f34281f54ef21ec0e0180b4c
+    fixed_va: sha256:74998b6834aac047816f41af3d23eeb035f4ee7ab5f6b05de489d417c873cbca
+    notes_md: sha256:a42f821ff5f5eed5aa4bb64f827ea8ec766f05d898887a7debc0c6a10900b2b1
+    solution_va: sha256:74998b6834aac047816f41af3d23eeb035f4ee7ab5f6b05de489d417c873cbca
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_bugfix
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: true
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l1_track_hold_repair_waveform_coverage_0001
+  contract_id: cg_batch_l1_track_hold_repair_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l1_track_hold_repair_waveform_coverage_0001.yaml
+  contract_sha256: sha256:60e6e5793743ce6b140a11a6998845c15feb8f675a93839285135e69911b80e9
+  state: artifact_generated_unverified
+  level: L1
+  task_form: bugfix
+  category: Sampling and Analog Memory
+  split_key: batch/sampling_track_hold_repair/waveform_coverage
+  seed_refs:
+  - seed_id: seed_manual_l1_track_hold_bugfix_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l1_track_hold_bugfix.yaml
+    license: internal_clean_room
+    allowed_uses: *id007
+    forbidden_uses: *id008
+  artifact_refs:
+    buggy_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_waveform_coverage_0001/buggy.va
+    fixed_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_waveform_coverage_0001/fixed.va
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_waveform_coverage_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l1_track_hold_repair_waveform_coverage_0001/solution.va
+  artifact_hashes:
+    buggy_va: sha256:7be8c20a559a73b7301149657b9427ae2ab5772dfd689a78a5804a2d4919e61d
+    fixed_va: sha256:3a295079667079f9e809a9b75cfa8feee5efa87153ff3e917ec275ad957b5532
+    notes_md: sha256:0f9db2baa598dff5def51ccc5bba5efd3cc331f81f66333c1b4876a4a216f365
+    solution_va: sha256:3a295079667079f9e809a9b75cfa8feee5efa87153ff3e917ec275ad957b5532
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L1_bugfix
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: true
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_boundary_tolerance_0001
+  contract_id: cg_batch_l2_sar_adc_loop_boundary_tolerance_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_boundary_tolerance_0001.yaml
+  contract_sha256: sha256:5c985d9fc1fb20f1f93e56d6b50bc201a9be03157d344cde8f76d0423e5a573f
+  state: artifact_generated_unverified
+  level: L2
+  task_form: e2e
+  category: Data Converter Models
+  split_key: batch/data_converter_sar_loop/boundary_tolerance
+  seed_refs:
+  - seed_id: seed_manual_l2_sar_adc_e2e_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l2_sar_adc_e2e.yaml
+    license: internal_clean_room
+    allowed_uses: &id009
+    - contract_proposal
+    - prompt_template_test
+    - sft_candidate_generation
+    - grpo_prompt_generation
+    - spectre_shadow_queue
+    forbidden_uses: &id010
+    - benchmark_eval
+    - copy_release_prompt
+    - copy_release_gold
+    - paper_metric_direct_claim
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_boundary_tolerance_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_boundary_tolerance_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:9349d01a16e45c20749c2189f7da3a5222d9e69d5d985b7d9e7c19f51b981f91
+    solution_va: sha256:5ae47de9be6d60d762d9c01659bd1a32836e4ecbc37bfebb27dc793591031e5c
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L2_e2e
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_observable_clarity_0001
+  contract_id: cg_batch_l2_sar_adc_loop_observable_clarity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_observable_clarity_0001.yaml
+  contract_sha256: sha256:dddc7770e0dc9f1d5e2df948d6a58b5f0e0478b8dcc20581121a0445a6ab3444
+  state: artifact_generated_unverified
+  level: L2
+  task_form: e2e
+  category: Data Converter Models
+  split_key: batch/data_converter_sar_loop/observable_clarity
+  seed_refs:
+  - seed_id: seed_manual_l2_sar_adc_e2e_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l2_sar_adc_e2e.yaml
+    license: internal_clean_room
+    allowed_uses: *id009
+    forbidden_uses: *id010
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_observable_clarity_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_observable_clarity_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:a97fd17506d7efa4e6d056555bc878df0cd1ce2d8e6c834247231b81c6d17b30
+    solution_va: sha256:b4cba59c1113303277848b571d589123835fb623748f86c12dfb4b2b797454c3
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L2_e2e
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_ood_split_naming_0001
+  contract_id: cg_batch_l2_sar_adc_loop_ood_split_naming_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_ood_split_naming_0001.yaml
+  contract_sha256: sha256:33f8caf60c195ad7d18f4b4914f13cf77664edf425bab790199513ecac0982ef
+  state: artifact_generated_unverified
+  level: L2
+  task_form: e2e
+  category: Data Converter Models
+  split_key: batch/data_converter_sar_loop/ood_split_naming
+  seed_refs:
+  - seed_id: seed_manual_l2_sar_adc_e2e_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l2_sar_adc_e2e.yaml
+    license: internal_clean_room
+    allowed_uses: *id009
+    forbidden_uses: *id010
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_ood_split_naming_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_ood_split_naming_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:446b9bef5cf38efd3ab04b11fa0dd3793a5d7ffcbfc58bc79af2b61bf0a4776a
+    solution_va: sha256:58f12b3a0c642d439c6d7de5aff41cb93bd9d46d0fa3bf87ef95c96decacf39c
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L2_e2e
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_parameter_diversity_0001
+  contract_id: cg_batch_l2_sar_adc_loop_parameter_diversity_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_parameter_diversity_0001.yaml
+  contract_sha256: sha256:b56fb774bad032289b8113a31ea54e922e04c35b1226c83f0fd1f38a796317bc
+  state: artifact_generated_unverified
+  level: L2
+  task_form: e2e
+  category: Data Converter Models
+  split_key: batch/data_converter_sar_loop/parameter_diversity
+  seed_refs:
+  - seed_id: seed_manual_l2_sar_adc_e2e_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l2_sar_adc_e2e.yaml
+    license: internal_clean_room
+    allowed_uses: *id009
+    forbidden_uses: *id010
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_parameter_diversity_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_parameter_diversity_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:b0fa733d1446d39a227e8212d6e91d7961030d90a82cc490a3db318ce6ca0da1
+    solution_va: sha256:8e8bdf3d3c6aeff6b7d8f5065e4a1c39e7cf194c61c6c4c44e94941edd892c71
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L2_e2e
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+- candidate_id: cand_cg_batch_l2_sar_adc_loop_waveform_coverage_0001
+  contract_id: cg_batch_l2_sar_adc_loop_waveform_coverage_0001
+  contract_ref: infra/results/contract-batch-0025-20260621T053934Z/contracts/cg_batch_l2_sar_adc_loop_waveform_coverage_0001.yaml
+  contract_sha256: sha256:893497411fd4c73fc22909fc914f25711ad4804ef10e4f80a9f05a8e8da85273
+  state: artifact_generated_unverified
+  level: L2
+  task_form: e2e
+  category: Data Converter Models
+  split_key: batch/data_converter_sar_loop/waveform_coverage
+  seed_refs:
+  - seed_id: seed_manual_l2_sar_adc_e2e_0001
+    source_tier: A_manual_clean_room
+    source_kind: manual_contract_seed
+    source_ref: data/contracts/examples/l2_sar_adc_e2e.yaml
+    license: internal_clean_room
+    allowed_uses: *id009
+    forbidden_uses: *id010
+  artifact_refs:
+    notes_md: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_waveform_coverage_0001/notes.md
+    solution_va: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts/cg_batch_l2_sar_adc_loop_waveform_coverage_0001/solution.va
+  artifact_hashes:
+    notes_md: sha256:4bcbf98a90b1f84c0ffd684a295adead09b2f2c0b7208db70941964c2d9ec295
+    solution_va: sha256:0a5a41c276480034c53c2f777998795a87a32df6b19f156a6f7c519a92b3e09f
+  allowed_features:
+    domain: voltage
+    event_driven: true
+    unsupported_constructs_disallowed: true
+  forbidden_constructs:
+  - current_contribution
+  - branch_current_dependency
+  - idt
+  - ddt
+  - laplace
+  - noise_operators
+  - hidden_checker_logic
+  - hardcoded_testbench_time
+  - task_id_special_case
+  reward_profile: L2_e2e
+  intended_uses:
+    sft_gold: true
+    grpo_prompt: true
+    repair_data: false
+    eval: false
+    diagnostics: true
+  lineage:
+    source_generated_contract_index_hash: sha256:eef62f10121712a9ae73e878e77fdb001506f649867eae1b4f5809f83ce8514f
+    source_contract_review_manifest_hash: sha256:14a12142097a71ccf55f6f1d1256bb5378dadae1487169c0fab9a2c1cf61131c
+    artifact_generator: remote_codex_default
+    sft_gold_artifact_key: solution_va
+    admission_status: not_admitted
+  evidence_refs:
+    generated_contract_index: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/generated_contract_index.yaml
+    contract_review_manifest: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/review_manifest.yaml
+    artifact_root: infra/results/evas-repair-contract-batch-0025-20260621T143445Z/artifacts
+fixture_notes:
+- Artifact candidates are generated and hash-tracked but not admitted training data.
+- EVAS, Spectre, contamination, and admission gates remain required for paper claims.
+- 'Rejected or skipped generated contracts: []'
+- 'level_counts={''L0'': 5, ''L1'': 15, ''L2'': 5}; task_form_counts={''bugfix'':
+  5, ''conformance'': 5, ''dut'': 5, ''e2e'': 5, ''tb'': 5}'
